@@ -1,0 +1,28 @@
+29th:
+
+1.
+Admin Main View: Active Courses - Timeframe (2 days +, 1 days -)
+				 Missing Certs Window - Level of View: Courses
+				 // For both update windows we'll add real-time functionality.
+
+2.
+Admin Main View vs Course Responsible View conflict. There is a conflict in terms that we'll have Users who are simultaneously course responsibles and admins and which Landing Page should be prioritised for Main View. We've decided that Admin should always land on Admin Main View as default and that if the Admins wishes he will have a settings checkbox where he can decide on Course Responsible View, which will then be stored for the future until unchecked.
+
+
+3.
+Database Design:
+
+We've discussed userID vs. email as identififaction for participants since both are unique. We decided on userID's not being superficial so that emails could be changed at a later point without corrupting pre-existing data. This is the same accross the board for all actors.
+
+4.
+View as functionality:
+We've decided to add View as functionality within the Admin Settings pane. It's a dropdown selection of each individual user. When a user is selected and the "View as" button pressed a new window with the program will be launched following that user's access level, when that program is closed the original admin program will not be closed along with it. Both programs will be running simultaneously, admin will be inactive while the other Window is open and reactived once closed.
+
+
+5. Admins Admin
+
+
+6. Home Screen
+
+Home Screen will not give you a database view at any point, it will simulate a collection of tabs and buttons that give access to functionality and information through secondary means. The entire program will spawn new Windows the further you go down the rabbit hole. Each previous window till become inactived until you've taken action on the most recently opened window. This way we prevent any confusion and follow the norm in using pop-up windows within a program.
+
