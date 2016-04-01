@@ -26,3 +26,7 @@ We've decided to add View as functionality within the Admin Settings pane. It's 
 
 Home Screen will not give you a database view at any point, it will simulate a collection of tabs and buttons that give access to functionality and information through secondary means. The entire program will spawn new Windows the further you go down the rabbit hole. Each previous window till become inactived until you've taken action on the most recently opened window. This way we prevent any confusion and follow the norm in using pop-up windows within a program.
 
+
+7. Langugage Fil
+Til allersidst hvis tiden er til det vil vi implementere en language fil saaledes at man kan skifte imellem sprog.
+
