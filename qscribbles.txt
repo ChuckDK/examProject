@@ -35,3 +35,6 @@ We've decided to add a Custom Certificate Generator and have thoughts about usin
 
 9. Database info from Kristian
 We are going to run the entire program on a seperate database from their exisiting one. We will have to decide on structure and general implementation thereof.
+
+10. Statistics
+Eventually we might add a statistics part so that he can use this functionality for customer retention as suggested by Asger.
