@@ -27,10 +27,10 @@ We've decided to add View as functionality within the Admin Settings pane. It's 
 Home Screen will not give you a database view at any point, it will simulate a collection of tabs and buttons that give access to functionality and information through secondary means. The entire program will spawn new Windows the further you go down the rabbit hole. Each previous window till become inactived until you've taken action on the most recently opened window. This way we prevent any confusion and follow the norm in using pop-up windows within a program.
 
 
-7. Language Fil
+7. Language Fil / Importance: Minor / Risk: None
 Til allersidst hvis tiden er til det vil vi implementere en language fil saaledes at man kan skifte imellem sprog.
 
-8. Certificate Generator
+8. Certificate Generator / Importance: High / Risk: High
 We've decided to add a Custom Certificate Generator and have thoughts about using unit testing on this part of the program to ensure proper functionality. This will be prioritised above Language File functionality. The Client would be very happy if this were to be implemented into our program.
 
 9. Database info from Kristian
@@ -38,3 +38,15 @@ We are going to run the entire program on a seperate database from their exisiti
 
 10. Statistics
 Eventually we might add a statistics part so that he can use this functionality for customer retention as suggested by Asger.
+
+11. Password Reset / Importance: Critical / Risk: High
+We've discussed the need to add a password reset button before login in case the admin throws away his password so that the system won't be lost. This reset password will be hardcoded into the system. Functionality has not been added in prototype. The password reset system will reset all admin accounts.
+
+12. Generate Course Cert. / Importance: Critical / Risk: Low
+Discussing which information should be mandatory.
+[ ] Signature of Course Responsible / None Mandatory
+[x] Date of Certificate Print / None Mandatory
+[ ] Course Participant / None Mandatory
+[ ] Course Name	/ Mandatory
+
+We've reasoned that Course Name should be mandatory. They're the bare minimum information required for a certificate. This could come in handy in a scenario where you have a course with hundreds of unregistered participants and you pre-print alot of certificates to be handed out manually at the course itself.
