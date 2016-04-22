@@ -53,3 +53,7 @@ We've reasoned that Course Name should be mandatory. They're the bare minimum in
 
 13. Scheduling Feasibility Studies / Source: http://www.simplilearn.com/feasibility-study-article
 Scheduling Feasibility is the most important in terms of project success. A project will fail if not completed on time. In scheduling feasibility we estimate how much time the system will take to complete and with our technical skill we need to estimate the period to complete the project using some methods.
+
+
+14. Template Serial
+We've come to the realisation, that the course certificate serial could be a composite key of (CourseParticipantID, CourseID).
