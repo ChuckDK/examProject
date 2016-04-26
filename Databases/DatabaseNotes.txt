@@ -1,1 +1,75 @@
-1. Primary Key
+1. Primary Key = email_address
+
+People tend to have their email addresses for longer periods of time compared to phone number and its easier to work with email addresses rather than numbers. This is why we have chosen email over phone number as a primary key.
+
+
+2. Certificate Serial
+
+We have decided to make the serial of the certificate a combination of course ID and Course partificant Phone number, which should produce a unique serial number. This of course means that a course participant cannot participate in the same course twice and recieve a certificate with a unique serial number.
+
+
+Funktionanalyse
+
+Password -> 
+
+Course Name -> 
+
+Course Start date ->
+
+Course Start Date ->
+
+CourseID -> Course Name, Course Start Date, Course End Date
+
+Course Responsible First Name ->
+
+Course Responsible Last Name ->
+
+Course Responsible Phone Number 1 -> Course Responsible First Name, Course Responsible Last Name, Course Responsible Phone Number 2, Course Responsible Email, Course Responsible Admin Rights, password
+
+Course Responsible Phone Number 2 -> Course Responsible First Name, Course Responsible Last Name, Course Responsible Phone Number 1, Course Responsible Email, Course Responsible Admin Rights, password
+
+Course Responsible Email -> Course Responsible First Name, Course Responsible Last Name, Course Responsible Phone Number 1, Course Responsible Phone number 2, Course Responsible Admin Rights, password
+
+Course Participant Phone Number 1 -> Course Participant Phone Number 2, Course Participant Email, Course Participant Certificate Sent
+
+Course Participant Phone Number 2 -> Course Participant Phone Number 1, Course Participant Email, Course Participant Certificate Sent
+
+Course Participant Email -> Course Participant Phone Number 1, Course Participant Phone Number 2, Course Participant Certificate Sent
+
+Certificate Template ID -> Certificate Template Name
+
+
+
+We have concluded that we need the following tables. Two of the tables have several candidate keys, where we have chosen the email columns as the primary key. The other columns are now just data columns.
+
+CourseID -> Course Name, Course Start Date, Course End Date
+
+Course Responsible Email -> Course Responsible First Name, Course Responsible Last Name, Course Responsible Phone Number 1, Course Responsible Phone number 2, Course Responsible Admin Rights, password
+
+Course Participant Email -> Course Participant Phone Number 1, Course Participant Phone Number 2, Course Participant Certificate Sent
+
+Certificate Template ID -> Certificate Template Name
+
+
+We will now put in relations between our tables. We have decided that course responsibles can be assigned multiple courses, but the courses can only have 1 course responsible. therefore course responsible email has been made a foreign key in the courses table. 
+
+CourseID -> Course Responsible Email, Course Name, Course Start Date, Course End Date
+
+We have also decided that courses can have many participants and not the other way around, so course ID is foreign key in the course participants table.
+
+Course Participant Email -> Course ID, Course Participant Phone Number 1, Course Participant Phone Number 2, Course Participant Certificate Sent
+
+There is a one-to-one relationship between Course Table and Certificate Table. We've chosen to insert Certificate Template ID into the Course Table as a foreign key.
+
+CourseID -> Course Responsible Email, Certificate Template ID, Course Name, Course Start Date, Course End Date
+
+
+
+
+
+
+
+
+
+
+
