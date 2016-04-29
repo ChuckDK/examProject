@@ -9,7 +9,7 @@ CREATE TABLE course_responsibles(
   course_responsible_firstname varchar(50) NOT NULL,
   course_responsible_lastname varchar(50) NOT NULL,
   course_responsible_admin_rights boolean DEFAULT FALSE,
-  course_responsible_password VARCHAR(100) NOT NULL
+  course_responsible_password VARCHAR(128) NOT NULL
 );
 
 CREATE TABLE certificate_templates(
@@ -77,8 +77,8 @@ CREATE INDEX AppAcademy ON courses
 (course_name, course_start_date, course_end_date, course_responsible_email, certificate_template_id);
 
 INSERT INTO course_responsibles(course_responsible_email, course_responsible_firstname, course_responsible_lastname, course_responsible_admin_rights, course_responsible_password)VALUES
-  ('sb@kea.dk','Signe','Borch', TRUE, 'password'),
-  ('atb@kea.dk','Asger', 'ThaBomb', FALSE, 'password');
+  ('sb@kea.dk','Signe','Borch', TRUE, MD5('password')),
+  ('atb@kea.dk','Asger', 'ThaBomb', FALSE, MD5('password'));
 
 INSERT INTO certificate_templates (certificate_template_id, certificate_template_name) VALUES
   (1, 'SWK TEMPLATE 1'),
