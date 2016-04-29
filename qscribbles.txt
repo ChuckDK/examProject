@@ -57,3 +57,11 @@ Scheduling Feasibility is the most important in terms of project success. A proj
 
 14. Template Serial
 We've come to the realisation, that the course certificate serial could be a composite key of (CourseParticipantID, CourseID).
+
+15. Prototype retro perspective
+After initiating in use case gathering, we have reviewed our mock-up and have been able to enlist some nessecary changes for an upcoming 2.0 version:
+- How do you get to course participants?
+- How do you access course material AND how do you access/upload couse material AFTER the course has finished/has been added?
+- Remove "Admin" and replace with "Course responsible with admin rights"
+- HOW DO YOU SEND CERTIFICATES? Do we do it via OS mail program or directly behind the scenes through a mail server? Ask Kristian!!
+- A pane menu, anything where you administer removal in general. 
