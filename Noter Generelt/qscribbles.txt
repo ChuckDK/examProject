@@ -64,9 +64,18 @@ After initiating in use case gathering, we have reviewed our mock-up and have be
 - How do you access course material AND how do you access/upload couse material AFTER the course has finished/has been added?
 - Remove "Admin" and replace with "Course responsible with admin rights"
 - HOW DO YOU SEND CERTIFICATES? Do we do it via OS mail program or directly behind the scenes through a mail server? Ask Kristian!!
-- A pane menu, anything where you administer removal in general. 
+- A pane menu, anything where you administer removal in general.
 
+15. Use Case Model Segmentation
 
+Group 1: Course Responsible Admin Rights
+Generate Certificate Template, FTP Settings, SMTP Settings, Remove Course Responsible, Remove Course, Add Course Responsible, Remove Certificate Template
+
+Group 2: Course Responsible
+Add Courses, Add Course Participant(s), Remove Course Participant, Send Missing Certificate
+
+Group 3: Viewables
+List Courses, List Course Responsibles, View Missing Certificate, View Active Courses, View All Courses, View Inactive Courses
 
 
 
