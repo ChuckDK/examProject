@@ -51,6 +51,8 @@ Prototype Version 1
 Elaboration>
 
 Prototype Version 2
+Prototype Version 3 Admin Rights
+Prototype Version 3 Regular
 
 Construction>
 
@@ -116,9 +118,6 @@ Ager: "???????"
 -------------------------------------------------------------------------------------
 Quick Notes>
 -------------------------------------------------------------------------------------
-General work process strategy>
-We have chosen to use our prototype as a substitute for a coded prototype as we thought, also based on prototype teachings, that Kristian ,our client, would understand and interact better with a prototype and therefore better contribute with requirements.
-
 0.
 Vi har valgt at anvende en blanding af vandfaldsmodel og UP. Dette har vi gjort fordi, at vores kunde grundlæggende har været sikker på kravene til programmet. Samtidig har det været sundt for projektet at gå tilbage og revidere implementeringen og modeleringen af af de krav vi har haft. Vi har derved arbejdet iterativt (lavet noget, som vi senere hen har evauleret og lavet om/gjort bedre) og stringent efter inception, elaboration, construction og transition. Det har vœret en langsommere UP udvikling med fœrre iterationer end det der sœdvanligvis kendetegner UP, og med lånte principper fra vandfaldsmodellen.
 
