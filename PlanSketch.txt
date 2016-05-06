@@ -35,13 +35,13 @@ In progress>
 
 Use Case Diagrams, Elaboration / Ask Asger monday, reg. extends includes etc.
 ER Diagram, Construction
-Prepare everything for SWOT
 
 -------------------------------------------------------------------------------------
 Done>
 -------------------------------------------------------------------------------------
 
 Setting up a file for the report itself that meets criteria, see assignment handout
+Prepare everything for SWOT
 
 Inception>
 
@@ -113,7 +113,7 @@ Asger: “It Will be apparent through the way our project is structured.”
 2. Ask Asger about license and which diagrams to use (construction phase → state diagram)?
 Ager: "???????"
 
-3. 
+3.
 
 -------------------------------------------------------------------------------------
 Quick Notes>
@@ -358,6 +358,24 @@ ETA: 141,5 Hrs Remaining pr. Developer
 
 May 6th 2016
 _______________
+
+We've identified several issues with our UP. We need to iterate more frequently. Be better at pin pointing iteration points. We've restructured our approach to be more focused on iterations in general. We've commenced coding GUI features and finalised a 3rd iteration of our prototype. We've finished system sequence diagrams and prepared a general report document. Our approach thus far in general has been too heavily focused on on an approach that risks being classified as Waterfall model and iterations will regain focus now.
+
+
+Next meeting: See Progress Table
+				Finalise preliminary code
+
+
+Members Present: Dennis, Fredrik, Jonas, Emil
+
+Developer Hours: 7 hours SWD, 2 hours ITO, 1 hour SWK
+
+ITO: 14/20 – SWD: 27/70 – OSCA: 0/10 – SWK: 17/30 – Buffer 2/61.5
+
+ETA: 131,5 Hrs Remaining pr. Developer
+
+
+
 May 10th 2016
 _______________
 	Krisitan Conference Call
