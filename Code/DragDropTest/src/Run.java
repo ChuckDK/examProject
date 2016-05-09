@@ -21,7 +21,7 @@ public class Run extends Application
         this.primaryStage.show();
 
         //set startup scene to login view
-        Scene scene = new Scene(new CoursesView(), 640, 480);
+        Scene scene = new Scene(new CertificateEditor(), 640, 480);
         this.primaryStage.setScene(scene);
 
         //add listener to update position of objects when window is resized
