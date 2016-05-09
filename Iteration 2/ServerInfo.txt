@@ -1,0 +1,16 @@
+GoTo> www.one.com
+UserName > certifikat@forneus.net
+PassWord > password
+smtp> send.one.com
+
+
+
+FTP Administration
+
+Allow FTP access    Off    On
+To log in with FTP, use this info:
+Host: ftp.forneus.net
+Username: forneus.net
+password: emildennisjonasfredrik
+Port: 21
+Click Send and you will receive an email, that can be used to create/change FTP password.
