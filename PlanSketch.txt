@@ -34,7 +34,7 @@ In progress>
 -------------------------------------------------------------------------------------
 
 Use Case Diagrams, Elaboration / Ask Asger monday, reg. extends includes etc.
-ER Diagram, Construction
+ER Diagram, Construction / Ask Signe about ER Diagram
 
 -------------------------------------------------------------------------------------
 Done>
