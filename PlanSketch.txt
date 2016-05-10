@@ -17,14 +17,10 @@ Inception phase
 Elaboration phase
 
 Construction phase
-Sequence Diagram
 Activity diagram (limited) / How work load is shared.
-Class diagram with relational schema
-Class model (Logical arch / Layers)
 Full Documentation / Comments for every method
 Program itself: Classes, methods, variables, conditions, loops, data structure(Collection/Obs.List), Inheritance/Interfaces, GUI JAVAFX
-Usage of patterns
-GRASP
+Usage of patterns, GRASP
 User manual
 Reviews
 
@@ -33,67 +29,90 @@ Reviews
 In progress>
 -------------------------------------------------------------------------------------
 
-Gant Chart
-Iteration 3 / Jonas/Fredrik - Correct Use Cases in Report and models / Gant Chart
-Iteration 3 / Dennis/Emil - Class Diagram / Sequence Diagrams
+Adjust/Create(MySQL Settings Casual+SystemSeq.Dia.) UseCases, System Sequence Diagrams, Use Case Diagram, Iteration 3
+
+Correct colour code in Database Spreadsheet, Iteration 3
+
+Adjust Prototype; List View Existing Course Responsibles, Iteration 3
+
+Sequence Diagrams, Iteration 3
+
+Class model (Logical arch / Layers), Iteration 3
+
+Class diagram with relational schema, Iteration 3
+
+
 
 -------------------------------------------------------------------------------------
 Done>
 -------------------------------------------------------------------------------------
 
+Assorted Tasks>
 ER Diagram, Construction / Ask Signe about ER Diagram / ER Auto-Gen is okay as long as it's correct and we can explain it.
-Use Case Diagrams, Elaboration / Ask Asger monday, reg. extends includes etc.
-Setting up a file for the report itself that meets criteria, see assignment handout
-Prepare everything for SWOT
+Use Case Diagrams, Elaboration / Ask Asger monday, reg. extends includes etc., Iteration 2
+Setting up a file for the report itself that meets criteria, see assignment handout, Iteration 2
+Prepare everything for SWOT, Iteration 1
 Iteration 2 - Finished 9th of May 2016.
+Missing: (Brief) View Course Participants, Iteration 2
+Jonas/Fredrik - Correct Use Cases in Report and models, Iteration 3
+
 
 Inception>
 
-Preliminary ER Diagram
-Prototype Version 1
+Preliminary ER Diagram, Iteration 1
+Prototype Version 1, Iteration 1
 
 Elaboration>
 
-Prototype Version 2
-Prototype Version 3 Admin Rights
-Prototype Version 3 Regular
+Prototype Version 2 , Iteration 2
+Prototype Version 3 Admin Rights, Iteration 3
+Prototype Version 3 Regular, Iteration 3
 
 Construction>
 
-Making a database
-Database Normalisation
-Database description schema
+Making a database, Iteration 1
+Database Normalisation, Iteration 2
+Database description schema, Iteration 2
+Scene Graph, Iteration 2
 
 Transition>
 
 -------------------------------------------------------------------------------------
 Across Phases>
--------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
 CaptainsLog
 PlanSketch
-Qscribbles
-Qteachers
 ServerInfo
 
 -------------------------------------------------------------------------------------
 Rapport done>
 -------------------------------------------------------------------------------------
 Inception Rapport>
-Requirements analysis
-Stakeholder Analysis(Risk Analysis)
-Feasibility Studies(Technical, Schedule)
-Vision
+Requirements analysis, Iteration 1
+Stakeholder Analysis(Risk Analysis), Iteration 1
+Feasibility Studies(Technical, Schedule), Iteration 1
+Vision, Iteration 2
 
 Elaboration Rapport>
-FURPS+
-Use Classes, 17 Total
-System Sequence Diagram
-Domain Model
-Preliminary Domain Model / Footnote
+FURPS+, Iteration 2
+Use Classes, 17 Total, Iteration 2
+System Sequence Diagram, Iteration 2
+Domain Model, Iteration 2
+Preliminary Domain Model / Footnote, Iteration 2
 
 Construction Rapport>
 
 Transition Rapport>
+
+
+-------------------------------------------------------------------------------------
+Task Trash>
+-------------------------------------------------------------------------------------
+
+Gant Chart
+Qscribbles
+Qteachers
 
 
 -------------------------------------------------------------------------------------
@@ -119,111 +138,6 @@ Ager: "Tilstands diagram hvis vores program har tisltande, kommer an på om det 
 
 3.
 
--------------------------------------------------------------------------------------
-Quick Notes>
--------------------------------------------------------------------------------------
-0.
-Vi har valgt at anvende en blanding af vandfaldsmodel og UP. Dette har vi gjort fordi, at vores kunde grundlæggende har været sikker på kravene til programmet. Samtidig har det været sundt for projektet at gå tilbage og revidere implementeringen og modeleringen af af de krav vi har haft. Vi har derved arbejdet iterativt (lavet noget, som vi senere hen har evauleret og lavet om/gjort bedre) og stringent efter inception, elaboration, construction og transition. Det har vœret en langsommere UP udvikling med fœrre iterationer end det der sœdvanligvis kendetegner UP, og med lånte principper fra vandfaldsmodellen.
-
-
-1.
-Admin Main View: Active Courses - Timeframe (2 days +, 1 days -)
-				 Missing Certs Window - Level of View: Courses
-				 // For both update windows we'll add real-time functionality.
-
-2.
-Admin Main View vs Course Responsible View conflict. There is a conflict in terms that we'll have Users who are simultaneously course responsibles and admins and which Landing Page should be prioritised for Main View. We've decided that Admin should always land on Admin Main View as default and that if the Admins wishes he will have a settings checkbox where he can decide on Course Responsible View, which will then be stored for the future until unchecked.
-
-3.
-Database Design:
-
-We've discussed userID vs. email as identififaction for participants since both are unique. We decided on userID's not being superficial so that emails could be changed at a later point without corrupting pre-existing data. This is the same accross the board for all actors.
-
-4.
-View as functionality:
-We've decided to add View as functionality within the Admin Settings pane. It's a dropdown selection of each individual user. When a user is selected and the "View as" button pressed a new window with the program will be launched following that user's access level, when that program is closed the original admin program will not be closed along with it. Both programs will be running simultaneously, admin will be inactive while the other Window is open and reactived once closed.
-
-5. Home Screen
-
-Home Screen will not give you a database view at any point, it will simulate a collection of tabs and buttons that give access to functionality and information through secondary means. The entire program will spawn new Windows the further you go down the rabbit hole. Each previous window till become inactived until you've taken action on the most recently opened window. This way we prevent any confusion and follow the norm in using pop-up windows within a program.
-
-
-6. Language Fil / Importance: Minor / Risk: None
-Til allersidst hvis tiden er til det vil vi implementere en language fil saaledes at man kan skifte imellem sprog.
-
-7. Certificate Generator / Importance: High / Risk: High
-We've decided to add a Custom Certificate Generator and have thoughts about using unit testing on this part of the program to ensure proper functionality. This will be prioritised above Language File functionality. The Client would be very happy if this were to be implemented into our program.
-
-8. Database info from Kristian
-We are going to run the entire program on a seperate database from their exisiting one. We will have to decide on structure and general implementation thereof.
-
-9. Statistics
-Eventually we might add a statistics part so that he can use this functionality for customer retention as suggested by Asger.
-
-10. Password Reset / Importance: Critical / Risk: High
-We've discussed the need to add a password reset button before login in case the admin throws away his password so that the system won't be lost. This reset password will be hardcoded into the system. Functionality has not been added in prototype. The password reset system will reset all admin accounts.
-
-11. Generate Course Cert. / Importance: Critical / Risk: Low
-Discussing which information should be mandatory.
-[ ] Signature of Course Responsible / None Mandatory
-[x] Date of Certificate Print / None Mandatory
-[ ] Course Participant / None Mandatory
-[ ] Course Name	/ Mandatory
-
-We've reasoned that Course Name should be mandatory. They're the bare minimum information required for a certificate. This could come in handy in a scenario where you have a course with hundreds of unregistered participants and you pre-print alot of certificates to be handed out manually at the course itself.
-
-12. Scheduling Feasibility Studies / Source: http://www.simplilearn.com/feasibility-study-article
-Scheduling Feasibility is the most important in terms of project success. A project will fail if not completed on time. In scheduling feasibility we estimate how much time the system will take to complete and with our technical skill we need to estimate the period to complete the project using some methods.
-
-
-13. Template Serial
-We've come to the realisation, that the course certificate serial could be a composite key of (CourseParticipantID, CourseID).
-
-14. Prototype retro perspective
-After initiating in use case gathering, we have reviewed our mock-up and have been able to enlist some nessecary changes for an upcoming 2.0 version:
-- How do you get to course participants?
-- How do you access course material AND how do you access/upload couse material AFTER the course has finished/has been added?
-- Remove "Admin" and replace with "Course responsible with admin rights"
-- HOW DO YOU SEND CERTIFICATES? Do we do it via OS mail program or directly behind the scenes through a mail server? Ask Kristian!!
-- A pane menu, anything where you administer removal in general.
-
-15. Use Case Model Segmentation
-
-Group 1: Course Responsible Admin Rights
-Generate Certificate Template, FTP Settings, SMTP Settings, Remove Course Responsible, Remove Course, Add Course Responsible, Remove Certificate Template
-
-Group 2: Course Responsible
-Add Courses, Add Course Participant(s), Remove Course Participant, Send Missing Certificate
-
-Group 3: Viewables
-View Courses, View Course Responsibles, View Missing Certificate, View Active Courses, View All Courses, View Inactive Courses
-
-
-CD Generate Course Certificate Template, Remove Certificate Template
-
-CRD Add Course Responsble, View Course Responsibles, Remove Course Responsible
-
-CRD Add Course, View Courses, Remove Course <extends> View Active Courses, View All Courses, View Inactive Courses
-
-FTP Settings
-SMTP Settings
-
-RU View Missing Certificate, Send Missing Certificate
-
-CD Add Course Participant, Remove Course Participant
-
-Missing: (Brief) View Course Participante
-
-
-
-
-CRUD, CREATE READ UPDATE DELETE.
-
-NUMBER INDEXED USE CASe
-
-COLOUR CODE EVT
-
-RENAME TO VIEW
 
 -------------------------------------------------------------------------------------
 Captains Log>
@@ -295,7 +209,7 @@ Next meeting: We will be looking at the assignments requirements from our teache
 
 Members Present: Jonas, Emil, Fredrik (Dennis had some KEA business, accepted by group beforehand).
 
-April 18th 2016
+April 18th 2016 / Iteration 1 has ended
 _______________
 
 We’ve made an initial project plan sketch. We’ve tried gathering an overview of missing tasks and things that need to be done for our project to be complete, so that we can assess our time and what’s required. We’ve made a crude priority list of what needs to be done first and agreed upon a fixed meeting schedule that requires more hours than we’ve put into the project thus far. From this point on we have 13 group sessions planned at 10 hrs. each. So a total of 520 man hours left before deadline, this is taking into account school classes that will be dedicated to our project, we haven’t taking these into account due to their vague nature.
@@ -304,7 +218,7 @@ Next meeting: Tomorrow during our next meeting our focus will be 100% directed t
 
 Members Present: Jonas, Emil, Dennis, Fredrik (All).
 
-April 19th 2016
+April 19th 2016 / Iteration 2 has begun
 _______________
 
 Finally managed to get started on our Report. We’ve completed our feasibility studies along with Stakeholder analysis’. This also means that due to our feasibility studies that we now know the exact amount of time that we have left to complete the entire project and will be adding a countdown on developer hours in the captains log from here on.
@@ -387,7 +301,7 @@ ITO: 12/20 – SWD: 20/70 – OSCA: 0/10 – SWK: 16/30 – Buffer 2/61.5
 
 ETA: 141,5 Hrs Remaining pr. Developer
 
-May 6th 2016
+May 6th 2016 /  Iteration 2 has ended
 _______________
 
 We've identified several issues with our UP. We need to iterate more frequently. Be better at pin pointing iteration points. We've restructured our approach to be more focused on iterations in general. We've commenced coding GUI features and finalised a 3rd iteration of our prototype. We've finished system sequence diagrams and prepared a general report document. Our approach thus far in general has been too heavily focused on on an approach that risks being classified as Waterfall model and iterations will regain focus now.
@@ -407,23 +321,149 @@ ETA: 131,5 Hrs Remaining pr. Developer
 
 
 
-May 10th 2016
+May 10th 2016 / Iteration 3 has begun
 _______________
-	Krisitan Conference Call
+
+Group met as planned, we adjusted and corrected Use Cases to fit the current stage of our program and added 'View Course Participant' use case. Prototype has changed yet again and will have to be further refined at next meeting. We also finished a very thourough Class Diagram using MVC(Model, View, Control) and also implemented Logical Architecture Diagram, which still needs some work. We've decided that if any new variable/functions/methods etc. need to be implented into the code which will be written down using Class Diagrams next time, we will adjust current Iteration 3 Class Diagrams according to these minor changes.
+
+Kristian Conference Call - Never Called as agreed.
+
+Next meeting:	See Progress Section
+				Correct Prototype
+				Finish Class Diagram, Model part
+				Finish remains on Logical Architecture
+				Try Calling Kristian
+				Commence actual code using Class Diagrams.
+
+
+Members Present: Dennis, Fredrik, Jonas, Emil
+
+Developer Hours: 2 hours SWD, 8 hours SWK
+
+ITO: 14/20 – SWD: 29/70 – OSCA: 0/10 – SWK: 25/30 – Buffer 2/61.5
+
+ETA: 121,5 Hrs Remaining pr. Developer
+
 
 May 13th 2016
 _______________
+
+
+
 May 17th 2016
 _______________
-May 20th 2016
+May 20th 2016 / Iteration 3 ends
 _______________
-May 24th 2016
+May 24th 2016 / Iteration 4 Begins / Transition Phase is main focus
 _______________
 May 27th 2016
 _______________
 May 31st 2016
 _______________
 
+
+
+
+-------------------------------------------------------------------------------------
+Quick Notes>
+-------------------------------------------------------------------------------------
+0.
+Vi har valgt at anvende en blanding af vandfaldsmodel og UP. Dette har vi gjort fordi, at vores kunde grundlæggende har været sikker på kravene til programmet. Samtidig har det været sundt for projektet at gå tilbage og revidere implementeringen og modeleringen af af de krav vi har haft. Vi har derved arbejdet iterativt (lavet noget, som vi senere hen har evauleret og lavet om/gjort bedre) og stringent efter inception, elaboration, construction og transition. Det har vœret en langsommere UP udvikling med fœrre iterationer end det der sœdvanligvis kendetegner UP, og med lånte principper fra vandfaldsmodellen.
+
+
+1.
+Admin Main View: Active Courses - Timeframe (2 days +, 1 days -)
+				 Missing Certs Window - Level of View: Courses
+				 // For both update windows we'll add real-time functionality.
+
+2.
+Admin Main View vs Course Responsible View conflict. There is a conflict in terms that we'll have Users who are simultaneously course responsibles and admins and which Landing Page should be prioritised for Main View. We've decided that Admin should always land on Admin Main View as default and that if the Admins wishes he will have a settings checkbox where he can decide on Course Responsible View, which will then be stored for the future until unchecked.
+
+3.
+Database Design:
+
+We've discussed userID vs. email as identififaction for participants since both are unique. We decided on userID's not being superficial so that emails could be changed at a later point without corrupting pre-existing data. This is the same accross the board for all actors.
+
+4. Trashed
+View as functionality:
+We've decided to add View as functionality within the Admin Settings pane. It's a dropdown selection of each individual user. When a user is selected and the "View as" button pressed a new window with the program will be launched following that user's access level, when that program is closed the original admin program will not be closed along with it. Both programs will be running simultaneously, admin will be inactive while the other Window is open and reactived once closed.
+
+5. Home Screen
+
+Home Screen will not give you a database view at any point, it will simulate a collection of tabs and buttons that give access to functionality and information through secondary means. The entire program will spawn new Windows the further you go down the rabbit hole. Each previous window till become inactived until you've taken action on the most recently opened window. This way we prevent any confusion and follow the norm in using pop-up windows within a program.
+
+
+6. Language Fil / Importance: Minor / Risk: None
+Til allersidst hvis tiden er til det vil vi implementere en language fil saaledes at man kan skifte imellem sprog.
+
+7. Certificate Generator / Importance: High / Risk: High
+We've decided to add a Custom Certificate Generator and have thoughts about using unit testing on this part of the program to ensure proper functionality. This will be prioritised above Language File functionality. The Client would be very happy if this were to be implemented into our program.
+
+8. Database info from Kristian
+We are going to run the entire program on a seperate database from their exisiting one. We will have to decide on structure and general implementation thereof.
+
+9. Statistics
+Eventually we might add a statistics part so that he can use this functionality for customer retention as suggested by Asger.
+
+10. Password Reset / Importance: Critical / Risk: High
+We've discussed the need to add a password reset button before login in case the admin throws away his password so that the system won't be lost. This reset password will be hardcoded into the system. Functionality has not been added in prototype. The password reset system will reset all admin accounts.
+
+11. Generate Course Cert. / Importance: Critical / Risk: Low
+Discussing which information should be mandatory.
+[ ] Signature of Course Responsible / None Mandatory
+[x] Date of Certificate Print / None Mandatory
+[ ] Course Participant / None Mandatory
+[ ] Course Name	/ Mandatory
+
+We've reasoned that Course Name should be mandatory. They're the bare minimum information required for a certificate. This could come in handy in a scenario where you have a course with hundreds of unregistered participants and you pre-print alot of certificates to be handed out manually at the course itself.
+
+12. Scheduling Feasibility Studies / Source: http://www.simplilearn.com/feasibility-study-article
+Scheduling Feasibility is the most important in terms of project success. A project will fail if not completed on time. In scheduling feasibility we estimate how much time the system will take to complete and with our technical skill we need to estimate the period to complete the project using some methods.
+
+
+13. Template Serial
+We've come to the realisation, that the course certificate serial could be a composite key of (CourseParticipantID, CourseID).
+
+14. Prototype retro perspective
+After initiating in use case gathering, we have reviewed our mock-up and have been able to enlist some nessecary changes for an upcoming 2.0 version:
+- How do you get to course participants?
+- How do you access course material AND how do you access/upload couse material AFTER the course has finished/has been added?
+- Remove "Admin" and replace with "Course responsible with admin rights"
+- HOW DO YOU SEND CERTIFICATES? Do we do it via OS mail program or directly behind the scenes through a mail server? Ask Kristian!!
+- A pane menu, anything where you administer removal in general.
+
+15. Use Case Model Segmentation
+TRASHED
+Group 1: Course Responsible Admin Rights, Generate Certificate Template, FTP Settings, SMTP Settings, Remove Course Responsible, Remove Course, Add Course Responsible, Remove Certificate Template
+
+Group 2: Course Responsible
+Add Courses, Add Course Participant(s), Remove Course Participant, Send Missing Certificate
+
+Group 3: Viewables
+View Courses, View Course Responsibles, View Missing Certificate, View Active Courses, View All Courses, View Inactive Courses
+TRASHED
+
+CD Generate Course Certificate Template, Remove Certificate Template
+
+CRD Add Course Responsble, View Course Responsibles, Remove Course Responsible
+
+CR Add Course, View Courses,<extends> View Active Courses, View All Courses, View Inactive Courses
+
+Remove Course
+FTP Settings
+SMTP Settings
+
+RU View Missing Certificate, Send Missing Certificate
+
+CRD Add Course Participant, View Course Participant, Remove Course Participant
+
+CRUD, CREATE READ UPDATE DELETE.
+
+NUMBER INDEXED USE CASe
+
+COLOUR CODE EVT
+
+RENAME TO VIEW
 
 
 
