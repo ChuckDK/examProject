@@ -29,17 +29,14 @@ Reviews
 In progress>
 -------------------------------------------------------------------------------------
 
-Adjust/Create(MySQL Settings Casual+SystemSeq.Dia.) UseCases, System Sequence Diagrams, Use Case Diagram, Iteration 3
+
 
 Correct colour code in Database Spreadsheet, Iteration 3
-
-Adjust Prototype; List View Existing Course Responsibles, Iteration 3
 
 Sequence Diagrams, Iteration 3
 
 Class model (Logical arch / Layers), Iteration 3
 
-Class diagram with relational schema, Iteration 3
 
 
 
@@ -55,6 +52,9 @@ Prepare everything for SWOT, Iteration 1
 Iteration 2 - Finished 9th of May 2016.
 Missing: (Brief) View Course Participants, Iteration 2
 Jonas/Fredrik - Correct Use Cases in Report and models, Iteration 3
+Adjust/Create(MySQL Settings Casual+SystemSeq.Dia.) UseCases, System Sequence Diagrams, Use Case Diagram, Iteration 3
+Adjust Prototype; List View Existing Course Responsibles, Course Certificate Sent True Fals Column , Iteration 3
+
 
 
 Inception>
@@ -74,6 +74,9 @@ Making a database, Iteration 1
 Database Normalisation, Iteration 2
 Database description schema, Iteration 2
 Scene Graph, Iteration 2
+Class diagram with relational schema, Iteration 3
+
+
 
 Transition>
 
