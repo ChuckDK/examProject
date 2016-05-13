@@ -351,6 +351,25 @@ ETA: 121,5 Hrs Remaining pr. Developer
 May 13th 2016
 _______________
 
+Today we had our regular friday crunch day. We finalised our Logical Architecture and finished Model part of our Class Diagram, we've finally been able to commence some real coding and have almost finished our GUI part of aCerts. It's going to be great fun next time, where we will continue coding. We found a minor oversight, it's actually impossible to assing our Course Participants to a Course, this will be corrected for next time. We still havn't been able to get a hold of Kristian which is very frustrating since we need his help with certain parts of our ITO assignment, SWOT analysis etc. Well, maybe next time.
+
+Another thing we can observe now is that we've budgetted our time incorrectly, We've exceeded our SWK total Budget of 30 hours by 2 and we're far from done. On the other hand we have alot more time assigned to SWD than will be used with concurrenct ad-hoc tasks. We will agree on how much time should be taken from Buffer and maybe some from SWD aswell during the next Metting, so that we can achieve a more accurate target.
+
+Next meeting:	See Progress Section
+				Correct Prototype / Add Course Participant Part
+				Try Calling Kristian
+				Continue coding GUI part of aCerts
+
+
+Members Present: Dennis, Fredrik, Jonas, Emil
+
+Developer Hours: 3 hours SWD, 7 hours SWK
+
+ITO: 14/20 – SWD: 32/70 – OSCA: 0/10 – SWK: 32/30 – Buffer 2/61.5
+
+ETA: 121,5 Hrs Remaining pr. Developer
+
+
 
 
 May 17th 2016
