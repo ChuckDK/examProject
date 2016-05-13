@@ -30,7 +30,7 @@ public class Run extends Application
     }
 
 
-    /*calls the updateLayout method on the current view, which repositions the elements on that view according to the
+    /**calls the updateLayout method on the current view, which repositions the elements on that view according to the
     window size*/
 
     public void updateView()
