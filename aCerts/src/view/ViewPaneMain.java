@@ -1,6 +1,5 @@
 package view;
 
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import model.Course;
@@ -23,7 +22,7 @@ public class ViewPaneMain extends Pane implements Resizable{
         Course dummyCourse = new Course("ads", "asda", Calendar.getInstance(), Calendar.getInstance(), new Button(), new Button());
         activeCoursesList.getItems().addAll(dummyCourse);
 
-        this.setStyle(ACertsColorScheme.sideMenuColor());
+        this.setStyle(ACertsColorScheme.viewColor());
 
 
 

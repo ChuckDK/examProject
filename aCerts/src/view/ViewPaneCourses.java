@@ -16,12 +16,12 @@ import java.util.Calendar;
 public class ViewPaneCourses extends Pane implements Resizable
 {
     //pane elements are defined here
-    private TableView<Course> tableView;
+    protected TableView<Course> tableView;
     private ToggleButton active = new ToggleButton("Active");
     private ToggleButton inactive = new ToggleButton("Inactive");
     private ToggleButton all = new ToggleButton("All");
     private ToggleButton missing = new ToggleButton("Missing Certs");
-    private Button addCourse = new Button("Add New");
+    protected Button addCourse = new Button("Add New");
 
     public ViewPaneCourses()
     {
@@ -110,12 +110,12 @@ public class ViewPaneCourses extends Pane implements Resizable
 
         //add elements to view
         this.getChildren().addAll(
-                tableView,
                 active,
                 all,
                 inactive,
                 missing,
-                addCourse);
+                addCourse,
+                tableView);
 
 
         //layouting togglebuttons
@@ -123,16 +123,16 @@ public class ViewPaneCourses extends Pane implements Resizable
         tableView.setLayoutY(10);
 
         active.setLayoutX(10);
-        active.setLayoutY(10);
+        active.setLayoutY(20);
 
         inactive.setLayoutX(10);
-        inactive.setLayoutY(40);
+        inactive.setLayoutY(50);
 
         all.setLayoutX(10);
-        all.setLayoutY(70);
+        all.setLayoutY(80);
 
         missing.setLayoutX(10);
-        missing.setLayoutY(100);
+        missing.setLayoutY(110);
 
         //set the "active" togglebutton to be selected at first
         active.setSelected(true);
@@ -143,15 +143,22 @@ public class ViewPaneCourses extends Pane implements Resizable
 
         //set the width of the sidemenu elements. They are set here and not in the updateLayout method, since their width
         //is not dependant on the size of the window
-        active.setPrefWidth(80);
-        inactive.setPrefWidth(80);
-        all.setPrefWidth(80);
-        missing.setPrefWidth(80);
+        active.setPrefWidth(100);
+        inactive.setPrefWidth(100);
+        all.setPrefWidth(100);
+        missing.setPrefWidth(100);
 
         addCourse.setPrefWidth(80);
 
         //styling
-        this.setStyle(ACertsColorScheme.sideMenuColor());
+        this.setStyle(ACertsColorScheme.viewColor());
+
+        active.setStyle(ACertsColorScheme.toggleButtonColor());
+        inactive.setStyle(ACertsColorScheme.toggleButtonColor());
+        all.setStyle(ACertsColorScheme.toggleButtonColor());
+        missing.setStyle(ACertsColorScheme.toggleButtonColor());
+
+        addCourse.setStyle(ACertsColorScheme.buttonBcolor());
     }
 
     //methods that modifies the layout of certain elements to match with the current size of the window.

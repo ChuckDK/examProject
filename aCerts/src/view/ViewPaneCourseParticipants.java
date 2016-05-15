@@ -5,11 +5,9 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import model.Course;
 import model.CourseParticipant;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * Created by dennis on 5/13/16.
@@ -85,12 +83,12 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable{
 
         //add elements to view
         this.getChildren().addAll(
-                courseParticipantTableView,
                 missingCertificatesToggleButton,
                 filteredCourseParticipantsToggleButton,
                 allCourseParticipantsToggleButton,
                 addNewParticipantButton,
-                removeParticipantButton);
+                removeParticipantButton,
+                courseParticipantTableView);
 
 
         //layouting togglebuttons
@@ -98,13 +96,13 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable{
         courseParticipantTableView.setLayoutY(10);
 
         missingCertificatesToggleButton.setLayoutX(10);
-        missingCertificatesToggleButton.setLayoutY(10);
+        missingCertificatesToggleButton.setLayoutY(20);
 
         allCourseParticipantsToggleButton.setLayoutX(10);
-        allCourseParticipantsToggleButton.setLayoutY(40);
+        allCourseParticipantsToggleButton.setLayoutY(50);
 
         filteredCourseParticipantsToggleButton.setLayoutX(10);
-        filteredCourseParticipantsToggleButton.setLayoutY(70);
+        filteredCourseParticipantsToggleButton.setLayoutY(80);
 
         //set the "active" togglebutton to be selected at first
         missingCertificatesToggleButton.setSelected(true);
@@ -116,15 +114,22 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable{
 
         //set the width of the sidemenu elements. They are set here and not in the updateLayout method, since their width
         //is not dependant on the size of the window
-        missingCertificatesToggleButton.setPrefWidth(80);
-        allCourseParticipantsToggleButton.setPrefWidth(80);
-        filteredCourseParticipantsToggleButton.setPrefWidth(80);
+        missingCertificatesToggleButton.setPrefWidth(100);
+        allCourseParticipantsToggleButton.setPrefWidth(100);
+        filteredCourseParticipantsToggleButton.setPrefWidth(100);
 
         addNewParticipantButton.setPrefWidth(80);
         removeParticipantButton.setPrefWidth(80);
 
         //styling
-        this.setStyle(ACertsColorScheme.sideMenuColor());
+        this.setStyle(ACertsColorScheme.viewColor());
+
+        missingCertificatesToggleButton.setStyle(ACertsColorScheme.toggleButtonColor());
+        allCourseParticipantsToggleButton.setStyle(ACertsColorScheme.toggleButtonColor());
+        filteredCourseParticipantsToggleButton.setStyle(ACertsColorScheme.toggleButtonColor());
+
+        addNewParticipantButton.setStyle(ACertsColorScheme.buttonBcolor());
+        removeParticipantButton.setStyle(ACertsColorScheme.buttonBcolor());
     }
 
     @Override

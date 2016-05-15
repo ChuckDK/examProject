@@ -11,17 +11,25 @@ public class ViewTabPaneManager extends Pane implements Resizable {
     private TabPane tabViews;
     public ViewTabPaneManager()
     {
+        //initialize tabs
         Tab mainView = new Tab("Main View");
-        mainView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
-        mainView.setContent(new ViewPaneMain());
-
         Tab coursesView = new Tab("Courses");
-        coursesView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
-        coursesView.setContent(new ViewPaneCourses());
-
         Tab courseParticipantsView = new Tab("CourseParticipants");
+
+        //call the update method on the content of the tab when the tab is selected
+        mainView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
+        coursesView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
         courseParticipantsView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
+
+        //initialize panes in their corresponding tabs
+        mainView.setContent(new ViewPaneMain());
+        coursesView.setContent(new ViewPaneCourses());
         courseParticipantsView.setContent(new ViewPaneCourseParticipants());
+
+        //disable the close features on the tabs
+        mainView.setClosable(false);
+        coursesView.setClosable(false);
+        courseParticipantsView.setClosable(false);
 
         tabViews = new TabPane(mainView, coursesView, courseParticipantsView);
 

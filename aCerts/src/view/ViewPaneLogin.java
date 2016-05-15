@@ -25,7 +25,7 @@ public class ViewPaneLogin extends Pane implements Resizable{
     {
         //initialize the logo in an imageview and set its startposition 200 refers to half of the window's
         //startup width and height
-        appAcademyLogo = new ImageView(new Image("appAcademy.jpg"));
+        appAcademyLogo = new ImageView(new Image("AppAcademy.png"));
         appAcademyLogo.setLayoutX(200 - 50);
         appAcademyLogo.setLayoutY(200 - 180);
 
@@ -77,7 +77,14 @@ public class ViewPaneLogin extends Pane implements Resizable{
                 cancelButton,
                 appAcademyLogo);
 
+        //set styling of the elements
+        this.setStyle(ACertsColorScheme.viewColor());
 
+        usernameTextField.setStyle(ACertsColorScheme.textFieldColor());
+        passwordTextField.setStyle(ACertsColorScheme.textFieldColor());
+
+        loginButton.setStyle(ACertsColorScheme.buttonBcolor());
+        cancelButton.setStyle(ACertsColorScheme.buttonBcolor());
     }
 
 

@@ -8,7 +8,7 @@ package view;
 //can be changed by editing the color value here
 public class ACertsColorScheme {
 
-    public static String sideMenuColor()
+    public static String viewColor()
     {
         return "-fx-background-color: #CCFF99";
     }
@@ -17,4 +17,10 @@ public class ACertsColorScheme {
     {
         return "-fx-background-color: #FFFFFF";
     }
+
+    public static String buttonBcolor() { return  "-fx-base: #CCDF99"; }
+
+    public static String toggleButtonColor() { return "-fx-base: #EEFF99"; }
+
+    public static String textFieldColor() { return "-fx-control-inner-background: #CCEF99"; }
 }
