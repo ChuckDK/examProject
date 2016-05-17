@@ -43,6 +43,7 @@ public class PopUpCourseRemovedAdmin extends Pane {
         updateLabelPosition(messageLabel);
     }
 
+    // Method ot help center our labels
     public void updateLabelPosition(Label lbl){
         float width = com.sun.javafx.tk.Toolkit.getToolkit().getFontLoader().computeStringWidth(lbl.getText(), lbl.getFont());
         lbl.setLayoutX(250-width/2);
