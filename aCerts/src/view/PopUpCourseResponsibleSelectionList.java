@@ -83,6 +83,6 @@ public class PopUpCourseResponsibleSelectionList extends Pane {
                 courseResponsibleLastNameColumn);
 
         //Add all the newly created and customized nodes to the class' pane.
-        this.getChildren().addAll(courseResponsiblesTableView, titleLabel, selectCourseResponsibleButton, cancelButton);
+        this.getChildren().addAll(cancelButton, courseResponsiblesTableView, titleLabel, selectCourseResponsibleButton);
     }
 }

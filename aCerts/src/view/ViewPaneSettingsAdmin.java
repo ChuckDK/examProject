@@ -1,8 +1,11 @@
 package view;
 
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.CertificateTemplate;
 
 /**
@@ -73,6 +76,38 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable{
         changeFTPButton.setStyle(ACertsColorScheme.buttonBcolor());
         changeSMTPButton.setStyle(ACertsColorScheme.buttonBcolor());
         chooseCertificateComboBox.setStyle(ACertsColorScheme.buttonBcolor());
+
+        //functionality
+        addCourseCertificateTemplateButton.setOnAction(e->
+        {
+            Stage popup = new Stage();
+            popup.setTitle("Certificate Template Editor");
+            PopUpCourseCertificateTemplateGeneratorAdmin popupPane = new PopUpCourseCertificateTemplateGeneratorAdmin();
+            popup.setScene(new Scene(popupPane,  500, 400));
+            popup.getScene().widthProperty().addListener(ex-> SceneInitializer.updateView(popup.getScene()));
+            popup.getScene().heightProperty().addListener(ex-> SceneInitializer.updateView(popup.getScene()));
+            ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
+
+            ((Resizable) popup.getScene().getRoot()).updateLayout();
+
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.showAndWait();
+        });
+
+        changeMYSQLButton.setOnAction(e->
+        {
+            Stage popup = new Stage();
+            popup.setTitle("MySQL Settings");
+            PopUpMySQLSettingsAdmin popupPane = new PopUpMySQLSettingsAdmin();
+            popup.setScene(new Scene(popupPane,  500, 400));
+            ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
+
+            ((Resizable) popup.getScene().getRoot()).updateLayout();
+
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.showAndWait();
+        }
+        );
     }
 
     /**this class does not need to reposition elements since none of them are dependant on the window size. Therefore

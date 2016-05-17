@@ -18,5 +18,8 @@ public class PopUpAddCourseParticipant extends PopUpAddCoursePersona {
         addCourseParticipant.setLayoutY(350);
 
         this.getChildren().addAll(addCourseParticipant);
+
+        //styling
+        addCourseParticipant.setStyle(ACertsColorScheme.buttonBcolor());
     }
 }

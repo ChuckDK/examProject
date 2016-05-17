@@ -101,6 +101,7 @@ public class PopUpAddCoursePersona extends Pane{
 
         //Add elements to the view
         this.getChildren().addAll(
+                cancelButton,
                 firstNameLabel,
                 lastNameLabel,
                 firstNameTextField,
@@ -110,7 +111,15 @@ public class PopUpAddCoursePersona extends Pane{
                 phoneNumberLabel,
                 phoneNumberTextField,
                 phoneNumber2Label,
-                phoneNumber2TextField,
-                cancelButton);
+                phoneNumber2TextField);
+
+        //Styling
+        cancelButton.setStyle(ACertsColorScheme.buttonBcolor());
+        firstNameTextField.setStyle(ACertsColorScheme.textFieldColor());
+        lastNameTextField.setStyle(ACertsColorScheme.textFieldColor());
+        emailTextField.setStyle(ACertsColorScheme.textFieldColor());
+        phoneNumberTextField.setStyle(ACertsColorScheme.textFieldColor());
+        phoneNumber2TextField.setStyle(ACertsColorScheme.textFieldColor());
+        this.setStyle(ACertsColorScheme.viewColor());
     }
 }

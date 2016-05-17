@@ -15,6 +15,7 @@ public class SceneInitializer {
         Scene scene = new Scene(new ViewPaneLogin(), 500, 400);
         window.show();
         window.setScene(scene);
+        window.setTitle("Appacademy Certificate Manager");
 
         window.getScene().widthProperty().addListener(e-> updateView(scene));
         window.getScene().heightProperty().addListener(e-> updateView(scene));

@@ -2,9 +2,12 @@ package view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.Course;
 
 import java.util.ArrayList;
@@ -21,7 +24,7 @@ public class ViewPaneCourses extends Pane implements Resizable
     private ToggleButton inactive = new ToggleButton("Inactive");
     private ToggleButton all = new ToggleButton("All");
     private ToggleButton missing = new ToggleButton("Missing Certs");
-    protected Button addNewCourses = new Button("Add New");
+    protected Button addNewCourses = new Button("Add new");
 
     public ViewPaneCourses()
     {
@@ -159,6 +162,20 @@ public class ViewPaneCourses extends Pane implements Resizable
         missing.setStyle(ACertsColorScheme.toggleButtonColor());
 
         addNewCourses.setStyle(ACertsColorScheme.buttonBcolor());
+
+        //functionality
+        addNewCourses.setOnAction(e->
+        {
+            Stage popup = new Stage();
+            popup.setTitle("Add new course");
+            PopUpAddCourse popupPane = new PopUpAddCourse();
+            popup.setScene(new Scene(popupPane,  500, 400));
+
+            ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
+
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.showAndWait();
+        });
     }
 
     //methods that modifies the layout of certain elements to match with the current size of the window.

@@ -2,9 +2,12 @@ package view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.CourseParticipant;
 
 import java.util.ArrayList;
@@ -130,6 +133,20 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable{
 
         addNewParticipantButton.setStyle(ACertsColorScheme.buttonBcolor());
         removeParticipantButton.setStyle(ACertsColorScheme.buttonBcolor());
+
+        //functionality
+        addNewParticipantButton.setOnAction(e->
+        {
+            Stage popup = new Stage();
+            popup.setTitle("Add new Course Participant");
+            PopUpAddCourseParticipant popupPane = new PopUpAddCourseParticipant();
+            popup.setScene(new Scene(popupPane,  500, 400));
+
+            ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
+
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.showAndWait();
+        });
     }
 
     @Override

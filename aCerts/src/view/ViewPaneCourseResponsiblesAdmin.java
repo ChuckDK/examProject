@@ -2,9 +2,12 @@ package view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.CourseResponsible;
 
 import java.util.ArrayList;
@@ -113,6 +116,47 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable {
 
         addNewCourseResponsibleButton.setStyle(ACertsColorScheme.buttonBcolor());
         removeCourseResponsibleButton.setStyle(ACertsColorScheme.buttonBcolor());
+
+
+        //functinality
+        addNewCourseResponsibleButton.setOnAction(e->
+        {
+            Stage popup = new Stage();
+            popup.setTitle("Add new course responsible");
+            PopUpCourseResponsibleSelection popupPane = new PopUpCourseResponsibleSelection();
+            popup.setScene(new Scene(popupPane, 500, 400));
+
+            popup.initModality(Modality.APPLICATION_MODAL);
+
+            ((Button) popupPane.getChildren().get(0)).setOnAction(ex -> {
+                Stage stage = new Stage();
+                Pane pane = new PopUpCourseResponsibleSelectionList();
+                Scene scene = new Scene(pane, 500, 400);
+                stage.setScene(scene);
+                stage.initModality(Modality.APPLICATION_MODAL);
+
+                //This line enables functionality for the 'cancelButton' in the 'PopUpCourseResponsibleSelectionList' class
+                //hence the number  which refers to the 0-indexed number where the 'cancelButton' is added.
+                ((Button) pane.getChildren().get(0)).setOnAction(ev -> stage.close());
+                popup.close();
+                stage.showAndWait();
+
+            });
+            ((Button) popupPane.getChildren().get(1)).setOnAction(ex -> {
+                Stage stage = new Stage();
+                Pane pane = new PopUpAddCourseResponsible();
+                Scene scene = new Scene(pane, 500, 400);
+                stage.setScene(scene);
+                stage.initModality(Modality.APPLICATION_MODAL);
+
+                //This line enables functionality for the 'cancelButton' in the 'PopUpAddCoursePersona' class
+                //hence the number 0 which refers to the 0-indexed number where the 'cancelButton' is added.
+                ((Button) pane.getChildren().get(0)).setOnAction(a -> stage.close());
+                popup.close();
+                stage.showAndWait();
+            });
+            popup.show();
+        });
     }
 
     @Override

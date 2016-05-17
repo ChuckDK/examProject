@@ -82,6 +82,7 @@ public class PopUpAddCourse extends Pane {
         cancelButton.setLayoutY(350);
 
         this.getChildren().addAll(
+                cancelButton,
                 courseNameLabel,
                 courseNameTextField,
                 startDateLabel,
@@ -89,7 +90,15 @@ public class PopUpAddCourse extends Pane {
                 endDatePicker,
                 endDateLabel,
                 uploadCourseMaterialButton,
-                addCourseButton,
-                cancelButton);
+                addCourseButton);
+
+        //styling
+        cancelButton.setStyle(ACertsColorScheme.buttonBcolor());
+        courseNameTextField.setStyle(ACertsColorScheme.textFieldColor());
+        startDatePicker.setStyle(ACertsColorScheme.textFieldColor());
+        endDatePicker.setStyle(ACertsColorScheme.textFieldColor());
+        uploadCourseMaterialButton.setStyle(ACertsColorScheme.buttonBcolor());
+        addCourseButton.setStyle(ACertsColorScheme.buttonBcolor());
+        this.setStyle(ACertsColorScheme.viewColor());
     }
 }

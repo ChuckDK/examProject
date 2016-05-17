@@ -69,12 +69,17 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
     //button to load an image as a background image in the editorview
     private Button loadButton = new Button("Load Image");
 
+    //Button to exit the editor without saving the template
+    private Button cancelButton = new Button("Cancel");
+
     //:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
     public PopUpCourseCertificateTemplateGeneratorAdmin()
     {
         //add all sidemenu elements of to this pane so that they are shown
-        this.getChildren().addAll(editorView,
+        this.getChildren().addAll(
+                cancelButton,
+                editorView,
                 generate,
                 editName,
                 editDate,
@@ -104,6 +109,13 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         //styling of the certificate editor
         this.setStyle(ACertsColorScheme.viewColor());
         editorView.setStyle(ACertsColorScheme.subViewColor());
+        loadButton.setStyle(ACertsColorScheme.buttonBcolor());
+        editDate.setStyle(ACertsColorScheme.textFieldColor());
+        editName.setStyle(ACertsColorScheme.textFieldColor());
+        sizeDate.setStyle(ACertsColorScheme.textFieldColor());
+        sizeName.setStyle(ACertsColorScheme.textFieldColor());
+        generate.setStyle(ACertsColorScheme.buttonBcolor());
+        cancelButton.setStyle(ACertsColorScheme.buttonBcolor());
 
         //events for various interactions with pane elements
         loadButton.setOnAction(e ->loadImage());
@@ -146,6 +158,9 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
 
         loadButton.setLayoutX(10);
         loadButton.setLayoutY(180);
+
+        generate.setLayoutX(10);
+        cancelButton.setLayoutX(200);
 
         //set a sample date for the date label
 
@@ -196,6 +211,7 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         sizeDate.setLayoutY(120);
         sizeDate.setPrefWidth(290 - (210 + size2.getWidth()));
         generate.setLayoutY(this.getScene().getHeight() - generate.getHeight() - 10);
+        cancelButton.setLayoutY(this.getScene().getHeight() - cancelButton.getHeight() - 10);
     }
 
 

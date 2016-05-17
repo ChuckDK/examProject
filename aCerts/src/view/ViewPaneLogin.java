@@ -91,8 +91,16 @@ public class ViewPaneLogin extends Pane implements Resizable{
         //Functionality
         loginButton.setOnAction(e->
         {
-            ViewPanesManager viewPanesManager = ViewPanesManager.getInstance(false);
-            Scene scene = new Scene(ViewPanesManager.getInstance(true).getPane(0));
+            ViewPanesManager viewPanesManager;
+            if(usernameTextField.getText().equals("admin"))
+            {
+                viewPanesManager = ViewPanesManager.getInstance(true);
+            }
+            else
+            {
+                viewPanesManager = ViewPanesManager.getInstance(false);
+            }
+            Scene scene = new Scene(viewPanesManager.getPane(0));
             SceneInitializer.getMainWindow().setScene(scene);
             scene.widthProperty().addListener(ex1-> SceneInitializer.updateView(scene));
             scene.heightProperty().addListener(ex1-> SceneInitializer.updateView(scene));
