@@ -91,12 +91,5 @@ public class PopUpMySQLSettingsAdmin extends Pane{
                 applyChangesButton,
                 titleLabel,
                 databaseNameTextField);
-
-        Stage popup = new Stage();
-        Pane popupPane = new PopUpAddCourse();
-        Scene scene = new Scene(popupPane);
-        popup.setScene(scene);
-        popup.show();
-        ((Button) popupPane.getChildren().get(0)).setOnAction(e->popup.close());
     }
 }
