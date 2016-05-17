@@ -20,6 +20,6 @@ public class PopUpMySQLSettingsAdmin extends Pane{
 
     public PopUpMySQLSettingsAdmin()
     {
-        
+
     }
 }

@@ -1,10 +1,12 @@
 package view;
 
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 /**
  * Created by dennis on 5/13/16.
@@ -81,5 +83,13 @@ public class PopUpFTPSettingsAdmin extends Pane
                 portTextField,
                 applyChangesButton,
                 titleLabel);
+
+        Stage popup = new Stage();
+        Pane popupPane = new PopUpAddCourse();
+        Scene scene = new Scene(popupPane);
+        popup.setScene(scene);
+        popup.show();
+        ((Button) popupPane.getChildren().get(8)).setOnAction(e->popup.close());
+
     }
 }

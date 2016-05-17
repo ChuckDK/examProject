@@ -9,13 +9,38 @@ import java.util.ArrayList;
  */
 public class ViewPanesManager {
     private ArrayList<Pane> panes;
+    private static ViewPanesManager viewPanesManager;
 
-    private ViewPanesManager() {
+    private ViewPanesManager(boolean isAdmin)
+    {
+        panes = new ArrayList<>();
+
+
+
+        if(isAdmin)
+        {
+            panes.add(new ViewTabPaneManagerAdmin());
+            panes.add(new ViewPaneCourseResponsiblesAdmin());
+            panes.add(new ViewPaneCoursesAdmin());
+            panes.add(new ViewPaneSettingsAdmin());
+        }
+        else
+        {
+            panes.add(new ViewTabPaneManager());
+            panes.add(new ViewPaneCourses());
+        }
+
+        panes.add(new ViewPaneMain());
+        panes.add(new ViewPaneCourseParticipants());
     }
 
-    public static ViewPanesManager getInstance()
+    public static ViewPanesManager getInstance(boolean isAdmin)
     {
-        return null;
+        if(viewPanesManager == null)
+        {
+            viewPanesManager = new ViewPanesManager(isAdmin);
+        }
+        return viewPanesManager;
     }
 
     public Pane getPane(int index)

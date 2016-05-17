@@ -16,6 +16,8 @@ public class ViewTabPaneManager extends Pane implements Resizable {
         Tab coursesView = new Tab("Courses");
         Tab courseParticipantsView = new Tab("CourseParticipants");
 
+        tabViews = new TabPane(mainView, coursesView, courseParticipantsView);
+
         //call the update method on the content of the tab when the tab is selected
         mainView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
         coursesView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
@@ -31,7 +33,6 @@ public class ViewTabPaneManager extends Pane implements Resizable {
         coursesView.setClosable(false);
         courseParticipantsView.setClosable(false);
 
-        tabViews = new TabPane(mainView, coursesView, courseParticipantsView);
 
         this.getChildren().add(tabViews);
     }

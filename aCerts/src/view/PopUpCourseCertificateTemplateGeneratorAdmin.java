@@ -258,12 +258,12 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
                 //due to limitations in javafx we are forced to use the following method to calculate the width and height
                 //of the label, to put it centered on the drag'n'drop controller
                 float width = com.sun.javafx.tk.Toolkit.getToolkit().getFontLoader().computeStringWidth(text.getText(), label.getAttachedLabel().getFont());
-                float heigth = com.sun.javafx.tk.Toolkit.getToolkit().getFontLoader().getFontMetrics(Font.font(Double.parseDouble(size.getText()))).getLineHeight();
+                float height = com.sun.javafx.tk.Toolkit.getToolkit().getFontLoader().getFontMetrics(Font.font(Double.parseDouble(size.getText()))).getLineHeight();
 
-                //move the label  to the left and north of the drag'n'drop controller equal to half of the labels width and heigth
+                //move the label  to the left and north of the drag'n'drop controller equal to half of the labels width and height
                 //, making it centered on the drag'n'drop controller
                 label.getAttachedLabel().setTranslateX(label.getTranslateX() - width / 2 + 10);
-                label.getAttachedLabel().setTranslateY(label.getTranslateY() - heigth / 2 + 10);
+                label.getAttachedLabel().setTranslateY(label.getTranslateY() - height / 2 + 10);
             }
             catch (Exception ex)
             {

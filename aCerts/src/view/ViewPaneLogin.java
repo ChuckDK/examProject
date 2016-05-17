@@ -1,5 +1,6 @@
 package view;
 
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -85,6 +86,18 @@ public class ViewPaneLogin extends Pane implements Resizable{
 
         loginButton.setStyle(ACertsColorScheme.buttonBcolor());
         cancelButton.setStyle(ACertsColorScheme.buttonBcolor());
+
+
+        //Functionality
+        loginButton.setOnAction(e->
+        {
+            ViewPanesManager viewPanesManager = ViewPanesManager.getInstance(false);
+            Scene scene = new Scene(ViewPanesManager.getInstance(true).getPane(0));
+            SceneInitializer.getMainWindow().setScene(scene);
+            scene.widthProperty().addListener(ex1-> SceneInitializer.updateView(scene));
+            scene.heightProperty().addListener(ex1-> SceneInitializer.updateView(scene));
+            ((Resizable) viewPanesManager.getPane(0)).updateLayout();
+        });
     }
 
 

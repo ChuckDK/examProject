@@ -12,27 +12,36 @@ public class ViewTabPaneManagerAdmin extends Pane implements Resizable{
 
     public ViewTabPaneManagerAdmin()
     {
+        //initialize tabs
         Tab mainView = new Tab("Main View");
-        mainView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
-        mainView.setContent(new ViewPaneMain());
-
         Tab coursesView = new Tab("Courses");
-        coursesView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
-        coursesView.setContent(new ViewPaneCoursesAdmin());
-
-        Tab courseParticipantsView = new Tab("CourseParticipants");
-        courseParticipantsView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
-        courseParticipantsView.setContent(new ViewPaneCourseParticipants());
-
-        Tab courseResponsiblesView = new Tab("CourseResponsibles");
-        courseResponsiblesView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
-        courseResponsiblesView.setContent(new ViewPaneCourseResponsiblesAdmin());
-
+        Tab courseParticipantsView = new Tab("Course Participants");
+        Tab courseResponsiblesView = new Tab("Course Responsibles");
         Tab settingsView = new Tab("Settings");
+
+        //add tabs
+        tabViews = new TabPane(mainView, coursesView, courseParticipantsView, courseResponsiblesView, settingsView);
+
+        //set the updatelayout method to be called when tab is selected
+        mainView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
+        coursesView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
+        courseParticipantsView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
+        courseResponsiblesView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
         settingsView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
+
+        //set the content of the tabs
+        mainView.setContent(new ViewPaneMain());
+        coursesView.setContent(new ViewPaneCoursesAdmin());
+        courseParticipantsView.setContent(new ViewPaneCourseParticipants());
+        courseResponsiblesView.setContent(new ViewPaneCourseResponsiblesAdmin());
         settingsView.setContent(new ViewPaneSettingsAdmin());
 
-        tabViews = new TabPane(mainView, coursesView, courseParticipantsView, courseResponsiblesView, settingsView);
+        //disable close button on tabs
+        mainView.setClosable(false);
+        coursesView.setClosable(false);
+        courseParticipantsView.setClosable(false);
+        courseResponsiblesView.setClosable(false);
+        settingsView.setClosable(false);
 
         this.getChildren().add(tabViews);
     }
