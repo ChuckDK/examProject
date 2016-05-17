@@ -2,12 +2,15 @@ package view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.Course;
 import model.CourseResponsible;
 
@@ -67,11 +70,12 @@ public class PopUpCourseResponsibleSelectionList extends Pane {
         selectCourseResponsibleButton.setLayoutY(340);
 
         //Set the cancelButton's position in the pane.
+        //This button's function is defined in PopUpCourseResponsibleSelection.
         cancelButton.setLayoutX(130);
         cancelButton.setLayoutY(340);
 
         //Set the titleLabel's position in the pane.
-        titleLabel.setLayoutX(75);
+        titleLabel.setLayoutX(40);
         titleLabel.setLayoutY(15);
 
         //Add the columns to the table view.
