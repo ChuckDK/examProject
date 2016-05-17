@@ -23,7 +23,7 @@ public class PopUpSMTPSettingsAdmin extends Pane {
 
     public PopUpSMTPSettingsAdmin()
     {
-        //initializing elements
+        //Create the label, the five text fields, and the two buttons.
         emailAddressTextField = new TextField();
 
         titleLabel = new Label("SMTP Settings");
@@ -41,7 +41,7 @@ public class PopUpSMTPSettingsAdmin extends Pane {
         cancelButton = new Button("Cancel");
 
 
-        //layouting
+        ////Set the position and size of the nodes in the pane.
         titleLabel.setLayoutX(100);
         titleLabel.setLayoutY(10);
         titleLabel.setFont(Font.font(40));
@@ -67,19 +67,21 @@ public class PopUpSMTPSettingsAdmin extends Pane {
         portTextField.setPrefWidth(100);
 
         applyChangesButton.setLayoutX(30);
-        applyChangesButton.setLayoutY(350);
+        applyChangesButton.setLayoutY(270);
+        applyChangesButton.setPrefSize(100, 50);
 
         cancelButton.setLayoutX(250);
-        cancelButton.setLayoutY(350);
+        cancelButton.setLayoutY(270);
+        cancelButton.setPrefSize(100, 50);
 
-        //prompt texts
+        //Set prompt text for the text fields.
         emailAddressTextField.setPromptText("\"From\" email address");
         usernameTextField.setPromptText("Username");
         passwordTextField.setPromptText("Password");
         hostTextField.setPromptText("Host");
         portTextField.setPromptText("Port");
 
-        //Add all elements to view
+        //Add all elements to view.
         this.getChildren().addAll(
                 cancelButton,
                 emailAddressTextField,
