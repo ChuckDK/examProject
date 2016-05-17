@@ -25,7 +25,7 @@ public class PopUpFTPSettingsAdmin extends Pane
 
     public PopUpFTPSettingsAdmin()
     {
-        //initializing elements
+        //Create the label, the four text fields, and the two buttons.
         titleLabel = new Label("FTP Settings");
 
         usernameTextField = new TextField();
@@ -41,40 +41,42 @@ public class PopUpFTPSettingsAdmin extends Pane
         cancelButton = new Button("Cancel");
 
 
-        //layouting
-        titleLabel.setLayoutX(100);
+        //Set the position and size of the nodes in the pane.
+        titleLabel.setLayoutX(130);
         titleLabel.setLayoutY(10);
         titleLabel.setFont(Font.font(40));
 
-        usernameTextField.setLayoutX(30);
+        usernameTextField.setLayoutX(60);
         usernameTextField.setLayoutY(80);
         usernameTextField.setPrefWidth(150);
 
-        passwordTextField.setLayoutX(250);
+        passwordTextField.setLayoutX(280);
         passwordTextField.setLayoutY(80);
         passwordTextField.setPrefWidth(150);
 
-        hostTextField.setLayoutX(30);
+        hostTextField.setLayoutX(60);
         hostTextField.setLayoutY(140);
         hostTextField.setPrefWidth(100);
 
-        portTextField.setLayoutX(250);
+        portTextField.setLayoutX(280);
         portTextField.setLayoutY(140);
         portTextField.setPrefWidth(100);
 
-        applyChangesButton.setLayoutX(30);
-        applyChangesButton.setLayoutY(350);
+        applyChangesButton.setLayoutX(60);
+        applyChangesButton.setLayoutY(270);
+        applyChangesButton.setPrefSize(100, 50);
 
-        cancelButton.setLayoutX(250);
-        cancelButton.setLayoutY(350);
+        cancelButton.setLayoutX(280);
+        cancelButton.setLayoutY(270);
+        cancelButton.setPrefSize(100, 50);
 
-        //prompt texts
+        //Set prompt text for the text fields.
         usernameTextField.setPromptText("Username");
         passwordTextField.setPromptText("Password");
         hostTextField.setPromptText("Host");
         portTextField.setPromptText("Port");
 
-        //Add all elements to view
+        //Add all elements to view.
         this.getChildren().addAll(
                 cancelButton,
                 usernameTextField,
