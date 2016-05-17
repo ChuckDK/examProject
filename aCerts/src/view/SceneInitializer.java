@@ -12,7 +12,7 @@ public class SceneInitializer {
     public static void initialize(Stage window)
     {
         mainWindow = window;
-        Scene scene = new Scene(new ViewTabPaneManager(), 400, 400);
+        Scene scene = new Scene(new ViewPaneLogin(), 400, 400);
         window.show();
         window.setScene(scene);
 

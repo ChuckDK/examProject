@@ -1,0 +1,20 @@
+ACertsColorScheme
+
+new method:
+buttonColor()
+
+renamed:
+sideMenuColor()
+to:
+viewColor()
+
+
+
+ViewPaneCourses
+
+access modifier changed:
+private tableview
+private addCourse
+to:
+protected tableView
+protected addCourse
