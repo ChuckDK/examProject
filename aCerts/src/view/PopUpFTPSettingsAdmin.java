@@ -83,13 +83,5 @@ public class PopUpFTPSettingsAdmin extends Pane
                 portTextField,
                 applyChangesButton,
                 titleLabel);
-
-        Stage popup = new Stage();
-        Pane popupPane = new PopUpAddCourse();
-        Scene scene = new Scene(popupPane);
-        popup.setScene(scene);
-        popup.show();
-        ((Button) popupPane.getChildren().get(8)).setOnAction(e->popup.close());
-
     }
 }

@@ -100,14 +100,34 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable{
             popup.setTitle("MySQL Settings");
             PopUpMySQLSettingsAdmin popupPane = new PopUpMySQLSettingsAdmin();
             popup.setScene(new Scene(popupPane,  500, 400));
-            ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
-
-            ((Resizable) popup.getScene().getRoot()).updateLayout();
+            //((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
 
             popup.initModality(Modality.APPLICATION_MODAL);
             popup.showAndWait();
-        }
-        );
+        });
+
+        changeSMTPButton.setOnAction(e->
+        {
+            Stage popup = new Stage();
+            popup.setTitle("SMTP Settings");
+            PopUpSMTPSettingsAdmin popupPane = new PopUpSMTPSettingsAdmin();
+            popup.setScene(new Scene(popupPane,  500, 400));
+            ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
+
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.showAndWait();
+        });
+        changeFTPButton.setOnAction(e->
+        {
+            Stage popup = new Stage();
+            popup.setTitle("FTP Settings");
+            PopUpFTPSettingsAdmin popupPane = new PopUpFTPSettingsAdmin();
+            popup.setScene(new Scene(popupPane,  500, 400));
+            ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
+
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.showAndWait();
+        });
     }
 
     /**this class does not need to reposition elements since none of them are dependant on the window size. Therefore

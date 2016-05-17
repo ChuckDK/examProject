@@ -9,7 +9,7 @@ import javafx.scene.text.Font;
 /**
  * Created by dennis on 5/13/16.
  */
-public class PopUpSMTPSettingsAdmin extends Pane implements Resizable {
+public class PopUpSMTPSettingsAdmin extends Pane {
 
 
     private Label titleLabel;
@@ -21,11 +21,7 @@ public class PopUpSMTPSettingsAdmin extends Pane implements Resizable {
     private Button applyChangesButton;
     private Button cancelButton;
 
-    public PopUpSMTPSettingsAdmin() {
-    }
-
-    @Override
-    public void updateLayout()
+    public PopUpSMTPSettingsAdmin()
     {
         //initializing elements
         emailAddressTextField = new TextField();
