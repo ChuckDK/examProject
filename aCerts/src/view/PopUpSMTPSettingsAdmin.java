@@ -40,37 +40,36 @@ public class PopUpSMTPSettingsAdmin extends Pane {
 
         cancelButton = new Button("Cancel");
 
-
         ////Set the position and size of the nodes in the pane.
-        titleLabel.setLayoutX(100);
+        titleLabel.setLayoutX(130);
         titleLabel.setLayoutY(10);
         titleLabel.setFont(Font.font(40));
 
-        emailAddressTextField.setLayoutX(30);
+        emailAddressTextField.setLayoutX(60);
         emailAddressTextField.setLayoutY(80);
         emailAddressTextField.setPrefWidth(200);
 
-        usernameTextField.setLayoutX(30);
+        usernameTextField.setLayoutX(60);
         usernameTextField.setLayoutY(140);
         usernameTextField.setPrefWidth(150);
 
-        passwordTextField.setLayoutX(250);
+        passwordTextField.setLayoutX(280);
         passwordTextField.setLayoutY(140);
         passwordTextField.setPrefWidth(150);
 
-        hostTextField.setLayoutX(30);
+        hostTextField.setLayoutX(60);
         hostTextField.setLayoutY(200);
         hostTextField.setPrefWidth(100);
 
-        portTextField.setLayoutX(250);
+        portTextField.setLayoutX(280);
         portTextField.setLayoutY(200);
         portTextField.setPrefWidth(100);
 
-        applyChangesButton.setLayoutX(30);
+        applyChangesButton.setLayoutX(60);
         applyChangesButton.setLayoutY(270);
         applyChangesButton.setPrefSize(100, 50);
 
-        cancelButton.setLayoutX(250);
+        cancelButton.setLayoutX(280);
         cancelButton.setLayoutY(270);
         cancelButton.setPrefSize(100, 50);
 

@@ -46,27 +46,30 @@ public class PopUpMySQLSettingsAdmin extends Pane{
         titleLabel.setLayoutY(10);
         titleLabel.setFont(Font.font(40));
 
-        usernameTextField.setLayoutX(100);
-        usernameTextField.setLayoutY(160);
+        //hswnjew
+        usernameTextField.setLayoutX(60);
+        usernameTextField.setLayoutY(200);
         usernameTextField.setPrefWidth(100);
 
         passwordTextField.setLayoutX(280);
-        passwordTextField.setLayoutY(160);
+        passwordTextField.setLayoutY(200);
         passwordTextField.setPrefWidth(100);
 
-        hostTextField.setLayoutX(100);
+        //ewge
+        hostTextField.setLayoutX(60);
         hostTextField.setLayoutY(80);
         hostTextField.setPrefWidth(130);
 
         portTextField.setLayoutX(280);
-        portTextField.setLayoutY(120);
+        portTextField.setLayoutY(140);
         portTextField.setPrefWidth(100);
 
-        databaseNameTextField.setLayoutX(100);
-        databaseNameTextField.setLayoutY(120);
+        //asdf
+        databaseNameTextField.setLayoutX(60);
+        databaseNameTextField.setLayoutY(140);
         databaseNameTextField.setPrefWidth(100);
 
-        applyChangesButton.setLayoutX(100);
+        applyChangesButton.setLayoutX(60);
         applyChangesButton.setLayoutY(270);
         applyChangesButton.setPrefSize(100, 50);
 
