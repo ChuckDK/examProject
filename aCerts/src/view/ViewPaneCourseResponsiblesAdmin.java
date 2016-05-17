@@ -50,7 +50,7 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable {
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
 
 
-        //add the columns to our tableView
+        //add the columns to our courseTableView
         courseResponsiblesTableView.getColumns().addAll(
                 firstNameColumn,
                 lastNameColumn,
@@ -125,11 +125,11 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable {
         //60 represents a margin of 10 on top and bottom and an estimated height of 40 of the tabpane
         courseResponsiblesTableView.setPrefHeight(this.getScene().getHeight() - 60);
 
-        //set the addCourse button to be above the bottom of the window. 60 represents a margin of 10 from the removebutton and
+        //set the addNewCourses button to be above the bottom of the window. 60 represents a margin of 10 from the removebutton and
         // bottom and an estimated height of 40 of the tabpane
         addNewCourseResponsibleButton.setLayoutY(this.getScene().getHeight() - addNewCourseResponsibleButton.getHeight() - removeCourseResponsibleButton.getHeight() - 60);
 
-        //set the addCourse button to be above the bottom of the window. 50 represents a margin of 10 from the
+        //set the addNewCourses button to be above the bottom of the window. 50 represents a margin of 10 from the
         // bottom and an estimated height of 40 of the tabpane
         removeCourseResponsibleButton.setLayoutY(this.getScene().getHeight() - removeCourseResponsibleButton.getHeight() - 50);
 

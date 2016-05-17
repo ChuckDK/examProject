@@ -1,9 +1,6 @@
 package view;
 
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.ToggleButton;
-import model.Course;
 
 /**
  * Created by dennis on 5/13/16.
@@ -33,19 +30,19 @@ public class ViewPaneCoursesAdmin extends ViewPaneCourses{
     {
         //sets the editorviews size to be inside the current window with a little spacing added. 310 is the size of
         //the editor sidemenu (300) plus a margin of 10.
-        tableView.setPrefWidth(this.getScene().getWidth() - 110);
+        courseTableView.setPrefWidth(this.getScene().getWidth() - 110);
 
         //60 represents a margin of 10 on top and bottom and an estimated height of 40 of the tabpane
-        tableView.setPrefHeight(this.getScene().getHeight() - 60);
+        courseTableView.setPrefHeight(this.getScene().getHeight() - 60);
 
-        //set the addCourse button to be above the removeButton. 60 represents a margin of
+        //set the addNewCourses button to be above the removeButton. 60 represents a margin of
         // 10 from the bottom and between the addcourse button and removecoursebutton and an
         // estimated height of 40 of the tabpane
-        addCourse.setLayoutY(this.getScene().getHeight() - addCourse.getHeight() - removeCourses.getHeight() - 60);
+        addNewCourses.setLayoutY(this.getScene().getHeight() - addNewCourses.getHeight() - removeCourses.getHeight() - 60);
 
 
         //set the removeCourse button 10 pixels below the add courseButton
-        removeCourses.setLayoutY(this.getScene().getHeight() - addCourse.getHeight() - 50);
+        removeCourses.setLayoutY(this.getScene().getHeight() - addNewCourses.getHeight() - 50);
     }
 }
 

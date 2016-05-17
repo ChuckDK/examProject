@@ -8,7 +8,7 @@ import javafx.scene.layout.Pane;
 /**
  * Created by dennis on 5/13/16.
  */
-public class PopUpMySQLSettingsAdmin extends Pane implements Resizable {
+public class PopUpMySQLSettingsAdmin extends Pane{
     private Label titleLabel;
     private TextField hostTextField;
     private TextField databaseNameTextField;
@@ -18,11 +18,8 @@ public class PopUpMySQLSettingsAdmin extends Pane implements Resizable {
     private Button applyChangesButton;
     private Button cancelButton;
 
-    public PopUpMySQLSettingsAdmin() {
-    }
-
-    @Override
-    public void updateLayout() {
-
+    public PopUpMySQLSettingsAdmin()
+    {
+        
     }
 }

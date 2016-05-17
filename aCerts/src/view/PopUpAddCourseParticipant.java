@@ -9,6 +9,14 @@ import javafx.scene.layout.Pane;
 public class PopUpAddCourseParticipant extends PopUpAddCoursePersona {
     private Button addCourseParticipant;
 
-    public PopUpAddCourseParticipant() {
+    public PopUpAddCourseParticipant()
+    {
+        super();
+        addCourseParticipant = new Button("Add course participant");
+
+        addCourseParticipant.setLayoutX(30);
+        addCourseParticipant.setLayoutY(350);
+
+        this.getChildren().addAll(addCourseParticipant);
     }
 }

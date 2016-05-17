@@ -16,12 +16,12 @@ import java.util.Calendar;
 public class ViewPaneCourses extends Pane implements Resizable
 {
     //pane elements are defined here
-    protected TableView<Course> tableView;
+    protected TableView<Course> courseTableView;
     private ToggleButton active = new ToggleButton("Active");
     private ToggleButton inactive = new ToggleButton("Inactive");
     private ToggleButton all = new ToggleButton("All");
     private ToggleButton missing = new ToggleButton("Missing Certs");
-    protected Button addCourse = new Button("Add New");
+    protected Button addNewCourses = new Button("Add New");
 
     public ViewPaneCourses()
     {
@@ -35,8 +35,8 @@ public class ViewPaneCourses extends Pane implements Resizable
         //create an observablelist from our arraylist and create tableview
 
         ObservableList<Course> courses = FXCollections.observableArrayList(coursesArray);
-        tableView = new TableView<>();
-        tableView.itemsProperty().setValue(courses);
+        courseTableView = new TableView<>();
+        courseTableView.itemsProperty().setValue(courses);
 
         //create columns for our tableview
 
@@ -92,8 +92,8 @@ public class ViewPaneCourses extends Pane implements Resizable
         });
 
 
-        //add the columns to our tableView
-        tableView.getColumns().addAll(
+        //add the columns to our courseTableView
+        courseTableView.getColumns().addAll(
                 courseNameColumn,
                 courseResponsibleColumn,
                 startDateColumn,
@@ -114,13 +114,13 @@ public class ViewPaneCourses extends Pane implements Resizable
                 all,
                 inactive,
                 missing,
-                addCourse,
-                tableView);
+                addNewCourses,
+                courseTableView);
 
 
         //layouting togglebuttons
-        tableView.setLayoutX(100);
-        tableView.setLayoutY(10);
+        courseTableView.setLayoutX(100);
+        courseTableView.setLayoutY(10);
 
         active.setLayoutX(10);
         active.setLayoutY(20);
@@ -139,7 +139,7 @@ public class ViewPaneCourses extends Pane implements Resizable
 
         //layouting buttons these buttons y position is dependant on the window size so it will be set in the updateLayout
         //method
-        addCourse.setLayoutX(10);
+        addNewCourses.setLayoutX(10);
 
         //set the width of the sidemenu elements. They are set here and not in the updateLayout method, since their width
         //is not dependant on the size of the window
@@ -148,7 +148,7 @@ public class ViewPaneCourses extends Pane implements Resizable
         all.setPrefWidth(100);
         missing.setPrefWidth(100);
 
-        addCourse.setPrefWidth(80);
+        addNewCourses.setPrefWidth(80);
 
         //styling
         this.setStyle(ACertsColorScheme.viewColor());
@@ -158,7 +158,7 @@ public class ViewPaneCourses extends Pane implements Resizable
         all.setStyle(ACertsColorScheme.toggleButtonColor());
         missing.setStyle(ACertsColorScheme.toggleButtonColor());
 
-        addCourse.setStyle(ACertsColorScheme.buttonBcolor());
+        addNewCourses.setStyle(ACertsColorScheme.buttonBcolor());
     }
 
     //methods that modifies the layout of certain elements to match with the current size of the window.
@@ -167,13 +167,13 @@ public class ViewPaneCourses extends Pane implements Resizable
     {
         //sets the editorviews size to be inside the current window with a little spacing added. 310 is the size of
         //the editor sidemenu (300) plus a margin of 10.
-        tableView.setPrefWidth(this.getScene().getWidth() - 110);
+        courseTableView.setPrefWidth(this.getScene().getWidth() - 110);
 
         //60 represents a margin of 10 on top and bottom and an estimated height of 40 of the tabpane
-        tableView.setPrefHeight(this.getScene().getHeight() - 60);
+        courseTableView.setPrefHeight(this.getScene().getHeight() - 60);
 
-        //set the addCourse button to be above the bottom of the window. 60 represents a margin of
+        //set the addNewCourses button to be above the bottom of the window. 60 represents a margin of
         // 10 from the bottom and an estimated height of 40 of the tabpane
-        addCourse.setLayoutY(this.getScene().getHeight() - addCourse.getHeight() - 50);
+        addNewCourses.setLayoutY(this.getScene().getHeight() - addNewCourses.getHeight() - 50);
     }
 }
