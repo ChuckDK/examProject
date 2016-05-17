@@ -84,8 +84,8 @@ public class ViewPaneLogin extends Pane implements Resizable{
         usernameTextField.setStyle(ACertsColorScheme.textFieldColor());
         passwordTextField.setStyle(ACertsColorScheme.textFieldColor());
 
-        loginButton.setStyle(ACertsColorScheme.buttonBcolor());
-        cancelButton.setStyle(ACertsColorScheme.buttonBcolor());
+        loginButton.setStyle(ACertsColorScheme.buttonColor());
+        cancelButton.setStyle(ACertsColorScheme.buttonColor());
 
 
         //Functionality

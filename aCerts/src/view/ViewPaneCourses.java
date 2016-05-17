@@ -161,7 +161,7 @@ public class ViewPaneCourses extends Pane implements Resizable
         all.setStyle(ACertsColorScheme.toggleButtonColor());
         missing.setStyle(ACertsColorScheme.toggleButtonColor());
 
-        addNewCourses.setStyle(ACertsColorScheme.buttonBcolor());
+        addNewCourses.setStyle(ACertsColorScheme.buttonColor());
 
         //functionality
         addNewCourses.setOnAction(e->

@@ -35,6 +35,11 @@ public class ViewTabPaneManager extends Pane implements Resizable {
 
 
         this.getChildren().add(tabViews);
+
+        //styling
+        mainView.setStyle(ACertsColorScheme.tabColor());
+        coursesView.setStyle(ACertsColorScheme.tabColor());
+        courseParticipantsView.setStyle(ACertsColorScheme.tabColor());
     }
 
     @Override

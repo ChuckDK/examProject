@@ -1,7 +1,6 @@
 package view;
 
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 
 /**
  * Created by dennis on 5/13/16.
@@ -20,6 +19,6 @@ public class PopUpAddCourseParticipant extends PopUpAddCoursePersona {
         this.getChildren().addAll(addCourseParticipant);
 
         //styling
-        addCourseParticipant.setStyle(ACertsColorScheme.buttonBcolor());
+        addCourseParticipant.setStyle(ACertsColorScheme.buttonColor());
     }
 }

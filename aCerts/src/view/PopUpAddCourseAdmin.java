@@ -19,6 +19,6 @@ public class PopUpAddCourseAdmin extends PopUpAddCourse {
         this.getChildren().addAll(addCourseResponsibleButton);
 
         //styling
-        addCourseResponsibleButton.setStyle(ACertsColorScheme.buttonBcolor());
+        addCourseResponsibleButton.setStyle(ACertsColorScheme.buttonColor());
     }
 }

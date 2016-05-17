@@ -131,8 +131,8 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable{
         allCourseParticipantsToggleButton.setStyle(ACertsColorScheme.toggleButtonColor());
         filteredCourseParticipantsToggleButton.setStyle(ACertsColorScheme.toggleButtonColor());
 
-        addNewParticipantButton.setStyle(ACertsColorScheme.buttonBcolor());
-        removeParticipantButton.setStyle(ACertsColorScheme.buttonBcolor());
+        addNewParticipantButton.setStyle(ACertsColorScheme.buttonColor());
+        removeParticipantButton.setStyle(ACertsColorScheme.buttonColor());
 
         //functionality
         addNewParticipantButton.setOnAction(e->

@@ -4,7 +4,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -43,8 +42,8 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona {
                 addCourseResponsible);
 
         //styling
-        addCourseResponsible.setStyle(ACertsColorScheme.buttonBcolor());
-        adminRights.setStyle(ACertsColorScheme.buttonBcolor());
+        addCourseResponsible.setStyle(ACertsColorScheme.buttonColor());
+        adminRights.setStyle(ACertsColorScheme.buttonColor());
 
         //functionality
         addCourseResponsible.setOnAction(e->

@@ -70,12 +70,12 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable{
         //styling
         this.setStyle(ACertsColorScheme.viewColor());
 
-        removeCertificateButton.setStyle(ACertsColorScheme.buttonBcolor());
-        addCourseCertificateTemplateButton.setStyle(ACertsColorScheme.buttonBcolor());
-        changeMYSQLButton.setStyle(ACertsColorScheme.buttonBcolor());
-        changeFTPButton.setStyle(ACertsColorScheme.buttonBcolor());
-        changeSMTPButton.setStyle(ACertsColorScheme.buttonBcolor());
-        chooseCertificateComboBox.setStyle(ACertsColorScheme.buttonBcolor());
+        removeCertificateButton.setStyle(ACertsColorScheme.buttonColor());
+        addCourseCertificateTemplateButton.setStyle(ACertsColorScheme.buttonColor());
+        changeMYSQLButton.setStyle(ACertsColorScheme.buttonColor());
+        changeFTPButton.setStyle(ACertsColorScheme.buttonColor());
+        changeSMTPButton.setStyle(ACertsColorScheme.buttonColor());
+        chooseCertificateComboBox.setStyle(ACertsColorScheme.buttonColor());
 
         //functionality
         addCourseCertificateTemplateButton.setOnAction(e->
@@ -100,7 +100,7 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable{
             popup.setTitle("MySQL Settings");
             PopUpMySQLSettingsAdmin popupPane = new PopUpMySQLSettingsAdmin();
             popup.setScene(new Scene(popupPane,  500, 400));
-            //((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
+            ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
 
             popup.initModality(Modality.APPLICATION_MODAL);
             popup.showAndWait();

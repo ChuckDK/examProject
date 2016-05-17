@@ -22,7 +22,7 @@ public class ViewPaneCoursesAdmin extends ViewPaneCourses{
         //add elements to the pane
         this.getChildren().addAll(removeCourses);
 
-        removeCourses.setStyle(ACertsColorScheme.buttonBcolor());
+        removeCourses.setStyle(ACertsColorScheme.buttonColor());
     }
 
     @Override

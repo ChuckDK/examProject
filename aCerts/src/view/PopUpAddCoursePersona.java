@@ -114,7 +114,7 @@ public class PopUpAddCoursePersona extends Pane{
                 phoneNumber2TextField);
 
         //Styling
-        cancelButton.setStyle(ACertsColorScheme.buttonBcolor());
+        cancelButton.setStyle(ACertsColorScheme.buttonColor());
         firstNameTextField.setStyle(ACertsColorScheme.textFieldColor());
         lastNameTextField.setStyle(ACertsColorScheme.textFieldColor());
         emailTextField.setStyle(ACertsColorScheme.textFieldColor());

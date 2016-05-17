@@ -114,8 +114,8 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable {
         inActiveCourseResponsiblesToggleButton.setStyle(ACertsColorScheme.toggleButtonColor());
         activeCourseResponsiblesToggleButton.setStyle(ACertsColorScheme.toggleButtonColor());
 
-        addNewCourseResponsibleButton.setStyle(ACertsColorScheme.buttonBcolor());
-        removeCourseResponsibleButton.setStyle(ACertsColorScheme.buttonBcolor());
+        addNewCourseResponsibleButton.setStyle(ACertsColorScheme.buttonColor());
+        removeCourseResponsibleButton.setStyle(ACertsColorScheme.buttonColor());
 
 
         //functinality

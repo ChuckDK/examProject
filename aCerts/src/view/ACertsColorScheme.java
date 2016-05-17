@@ -18,9 +18,11 @@ public class ACertsColorScheme {
         return "-fx-background-color: #FFFFFF";
     }
 
-    public static String buttonBcolor() { return  "-fx-base: #CCDF99"; }
+    public static String buttonColor() { return  "-fx-base: #CCDF99"; }
 
     public static String toggleButtonColor() { return "-fx-base: #EEFF99"; }
 
-    public static String textFieldColor() { return "-fx-control-inner-background: #CCEF99"; }
+    public static String tabColor() { return "-fx-base: #EEFF99"; }
+
+    public static String textFieldColor() { return "-fx-control-inner-background: #FFFFFF"; }
 }

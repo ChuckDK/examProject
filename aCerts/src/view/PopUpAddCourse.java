@@ -93,12 +93,12 @@ public class PopUpAddCourse extends Pane {
                 addCourseButton);
 
         //styling
-        cancelButton.setStyle(ACertsColorScheme.buttonBcolor());
+        cancelButton.setStyle(ACertsColorScheme.buttonColor());
         courseNameTextField.setStyle(ACertsColorScheme.textFieldColor());
         startDatePicker.setStyle(ACertsColorScheme.textFieldColor());
         endDatePicker.setStyle(ACertsColorScheme.textFieldColor());
-        uploadCourseMaterialButton.setStyle(ACertsColorScheme.buttonBcolor());
-        addCourseButton.setStyle(ACertsColorScheme.buttonBcolor());
+        uploadCourseMaterialButton.setStyle(ACertsColorScheme.buttonColor());
+        addCourseButton.setStyle(ACertsColorScheme.buttonColor());
         this.setStyle(ACertsColorScheme.viewColor());
     }
 }

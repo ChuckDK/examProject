@@ -109,13 +109,13 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         //styling of the certificate editor
         this.setStyle(ACertsColorScheme.viewColor());
         editorView.setStyle(ACertsColorScheme.subViewColor());
-        loadButton.setStyle(ACertsColorScheme.buttonBcolor());
+        loadButton.setStyle(ACertsColorScheme.buttonColor());
         editDate.setStyle(ACertsColorScheme.textFieldColor());
         editName.setStyle(ACertsColorScheme.textFieldColor());
         sizeDate.setStyle(ACertsColorScheme.textFieldColor());
         sizeName.setStyle(ACertsColorScheme.textFieldColor());
-        generate.setStyle(ACertsColorScheme.buttonBcolor());
-        cancelButton.setStyle(ACertsColorScheme.buttonBcolor());
+        generate.setStyle(ACertsColorScheme.buttonColor());
+        cancelButton.setStyle(ACertsColorScheme.buttonColor());
 
         //events for various interactions with pane elements
         loadButton.setOnAction(e ->loadImage());
