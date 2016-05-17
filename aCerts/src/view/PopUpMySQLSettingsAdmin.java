@@ -23,6 +23,7 @@ public class PopUpMySQLSettingsAdmin extends Pane{
 
     public PopUpMySQLSettingsAdmin()
     {
+        //Create the label, the five text fields, and the two buttons.
         titleLabel = new Label("MySQL Settings");
 
         hostTextField = new TextField();
@@ -40,12 +41,11 @@ public class PopUpMySQLSettingsAdmin extends Pane{
         cancelButton = new Button("Cancel");
 
 
-        //layouting
+        //Set the position and size of the nodes in the pane.
         titleLabel.setLayoutX(100);
         titleLabel.setLayoutY(10);
         titleLabel.setFont(Font.font(40));
 
-        //venstre
         usernameTextField.setLayoutX(100);
         usernameTextField.setLayoutY(160);
         usernameTextField.setPrefWidth(100);
@@ -54,7 +54,6 @@ public class PopUpMySQLSettingsAdmin extends Pane{
         passwordTextField.setLayoutY(160);
         passwordTextField.setPrefWidth(100);
 
-        //venstre
         hostTextField.setLayoutX(100);
         hostTextField.setLayoutY(80);
         hostTextField.setPrefWidth(130);
@@ -63,7 +62,6 @@ public class PopUpMySQLSettingsAdmin extends Pane{
         portTextField.setLayoutY(120);
         portTextField.setPrefWidth(100);
 
-        //venstre
         databaseNameTextField.setLayoutX(100);
         databaseNameTextField.setLayoutY(120);
         databaseNameTextField.setPrefWidth(100);
@@ -76,7 +74,7 @@ public class PopUpMySQLSettingsAdmin extends Pane{
         cancelButton.setLayoutY(270);
         cancelButton.setPrefSize(100, 50);
 
-        //prompt texts
+        //Set prompt text for the text fields.
         usernameTextField.setPromptText("Username");
         passwordTextField.setPromptText("Password");
         hostTextField.setPromptText("Host");
