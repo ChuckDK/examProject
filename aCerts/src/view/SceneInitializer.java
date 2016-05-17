@@ -12,7 +12,7 @@ public class SceneInitializer {
     public static void initialize(Stage window)
     {
         mainWindow = window;
-        Scene scene = new Scene(new PopUpFTPSettingsAdmin(), 500, 400);
+        Scene scene = new Scene(new PopUpCourseRemovedAdmin(), 500, 400);
         window.show();
         window.setScene(scene);
 
