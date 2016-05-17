@@ -35,7 +35,6 @@ Correct colour code in Database Spreadsheet, Iteration 3
 
 Sequence Diagrams, Iteration 3
 
-Class model (Logical arch / Layers), Iteration 3
 
 
 
@@ -54,6 +53,8 @@ Missing: (Brief) View Course Participants, Iteration 2
 Jonas/Fredrik - Correct Use Cases in Report and models, Iteration 3
 Adjust/Create(MySQL Settings Casual+SystemSeq.Dia.) UseCases, System Sequence Diagrams, Use Case Diagram, Iteration 3
 Adjust Prototype; List View Existing Course Responsibles, Course Certificate Sent True Fals Column , Iteration 3
+Correct Prototype / Add Course Participant Part
+
 
 
 
@@ -75,6 +76,8 @@ Database Normalisation, Iteration 2
 Database description schema, Iteration 2
 Scene Graph, Iteration 2
 Class diagram with relational schema, Iteration 3
+Class model (Logical arch / Layers), Iteration 3
+
 
 
 
