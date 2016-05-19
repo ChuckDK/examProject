@@ -1,8 +1,6 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
-import view.SceneInitializer;
-
-import java.util.Locale;
+import view.start.SceneInitializer;
 
 /**
  * Created by dennis on 5/13/16.
