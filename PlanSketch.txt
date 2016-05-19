@@ -370,13 +370,31 @@ Developer Hours: 3 hours SWD, 7 hours SWK
 
 ITO: 14/20 – SWD: 32/70 – OSCA: 0/10 – SWK: 32/30 – Buffer 2/61.5
 
-ETA: 121,5 Hrs Remaining pr. Developer
+ETA: 111,5 Hrs Remaining pr. Developer
 
 
 
 
 May 17th 2016
 _______________
+
+Today has been a primarily production day. We've been coding the entire GUI/View part of aCerts, we've only got some minor bugs to fix. There is not much to say as everything has been smooth sailing. Next time we will be implementing functionality and finalising Iteration 3.
+
+
+Next meeting:	See Progress Section
+				Try Calling Kristian
+				Add functionality to aCerts
+
+
+Members Present: Dennis, Fredrik, Jonas, Emil
+
+Developer Hours: 1 hour SWD, 9 hours SWK
+
+ITO: 14/20 – SWD: 33/70 – OSCA: 0/10 – SWK: 41/30 – Buffer 2/61.5
+
+ETA: 101,5 Hrs Remaining pr. Developer
+
+
 May 20th 2016 / Iteration 3 ends
 _______________
 May 24th 2016 / Iteration 4 Begins / Transition Phase is main focus
