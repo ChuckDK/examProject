@@ -76,6 +76,15 @@ public class PopUpFTPSettingsAdmin extends Pane
         hostTextField.setPromptText("Host");
         portTextField.setPromptText("Port");
 
+        //Styling
+        cancelButton.setStyle(ACertsColorScheme.buttonColor());
+        applyChangesButton.setStyle(ACertsColorScheme.buttonColor());
+        usernameTextField.setStyle(ACertsColorScheme.textFieldColor());
+        passwordTextField.setStyle(ACertsColorScheme.textFieldColor());
+        hostTextField.setStyle(ACertsColorScheme.textFieldColor());
+        portTextField.setStyle(ACertsColorScheme.textFieldColor());
+        this.setStyle(ACertsColorScheme.viewColor());
+
         //Add all elements to view.
         this.getChildren().addAll(
                 cancelButton,

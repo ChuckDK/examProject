@@ -1,10 +1,13 @@
 package view;
 
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * Created by dennis on 5/13/16.
@@ -19,6 +22,7 @@ public class PopUpAddCourse extends Pane {
     private Button uploadCourseMaterialButton;
     private Button addCourseButton;
     private Button cancelButton;
+    private Button assignCourseResponsible;
 
     public PopUpAddCourse()
     {
@@ -44,6 +48,8 @@ public class PopUpAddCourse extends Pane {
         addCourseButton = new Button("Add course");
 
         cancelButton = new Button("Cancel");
+
+        assignCourseResponsible = new Button("Assign Course Responsible");
 
 
         //set prompt text for the textfield
@@ -81,6 +87,9 @@ public class PopUpAddCourse extends Pane {
         cancelButton.setLayoutX(300);
         cancelButton.setLayoutY(350);
 
+        assignCourseResponsible.setLayoutX(270);
+        assignCourseResponsible.setLayoutY(140);
+
         this.getChildren().addAll(
                 cancelButton,
                 courseNameLabel,
@@ -90,7 +99,8 @@ public class PopUpAddCourse extends Pane {
                 endDatePicker,
                 endDateLabel,
                 uploadCourseMaterialButton,
-                addCourseButton);
+                addCourseButton,
+                assignCourseResponsible);
 
         //styling
         cancelButton.setStyle(ACertsColorScheme.buttonColor());
@@ -99,6 +109,47 @@ public class PopUpAddCourse extends Pane {
         endDatePicker.setStyle(ACertsColorScheme.textFieldColor());
         uploadCourseMaterialButton.setStyle(ACertsColorScheme.buttonColor());
         addCourseButton.setStyle(ACertsColorScheme.buttonColor());
+        assignCourseResponsible.setStyle(ACertsColorScheme.buttonColor());
         this.setStyle(ACertsColorScheme.viewColor());
+
+        //functionality
+        assignCourseResponsible.setOnAction(e->
+        {
+            Stage popup = new Stage();
+            popup.setTitle("Add new course responsible");
+            PopUpCourseResponsibleSelection popupPane = new PopUpCourseResponsibleSelection();
+            popup.setScene(new Scene(popupPane, 500, 400));
+
+            popup.initModality(Modality.APPLICATION_MODAL);
+
+            ((Button) popupPane.getChildren().get(0)).setOnAction(ex -> {
+                Stage stage = new Stage();
+                Pane pane = new PopUpCourseResponsibleSelectionList();
+                Scene scene = new Scene(pane);
+                stage.setScene(scene);
+                stage.initModality(Modality.APPLICATION_MODAL);
+
+                //This line enables functionality for the 'cancelButton' in the 'PopUpCourseResponsibleSelectionList' class
+                //hence the number  which refers to the 0-indexed number where the 'cancelButton' is added.
+                ((Button) pane.getChildren().get(0)).setOnAction(ev -> stage.close());
+                popup.close();
+                stage.showAndWait();
+
+            });
+            ((Button) popupPane.getChildren().get(1)).setOnAction(ex -> {
+                Stage stage = new Stage();
+                Pane pane = new PopUpAddCourseResponsible();
+                Scene scene = new Scene(pane, 500, 400);
+                stage.setScene(scene);
+                stage.initModality(Modality.APPLICATION_MODAL);
+
+                //This line enables functionality for the 'cancelButton' in the 'PopUpAddCoursePersona' class
+                //hence the number 0 which refers to the 0-indexed number where the 'cancelButton' is added.
+                ((Button) pane.getChildren().get(0)).setOnAction(a -> stage.close());
+                popup.close();
+                stage.showAndWait();
+            });
+            popup.show();
+        });
     }
 }

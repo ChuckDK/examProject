@@ -84,6 +84,16 @@ public class PopUpMySQLSettingsAdmin extends Pane{
         portTextField.setPromptText("Port");
         databaseNameTextField.setPromptText("Database Name");
 
+        //Styling
+        usernameTextField.setStyle(ACertsColorScheme.textFieldColor());
+        passwordTextField.setStyle(ACertsColorScheme.textFieldColor());
+        hostTextField.setStyle(ACertsColorScheme.textFieldColor());
+        portTextField.setStyle(ACertsColorScheme.textFieldColor());
+        databaseNameTextField.setStyle(ACertsColorScheme.textFieldColor());
+        cancelButton.setStyle(ACertsColorScheme.buttonColor());
+        applyChangesButton.setStyle(ACertsColorScheme.buttonColor());
+        this.setStyle(ACertsColorScheme.viewColor());
+
         //Add all elements to view
         this.getChildren().addAll(
                 cancelButton,

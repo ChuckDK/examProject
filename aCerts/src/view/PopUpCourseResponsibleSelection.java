@@ -32,18 +32,14 @@ public class PopUpCourseResponsibleSelection extends Pane {
         chooseExistingCourseResponsibleButton.setLayoutY(50);
         chooseExistingCourseResponsibleButton.setPrefSize(200, 100);
 
-        //Make an action on the button which creates a new instance of the PopUpCourseResponsibleSelectionList.
-        //This instance must be dealt with before any other windows can be used.
-
-
-        //Make an action on the button which creates a new instance of the PopUpAddCourseResponsible.
-        //This instance must be dealt with before any other windows can be used.
-
-
-
         //Set instructions label's coordinates.
         instructions.setLayoutX(50);
         instructions.setLayoutY(180);
+
+        //Styling
+        chooseExistingCourseResponsibleButton.setStyle(ACertsColorScheme.buttonColor());
+        addNewCourseResponsibleButton.setStyle(ACertsColorScheme.buttonColor());
+        this.setStyle(ACertsColorScheme.viewColor());
 
         //Add it all to the pane.
         this.getChildren().addAll(chooseExistingCourseResponsibleButton, addNewCourseResponsibleButton, instructions);

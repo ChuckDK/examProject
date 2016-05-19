@@ -15,6 +15,7 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona {
     private CheckBox adminRights;
     private Label adminRightsLabel;
     private Button addCourseResponsible;
+    private Button assignCourse;
 
     public PopUpAddCourseResponsible()
     {
@@ -26,6 +27,8 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona {
 
         addCourseResponsible = new Button("Add course responsible");
 
+        assignCourse = new Button("Assign course");
+
         //layouting
         adminRights.setLayoutX(320);
         adminRights.setLayoutY(210);
@@ -35,15 +38,20 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona {
 
         addCourseResponsible.setLayoutX(30);
         addCourseResponsible.setLayoutY(350);
+
+        assignCourse.setLayoutX(270);
+        assignCourse.setLayoutY(140);
         //Add elements to view
         this.getChildren().addAll(
                 adminRights,
                 adminRightsLabel,
-                addCourseResponsible);
+                addCourseResponsible,
+                assignCourse);
 
         //styling
         addCourseResponsible.setStyle(ACertsColorScheme.buttonColor());
         adminRights.setStyle(ACertsColorScheme.buttonColor());
+        assignCourse.setStyle(ACertsColorScheme.buttonColor());
 
         //functionality
         addCourseResponsible.setOnAction(e->
@@ -58,5 +66,19 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona {
             popup.initModality(Modality.APPLICATION_MODAL);
             popup.showAndWait();
         });
+
+        assignCourse.setOnAction(e->
+            {
+                Stage popup = new Stage();
+                popup.setTitle("Select");
+                PopUpCourseSelectionList popupPane = new PopUpCourseSelectionList();
+                popup.setScene(new Scene(popupPane));
+
+                ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
+
+                popup.initModality(Modality.APPLICATION_MODAL);
+                popup.showAndWait();
+            }
+        );
     }
 }

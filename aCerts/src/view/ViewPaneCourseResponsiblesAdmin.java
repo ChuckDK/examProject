@@ -119,44 +119,7 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable {
 
 
         //functinality
-        addNewCourseResponsibleButton.setOnAction(e->
-        {
-            Stage popup = new Stage();
-            popup.setTitle("Add new course responsible");
-            PopUpCourseResponsibleSelection popupPane = new PopUpCourseResponsibleSelection();
-            popup.setScene(new Scene(popupPane, 500, 400));
 
-            popup.initModality(Modality.APPLICATION_MODAL);
-
-            ((Button) popupPane.getChildren().get(0)).setOnAction(ex -> {
-                Stage stage = new Stage();
-                Pane pane = new PopUpCourseResponsibleSelectionList();
-                Scene scene = new Scene(pane, 500, 400);
-                stage.setScene(scene);
-                stage.initModality(Modality.APPLICATION_MODAL);
-
-                //This line enables functionality for the 'cancelButton' in the 'PopUpCourseResponsibleSelectionList' class
-                //hence the number  which refers to the 0-indexed number where the 'cancelButton' is added.
-                ((Button) pane.getChildren().get(0)).setOnAction(ev -> stage.close());
-                popup.close();
-                stage.showAndWait();
-
-            });
-            ((Button) popupPane.getChildren().get(1)).setOnAction(ex -> {
-                Stage stage = new Stage();
-                Pane pane = new PopUpAddCourseResponsible();
-                Scene scene = new Scene(pane, 500, 400);
-                stage.setScene(scene);
-                stage.initModality(Modality.APPLICATION_MODAL);
-
-                //This line enables functionality for the 'cancelButton' in the 'PopUpAddCoursePersona' class
-                //hence the number 0 which refers to the 0-indexed number where the 'cancelButton' is added.
-                ((Button) pane.getChildren().get(0)).setOnAction(a -> stage.close());
-                popup.close();
-                stage.showAndWait();
-            });
-            popup.show();
-        });
     }
 
     @Override
@@ -177,5 +140,17 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable {
         // bottom and an estimated height of 40 of the tabpane
         removeCourseResponsibleButton.setLayoutY(this.getScene().getHeight() - removeCourseResponsibleButton.getHeight() - 50);
 
+        addNewCourseResponsibleButton.setOnAction(e->
+        {
+            Stage popup = new Stage();
+            popup.setTitle("Add new Course Responsible");
+            PopUpAddCourseResponsible popupPane = new PopUpAddCourseResponsible();
+            popup.setScene(new Scene(popupPane,  500, 400));
+
+            ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
+
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.showAndWait();
+        });
     }
 }

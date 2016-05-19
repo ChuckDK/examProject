@@ -80,6 +80,16 @@ public class PopUpSMTPSettingsAdmin extends Pane {
         hostTextField.setPromptText("Host");
         portTextField.setPromptText("Port");
 
+        //Styling
+        emailAddressTextField.setStyle(ACertsColorScheme.textFieldColor());
+        usernameTextField.setStyle(ACertsColorScheme.textFieldColor());
+        passwordTextField.setStyle(ACertsColorScheme.textFieldColor());
+        hostTextField.setStyle(ACertsColorScheme.textFieldColor());
+        portTextField.setStyle(ACertsColorScheme.textFieldColor());
+        cancelButton.setStyle(ACertsColorScheme.buttonColor());
+        applyChangesButton.setStyle(ACertsColorScheme.buttonColor());
+        this.setStyle(ACertsColorScheme.viewColor());
+
         //Add all elements to view.
         this.getChildren().addAll(
                 cancelButton,

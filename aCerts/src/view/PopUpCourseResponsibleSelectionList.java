@@ -82,6 +82,11 @@ public class PopUpCourseResponsibleSelectionList extends Pane {
         courseResponsiblesTableView.getColumns().addAll(courseResponsibleFirstNameColumn,
                 courseResponsibleLastNameColumn);
 
+        //Styling
+        cancelButton.setStyle(ACertsColorScheme.buttonColor());
+        selectCourseResponsibleButton.setStyle(ACertsColorScheme.buttonColor());
+        this.setStyle(ACertsColorScheme.viewColor());
+
         //Add all the newly created and customized nodes to the class' pane.
         this.getChildren().addAll(cancelButton, courseResponsiblesTableView, titleLabel, selectCourseResponsibleButton);
     }
