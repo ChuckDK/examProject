@@ -84,7 +84,7 @@ public class MySQLCourses extends SQLOperations{
 
             Class.forName("com.mysql.jdbc.Driver");
 
-            String url = "jdbc:mysql://127.0.0.1:3306/AppAcademy?autoReconnect=true&useSSL=true";
+            String url = "jdbc:mysql://127.0.0.1:3306/AppAcademy";
 
             Connection connection = DriverManager.getConnection(url, "root", "12345678");
 
