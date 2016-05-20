@@ -1,6 +1,5 @@
 package view.courses;
 
-import control.operations.MySQLCourses;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -18,7 +17,7 @@ import java.util.Calendar;
 
 public class ViewPaneCourses extends Pane implements Resizable
 {
-    //pane elements are defined here
+    //Pane elements are defined here.
     protected TableView<Course> courseTableView;
     private ToggleButton active = new ToggleButton("Active");
     private ToggleButton inactive = new ToggleButton("Inactive");
@@ -28,17 +27,11 @@ public class ViewPaneCourses extends Pane implements Resizable
 
     public ViewPaneCourses()
     {
-        //create courses objects from mysql database and add them to temporary arraylist
 
-        //create an observablelist from our arraylist and create tableview
+        //Create a new table view calling it courseTableView.
         courseTableView = new TableView<>();
 
-        //since the active togglebutton is selected by default, we show the active courses in the tableview
-        ObservableList<Course> courses = FXCollections.observableArrayList(MySQLCourses.getActive());
-        courseTableView.itemsProperty().setValue(courses);
-
-        //create columns for our tableview
-
+        //Create columns for our table view.
         TableColumn<Course, String> courseNameColumn = new TableColumn<>("Course");
         TableColumn<Course, String> courseResponsibleColumn = new TableColumn<>("Course Responsible");
         TableColumn<Course, Calendar> startDateColumn = new TableColumn<>("Start Date");
@@ -46,8 +39,7 @@ public class ViewPaneCourses extends Pane implements Resizable
         TableColumn<Course, Button> downloadColumn = new TableColumn<>("Test");
         TableColumn<Course, Button> viewParticipantsColumn = new TableColumn<>("Test");
 
-        //link columns to values in our Course object
-
+        //Link the columns to the values in our Course object.
         courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
         courseResponsibleColumn.setCellValueFactory(new PropertyValueFactory<>("courseResponsible"));
         startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
@@ -55,8 +47,24 @@ public class ViewPaneCourses extends Pane implements Resizable
         downloadColumn.setCellValueFactory(new PropertyValueFactory<>("downloadButton"));
         viewParticipantsColumn.setCellValueFactory(new PropertyValueFactory<>("viewParticipants"));
 
+        //Customize cell factory to show Calendar objects in table view properly
+        startDateColumn.setCellFactory(col -> new TableCell<Course, Calendar>()
+        {
+            public void updateItem(Calendar item, boolean empty)
+            {
+                super.updateItem(item, empty);
+                if (item == null)
+                {
+                    setText(null);
+                }
+                else
+                {
+                    setText(""+item.get(+Calendar.DATE)+"/"+item.get(Calendar.MONTH)+"-"+item.get(Calendar.YEAR));
+                }
+            }
+        });
 
-        /*//customized cellfactory to show Calendar objects in tableview properly
+        //Customized cell factory to show Calendar objects in tableview properly
         endDateColumn.setCellFactory(col -> new TableCell<Course, Calendar>()
         {
             public void updateItem(Calendar item, boolean empty)
@@ -71,7 +79,7 @@ public class ViewPaneCourses extends Pane implements Resizable
                     setText(""+item.get(+Calendar.DATE)+"/"+item.get(Calendar.MONTH)+"-"+item.get(Calendar.YEAR));
                 }
             }
-        });*/
+        });
 
 
         //add the columns to our courseTableView
@@ -154,24 +162,6 @@ public class ViewPaneCourses extends Pane implements Resizable
 
             popup.initModality(Modality.APPLICATION_MODAL);
             popup.showAndWait();
-        });
-
-        active.setOnAction(e->
-        {
-            ObservableList<Course> coursesArray = FXCollections.observableArrayList(MySQLCourses.getActive());
-            courseTableView.itemsProperty().setValue(coursesArray);
-        });
-
-        all.setOnAction(e->
-        {
-            ObservableList<Course> coursesArray = FXCollections.observableArrayList(MySQLCourses.getAll());
-            courseTableView.itemsProperty().setValue(coursesArray);
-        });
-
-        inactive.setOnAction(e->
-        {
-            ObservableList<Course> coursesArray = FXCollections.observableArrayList(MySQLCourses.getInActive());
-            courseTableView.itemsProperty().setValue(coursesArray);
         });
     }
 
