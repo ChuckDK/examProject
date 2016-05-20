@@ -1,6 +1,7 @@
 package control.settings;
 
 import java.io.*;
+import java.nio.file.Paths;
 
 /**
  * Created by dennis on 5/13/16.
@@ -12,8 +13,8 @@ public class SettingsInterface
         Object settingsFile = null;
         ObjectInputStream in = null;
         try{
-            in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename)));
-            settingsFile = (SettingsInterface) in.readObject();
+            in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(Paths.get("").toAbsolutePath().toString()+"/src/"+filename)));
+            settingsFile = in.readObject();
         }
         catch(Exception e){
             e.printStackTrace();

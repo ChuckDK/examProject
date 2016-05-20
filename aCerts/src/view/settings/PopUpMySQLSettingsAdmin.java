@@ -109,21 +109,27 @@ public class PopUpMySQLSettingsAdmin extends Pane{
         //functionality
         applyChangesButton.setOnAction(e->
         {
-            MySQLSettings.setHost(hostTextField.getText());
-            MySQLSettings.setPassword(passwordTextField.getText());
-            MySQLSettings.setUsername(usernameTextField.getText());
-            MySQLSettings.setPort(Integer.parseInt(portTextField.getText()));
-            MySQLSettings.setDatabaseName(databaseNameTextField.getText());
+            String host = (hostTextField.getText().equals("")) ? MySQLSettings.getHost() : hostTextField.getText();
+            int port = (portTextField.getText().equals("")) ? MySQLSettings.getPort() : Integer.parseInt(portTextField.getText());
+            String password = (passwordTextField.getText().equals("")) ? MySQLSettings.getPassword() : passwordTextField.getText();
+            String username = (usernameTextField.getText().equals("")) ? MySQLSettings.getUsername() : usernameTextField.getText();
+            String databaseName = (databaseNameTextField.getText().equals("")) ? MySQLSettings.getDatabaseName() : databaseNameTextField.getText();
+
+            MySQLSettings.setHost(host);
+            MySQLSettings.setPassword(password);
+            MySQLSettings.setUsername(username);
+            MySQLSettings.setPort(port);
+            MySQLSettings.setDatabaseName(databaseName);
 
             try
             {
                 MySQLSettings.writeObject(
                         "MySQLSettingsFile",
-                        new MySQLSettingsFile(usernameTextField.getText(),
-                        passwordTextField.getText(),
-                        databaseNameTextField.getText(),
-                        hostTextField.getText(),
-                        Integer.parseInt(portTextField.getText())));
+                        new MySQLSettingsFile(username,
+                        password,
+                        databaseName,
+                        host,
+                        port));
             }
             catch (Exception e1)
             {

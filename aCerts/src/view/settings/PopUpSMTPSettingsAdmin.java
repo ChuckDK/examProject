@@ -12,9 +12,8 @@ import view.styling.ACertsColorScheme;
 /**
  * Created by dennis on 5/13/16.
  */
-public class PopUpSMTPSettingsAdmin extends Pane {
-
-
+public class PopUpSMTPSettingsAdmin extends Pane
+{
     private Label titleLabel;
     private TextField usernameTextField;
     private TextField passwordTextField;
@@ -107,20 +106,26 @@ public class PopUpSMTPSettingsAdmin extends Pane {
         //Functionality
         applyChangesButton.setOnAction(e->
         {
-            SMTPSettings.setHost(hostTextField.getText());
-            SMTPSettings.setPort(Integer.parseInt(portTextField.getText()));
-            SMTPSettings.setUsername(usernameTextField.getText());
-            SMTPSettings.setPassword(passwordTextField.getText());
-            SMTPSettings.setEmail(emailAddressTextField.getText());
+            String host = (hostTextField.getText().equals("")) ? SMTPSettings.getHost() : hostTextField.getText();
+            int port = (portTextField.getText().equals("")) ? SMTPSettings.getPort() : Integer.parseInt(portTextField.getText());
+            String password = (passwordTextField.getText().equals("")) ? SMTPSettings.getPassword() : passwordTextField.getText();
+            String username = (usernameTextField.getText().equals("")) ? SMTPSettings.getUsername() : usernameTextField.getText();
+            String email = (emailAddressTextField.getText().equals("")) ? SMTPSettings.getEmail() : emailAddressTextField.getText();
+
+            SMTPSettings.setHost(host);
+            SMTPSettings.setPort(port);
+            SMTPSettings.setUsername(username);
+            SMTPSettings.setPassword(password);
+            SMTPSettings.setEmail(email);
 
             try
             {
                 SMTPSettings.writeObject("SMTPSettingsFile", new SMTPSettingsFile(
-                        usernameTextField.getText(),
-                        passwordTextField.getText(),
-                        hostTextField.getText(),
-                        Integer.parseInt(portTextField.getText()),
-                        emailAddressTextField.getText()));
+                        username,
+                        password,
+                        host,
+                        port,
+                        email));
             } catch (Exception e1)
             {
                 e1.printStackTrace();

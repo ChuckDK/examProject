@@ -99,14 +99,20 @@ public class PopUpFTPSettingsAdmin extends Pane
         //functionality
         applyChangesButton.setOnAction(e->
             {
-                FTPSettings.setHost(hostTextField.getText());
-                FTPSettings.setPort(Integer.parseInt(portTextField.getText()));
-                FTPSettings.setUsername(usernameTextField.getText());
-                FTPSettings.setPassword(passwordTextField.getText());
+                //(Compares) ? true : false
+                String host = (hostTextField.getText().equals("")) ? FTPSettings.getHost() : hostTextField.getText();
+                int port = (portTextField.getText().equals("")) ? FTPSettings.getPort() : Integer.parseInt(portTextField.getText());
+                String username = (usernameTextField.getText().equals("")) ? FTPSettings.getUsername() : usernameTextField.getText();
+                String password = (passwordTextField.getText().equals("")) ? FTPSettings.getPassword() : passwordTextField.getText();
+
+                FTPSettings.setHost(host);
+                FTPSettings.setPort(port);
+                FTPSettings.setUsername(username);
+                FTPSettings.setPassword(password);
 
                 try
                 {
-                    FTPSettings.writeObject("FTPSettingsFile", new FTPSettingsFile(usernameTextField.getText(), passwordTextField.getText(), hostTextField.getPromptText(), Integer.parseInt(portTextField.getText())));
+                    FTPSettings.writeObject("FTPSettingsFile", new FTPSettingsFile(username, password, host, port));
                 }
                 catch (Exception ex)
                 {

@@ -1,5 +1,8 @@
 package view.login;
 
+import control.settings.FTPSettings;
+import control.settings.MySQLSettings;
+import control.settings.SMTPSettings;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,6 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import model.settings.FTPSettingsFile;
+import model.settings.MySQLSettingsFile;
+import model.settings.SMTPSettingsFile;
 import view.managers.ViewPanesManager;
 import view.start.SceneInitializer;
 import view.styling.ACertsColorScheme;
@@ -110,6 +116,33 @@ public class ViewPaneLogin extends Pane implements Resizable
             scene.widthProperty().addListener(ex1-> SceneInitializer.updateView(scene));
             scene.heightProperty().addListener(ex1-> SceneInitializer.updateView(scene));
             ((Resizable) viewPanesManager.getPane(0)).updateLayout();
+            try
+            {
+                MySQLSettingsFile sqlSettings = (MySQLSettingsFile) MySQLSettings.readObject("MySQLSettingsFile");
+                FTPSettingsFile ftpSettings = (FTPSettingsFile) FTPSettings.readObject("FTPSettingsFile");
+                SMTPSettingsFile smtpSettings = (SMTPSettingsFile) SMTPSettings.readObject("SMTPSettingsFile");
+
+                MySQLSettings.setDatabaseName(sqlSettings.getDatabaseName());
+                MySQLSettings.setPort(sqlSettings.getPort());
+                MySQLSettings.setHost(sqlSettings.getHost());
+                MySQLSettings.setPassword(sqlSettings.getPassword());
+                MySQLSettings.setUsername(sqlSettings.getUserName());
+
+                FTPSettings.setHost(ftpSettings.getHost());
+                FTPSettings.setPassword(ftpSettings.getPassword());
+                FTPSettings.setPort(ftpSettings.getPort());
+                FTPSettings.setUsername(ftpSettings.getUsernamer());
+
+                SMTPSettings.setEmail(smtpSettings.getEmail());
+                SMTPSettings.setPort(smtpSettings.getPort());
+                SMTPSettings.setUsername(smtpSettings.getUserName());
+                SMTPSettings.setHost(smtpSettings.getHost());
+                SMTPSettings.setPassword(smtpSettings.getPassword());
+            }
+            catch (Exception e1)
+            {
+                e1.printStackTrace();
+            }
         });
     }
 
