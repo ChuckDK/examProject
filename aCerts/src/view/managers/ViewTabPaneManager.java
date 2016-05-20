@@ -19,32 +19,36 @@ public class ViewTabPaneManager extends Pane implements Resizable
         Tab coursesView = new Tab("Courses");
         Tab courseParticipantsView = new Tab("CourseParticipants");
 
+        //add tabs to the TabPane called 'tabViews'.
         tabViews = new TabPane(mainView, coursesView, courseParticipantsView);
 
-        //call the update method on the content of the tab when the tab is selected
+        //set the updateLayout method to be called when a tab is selected.
         mainView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
         coursesView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
         courseParticipantsView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
 
-        //initialize panes in their corresponding tabs
+        //Set the content of the tabs.
+        //The content is essentially an instance of the class related to each specific pane.
         mainView.setContent(new ViewPaneMain());
         coursesView.setContent(new ViewPaneCourses());
         courseParticipantsView.setContent(new ViewPaneCourseParticipants());
 
-        //disable the close features on the tabs
+        //disable the default close feature on the tabs
         mainView.setClosable(false);
         coursesView.setClosable(false);
         courseParticipantsView.setClosable(false);
 
-
+        //Add 'tabViews' to an instance of this class.
         this.getChildren().add(tabViews);
 
-        //styling
+        //Styling the tabs with ACertsColorScheme.
         mainView.setStyle(ACertsColorScheme.tabColor());
         coursesView.setStyle(ACertsColorScheme.tabColor());
         courseParticipantsView.setStyle(ACertsColorScheme.tabColor());
     }
 
+    //Override the updateLayout method from the Resizable interface to make
+    //the ViewTabPaneManager appear as it's class dictates.
     @Override
     public void updateLayout()
     {
