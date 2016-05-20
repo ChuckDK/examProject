@@ -397,6 +397,25 @@ ETA: 101,5 Hrs Remaining pr. Developer
 
 May 20th 2016 / Iteration 3 ends
 _______________
+
+Today has been the end of Iteration 3. We've implemented alot of functionality, everything has been fully commented and there is full interaction between our database and aCerts. We've also uncovered that MySQL 5.7.12 released 11th of april is incompatible with our Version 5.5.49. Our Syntax is working with 5.7.11 aswell, but this is only confirmed on a windows platform.
+
+Next meeting:	See Progress 
+		Still need to get a hold of Kristian
+		Continue adding functionality to aCerts
+		Update Prototype
+		Update Class Diagram
+		Sequence Diagrams
+
+
+Members Present: Dennis, Fredrik, Jonas, Emil(½ Session)
+
+Developer Hours: 10 hours SWK
+
+ITO: 14/20 – SWD: 33/70 – OSCA: 0/10 – SWK: 51/30 – Buffer 2/61.5
+
+ETA: 91,5 Hrs Remaining pr. Developer
+
 May 24th 2016 / Iteration 4 Begins / Transition Phase is main focus
 _______________
 May 27th 2016
