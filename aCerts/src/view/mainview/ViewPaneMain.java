@@ -20,8 +20,6 @@ public class ViewPaneMain extends Pane implements Resizable
     public ViewPaneMain()
     {
         activeCoursesList = new ListView<Course>();
-        Course dummyCourse = new Course("ads", "asda", Calendar.getInstance(), Calendar.getInstance(), new Button(), new Button());
-        activeCoursesList.getItems().addAll(dummyCourse);
 
         this.setStyle(ACertsColorScheme.viewColor());
 

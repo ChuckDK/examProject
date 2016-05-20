@@ -1,5 +1,6 @@
 package view.courses;
 
+import control.operations.MySQLCourses;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -28,16 +29,12 @@ public class ViewPaneCourses extends Pane implements Resizable
     public ViewPaneCourses()
     {
         //create courses objects from mysql database and add them to temporary arraylist
-        //for now just a dummy object
-
-        Course dummy = new Course("machine code", "John Wick",  Calendar.getInstance(), Calendar.getInstance(), new Button(), new Button());
-        ArrayList<Course> coursesArray= new ArrayList<>();
-        coursesArray.add(dummy);
 
         //create an observablelist from our arraylist and create tableview
-
-        ObservableList<Course> courses = FXCollections.observableArrayList(coursesArray);
         courseTableView = new TableView<>();
+
+        //since the active togglebutton is selected by default, we show the active courses in the tableview
+        ObservableList<Course> courses = FXCollections.observableArrayList(MySQLCourses.getActive());
         courseTableView.itemsProperty().setValue(courses);
 
         //create columns for our tableview
@@ -59,24 +56,7 @@ public class ViewPaneCourses extends Pane implements Resizable
         viewParticipantsColumn.setCellValueFactory(new PropertyValueFactory<>("viewParticipants"));
 
 
-        //customized cellfactory to show Calendar objects in tableview properly
-        startDateColumn.setCellFactory(col -> new TableCell<Course, Calendar>()
-        {
-            public void updateItem(Calendar item, boolean empty)
-            {
-                super.updateItem(item, empty);
-                if (item == null)
-                {
-                    setText(null);
-                }
-                else
-                {
-                    setText(""+item.get(+Calendar.DATE)+"/"+item.get(Calendar.MONTH)+"-"+item.get(Calendar.YEAR));
-                }
-            }
-        });
-
-        //customized cellfactory to show Calendar objects in tableview properly
+        /*//customized cellfactory to show Calendar objects in tableview properly
         endDateColumn.setCellFactory(col -> new TableCell<Course, Calendar>()
         {
             public void updateItem(Calendar item, boolean empty)
@@ -91,7 +71,7 @@ public class ViewPaneCourses extends Pane implements Resizable
                     setText(""+item.get(+Calendar.DATE)+"/"+item.get(Calendar.MONTH)+"-"+item.get(Calendar.YEAR));
                 }
             }
-        });
+        });*/
 
 
         //add the columns to our courseTableView
@@ -174,6 +154,24 @@ public class ViewPaneCourses extends Pane implements Resizable
 
             popup.initModality(Modality.APPLICATION_MODAL);
             popup.showAndWait();
+        });
+
+        active.setOnAction(e->
+        {
+            ObservableList<Course> coursesArray = FXCollections.observableArrayList(MySQLCourses.getActive());
+            courseTableView.itemsProperty().setValue(coursesArray);
+        });
+
+        all.setOnAction(e->
+        {
+            ObservableList<Course> coursesArray = FXCollections.observableArrayList(MySQLCourses.getAll());
+            courseTableView.itemsProperty().setValue(coursesArray);
+        });
+
+        inactive.setOnAction(e->
+        {
+            ObservableList<Course> coursesArray = FXCollections.observableArrayList(MySQLCourses.getInActive());
+            courseTableView.itemsProperty().setValue(coursesArray);
         });
     }
 

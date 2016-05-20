@@ -7,12 +7,12 @@ import java.util.Calendar;
 public class Course {
     private String courseName;
     private String courseResponsible;
-    private Calendar startDate;
-    private Calendar endDate;
+    private String startDate;
+    private String endDate;
     private Button downloadButton;
     private Button viewParticipants;
 
-    public Course(String courseName, String courseResponsible, Calendar startDate, Calendar endDate, Button downloadButton, Button viewParticipants) {
+    public Course(String courseName, String courseResponsible, String startDate, String endDate, Button downloadButton, Button viewParticipants) {
         this.courseName = courseName;
         this.courseResponsible = courseResponsible;
         this.startDate = startDate;
@@ -42,19 +42,11 @@ public class Course {
         this.courseResponsible = courseResponsible;
     }
 
-    public Calendar getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Calendar startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Calendar getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Calendar endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -72,5 +64,15 @@ public class Course {
 
     public void setViewParticipants(Button viewParticipants) {
         this.viewParticipants = viewParticipants;
+    }
+
+    public String getStartDate()
+    {
+        return startDate;
+    }
+
+    public String getEndDate()
+    {
+        return endDate;
     }
 }

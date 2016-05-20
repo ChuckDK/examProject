@@ -8,9 +8,6 @@ import java.util.ArrayList;
 public class MySQLCourseResponsible implements SQLOperations{
     public static ArrayList<CourseResponsible>  getActive()
     {
-        //Create an array list which will hold all the course responsible objects.
-        ArrayList<CourseResponsible> returnList = new ArrayList<>();
-
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
         String sqlStatement =
 
@@ -47,44 +44,11 @@ public class MySQLCourseResponsible implements SQLOperations{
                 "    courses.course_end_date >= now();"
                 ;
 
-        try {
-            Statement statement;
-            ResultSet resultSet;
-            String sql;
-
-            Class.forName("com.mysql.jdbc.Driver");
-
-            String url = "jdbc:mysql://localhost:3306/AppAcademy";
-
-            Connection connection = DriverManager.getConnection(url, "root", "12345678");
-
-            statement = connection.createStatement();
-
-            resultSet = statement.executeQuery(sqlStatement);
-
-            while(resultSet.next())
-            {
-                returnList.add(new CourseResponsible(
-                        resultSet.getString("course_responsible_firstname"),
-                        resultSet.getString("course_responsible_lastname"),
-                        resultSet.getString("ph1"),
-                        resultSet.getString("ph2"),
-                        resultSet.getString("course_responsible_email")
-                ));
-            }
-            connection.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return returnList;
+        return connectToDatabase(sqlStatement);
     }
 
     public static ArrayList<CourseResponsible>  getInActive()
     {
-        //Create an array list which will hold all the course responsible objects.
-        ArrayList<CourseResponsible> returnList = new ArrayList<>();
-
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
         String sqlStatement =
                 "SELECT \n" +
@@ -120,45 +84,12 @@ public class MySQLCourseResponsible implements SQLOperations{
                         "    courses.course_end_date < now()" +
                         "GROUP BY course_responsible_email;";
 
-        try {
-            Statement statement;
-            ResultSet resultSet;
-            String sql;
-
-            Class.forName("com.mysql.jdbc.Driver");
-
-            String url = "jdbc:mysql://localhost:3306/AppAcademy";
-
-            Connection connection = DriverManager.getConnection(url, "root", "12345678");
-
-            statement = connection.createStatement();
-
-            resultSet = statement.executeQuery(sqlStatement);
-
-            while(resultSet.next())
-            {
-                returnList.add(new CourseResponsible(
-                        resultSet.getString("course_responsible_firstname"),
-                        resultSet.getString("course_responsible_lastname"),
-                        resultSet.getString("ph1"),
-                        resultSet.getString("ph2"),
-                        resultSet.getString("course_responsible_email")
-                ));
-            }
-            connection.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return returnList;
+        return connectToDatabase(sqlStatement);
     }
 
     //A method which returns all data from the MySQL database regarding the course responsibles.
     public static ArrayList<CourseResponsible>  getAll()
     {
-        //Create an array list which will hold all the course responsible objects.
-        ArrayList<CourseResponsible> returnList = new ArrayList<>();
-
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
         String sqlStatement =
                 "SELECT\n " +
@@ -188,6 +119,14 @@ public class MySQLCourseResponsible implements SQLOperations{
                 "        phone_type = 'Secondary') AS phones2\n" +
                 "    GROUP BY phones1.course_responsible_email) AS pcr ON cr.course_responsible_email = pcr.course_responsible_email;";
 
+
+
+        return connectToDatabase(sqlStatement);
+    }
+
+    public static ArrayList<CourseResponsible> connectToDatabase(String sqlStatement)
+    {
+        ArrayList<CourseResponsible> returnList = new ArrayList<>();
         try {
             Statement statement;
             ResultSet resultSet;
@@ -217,7 +156,6 @@ public class MySQLCourseResponsible implements SQLOperations{
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return returnList;
     }
 }
