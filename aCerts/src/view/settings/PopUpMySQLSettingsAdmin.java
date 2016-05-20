@@ -3,6 +3,7 @@ package view.settings;
 import control.settings.MySQLSettings;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
@@ -18,7 +19,7 @@ public class PopUpMySQLSettingsAdmin extends Pane{
     private TextField databaseNameTextField;
     private TextField portTextField;
     private TextField usernameTextField;
-    private TextField passwordTextField;
+    private PasswordField passwordTextField;
     private Button applyChangesButton;
     private Button cancelButton;
 
@@ -35,7 +36,7 @@ public class PopUpMySQLSettingsAdmin extends Pane{
 
         usernameTextField = new TextField();
 
-        passwordTextField = new TextField();
+        passwordTextField = new PasswordField();
 
         applyChangesButton = new Button("Apply changes");
 

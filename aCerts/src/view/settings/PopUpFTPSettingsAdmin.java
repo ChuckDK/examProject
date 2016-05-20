@@ -3,6 +3,7 @@ package view.settings;
 import control.settings.FTPSettings;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
@@ -17,7 +18,7 @@ public class PopUpFTPSettingsAdmin extends Pane
     private Label titleLabel;
 
     private TextField usernameTextField;
-    private TextField passwordTextField;
+    private PasswordField passwordTextField;
     private TextField hostTextField;
     private TextField portTextField;
 
@@ -31,7 +32,7 @@ public class PopUpFTPSettingsAdmin extends Pane
 
         usernameTextField = new TextField();
 
-        passwordTextField = new TextField();
+        passwordTextField = new PasswordField();
 
         hostTextField = new TextField();
 

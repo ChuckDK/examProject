@@ -32,7 +32,7 @@ public class PopUpCourseResponsibleSelectionList extends Pane {
 
         //Create a dummy course responsible object.
         CourseResponsible dummyCourseResponsible = new CourseResponsible("John", "Travolta", "JohnTravolta@hotmail.com",
-                "42066669");
+                "42066669", "2989");
 
         //Create an array list for course responsibles.
         ArrayList<CourseResponsible> courseResponsibleArray = new ArrayList<>();

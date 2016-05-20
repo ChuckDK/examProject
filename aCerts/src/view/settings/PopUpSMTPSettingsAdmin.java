@@ -3,6 +3,7 @@ package view.settings;
 import control.settings.SMTPSettings;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
@@ -16,7 +17,7 @@ public class PopUpSMTPSettingsAdmin extends Pane
 {
     private Label titleLabel;
     private TextField usernameTextField;
-    private TextField passwordTextField;
+    private PasswordField passwordTextField;
     private TextField hostTextField;
     private TextField portTextField;
     private TextField emailAddressTextField;
@@ -32,7 +33,7 @@ public class PopUpSMTPSettingsAdmin extends Pane
 
         usernameTextField = new TextField();
 
-        passwordTextField = new TextField();
+        passwordTextField = new PasswordField();
 
         hostTextField = new TextField();
 

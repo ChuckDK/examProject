@@ -1,5 +1,6 @@
 package view.courseresponsibles;
 
+import control.operations.MySQLCourseResponsible;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -31,9 +32,7 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
         //create courses objects from mysql database and add them to temporary arraylist
         //for now just a dummy object
 
-        CourseResponsible dummy = new CourseResponsible("Signe", "Something", "12345678", "ss@yahoo.dk");
-        ArrayList<CourseResponsible> coursesArray= new ArrayList<>();
-        coursesArray.add(dummy);
+        ArrayList<CourseResponsible> coursesArray = MySQLCourseResponsible.getAll();
 
         //create an observablelist from our arraylist and create tableview
 
@@ -47,6 +46,7 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
         TableColumn<CourseResponsible, String> lastNameColumn = new TableColumn<>("Last Name");
         TableColumn<CourseResponsible, String> emailColumn = new TableColumn<>("Email");
         TableColumn<CourseResponsible, String> phoneNumberColumn = new TableColumn<>("Phone Number");
+        TableColumn<CourseResponsible, String> phoneNumber2Column = new TableColumn<>("Phone Number 2");
 
         //link columns to values in our Course object
 
@@ -54,6 +54,7 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        phoneNumber2Column.setCellValueFactory(new PropertyValueFactory<>("phoneNumber2"));
 
 
         //add the columns to our courseTableView
@@ -61,12 +62,13 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
                 firstNameColumn,
                 lastNameColumn,
                 emailColumn,
-                phoneNumberColumn);
+                phoneNumberColumn,
+                phoneNumber2Column);
 
         //group togglebuttons
         ToggleGroup group = new ToggleGroup();
 
-        inActiveCourseResponsiblesToggleButton = new ToggleButton("Missing");
+        inActiveCourseResponsiblesToggleButton = new ToggleButton("Active");
         activeCourseResponsiblesToggleButton = new ToggleButton("All");
 
         inActiveCourseResponsiblesToggleButton.setToggleGroup(group);
