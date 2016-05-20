@@ -4,9 +4,6 @@ import javafx.scene.control.Button;
 
 import java.util.Calendar;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class Course {
     private String courseName;
     private String courseResponsible;

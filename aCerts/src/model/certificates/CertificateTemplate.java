@@ -8,9 +8,6 @@ import javafx.scene.text.Font;
 
 import java.util.Calendar;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class CertificateTemplate {
     private double participantNamePositionX;
     private double participantNamePositionY;

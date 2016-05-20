@@ -10,9 +10,6 @@ import view.styling.Resizable;
 
 import java.util.Calendar;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class ViewPaneMain extends Pane implements Resizable
 {
     private ListView<Course> activeCoursesList;

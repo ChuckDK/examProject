@@ -13,9 +13,6 @@ import view.styling.ACertsColorScheme;
 
 import java.util.ArrayList;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class PopUpCourseResponsibleSelectionList extends Pane {
     private TableView<CourseResponsible> courseResponsiblesTableView;
     private Label titleLabel;

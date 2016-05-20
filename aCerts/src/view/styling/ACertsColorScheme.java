@@ -1,9 +1,5 @@
 package view.styling;
 
-/**
- * Created by dennis on 5/13/16.
- */
-
 //this class serves a a collection of default colors for menus and buttons. This way the color of all menus of one type
 //can be changed by editing the color value here
 public class ACertsColorScheme {

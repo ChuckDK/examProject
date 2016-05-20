@@ -1,8 +1,5 @@
 package control.settings;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class FTPSettings extends SettingsInterface{
     private static String username;
     private static String password;

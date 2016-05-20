@@ -4,9 +4,6 @@ import model.coursedata.Course;
 
 import java.util.ArrayList;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class MySQLCourses implements SQLOperations{
     public static ArrayList<Course>  getActive()
     {

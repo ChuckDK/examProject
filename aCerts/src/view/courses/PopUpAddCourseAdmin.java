@@ -3,9 +3,6 @@ package view.courses;
 import javafx.scene.control.Button;
 import view.styling.ACertsColorScheme;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class PopUpAddCourseAdmin extends PopUpAddCourse {
     private Button addCourseResponsibleButton;
 

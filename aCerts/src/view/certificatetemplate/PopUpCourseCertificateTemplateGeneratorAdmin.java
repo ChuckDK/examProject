@@ -25,9 +25,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Calendar;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implements Resizable
 {
     //to be repurposed in future

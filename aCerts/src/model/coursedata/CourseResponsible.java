@@ -1,8 +1,5 @@
 package model.coursedata;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class CourseResponsible {
     private String firstName;
     private String lastName;

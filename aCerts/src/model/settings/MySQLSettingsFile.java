@@ -2,9 +2,6 @@ package model.settings;
 
 import java.io.Serializable;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class MySQLSettingsFile implements Serializable
 {
     private String userName;

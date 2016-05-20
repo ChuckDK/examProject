@@ -10,9 +10,6 @@ import javafx.scene.text.Font;
 import model.settings.MySQLSettingsFile;
 import view.styling.ACertsColorScheme;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class PopUpMySQLSettingsAdmin extends Pane{
     private Label titleLabel;
     private TextField hostTextField;

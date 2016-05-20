@@ -15,9 +15,6 @@ import view.styling.Resizable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class ViewPaneCourses extends Pane implements Resizable
 {
     //pane elements are defined here

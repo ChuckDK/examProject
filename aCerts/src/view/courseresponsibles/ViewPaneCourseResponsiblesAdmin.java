@@ -15,9 +15,6 @@ import view.styling.Resizable;
 
 import java.util.ArrayList;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
 {
 

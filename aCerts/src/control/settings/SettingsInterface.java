@@ -3,9 +3,6 @@ package control.settings;
 import java.io.*;
 import java.nio.file.Paths;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class SettingsInterface
 {
     public static Object readObject(String filename) throws Exception

@@ -8,9 +8,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class PopUpRemoveCourseAdmin extends Pane {
     private TextField courseIDTextField;
     private Label instructionsLabel;

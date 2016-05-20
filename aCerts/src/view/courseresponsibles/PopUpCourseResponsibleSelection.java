@@ -5,9 +5,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import view.styling.ACertsColorScheme;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class PopUpCourseResponsibleSelection extends Pane {
     private Button addNewCourseResponsibleButton;
     private Button chooseExistingCourseResponsibleButton;

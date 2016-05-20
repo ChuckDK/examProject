@@ -12,9 +12,6 @@ import view.start.SceneInitializer;
 import view.styling.ACertsColorScheme;
 import view.styling.Resizable;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class ViewPaneSettingsAdmin extends Pane implements Resizable
 {
     private Button removeCertificateButton;
