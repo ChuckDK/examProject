@@ -1,8 +1,5 @@
 package control.operations;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class Login {
     private static boolean isAdmin;
 

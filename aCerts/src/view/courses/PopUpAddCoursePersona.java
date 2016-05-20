@@ -6,9 +6,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import view.styling.ACertsColorScheme;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class PopUpAddCoursePersona extends Pane{
     private Label firstNameLabel;
     private Label lastNameLabel;

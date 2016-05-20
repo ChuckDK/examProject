@@ -11,9 +11,6 @@ import view.styling.ACertsColorScheme;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class PopUpCourseSelectionList extends Pane {
     private TableView<Course> courseTableView;
     private Label titleLabel;

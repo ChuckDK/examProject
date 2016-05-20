@@ -6,9 +6,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import view.styling.ACertsColorScheme;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class PopUpAddCourseParticipant extends PopUpAddCoursePersona {
     private Button addCourseParticipant;
     private Button assignCourse;

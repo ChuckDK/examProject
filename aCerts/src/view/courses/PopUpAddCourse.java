@@ -13,9 +13,6 @@ import view.courseresponsibles.PopUpCourseResponsibleSelection;
 import view.courseresponsibles.PopUpCourseResponsibleSelectionList;
 import view.styling.ACertsColorScheme;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class PopUpAddCourse extends Pane {
     private DatePicker startDatePicker;
     private DatePicker endDatePicker;

@@ -5,9 +5,6 @@ import javafx.scene.layout.Pane;
 import model.certificates.CertificateTemplate;
 import model.coursedata.CourseParticipant;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class CourseCertificateEmailParticipant
 {
     public static Image generateCertificate(String certificateTemplateName, CourseParticipant courseParticipant)

@@ -10,9 +10,6 @@ import view.courses.PopUpAddCoursePersona;
 import view.courses.PopUpCourseSelectionList;
 import view.styling.ACertsColorScheme;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
 {
 

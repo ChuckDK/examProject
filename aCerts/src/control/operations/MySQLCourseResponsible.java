@@ -5,9 +5,6 @@ import model.coursedata.CourseResponsible;
 import java.sql.*;
 import java.util.ArrayList;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class MySQLCourseResponsible implements SQLOperations{
     public static ArrayList<CourseResponsible>  getActive()
     {

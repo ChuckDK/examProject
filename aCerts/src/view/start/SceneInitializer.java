@@ -5,9 +5,6 @@ import javafx.stage.Stage;
 import view.styling.Resizable;
 import view.login.ViewPaneLogin;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class SceneInitializer {
 
     private static Stage mainWindow;

@@ -10,9 +10,6 @@ import view.settings.ViewPaneSettingsAdmin;
 
 import java.util.ArrayList;
 
-/**
- * Created by dennis on 5/13/16.
- */
 public class ViewPanesManager {
     private ArrayList<Pane> panes;
     private static ViewPanesManager viewPanesManager;
