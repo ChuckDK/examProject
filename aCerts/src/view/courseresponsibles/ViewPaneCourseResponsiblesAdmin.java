@@ -24,21 +24,19 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
     private TableView<CourseResponsible> courseResponsiblesTableView;
     private ToggleButton inActiveCourseResponsiblesToggleButton;
     private ToggleButton activeCourseResponsiblesToggleButton;
+    private ToggleButton allCourseResponsiblesToggleButton;
     private Button removeCourseResponsibleButton;
     private Button addNewCourseResponsibleButton;
 
     public ViewPaneCourseResponsiblesAdmin()
     {
-        //create courses objects from mysql database and add them to temporary arraylist
-        //for now just a dummy object
-
-        ArrayList<CourseResponsible> coursesArray = MySQLCourseResponsible.getAll();
-
         //create an observablelist from our arraylist and create tableview
 
-        ObservableList<CourseResponsible> courses = FXCollections.observableArrayList(coursesArray);
         courseResponsiblesTableView = new TableView<>();
-        courseResponsiblesTableView.itemsProperty().setValue(courses);
+
+        //since togglebutton "active" is selected from the start. we put the active list in when the view is initialize
+        ObservableList<CourseResponsible> initCourseResponsibles = FXCollections.observableArrayList(MySQLCourseResponsible.getActive());
+        courseResponsiblesTableView.itemsProperty().setValue(initCourseResponsibles);
 
         //create columns for our tableview
 
@@ -68,11 +66,13 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
         //group togglebuttons
         ToggleGroup group = new ToggleGroup();
 
-        inActiveCourseResponsiblesToggleButton = new ToggleButton("Active");
-        activeCourseResponsiblesToggleButton = new ToggleButton("All");
+        inActiveCourseResponsiblesToggleButton = new ToggleButton("Inactive");
+        activeCourseResponsiblesToggleButton = new ToggleButton("Active");
+        allCourseResponsiblesToggleButton = new ToggleButton("All");
 
         inActiveCourseResponsiblesToggleButton.setToggleGroup(group);
         activeCourseResponsiblesToggleButton.setToggleGroup(group);
+        allCourseResponsiblesToggleButton.setToggleGroup(group);
 
         addNewCourseResponsibleButton = new Button("Add new");
 
@@ -82,6 +82,7 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
         this.getChildren().addAll(
                 inActiveCourseResponsiblesToggleButton,
                 activeCourseResponsiblesToggleButton,
+                allCourseResponsiblesToggleButton,
                 addNewCourseResponsibleButton,
                 removeCourseResponsibleButton,
                 courseResponsiblesTableView);
@@ -97,10 +98,13 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
         activeCourseResponsiblesToggleButton.setLayoutX(10);
         activeCourseResponsiblesToggleButton.setLayoutY(50);
 
-        //set the "active" togglebutton to be selected at first
-        inActiveCourseResponsiblesToggleButton.setSelected(true);
+        allCourseResponsiblesToggleButton.setLayoutX(10);
+        allCourseResponsiblesToggleButton.setLayoutY(80);
 
-        //layouting buttons these buttons y position is dependant on the window size so it will be set in the updateLayout
+        //set the "active" togglebutton to be selected at first
+        activeCourseResponsiblesToggleButton.setSelected(true);
+
+        //layouting buttons. these buttons y position is dependant on the window size so it will be set in the updateLayout
         //method
         addNewCourseResponsibleButton.setLayoutX(10);
         removeCourseResponsibleButton.setLayoutX(10);
@@ -109,6 +113,7 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
         //is not dependant on the size of the window
         inActiveCourseResponsiblesToggleButton.setPrefWidth(100);
         activeCourseResponsiblesToggleButton.setPrefWidth(100);
+        allCourseResponsiblesToggleButton.setPrefWidth(100);
 
         addNewCourseResponsibleButton.setPrefWidth(80);
         removeCourseResponsibleButton.setPrefWidth(80);
@@ -118,12 +123,30 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
 
         inActiveCourseResponsiblesToggleButton.setStyle(ACertsColorScheme.toggleButtonColor());
         activeCourseResponsiblesToggleButton.setStyle(ACertsColorScheme.toggleButtonColor());
+        allCourseResponsiblesToggleButton.setStyle(ACertsColorScheme.toggleButtonColor());
 
         addNewCourseResponsibleButton.setStyle(ACertsColorScheme.buttonColor());
         removeCourseResponsibleButton.setStyle(ACertsColorScheme.buttonColor());
 
 
         //functinality
+        activeCourseResponsiblesToggleButton.setOnAction(e->
+        {
+            ObservableList<CourseResponsible> courseResponsibles = FXCollections.observableArrayList(MySQLCourseResponsible.getActive());
+            courseResponsiblesTableView.itemsProperty().setValue(courseResponsibles);
+        });
+
+        allCourseResponsiblesToggleButton.setOnAction(e->
+        {
+            ObservableList<CourseResponsible> courseResponsibles = FXCollections.observableArrayList(MySQLCourseResponsible.getAll());
+            courseResponsiblesTableView.itemsProperty().setValue(courseResponsibles);
+        });
+
+        inActiveCourseResponsiblesToggleButton.setOnAction(e->
+        {
+            ObservableList<CourseResponsible> courseResponsibles = FXCollections.observableArrayList(MySQLCourseResponsible.getInActive());
+            courseResponsiblesTableView.itemsProperty().setValue(courseResponsibles);
+        });
 
     }
 
