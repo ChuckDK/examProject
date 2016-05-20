@@ -19,10 +19,13 @@ public class MySQLCourseResponsible implements SQLOperations{
         return null;
     }
 
+    //A method which returns all data from the MySQL database regarding the course responsibles.
     public static ArrayList<CourseResponsible>  getAll()
     {
+        //Create an array list which will hold all the course responsible objects.
         ArrayList<CourseResponsible> returnList = new ArrayList<>();
 
+        //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
         String sqlStatement =
                 "SELECT\n " +
                 "    cr.course_responsible_email,\n" +
