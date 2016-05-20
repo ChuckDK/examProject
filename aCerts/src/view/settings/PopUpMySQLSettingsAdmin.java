@@ -48,7 +48,6 @@ public class PopUpMySQLSettingsAdmin extends Pane{
         titleLabel.setLayoutY(10);
         titleLabel.setFont(Font.font(40));
 
-        //hswnjew
         usernameTextField.setLayoutX(60);
         usernameTextField.setLayoutY(200);
         usernameTextField.setPrefWidth(100);
@@ -57,7 +56,6 @@ public class PopUpMySQLSettingsAdmin extends Pane{
         passwordTextField.setLayoutY(200);
         passwordTextField.setPrefWidth(100);
 
-        //ewge
         hostTextField.setLayoutX(60);
         hostTextField.setLayoutY(80);
         hostTextField.setPrefWidth(130);
@@ -66,7 +64,6 @@ public class PopUpMySQLSettingsAdmin extends Pane{
         portTextField.setLayoutY(140);
         portTextField.setPrefWidth(100);
 
-        //asdf
         databaseNameTextField.setLayoutX(60);
         databaseNameTextField.setLayoutY(140);
         databaseNameTextField.setPrefWidth(100);
@@ -86,7 +83,7 @@ public class PopUpMySQLSettingsAdmin extends Pane{
         portTextField.setPromptText("Port");
         databaseNameTextField.setPromptText("Database Name");
 
-        //Styling
+        //Styling the nodes with ACertsColorScheme.
         usernameTextField.setStyle(ACertsColorScheme.textFieldColor());
         passwordTextField.setStyle(ACertsColorScheme.textFieldColor());
         hostTextField.setStyle(ACertsColorScheme.textFieldColor());
@@ -107,21 +104,27 @@ public class PopUpMySQLSettingsAdmin extends Pane{
                 titleLabel,
                 databaseNameTextField);
 
-        //functionality
+        //Adding a function for the applyChangesButton button.
         applyChangesButton.setOnAction(e->
         {
+            //The syntax functions as an if-statement: (Compares) ? (if it is true) : (if it is false).
+            //The variable is equal to the outcome of this statement. Furthermore a wrapping is needed if the variable .
             String host = (hostTextField.getText().equals("")) ? MySQLSettings.getHost() : hostTextField.getText();
             int port = (portTextField.getText().equals("")) ? MySQLSettings.getPort() : Integer.parseInt(portTextField.getText());
             String password = (passwordTextField.getText().equals("")) ? MySQLSettings.getPassword() : passwordTextField.getText();
             String username = (usernameTextField.getText().equals("")) ? MySQLSettings.getUsername() : usernameTextField.getText();
             String databaseName = (databaseNameTextField.getText().equals("")) ? MySQLSettings.getDatabaseName() : databaseNameTextField.getText();
 
+            //Add the retrieved data to the static class, MySQLSettings,
+            //thereby setting it's variables for this run of the program.
             MySQLSettings.setHost(host);
             MySQLSettings.setPassword(password);
             MySQLSettings.setUsername(username);
             MySQLSettings.setPort(port);
             MySQLSettings.setDatabaseName(databaseName);
 
+            //Attempt to save the data set in the section above so the program will have them
+            //when the it runs again.
             try
             {
                 MySQLSettings.writeObject(

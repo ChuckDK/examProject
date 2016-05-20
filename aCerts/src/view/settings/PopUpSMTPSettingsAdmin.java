@@ -83,7 +83,7 @@ public class PopUpSMTPSettingsAdmin extends Pane
         hostTextField.setPromptText("Host");
         portTextField.setPromptText("Port");
 
-        //Styling
+        //Styling the nodes with ACertsColorScheme.
         emailAddressTextField.setStyle(ACertsColorScheme.textFieldColor());
         usernameTextField.setStyle(ACertsColorScheme.textFieldColor());
         passwordTextField.setStyle(ACertsColorScheme.textFieldColor());
@@ -104,21 +104,27 @@ public class PopUpSMTPSettingsAdmin extends Pane
                 applyChangesButton,
                 titleLabel);
 
-        //Functionality
+        //Adding a function for the applyChangesButton button.
         applyChangesButton.setOnAction(e->
         {
+            //The syntax functions as an if-statement: (Compares) ? (if it is true) : (if it is false).
+            //The variable is equal to the outcome of this statement. Furthermore a wrapping is needed if the variable .
             String host = (hostTextField.getText().equals("")) ? SMTPSettings.getHost() : hostTextField.getText();
             int port = (portTextField.getText().equals("")) ? SMTPSettings.getPort() : Integer.parseInt(portTextField.getText());
             String password = (passwordTextField.getText().equals("")) ? SMTPSettings.getPassword() : passwordTextField.getText();
             String username = (usernameTextField.getText().equals("")) ? SMTPSettings.getUsername() : usernameTextField.getText();
             String email = (emailAddressTextField.getText().equals("")) ? SMTPSettings.getEmail() : emailAddressTextField.getText();
 
+            //Add the retrieved data to the static class, MySQLSettings,
+            //thereby setting it's variables for this run of the program.
             SMTPSettings.setHost(host);
             SMTPSettings.setPort(port);
             SMTPSettings.setUsername(username);
             SMTPSettings.setPassword(password);
             SMTPSettings.setEmail(email);
 
+            //Attempt to save the data set in the section above so the program will have them
+            //when the it runs again.
             try
             {
                 SMTPSettings.writeObject("SMTPSettingsFile", new SMTPSettingsFile(

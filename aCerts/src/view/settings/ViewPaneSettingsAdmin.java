@@ -32,7 +32,7 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable
         removeCertificateButton.setLayoutY(10);
         removeCertificateButton.setPrefWidth(250);
 
-        //initialize certificate template chooser combobox and set its position on the pane and its width
+        //initialize certificate template chooser combo box and set its position on the pane and its width
         chooseCertificateComboBox = new ComboBox<>();
         chooseCertificateComboBox.setLayoutX(270);
         chooseCertificateComboBox.setLayoutY(10);
@@ -72,7 +72,7 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable
                 chooseCertificateComboBox);
 
 
-        //styling
+        //Styling the nodes with ACertsColorScheme.
         this.setStyle(ACertsColorScheme.viewColor());
 
         removeCertificateButton.setStyle(ACertsColorScheme.buttonColor());
@@ -82,55 +82,90 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable
         changeSMTPButton.setStyle(ACertsColorScheme.buttonColor());
         chooseCertificateComboBox.setStyle(ACertsColorScheme.buttonColor());
 
-        //functionality
+        //Adding a function for the addCourseCertificateTemplateButton button.
         addCourseCertificateTemplateButton.setOnAction(e->
         {
             Stage popup = new Stage();
             popup.setTitle("Certificate Template Editor");
             PopUpCourseCertificateTemplateGeneratorAdmin popupPane = new PopUpCourseCertificateTemplateGeneratorAdmin();
             popup.setScene(new Scene(popupPane,  500, 400));
+
+            //Listeners which calls updateView whenever the window's width is resized.
             popup.getScene().widthProperty().addListener(ex-> SceneInitializer.updateView(popup.getScene()));
+
+            //Listeners which calls updateView whenever the window's height is resized.
             popup.getScene().heightProperty().addListener(ex-> SceneInitializer.updateView(popup.getScene()));
+
+            //Closing the course certificate template generator window.
             ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
 
+            //When the 'popup' scene is launched, it's elements are not in their appropriate places.
+            //This is taken care of by calling the updateLayout method which places all the nodes correctly
+            //dictated by the getRoot. However to call updateLayout, the popup must be type casted to (Resizable)
             ((Resizable) popup.getScene().getRoot()).updateLayout();
 
+            //Blocks input events or user interaction, as long as this window isn't taken care of.
             popup.initModality(Modality.APPLICATION_MODAL);
+
+            //Prevents the user from changing windows before this window has been closed. In conjunction with
+            //the line "initModality(Modality.APPLICATION_MODAL);", it creates the "pop up window" effect.
             popup.showAndWait();
         });
 
+        //Adding a function for the changeMYSQLButton button.
         changeMYSQLButton.setOnAction(e->
         {
             Stage popup = new Stage();
             popup.setTitle("MySQL Settings");
             PopUpMySQLSettingsAdmin popupPane = new PopUpMySQLSettingsAdmin();
             popup.setScene(new Scene(popupPane,  500, 400));
+
+            //Closing the MySQL settings popup.
             ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
 
+            //Blocks input events or user interaction, as long as this window isn't taken care of.
             popup.initModality(Modality.APPLICATION_MODAL);
+
+            //Prevents the user from changing windows before this window has been closed. In conjunction with
+            //the line "initModality(Modality.APPLICATION_MODAL);", it creates the "pop up window" effect.
             popup.showAndWait();
         });
 
+        //Adding a function for the changeSMTPButton button.
         changeSMTPButton.setOnAction(e->
         {
             Stage popup = new Stage();
             popup.setTitle("SMTP Settings");
             PopUpSMTPSettingsAdmin popupPane = new PopUpSMTPSettingsAdmin();
             popup.setScene(new Scene(popupPane,  500, 400));
+
+            //Closing the SMTPSettings popup
             ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
 
+            //Blocks input events or user interaction, as long as this window isn't taken care of.
             popup.initModality(Modality.APPLICATION_MODAL);
+
+            //Prevents the user from changing windows before this window has been closed. In conjunction with
+            //the line "initModality(Modality.APPLICATION_MODAL);", it creates the "pop up window" effect.
             popup.showAndWait();
         });
+
+        //Adding a function for the changeFTPButton button.
         changeFTPButton.setOnAction(e->
         {
             Stage popup = new Stage();
             popup.setTitle("FTP Settings");
             PopUpFTPSettingsAdmin popupPane = new PopUpFTPSettingsAdmin();
             popup.setScene(new Scene(popupPane,  500, 400));
+
+            //Closing the SMTPSettings popup.
             ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
 
+            //Blocks input events or user interaction, as long as this window isn't taken care of.
             popup.initModality(Modality.APPLICATION_MODAL);
+
+            //Prevents the user from changing windows before this window has been closed. In conjunction with
+            //the line "initModality(Modality.APPLICATION_MODAL);", it creates the "pop up window" effect.
             popup.showAndWait();
         });
     }
