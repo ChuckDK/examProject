@@ -1,7 +1,7 @@
 
-DROP DATABASE IF EXISTS forneus_net;
-CREATE DATABASE forneus_net;
-USE forneus_net;
+DROP DATABASE IF EXISTS AppAcademy;
+CREATE DATABASE AppAcademy;
+USE AppAcademy;
 
 
 CREATE TABLE course_responsibles(
