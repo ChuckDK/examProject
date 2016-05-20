@@ -5,7 +5,7 @@ import model.coursedata.CourseResponsible;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class MySQLCourseResponsible implements SQLOperations{
+public class MySQLCourseResponsible extends SQLOperations{
     public static ArrayList<CourseResponsible>  getActive()
     {
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
@@ -134,7 +134,7 @@ public class MySQLCourseResponsible implements SQLOperations{
 
             String url = "jdbc:mysql://localhost:3306/AppAcademy";
 
-            Connection connection = DriverManager.getConnection(url, "root", "mysqlkode666");
+            Connection connection = DriverManager.getConnection(url, "root", "12345678");
 
             statement = connection.createStatement();
 

@@ -68,6 +68,7 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable
                 lastNameColumn,
                 emailColumn,
                 phoneNumberColumn,
+                certificateSentColumn,
                 sendColumn);
 
         //group togglebuttons
@@ -154,6 +155,17 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable
             courseParticipantTableView.itemsProperty().setValue(courseParticipants);
 
         });
+
+        missingCertificatesToggleButton.setOnAction(event ->
+        {
+            ObservableList<CourseParticipant> courseParticipants = FXCollections.observableArrayList(MySQLParticipants.getMissing());
+            courseParticipantTableView.itemsProperty().setValue(courseParticipants);
+        });
+
+        filteredCourseParticipantsToggleButton.setOnAction(event ->
+        {
+            courseParticipantTableView.itemsProperty().setValue(FXCollections.observableArrayList(new ArrayList<CourseParticipant>()));
+        });
     }
 
     @Override
@@ -174,5 +186,10 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable
         // bottom and an estimated height of 40 of the tabpane
         removeParticipantButton.setLayoutY(this.getScene().getHeight() - removeParticipantButton.getHeight() - 50);
 
+    }
+
+    public TableView<CourseParticipant> getCourseParticipantTableView()
+    {
+        return courseParticipantTableView;
     }
 }
