@@ -78,7 +78,7 @@ public class PopUpFTPSettingsAdmin extends Pane
         hostTextField.setPromptText("Host");
         portTextField.setPromptText("Port");
 
-        //Styling
+        //Styling the nodes with ACertsColorScheme.
         cancelButton.setStyle(ACertsColorScheme.buttonColor());
         applyChangesButton.setStyle(ACertsColorScheme.buttonColor());
         usernameTextField.setStyle(ACertsColorScheme.textFieldColor());
@@ -97,20 +97,25 @@ public class PopUpFTPSettingsAdmin extends Pane
                 applyChangesButton,
                 titleLabel);
 
-        //functionality
+        //Adding a function for the applyChangesButton button.
         applyChangesButton.setOnAction(e->
             {
-                //(Compares) ? true : false
+                //The syntax functions as an if-statement: (Compares) ? (if it is true) : (if it is false).
+                //The variable is equal to the outcome of this statement. Furthermore a wrapping is needed if the variable .
                 String host = (hostTextField.getText().equals("")) ? FTPSettings.getHost() : hostTextField.getText();
                 int port = (portTextField.getText().equals("")) ? FTPSettings.getPort() : Integer.parseInt(portTextField.getText());
                 String username = (usernameTextField.getText().equals("")) ? FTPSettings.getUsername() : usernameTextField.getText();
                 String password = (passwordTextField.getText().equals("")) ? FTPSettings.getPassword() : passwordTextField.getText();
 
+                //Add the retrieved data to the static class, MySQLSettings,
+                //thereby setting it's variables for this run of the program.
                 FTPSettings.setHost(host);
                 FTPSettings.setPort(port);
                 FTPSettings.setUsername(username);
                 FTPSettings.setPassword(password);
 
+                //Attempt to save the data set in the section above so the program will have them
+                //when the it runs again.
                 try
                 {
                     FTPSettings.writeObject("FTPSettingsFile", new FTPSettingsFile(username, password, host, port));
@@ -121,21 +126,5 @@ public class PopUpFTPSettingsAdmin extends Pane
                 }
             }
         );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
