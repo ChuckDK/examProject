@@ -43,7 +43,6 @@ public class MySQLCourseResponsible implements SQLOperations{
                 "WHERE\n" +
                 "    courses.course_end_date >= now();"
                 ;
-
         return connectToDatabase(sqlStatement);
     }
 
@@ -130,13 +129,12 @@ public class MySQLCourseResponsible implements SQLOperations{
         try {
             Statement statement;
             ResultSet resultSet;
-            String sql;
 
             Class.forName("com.mysql.jdbc.Driver");
 
             String url = "jdbc:mysql://localhost:3306/AppAcademy";
 
-            Connection connection = DriverManager.getConnection(url, "root", "12345678");
+            Connection connection = DriverManager.getConnection(url, "root", "mysqlkode666");
 
             statement = connection.createStatement();
 

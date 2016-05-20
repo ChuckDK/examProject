@@ -24,33 +24,35 @@ public class ViewTabPaneManagerAdmin extends Pane implements Resizable
         Tab courseResponsiblesView = new Tab("Course Responsibles");
         Tab settingsView = new Tab("Settings");
 
-        //add tabs
+        //add tabs to the TabPane called 'tabViews'.
         tabViews = new TabPane(mainView, coursesView, courseParticipantsView, courseResponsiblesView, settingsView);
 
-        //set the updatelayout method to be called when tab is selected
+        //set the updateLayout method to be called when a tab is selected.
         mainView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
         coursesView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
         courseParticipantsView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
         courseResponsiblesView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
         settingsView.setOnSelectionChanged(e-> ((Resizable) tabViews.getSelectionModel().getSelectedItem().getContent()).updateLayout());
 
-        //set the content of the tabs
+        //Set the content of the tabs.
+        //The content is essentially an instance of the class related to each specific pane.
         mainView.setContent(new ViewPaneMain());
         coursesView.setContent(new ViewPaneCoursesAdmin());
         courseParticipantsView.setContent(new ViewPaneCourseParticipants());
         courseResponsiblesView.setContent(new ViewPaneCourseResponsiblesAdmin());
         settingsView.setContent(new ViewPaneSettingsAdmin());
 
-        //disable close button on tabs
+        //Disable the default close feature on tabs.
         mainView.setClosable(false);
         coursesView.setClosable(false);
         courseParticipantsView.setClosable(false);
         courseResponsiblesView.setClosable(false);
         settingsView.setClosable(false);
 
+        //Add 'tabViews' to an instance of this class.
         this.getChildren().add(tabViews);
 
-        //styling
+        //Styling the tabs with ACertsColorScheme.
         mainView.setStyle(ACertsColorScheme.tabColor());
         coursesView.setStyle(ACertsColorScheme.tabColor());
         courseParticipantsView.setStyle(ACertsColorScheme.tabColor());
@@ -58,6 +60,8 @@ public class ViewTabPaneManagerAdmin extends Pane implements Resizable
         settingsView.setStyle(ACertsColorScheme.tabColor());
     }
 
+    //Override the updateLayout method from the Resizable interface to make
+    //the ViewTabPaneManagerAdmin appear as it's class dictates.
     @Override
     public void updateLayout()
     {

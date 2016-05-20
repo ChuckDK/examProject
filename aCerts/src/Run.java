@@ -4,6 +4,7 @@ import view.start.SceneInitializer;
 
 public class Run extends Application {
 
+    //Launching the program's first scene, essentially launching the program.
     public static void main(String[] args) {
         launch(args);
     }
