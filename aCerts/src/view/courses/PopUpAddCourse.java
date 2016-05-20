@@ -193,7 +193,8 @@ public class PopUpAddCourse extends Pane {
         }
         if(courseResponsible == null)
         {
-            
+
         }
+        return false;
     }
 }
