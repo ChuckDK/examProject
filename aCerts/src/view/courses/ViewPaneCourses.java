@@ -29,8 +29,9 @@ public class ViewPaneCourses extends Pane implements Resizable
         courseTableView = new TableView<>();
 
         //Create a JavaFX observable array list.
-        //Since the toggle button 'active' is toggle from the start, the table view starts of being filled with
-        //active course responsibles.
+        //Since the 'active' courses are shown from the start, the table is filled with
+        //active courses using the getActive method.
+        //For full method function, see class 'MySQLCourses'.
         ObservableList<Course> coursesArray = FXCollections.observableArrayList(MySQLCourses.getActive());
         courseTableView.itemsProperty().setValue(coursesArray);
 
@@ -136,38 +137,47 @@ public class ViewPaneCourses extends Pane implements Resizable
             popup.showAndWait();
         });
 
+        //Add functionality to the inactive button.
         inactive.setOnAction(event ->
         {
+            //Filter the the courses so the inactive are shown.
+            //For full method function, see class 'MySQLCourses'.
             ObservableList<Course> courses = FXCollections.observableArrayList(MySQLCourses.getInActive());
             courseTableView.itemsProperty().setValue(courses);
         });
 
+        //Add functionality to the addNewCourses button.
         active.setOnAction(event ->
         {
+            //Filter the the courses so the active are shown.
+            //For full method function, see class 'MySQLCourses'.
             ObservableList<Course> courses = FXCollections.observableArrayList(MySQLCourses.getActive());
             courseTableView.itemsProperty().setValue(courses);
         });
 
+        //Add functionality to the addNewCourses button.
         all.setOnAction(event ->
         {
+            //Filter the the courses so all are shown.
+            //For full method function, see class 'MySQLCourses'.
             ObservableList<Course> courses = FXCollections.observableArrayList(MySQLCourses.getAll());
             courseTableView.itemsProperty().setValue(courses);
         });
     }
 
-    //methods that modifies the layout of certain elements to match with the current size of the window.
+    //Override the updateLayout method from the Resizable interface to make
+    //the ViewPaneCourses appear as it's class dictates.
     @Override
     public void updateLayout()
     {
-        //sets the editorviews size to be inside the current window with a little spacing added. 310 is the size of
-        //the editor sidemenu (300) plus a margin of 10.
+        //Sets the table view's width size to be equal to the width size of the pane minus 110 pixels.
         courseTableView.setPrefWidth(this.getScene().getWidth() - 110);
 
-        //60 represents a margin of 10 on top and bottom and an estimated height of 40 of the tabpane
+        //Sets the table view's height size to be equal to the height size of the pane minus 60 pixels.
         courseTableView.setPrefHeight(this.getScene().getHeight() - 60);
 
-        //set the addNewCourses button to be above the bottom of the window. 60 represents a margin of
-        // 10 from the bottom and an estimated height of 40 of the tabpane
+        //Set the addNewCourses button to be placed at the bottom
+        //of the window minus the buttons own minus 50 pixels.
         addNewCourses.setLayoutY(this.getScene().getHeight() - addNewCourses.getHeight() - 50);
     }
 }
