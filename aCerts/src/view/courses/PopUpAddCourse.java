@@ -5,9 +5,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.coursedata.CourseResponsible;
 import view.courseresponsibles.PopUpAddCourseResponsible;
 import view.courseresponsibles.PopUpCourseResponsibleSelection;
 import view.courseresponsibles.PopUpCourseResponsibleSelectionList;
@@ -24,6 +27,8 @@ public class PopUpAddCourse extends Pane {
     private Button addCourseButton;
     private Button cancelButton;
     private Button assignCourseResponsible;
+
+    private CourseResponsible courseResponsible;
 
     public PopUpAddCourse()
     {
@@ -152,5 +157,44 @@ public class PopUpAddCourse extends Pane {
             });
             popup.show();
         });
+    }
+
+    public boolean checkForValues()
+    {
+        boolean succeeded = false;
+        DropShadow error = new DropShadow();
+        error.setColor(Color.RED);
+        String startDate = ""+startDatePicker.getValue().getYear()+startDatePicker.getValue().getMonth()+startDatePicker.getValue().getDayOfMonth();
+        String endDate = ""+endDatePicker.getValue().getYear()+endDatePicker.getValue().getMonth()+endDatePicker.getValue().getDayOfMonth();
+        String courseName = courseNameTextField.getText();
+        if(startDate.equals(""))
+        {
+            startDatePicker.setEffect(error);
+        }
+        else
+        {
+            startDatePicker.setEffect(null);
+        }
+        if(endDate.equals(""))
+        {
+            endDatePicker.setEffect(error);
+        }
+        else
+        {
+            endDatePicker.setEffect(null);
+        }
+        if(courseName.equals(""))
+        {
+            courseNameTextField.setEffect(error);
+        }
+        else
+        {
+            courseNameTextField.setEffect(null);
+        }
+        if(courseResponsible == null)
+        {
+
+        }
+        return false;
     }
 }

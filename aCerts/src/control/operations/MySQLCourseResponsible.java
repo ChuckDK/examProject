@@ -5,7 +5,7 @@ import model.coursedata.CourseResponsible;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class MySQLCourseResponsible implements SQLOperations{
+public class MySQLCourseResponsible extends SQLOperations{
     public static ArrayList<CourseResponsible>  getActive()
     {
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers

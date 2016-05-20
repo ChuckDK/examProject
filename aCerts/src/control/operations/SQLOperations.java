@@ -1,11 +1,11 @@
 package control.operations;
 
-public interface SQLOperations {
-    public static boolean addNewRow()
+public class SQLOperations {
+    public static boolean addNewRow(String sqlStatement)
     {
         return false;
     }
-    public static boolean removeRow()
+    public static boolean removeRow(String sqlStatement)
     {
         return false;
     }

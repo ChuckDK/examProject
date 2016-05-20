@@ -7,20 +7,18 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-public class MySQLParticipants implements SQLOperations{
+public class MySQLParticipants extends SQLOperations{
     public static ArrayList<CourseParticipant>  getMissing()
     {
-        String sqlFetchMissingCertificatesParticipants = "USE AppAcademy;\n" +
-                "SET sql_mode = '';\n" +
-                "\n" +
+        String sqlFetchMissingCertificatesParticipants =
                 "SELECT\n" +
-                "  course_participants_firstname AS 'First Name',\n" +
-                "  course_participants_lastname AS 'Last Name',\n" +
+                "  course_participants_firstname AS 'FirstName',\n" +
+                "  course_participants_lastname AS 'LastName',\n" +
                 "  cp.course_participants_email AS Email,\n" +
                 "  ph1 AS Phone1,\n" +
                 "  ph2 AS Phone2,\n" +
-                "  certificates.course_certificate_sent AS 'Course Certificate Sent',\n" +
-                "  courses.course_name AS 'Course Name'\n" +
+                "  certificates.course_certificate_sent AS 'CourseCertificateSent',\n" +
+                "  courses.course_name AS 'CourseName'\n" +
                 "\n" +
                 "FROM course_participants AS cp\n" +
                 "\n" +
@@ -49,17 +47,15 @@ public class MySQLParticipants implements SQLOperations{
 
     public static ArrayList<CourseParticipant>  getFiltered(String courseName)
     {
-        String sqlFetchFilteredParticipants = "USE AppAcademy;\n" +
-                "SET sql_mode = '';\n" +
-                "\n" +
+        String sqlFetchFilteredParticipants =
                 "SELECT\n" +
-                "  course_participants_firstname AS 'First Name',\n" +
-                "  course_participants_lastname AS 'Last Name',\n" +
+                "  course_participants_firstname AS 'FirstName',\n" +
+                "  course_participants_lastname AS 'LastName',\n" +
                 "  cp.course_participants_email AS Email,\n" +
                 "  ph1 AS Phone1,\n" +
                 "  ph2 AS Phone2,\n" +
-                "  certificates.course_certificate_sent AS 'Course Certificate Sent',\n" +
-                "  courses.course_name AS 'Course Name'\n" +
+                "  certificates.course_certificate_sent AS 'CourseCertificateSent',\n" +
+                "  courses.course_name AS 'CourseName'\n" +
                 "\n" +
                 "FROM course_participants AS cp\n" +
                 "\n" +
