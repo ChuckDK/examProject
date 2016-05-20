@@ -94,10 +94,10 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
         courseResponsiblesTableView.setLayoutY(10);
 
         inActiveCourseResponsiblesToggleButton.setLayoutX(10);
-        inActiveCourseResponsiblesToggleButton.setLayoutY(20);
+        inActiveCourseResponsiblesToggleButton.setLayoutY(50);
 
         activeCourseResponsiblesToggleButton.setLayoutX(10);
-        activeCourseResponsiblesToggleButton.setLayoutY(50);
+        activeCourseResponsiblesToggleButton.setLayoutY(20);
 
         allCourseResponsiblesToggleButton.setLayoutX(10);
         allCourseResponsiblesToggleButton.setLayoutY(80);
