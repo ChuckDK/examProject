@@ -29,20 +29,20 @@ public class ViewPaneCoursesAdmin extends ViewPaneCourses{
     @Override
     public void updateLayout()
     {
-        //Sets the editor views size to be inside the current window with a little spacing added. 310 is the size of
-        //the editor's side menu (300) plus a margin of 10.
+        //Sets the course table view's width to be equal to itself minus 110 pixels.
+        //Subtracting 110 makes space for the side menu.
         courseTableView.setPrefWidth(this.getScene().getWidth() - 110);
 
-        //60 represents a margin of 10 on top and bottom and an estimated height of 40 of the tab pane
+        //Sets the course table view's height to be equal to itself minus 60 pixels.
+        //Subtracting 60 makes space for the tap pane at the top of the window.
         courseTableView.setPrefHeight(this.getScene().getHeight() - 60);
 
-        //Set the addNewCourses button to be above the removeButton button. 60 represents a margin of
-        //10 from the bottom and between the addCourse button and removeCourseButton and an
-        //estimated height of 40 of the tab pane
+        //The addNewCourses button doesn't need a setLayoutX as it is placed completely to the left.
+        //It's Y coordinate however, is set to be directly below the removeCourses button.
         addNewCourses.setLayoutY(this.getScene().getHeight() - addNewCourses.getHeight() - removeCourses.getHeight() - 60);
 
-
-        //set the removeCourse button 10 pixels below the add courseButton
+        //The removeCourses button doesn't need a setLayoutX as it is placed completely to the left.
+        //It's Y coordinate however, is set to be directly above the removeCourses button.
         removeCourses.setLayoutY(this.getScene().getHeight() - addNewCourses.getHeight() - 50);
     }
 }

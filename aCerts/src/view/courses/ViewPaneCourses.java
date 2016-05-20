@@ -17,7 +17,7 @@ import java.util.Calendar;
 
 public class ViewPaneCourses extends Pane implements Resizable
 {
-    //pane elements are defined here
+    //Pane elements are defined here.
     protected TableView<Course> courseTableView;
     private ToggleButton active = new ToggleButton("Active");
     private ToggleButton inactive = new ToggleButton("Inactive");
@@ -27,21 +27,24 @@ public class ViewPaneCourses extends Pane implements Resizable
 
     public ViewPaneCourses()
     {
-        //create courses objects from mysql database and add them to temporary arraylist
-        //for now just a dummy object
+        //Create a course object and add it to an array list.
+        Course dummy = new Course("machine code", "John Wick",
+                Calendar.getInstance(), Calendar.getInstance(), new Button(), new Button());
 
-        Course dummy = new Course("machine code", "John Wick",  Calendar.getInstance(), Calendar.getInstance(), new Button(), new Button());
-        ArrayList<Course> coursesArray= new ArrayList<>();
+        ArrayList<Course> coursesArray = new ArrayList<>();
+
         coursesArray.add(dummy);
 
-        //create an observablelist from our arraylist and create tableview
-
+        //Make the newly created array list observable in JavaFX.
         ObservableList<Course> courses = FXCollections.observableArrayList(coursesArray);
+
+        //Create a new table view calling it courseTableView.
         courseTableView = new TableView<>();
+
+        //Set the new table view's property to be that of the observable array list.
         courseTableView.itemsProperty().setValue(courses);
 
-        //create columns for our tableview
-
+        //Create columns for our table view.
         TableColumn<Course, String> courseNameColumn = new TableColumn<>("Course");
         TableColumn<Course, String> courseResponsibleColumn = new TableColumn<>("Course Responsible");
         TableColumn<Course, Calendar> startDateColumn = new TableColumn<>("Start Date");
@@ -49,8 +52,7 @@ public class ViewPaneCourses extends Pane implements Resizable
         TableColumn<Course, Button> downloadColumn = new TableColumn<>("Test");
         TableColumn<Course, Button> viewParticipantsColumn = new TableColumn<>("Test");
 
-        //link columns to values in our Course object
-
+        //Link the columns to the values in our Course object.
         courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
         courseResponsibleColumn.setCellValueFactory(new PropertyValueFactory<>("courseResponsible"));
         startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
@@ -58,8 +60,7 @@ public class ViewPaneCourses extends Pane implements Resizable
         downloadColumn.setCellValueFactory(new PropertyValueFactory<>("downloadButton"));
         viewParticipantsColumn.setCellValueFactory(new PropertyValueFactory<>("viewParticipants"));
 
-
-        //customized cellfactory to show Calendar objects in tableview properly
+        //Customize cell factory to show Calendar objects in table view properly
         startDateColumn.setCellFactory(col -> new TableCell<Course, Calendar>()
         {
             public void updateItem(Calendar item, boolean empty)
@@ -76,7 +77,7 @@ public class ViewPaneCourses extends Pane implements Resizable
             }
         });
 
-        //customized cellfactory to show Calendar objects in tableview properly
+        //Customized cell factory to show Calendar objects in tableview properly
         endDateColumn.setCellFactory(col -> new TableCell<Course, Calendar>()
         {
             public void updateItem(Calendar item, boolean empty)
