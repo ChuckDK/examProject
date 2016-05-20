@@ -13,9 +13,6 @@ import model.coursedata.Course;
 import view.styling.ACertsColorScheme;
 import view.styling.Resizable;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
 public class ViewPaneCourses extends Pane implements Resizable
 {
     //Pane elements are defined here.
@@ -31,7 +28,9 @@ public class ViewPaneCourses extends Pane implements Resizable
         //Create a new table view calling it courseTableView.
         courseTableView = new TableView<>();
 
-        //since the active togglebutton is selected by defaul, we then put all the active courses in the tableview
+        //Create a JavaFX observable array list.
+        //Since the toggle button 'active' is toggle from the start, the table view starts of being filled with
+        //active course responsibles.
         ObservableList<Course> coursesArray = FXCollections.observableArrayList(MySQLCourses.getActive());
         courseTableView.itemsProperty().setValue(coursesArray);
 
@@ -51,7 +50,7 @@ public class ViewPaneCourses extends Pane implements Resizable
         downloadColumn.setCellValueFactory(new PropertyValueFactory<>("downloadButton"));
         viewParticipantsColumn.setCellValueFactory(new PropertyValueFactory<>("viewParticipants"));
 
-        //add the columns to our courseTableView
+        //Add the columns to our courseTableView
         courseTableView.getColumns().addAll(
                 courseNameColumn,
                 courseResponsibleColumn,
@@ -60,14 +59,14 @@ public class ViewPaneCourses extends Pane implements Resizable
                 downloadColumn,
                 viewParticipantsColumn);
 
-        //group togglebuttons
+        ////Group toggle buttons using JavaFX ToggleGroup.
         ToggleGroup group = new ToggleGroup();
         active.setToggleGroup(group);
         inactive.setToggleGroup(group);
         all.setToggleGroup(group);
         missing.setToggleGroup(group);
 
-        //add elements to view
+        //Add elements to the instance of the class.
         this.getChildren().addAll(
                 active,
                 all,
@@ -77,7 +76,7 @@ public class ViewPaneCourses extends Pane implements Resizable
                 courseTableView);
 
 
-        //layouting togglebuttons
+        //Set the position of the table view, and the toggle buttons using setLayoutX and setLayoutY.
         courseTableView.setLayoutX(100);
         courseTableView.setLayoutY(10);
 
@@ -93,15 +92,17 @@ public class ViewPaneCourses extends Pane implements Resizable
         missing.setLayoutX(10);
         missing.setLayoutY(110);
 
-        //set the "active" togglebutton to be selected at first
+        //Set the "active" toggle button to be selected at first.
         active.setSelected(true);
 
-        //layouting buttons these buttons y position is dependant on the window size so it will be set in the updateLayout
-        //method
+        //Set the position of the addNewCourses button.
+        //This button's Y position is dependant on the window's size so the Y position
+        //will be set in the updateLayout method.
         addNewCourses.setLayoutX(10);
 
-        //set the width of the sidemenu elements. They are set here and not in the updateLayout method, since their width
-        //is not dependant on the size of the window
+        //Set the width of the side menu elements.
+        //They are set here and not in the updateLayout method, since their width
+        //is not dependant on the size of the window.
         active.setPrefWidth(100);
         inactive.setPrefWidth(100);
         all.setPrefWidth(100);
@@ -109,7 +110,7 @@ public class ViewPaneCourses extends Pane implements Resizable
 
         addNewCourses.setPrefWidth(80);
 
-        //styling
+        //Style all elements using ACertsColorScheme.
         this.setStyle(ACertsColorScheme.viewColor());
 
         active.setStyle(ACertsColorScheme.toggleButtonColor());
@@ -119,9 +120,11 @@ public class ViewPaneCourses extends Pane implements Resizable
 
         addNewCourses.setStyle(ACertsColorScheme.buttonColor());
 
-        //functionality
+        //Add functionality to the addNewCourses button.
         addNewCourses.setOnAction(e->
         {
+            //Create a popup window using an instance of the PopUpAddCourse class.
+            //See the class for it's content.
             Stage popup = new Stage();
             popup.setTitle("Add new course");
             PopUpAddCourse popupPane = new PopUpAddCourse();
