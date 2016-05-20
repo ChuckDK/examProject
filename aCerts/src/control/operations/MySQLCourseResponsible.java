@@ -132,9 +132,9 @@ public class MySQLCourseResponsible implements SQLOperations{
 
             Class.forName("com.mysql.jdbc.Driver");
 
-            String url = "jdbc:mysql://localhost:3306/AppAcademy";
+            String url = "jdbc:mysql://localhost:3306/AppAcademy?autoReconnect=true&useSSL=true";
 
-            Connection connection = DriverManager.getConnection(url, "root", "mysqlkode666");
+            Connection connection = DriverManager.getConnection(url, "root", "12345678");
 
             statement = connection.createStatement();
 
