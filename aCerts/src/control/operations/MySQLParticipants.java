@@ -23,7 +23,6 @@ public class MySQLParticipants implements SQLOperations{
         ArrayList<CourseParticipant> returnParticipants = new ArrayList<>();
 
         String sqlFetchAllParticipants =
-                        "SET sql_mode = '';"+
                 "SELECT\n" +
                        "  course_participants_firstname AS FirstName,\n" +
                        "  course_participants_lastname AS LastName,\n" +
@@ -63,7 +62,7 @@ public class MySQLParticipants implements SQLOperations{
 
             String url = "jdbc:mysql://localhost:3306/AppAcademy";
 
-            Connection connection = DriverManager.getConnection(url, "root", "Xroyerdk87");
+            Connection connection = DriverManager.getConnection(url, "root", "12345678");
 
             statement = connection.createStatement();
 
@@ -73,13 +72,13 @@ public class MySQLParticipants implements SQLOperations{
             while(resultSet.next())
             {
                 returnParticipants.add(new CourseParticipant(
-                resultSet.getString("Course Name"),
-                resultSet.getString("First Name"),
-                resultSet.getString("Last Name"),
-                resultSet.getString("ph1"),
-                resultSet.getString("ph2"),
+                resultSet.getString("CourseName"),
+                resultSet.getString("FirstName"),
+                resultSet.getString("LastName"),
+                resultSet.getString("Phone1"),
+                resultSet.getString("Phone2"),
                 resultSet.getString("Email"),
-                resultSet.getBoolean("Course Certificate Sent"),
+                resultSet.getBoolean("CourseCertificateSent"),
                 new Button("Send")
 
                 ));
