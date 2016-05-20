@@ -25,23 +25,6 @@ public class PopUpCourseSelectionList extends Pane {
         selectCourseButton = new Button("Select");
         cancelButton = new Button("Cancel");
 
-        //Create a dummy course responsible object.
-        Course dummyCourse = new Course("John", "Travolta", Calendar.getInstance(), Calendar.getInstance(), new Button(),
-                new Button());
-
-        //Create an array list for course responsibles.
-        ArrayList<Course> courseResponsibleArray = new ArrayList<>();
-
-        //Add the dummy course responsible to the array list of course responsibles.
-        courseResponsibleArray.add(dummyCourse);
-
-        //Make the array list of course responsibles an observable JavaFX array list.
-        ObservableList<Course> courses =
-                FXCollections.observableArrayList(courseResponsibleArray);
-
-        //Connect the values of the table view to the observable array list.
-        courseTableView.itemsProperty().setValue(courses);
-
         //Create the two columns needed.
         TableColumn<Course, String> courseNameColumn = new TableColumn<>("Course name");
         TableColumn<Course, Calendar> courseStartDateColumn = new TableColumn<>("Start date");

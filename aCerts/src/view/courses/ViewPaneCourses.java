@@ -27,22 +27,9 @@ public class ViewPaneCourses extends Pane implements Resizable
 
     public ViewPaneCourses()
     {
-        //Create a course object and add it to an array list.
-        Course dummy = new Course("machine code", "John Wick",
-                Calendar.getInstance(), Calendar.getInstance(), new Button(), new Button());
-
-        ArrayList<Course> coursesArray = new ArrayList<>();
-
-        coursesArray.add(dummy);
-
-        //Make the newly created array list observable in JavaFX.
-        ObservableList<Course> courses = FXCollections.observableArrayList(coursesArray);
 
         //Create a new table view calling it courseTableView.
         courseTableView = new TableView<>();
-
-        //Set the new table view's property to be that of the observable array list.
-        courseTableView.itemsProperty().setValue(courses);
 
         //Create columns for our table view.
         TableColumn<Course, String> courseNameColumn = new TableColumn<>("Course");

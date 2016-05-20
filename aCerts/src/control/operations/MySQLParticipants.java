@@ -10,18 +10,84 @@ import java.util.ArrayList;
 public class MySQLParticipants implements SQLOperations{
     public static ArrayList<CourseParticipant>  getMissing()
     {
-        return null;
+        String sqlFetchMissingCertificatesParticipants = "USE AppAcademy;\n" +
+                "SET sql_mode = '';\n" +
+                "\n" +
+                "SELECT\n" +
+                "  course_participants_firstname AS 'First Name',\n" +
+                "  course_participants_lastname AS 'Last Name',\n" +
+                "  cp.course_participants_email AS Email,\n" +
+                "  ph1 AS Phone1,\n" +
+                "  ph2 AS Phone2,\n" +
+                "  certificates.course_certificate_sent AS 'Course Certificate Sent',\n" +
+                "  courses.course_name AS 'Course Name'\n" +
+                "\n" +
+                "FROM course_participants AS cp\n" +
+                "\n" +
+                "JOIN\n" +
+                "  (SELECT\n" +
+                "    phone1.course_participants_email,\n" +
+                "    phone1.phone_number AS ph1,\n" +
+                "    phone2.phone_number AS ph2\n" +
+                "\n" +
+                "  FROM\n" +
+                "    (SELECT * FROM phones_course_participants\n" +
+                "    WHERE phone_type = 'Primary') AS phone1\n" +
+                "\n" +
+                "  JOIN\n" +
+                "    (SELECT * FROM phones_course_participants\n" +
+                "    WHERE phone_type = 'Secondary') AS phone2\n" +
+                "\n" +
+                "  GROUP BY phone1.course_participants_email) AS cpe ON cp.course_participants_email = cpe.course_participants_email\n" +
+                "\n" +
+                "  JOIN certificates ON cp.course_participants_email = certificates.course_participants_email\n" +
+                "\n" +
+                "  JOIN courses ON certificates.course_id = courses.course_id WHERE certificates.course_certificate_sent = 0;\n";
+
+        return connectToDatabase(sqlFetchMissingCertificatesParticipants);
     }
 
-    public static ArrayList<CourseParticipant>  getFiltered()
+    public static ArrayList<CourseParticipant>  getFiltered(String courseName)
     {
-        return null;
+        String sqlFetchFilteredParticipants = "USE AppAcademy;\n" +
+                "SET sql_mode = '';\n" +
+                "\n" +
+                "SELECT\n" +
+                "  course_participants_firstname AS 'First Name',\n" +
+                "  course_participants_lastname AS 'Last Name',\n" +
+                "  cp.course_participants_email AS Email,\n" +
+                "  ph1 AS Phone1,\n" +
+                "  ph2 AS Phone2,\n" +
+                "  certificates.course_certificate_sent AS 'Course Certificate Sent',\n" +
+                "  courses.course_name AS 'Course Name'\n" +
+                "\n" +
+                "FROM course_participants AS cp\n" +
+                "\n" +
+                "JOIN\n" +
+                "  (SELECT\n" +
+                "    phone1.course_participants_email,\n" +
+                "    phone1.phone_number AS ph1,\n" +
+                "    phone2.phone_number AS ph2\n" +
+                "\n" +
+                "  FROM\n" +
+                "    (SELECT * FROM phones_course_participants\n" +
+                "    WHERE phone_type = 'Primary') AS phone1\n" +
+                "\n" +
+                "  JOIN\n" +
+                "    (SELECT * FROM phones_course_participants\n" +
+                "    WHERE phone_type = 'Secondary') AS phone2\n" +
+                "\n" +
+                "  GROUP BY phone1.course_participants_email) AS cpe ON cp.course_participants_email = cpe.course_participants_email\n" +
+                "\n" +
+                "  JOIN certificates ON cp.course_participants_email = certificates.course_participants_email\n" +
+                "\n" +
+                "  JOIN courses ON certificates.course_id = courses.course_id WHERE courses.course_name = '"+courseName+"';\n";
+
+        return connectToDatabase(sqlFetchFilteredParticipants);
     }
 
     public static ArrayList<CourseParticipant>  getAll()
     {
-        ArrayList<CourseParticipant> returnParticipants = new ArrayList<>();
-
         String sqlFetchAllParticipants =
                 "SELECT\n" +
                        "  course_participants_firstname AS FirstName,\n" +
@@ -54,6 +120,14 @@ public class MySQLParticipants implements SQLOperations{
                        "\n" +
                        "  JOIN courses ON certificates.course_id = courses.course_id;\n" +
                        "\n";
+
+
+            return connectToDatabase(sqlFetchAllParticipants);
+    }
+
+    public static ArrayList<CourseParticipant> connectToDatabase(String sqlStatement)
+    {
+        ArrayList<CourseParticipant> returnParticipants = new ArrayList<>();
         try {
             Statement statement;
             ResultSet resultSet;
@@ -66,31 +140,27 @@ public class MySQLParticipants implements SQLOperations{
 
             statement = connection.createStatement();
 
-            resultSet = statement.executeQuery(sqlFetchAllParticipants);
+            resultSet = statement.executeQuery(sqlStatement);
 
-            System.out.println(resultSet);
             while(resultSet.next())
             {
                 returnParticipants.add(new CourseParticipant(
-                resultSet.getString("CourseName"),
-                resultSet.getString("FirstName"),
-                resultSet.getString("LastName"),
-                resultSet.getString("Phone1"),
-                resultSet.getString("Phone2"),
-                resultSet.getString("Email"),
-                resultSet.getBoolean("CourseCertificateSent"),
-                new Button("Send")
+                        resultSet.getString("CourseName"),
+                        resultSet.getString("FirstName"),
+                        resultSet.getString("LastName"),
+                        resultSet.getString("Phone1"),
+                        resultSet.getString("Phone2"),
+                        resultSet.getString("Email"),
+                        resultSet.getBoolean("CourseCertificateSent"),
+                        new Button("Send")
 
                 ));
-                }
-                connection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
             }
-
-            return returnParticipants;
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return returnParticipants;
     }
-
-
 }
 
