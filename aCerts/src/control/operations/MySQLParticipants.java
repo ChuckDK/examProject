@@ -23,17 +23,15 @@ public class MySQLParticipants implements SQLOperations{
         ArrayList<CourseParticipant> returnParticipants = new ArrayList<>();
 
         String sqlFetchAllParticipants =
-               "USE AppAcademy;\n" +
-                       "SET sql_mode = '';\n" +
-                       "\n" +
-                       "SELECT\n" +
-                       "  course_participants_firstname AS 'First Name',\n" +
-                       "  course_participants_lastname AS 'Last Name',\n" +
+                        "SET sql_mode = '';"+
+                "SELECT\n" +
+                       "  course_participants_firstname AS FirstName,\n" +
+                       "  course_participants_lastname AS LastName,\n" +
                        "  cp.course_participants_email AS Email,\n" +
                        "  ph1 AS Phone1,\n" +
                        "  ph2 AS Phone2,\n" +
-                       "  certificates.course_certificate_sent AS 'Course Certificate Sent',\n" +
-                       "  courses.course_name AS 'Course Name'\n" +
+                       "  certificates.course_certificate_sent AS CourseCertificateSent,\n" +
+                       "  courses.course_name AS CourseName\n" +
                        "  \n" +
                        "FROM course_participants AS cp\n" +
                        "\n" +
@@ -56,7 +54,7 @@ public class MySQLParticipants implements SQLOperations{
                        "  JOIN certificates ON cp.course_participants_email = certificates.course_participants_email\n" +
                        "\n" +
                        "  JOIN courses ON certificates.course_id = courses.course_id;\n" +
-                       "\n"
+                       "\n";
         try {
             Statement statement;
             ResultSet resultSet;
@@ -65,12 +63,13 @@ public class MySQLParticipants implements SQLOperations{
 
             String url = "jdbc:mysql://localhost:3306/AppAcademy";
 
-            Connection connection = DriverManager.getConnection(url, "root", "12345678");
+            Connection connection = DriverManager.getConnection(url, "root", "Xroyerdk87");
 
             statement = connection.createStatement();
 
             resultSet = statement.executeQuery(sqlFetchAllParticipants);
 
+            System.out.println(resultSet);
             while(resultSet.next())
             {
                 returnParticipants.add(new CourseParticipant(

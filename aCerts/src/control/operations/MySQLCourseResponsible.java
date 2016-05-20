@@ -13,6 +13,7 @@ public class MySQLCourseResponsible implements SQLOperations{
 
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
         String sqlStatement =
+
                 "SELECT \n" +
                 "    cr.course_responsible_email,\n" +
                 "    course_responsible_firstname,\n" +
@@ -55,7 +56,7 @@ public class MySQLCourseResponsible implements SQLOperations{
 
             String url = "jdbc:mysql://localhost:3306/AppAcademy";
 
-            Connection connection = DriverManager.getConnection(url, "root", "12345678");
+            Connection connection = DriverManager.getConnection(url, "root", "Xroyerdk87");
 
             statement = connection.createStatement();
 
@@ -86,6 +87,7 @@ public class MySQLCourseResponsible implements SQLOperations{
 
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
         String sqlStatement =
+                "SET sql_mode = '';"+
                 "SELECT \n" +
                         "    cr.course_responsible_email,\n" +
                         "    course_responsible_firstname,\n" +
@@ -128,7 +130,7 @@ public class MySQLCourseResponsible implements SQLOperations{
 
             String url = "jdbc:mysql://localhost:3306/AppAcademy";
 
-            Connection connection = DriverManager.getConnection(url, "root", "12345678");
+            Connection connection = DriverManager.getConnection(url, "root", "Xroyerdk87");
 
             statement = connection.createStatement();
 
@@ -160,6 +162,7 @@ public class MySQLCourseResponsible implements SQLOperations{
 
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
         String sqlStatement =
+                "SET sql_mode = '';"+
                 "SELECT\n " +
                 "    cr.course_responsible_email,\n" +
                 "    course_responsible_firstname,\n" +
@@ -196,7 +199,7 @@ public class MySQLCourseResponsible implements SQLOperations{
 
             String url = "jdbc:mysql://localhost:3306/AppAcademy";
 
-            Connection connection = DriverManager.getConnection(url, "root", "12345678");
+            Connection connection = DriverManager.getConnection(url, "root", "Xroyerdk87");
 
             statement = connection.createStatement();
 

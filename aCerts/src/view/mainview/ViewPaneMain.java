@@ -28,8 +28,8 @@ public class ViewPaneMain extends Pane implements Resizable
 
 
         participantsWithNoCertificates = new ListView<CourseParticipant>();
-        CourseParticipant dummypart = new CourseParticipant("","","","","", false,new Button());
-        participantsWithNoCertificates.getItems().addAll(dummypart);
+        //CourseParticipant dummypart = new CourseParticipant("","","","","", boolean,new Button());
+        //participantsWithNoCertificates.getItems().addAll(dummypart);
 
         activeCourseListLabel = new Label("Active Courses");
 

@@ -9,6 +9,7 @@ public class CourseParticipant {
     private String lastName;
     private String email;
     private String phoneNumber;
+    private String phoneNumber2;
     private boolean certificateSent;
     private Button sendButton;
 
@@ -18,6 +19,7 @@ public class CourseParticipant {
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.phoneNumber2 = phoneNumber2;
         this.sendButton = sendButton;
         this.certificateSent = certificateSent;
     }
@@ -83,5 +85,13 @@ public class CourseParticipant {
     public void setCertificateSent(boolean certificateSent)
     {
         this.certificateSent = certificateSent;
+    }
+
+    public String getPhoneNumber2() {
+        return phoneNumber2;
+    }
+
+    public void setPhoneNumber2(String phoneNumber2) {
+        this.phoneNumber2 = phoneNumber2;
     }
 }

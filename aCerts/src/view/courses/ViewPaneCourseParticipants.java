@@ -1,5 +1,6 @@
 package view.courses;
 
+import control.operations.MySQLParticipants;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -28,16 +29,16 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable
     {
         //create courses objects from mysql database and add them to temporary arraylist
         //for now just a dummy object
-
-        CourseParticipant dummy = new CourseParticipant("machine code", "John", "Wick", "jw@dummy.com", "112",false,  new Button());
-        ArrayList<CourseParticipant> coursesArray= new ArrayList<>();
-        coursesArray.add(dummy);
+//
+//        CourseParticipant dummy = new CourseParticipant("machine code", "John", "Wick", "jw@dummy.com", "112",false,  new Button());
+//        ArrayList<CourseParticipant> coursesArray= new ArrayList<>();
+//        coursesArray.add(dummy);
 
         //create an observablelist from our arraylist and create tableview
-
-        ObservableList<CourseParticipant> courses = FXCollections.observableArrayList(coursesArray);
+//
+//        ObservableList<CourseParticipant> courses = FXCollections.observableArrayList(coursesArray);
         courseParticipantTableView = new TableView<>();
-        courseParticipantTableView.itemsProperty().setValue(courses);
+//        courseParticipantTableView.itemsProperty().setValue(courses);
 
         //create columns for our tableview
 
@@ -146,6 +147,12 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable
 
             popup.initModality(Modality.APPLICATION_MODAL);
             popup.showAndWait();
+        });
+
+        allCourseParticipantsToggleButton.setOnAction(event -> {
+            ObservableList<CourseParticipant> courseParticipants = FXCollections.observableArrayList(MySQLParticipants.getAll());
+            courseParticipantTableView.itemsProperty().setValue(courseParticipants);
+
         });
     }
 
