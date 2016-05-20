@@ -2,9 +2,7 @@ package model.coursedata;
 
 import javafx.scene.control.Button;
 
-/**
- * Created by dennis on 5/13/16.
- */
+
 public class CourseParticipant {
     private String courseName;
     private String firstName;
@@ -14,7 +12,7 @@ public class CourseParticipant {
     private boolean certificateSent;
     private Button sendButton;
 
-    public CourseParticipant(String courseName, String firstName, String lastName, String email, String phoneNumber,boolean certificateSent, Button sendButton) {
+    public CourseParticipant(String courseName, String firstName, String lastName, String email, String phoneNumber, String phoneNumber2,boolean certificateSent, Button sendButton) {
         this.courseName = courseName;
         this.firstName = firstName;
         this.lastName = lastName;
