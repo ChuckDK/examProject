@@ -1,5 +1,9 @@
 package view.mainview;
 
+import control.operations.MySQLCourses;
+import control.operations.MySQLParticipants;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import model.coursedata.Course;
@@ -22,6 +26,8 @@ public class ViewPaneMain extends Pane implements Resizable
     {
         //Create a list view which can hold course objects.
         activeCoursesList = new ListView<Course>();
+        ObservableList<Course> activeCourses = FXCollections.observableArrayList(MySQLCourses.getActive());
+        activeCoursesList.itemsProperty().setValue(activeCourses);
 
         //Style the instance of the class with ACertsColorScheme.
         this.setStyle(ACertsColorScheme.viewColor());
@@ -29,8 +35,8 @@ public class ViewPaneMain extends Pane implements Resizable
 
 
         participantsWithNoCertificates = new ListView<CourseParticipant>();
-        //CourseParticipant dummypart = new CourseParticipant("","","","","", boolean,new Button());
-        //participantsWithNoCertificates.getItems().addAll(dummypart);
+        ObservableList<CourseParticipant> missingParticipants = FXCollections.observableArrayList(MySQLParticipants.getMissing());
+        participantsWithNoCertificates.itemsProperty().setValue(missingParticipants);
 
         //Add some labels.
         activeCourseListLabel = new Label("Active Courses");

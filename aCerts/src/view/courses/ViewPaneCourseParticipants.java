@@ -27,18 +27,10 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable
 
     public ViewPaneCourseParticipants()
     {
-        //create courses objects from mysql database and add them to temporary arraylist
-        //for now just a dummy object
-//
-//        CourseParticipant dummy = new CourseParticipant("machine code", "John", "Wick", "jw@dummy.com", "112",false,  new Button());
-//        ArrayList<CourseParticipant> coursesArray= new ArrayList<>();
-//        coursesArray.add(dummy);
 
-        //create an observablelist from our arraylist and create tableview
-//
-//        ObservableList<CourseParticipant> courses = FXCollections.observableArrayList(coursesArray);
+        ObservableList<CourseParticipant> courseParticipantsArray = FXCollections.observableArrayList(MySQLParticipants.getMissing());
         courseParticipantTableView = new TableView<>();
-//        courseParticipantTableView.itemsProperty().setValue(courses);
+        courseParticipantTableView.itemsProperty().setValue(courseParticipantsArray);
 
         //create columns for our tableview
 

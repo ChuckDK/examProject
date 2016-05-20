@@ -1,5 +1,6 @@
 package view.login;
 
+import control.operations.MySQLCourseResponsible;
 import control.settings.FTPSettings;
 import control.settings.MySQLSettings;
 import control.settings.SMTPSettings;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import model.coursedata.CourseResponsible;
 import model.settings.FTPSettingsFile;
 import model.settings.MySQLSettingsFile;
 import model.settings.SMTPSettingsFile;
@@ -102,52 +104,29 @@ public class ViewPaneLogin extends Pane implements Resizable
             //An if statement which class the getInstance method from the ViewPanesManager class which
             //evaluates whether or not the user has admin rights.
             ViewPanesManager viewPanesManager;
-            if(usernameTextField.getText().equals("admin"))
+            CourseResponsible user = MySQLCourseResponsible.login(usernameTextField.getText(), passwordTextField.getText());
+
+            if(user == null)
             {
-                viewPanesManager = ViewPanesManager.getInstance(true);
+                messageLabel.setText("LoginFailed");
             }
             else
             {
-                viewPanesManager = ViewPanesManager.getInstance(false);
-            }
-
-            //Initialize the starting scene where you get the first window
-            //from the array in the ViewPanesManager class.
-            //The getPane(0) will differ depending on whether or not the user has admin rights.
-            Scene scene = new Scene(viewPanesManager.getPane(0));
-            SceneInitializer.getMainWindow().setScene(scene);
-            scene.widthProperty().addListener(ex1-> SceneInitializer.updateView(scene));
-            scene.heightProperty().addListener(ex1-> SceneInitializer.updateView(scene));
-            ((Resizable) viewPanesManager.getPane(0)).updateLayout();
-
-            //A try-catch where settings files are read and their data placed in the different settings in the program.
-            //See the controller package for more information regarding the methods' functionality.
-            try
-            {
-                MySQLSettingsFile sqlSettings = (MySQLSettingsFile) MySQLSettings.readObject("MySQLSettingsFile");
-                FTPSettingsFile ftpSettings = (FTPSettingsFile) FTPSettings.readObject("FTPSettingsFile");
-                SMTPSettingsFile smtpSettings = (SMTPSettingsFile) SMTPSettings.readObject("SMTPSettingsFile");
-
-                MySQLSettings.setDatabaseName(sqlSettings.getDatabaseName());
-                MySQLSettings.setPort(sqlSettings.getPort());
-                MySQLSettings.setHost(sqlSettings.getHost());
-                MySQLSettings.setPassword(sqlSettings.getPassword());
-                MySQLSettings.setUsername(sqlSettings.getUserName());
-
-                FTPSettings.setHost(ftpSettings.getHost());
-                FTPSettings.setPassword(ftpSettings.getPassword());
-                FTPSettings.setPort(ftpSettings.getPort());
-                FTPSettings.setUsername(ftpSettings.getUsernamer());
-
-                SMTPSettings.setEmail(smtpSettings.getEmail());
-                SMTPSettings.setPort(smtpSettings.getPort());
-                SMTPSettings.setUsername(smtpSettings.getUserName());
-                SMTPSettings.setHost(smtpSettings.getHost());
-                SMTPSettings.setPassword(smtpSettings.getPassword());
-            }
-            catch (Exception e1)
-            {
-                e1.printStackTrace();
+                if (user.hasAdminRights())
+                {
+                    viewPanesManager = ViewPanesManager.getInstance(true);
+                } else
+                {
+                    viewPanesManager = ViewPanesManager.getInstance(false);
+                }
+                //Initialize the starting scene where you get the first window
+                //from the array in the ViewPanesManager class.
+                //The getPane(0) will differ depending on whether or not the user has admin rights.
+                Scene scene = new Scene(viewPanesManager.getPane(0));
+                SceneInitializer.getMainWindow().setScene(scene);
+                scene.widthProperty().addListener(ex1-> SceneInitializer.updateView(scene));
+                scene.heightProperty().addListener(ex1-> SceneInitializer.updateView(scene));
+                ((Resizable) viewPanesManager.getPane(0)).updateLayout();
             }
         });
     }

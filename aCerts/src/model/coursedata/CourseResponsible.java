@@ -6,14 +6,16 @@ public class CourseResponsible {
     private String phoneNumber;
     private String phoneNumber2;
     private String email;
+    private boolean adminRights;
 
-    public CourseResponsible(String firstName, String lastName, String phoneNumber, String phoneNumber2, String email)
+    public CourseResponsible(String firstName, String lastName, String phoneNumber, String phoneNumber2, String email, boolean adminRights)
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.phoneNumber2 = phoneNumber2;
         this.email = email;
+        this.adminRights = adminRights;
     }
 
     public String getFirstName() {
@@ -58,5 +60,8 @@ public class CourseResponsible {
         this.email = email;
     }
 
-
+    public boolean hasAdminRights()
+    {
+        return adminRights;
+    }
 }
