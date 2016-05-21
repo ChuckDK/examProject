@@ -1,0 +1,2 @@
+Vision
+This program shall function as a way of creating  and sending certificates for course participants. The administrative course responsibles for the program can add new information regarding courses and their participants.

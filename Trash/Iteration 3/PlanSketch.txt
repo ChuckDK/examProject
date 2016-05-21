@@ -1,0 +1,516 @@
+
+Tirsdag – Heldags efter skole / Maks 23
+Fredag -  Heldags / Min. Midnat
+
+Priority: ITO, SWD, SWK/OSCA
+
+Pauser: 2 timers arbejde = 30 mins. Pause.
+
+Report: Min. pgs 45-70 mx.
+Hand-in June 1st 2016, 12:00 pm
+
+-------------------------------------------------------------------------------------
+Tasks>
+-------------------------------------------------------------------------------------
+Inception phase
+
+Elaboration phase
+
+Construction phase
+Activity diagram (limited) / How work load is shared.
+Full Documentation / Comments for every method
+Program itself: Classes, methods, variables, conditions, loops, data structure(Collection/Obs.List), Inheritance/Interfaces, GUI JAVAFX
+Usage of patterns, GRASP
+User manual
+Reviews
+
+
+-------------------------------------------------------------------------------------
+In progress>
+-------------------------------------------------------------------------------------
+
+
+
+Correct colour code in Database Spreadsheet, Iteration 3
+
+Sequence Diagrams, Iteration 3
+
+
+
+
+
+-------------------------------------------------------------------------------------
+Done>
+-------------------------------------------------------------------------------------
+
+Assorted Tasks>
+ER Diagram, Construction / Ask Signe about ER Diagram / ER Auto-Gen is okay as long as it's correct and we can explain it.
+Use Case Diagrams, Elaboration / Ask Asger monday, reg. extends includes etc., Iteration 2
+Setting up a file for the report itself that meets criteria, see assignment handout, Iteration 2
+Prepare everything for SWOT, Iteration 1
+Iteration 2 - Finished 9th of May 2016.
+Missing: (Brief) View Course Participants, Iteration 2
+Jonas/Fredrik - Correct Use Cases in Report and models, Iteration 3
+Adjust/Create(MySQL Settings Casual+SystemSeq.Dia.) UseCases, System Sequence Diagrams, Use Case Diagram, Iteration 3
+Adjust Prototype; List View Existing Course Responsibles, Course Certificate Sent True Fals Column , Iteration 3
+Correct Prototype / Add Course Participant Part
+
+
+
+
+Inception>
+
+Preliminary ER Diagram, Iteration 1
+Prototype Version 1, Iteration 1
+
+Elaboration>
+
+Prototype Version 2 , Iteration 2
+Prototype Version 3 Admin Rights, Iteration 3
+Prototype Version 3 Regular, Iteration 3
+
+Construction>
+
+Making a database, Iteration 1
+Database Normalisation, Iteration 2
+Database description schema, Iteration 2
+Scene Graph, Iteration 2
+Class diagram with relational schema, Iteration 3
+Class model (Logical arch / Layers), Iteration 3
+
+
+
+
+Transition>
+
+-------------------------------------------------------------------------------------
+Across Phases>
+------------------------------------------------------------------------------------
+
+CaptainsLog
+PlanSketch
+ServerInfo
+
+-------------------------------------------------------------------------------------
+Rapport done>
+-------------------------------------------------------------------------------------
+Inception Rapport>
+Requirements analysis, Iteration 1
+Stakeholder Analysis(Risk Analysis), Iteration 1
+Feasibility Studies(Technical, Schedule), Iteration 1
+Vision, Iteration 2
+
+Elaboration Rapport>
+FURPS+, Iteration 2
+Use Classes, 17 Total, Iteration 2
+System Sequence Diagram, Iteration 2
+Domain Model, Iteration 2
+Preliminary Domain Model / Footnote, Iteration 2
+
+Construction Rapport>
+
+Transition Rapport>
+
+
+-------------------------------------------------------------------------------------
+Task Trash>
+-------------------------------------------------------------------------------------
+
+Gant Chart
+Qscribbles
+Qteachers
+
+
+-------------------------------------------------------------------------------------
+Plan OLD>
+-------------------------------------------------------------------------------------
+
+Use Case pr. Function. Briefs are bare minimum
+Fully Dressed (Generate Certificate Template, Send Missing Certificate, Add Course)
+
+Casual (Remove Course, Remove Course Participant, FTP Settings, SMTP Settings)
+
+Brief (Add Course Participant(s), Add Course Responsible, Remove Course Responsible, Remove Certificate Template, List Courses, List Course Responsibles, View Missing Certificate, View Active Courses, View All Courses, View Inactive Courses)
+
+
+-------------------------------------------------------------------------------------
+Questions>
+-------------------------------------------------------------------------------------
+1. How do we properly make it clear that we've used UP as a tool to develop our project?
+Asger: “It Will be apparent through the way our project is structured.”
+
+2. Ask Asger about license and which diagrams to use (construction phase → state diagram)?
+Ager: "Tilstands diagram hvis vores program har tisltande, kommer an på om det giver mening."
+
+3.
+
+
+-------------------------------------------------------------------------------------
+Captains Log>
+-------------------------------------------------------------------------------------
+
+March 21st 2016
+_______________
+
+We had a meeting regarding our project for App Academy. During todays meeting we made a preliminary Entity Relation diagram draft and Class Diagram along with Domain Model diagram using Visual Paradigm v. 12.2. We had initial discussions regarding structure and design of the program and took a deeper look at Kristian’s draft regarding his wishes for the new platform.
+
+We agreed to use GitHub as our version control, and decided to use English as our sole language throughout the project. Everything created or thought of will be digitalised during our project and stored online. “Paper” prototypes will be created in Balsamiq Mockups 3.
+
+We’ve agreed that the next meeting will be held Tuesday 29th of March after class, due to Easter Holidays there will be quite a long time between this first meeting and the next, future meetings will be held twice a week.
+
+We tried calling App Academy’s owner Kristian with enquiries regarding the design of the certificate itself. We’ve written him an email with our further questions.
+
+Members Present: Dennis, Jonas, Emil, Fredrik. (All)
+
+March 29th 2016
+_______________
+
+We’ve quickly looked through our basic java files. We’ve commenced our prototype. Besides this we’ve decided to add a toDo list for a quick overview of urgent tasks. Also there’s been added quickscribbles which is a collection of shorthand notes reg. Design decisions and debate/decisions in general. The prototype is quite vast and most GUI design decisions regarding admin user level have been decided and presented today.
+
+For our next session we will be discussing secondary user level interface and prototyping it. We will also call Kristian and inform him about our Repo and give him the necessary information to hook onto it and be updated about our progress on the fly. We’ve decided that all software design aspects have to be done before any coding can commence.
+
+Members Present: Dennis, Jonas, Emil, Fredrik. (All)
+
+April 1st 2016
+_______________
+
+Called Kristian, no reply but left a voicemail and hopefully he calls back. TableViews have been added to our prototype. Had a couple class members do short reviews on our prototype.
+
+For our next session we will add full functionality to our prototype so that interaction will be possible and give a good idea on how the program is supposed to work.
+
+Members Present: Dennis, Jonas, Emil, Fredrik. (All)
+
+April 4th 2016
+_______________
+
+Meeting was moved to April 5th 2016.
+
+
+April 5th 2016
+_______________
+
+Meeting was held and Kristian joined due to being at KEA. We continued working on our prototype and finished adding final functionality to it. Kristian had a look at our prototype and was satisfied with our design decisions and the prototype itself. We talked with him about functionality and we arrived at a decision to also add a certificate generator where he could edit the position of data printed along with certificate image. We have thus finished our first iteration of the program and it’s fully functional in balsamiq.
+
+For our next meeting we will be working on our use cases and flow diagrams.
+
+PS – We’ve decided to postpone our Friday meeting due to submissions and general studies.
+
+Members Present: Dennis, Jonas, Emil, Fredrik (All) + Client.
+
+April 11th 2016
+_______________
+
+We’ve met with Asger and had him review Kristian’s requirements as per email from 18.03.2016. He accepted the requirements and the project but added that statistics from database would be a good idea. Nice to have feature. Afterwards we worked on our activity diagram and added a casual Use Case. We’ve agreed that all software design will be done before April 23rd 2016, so that coding can commence after that date.
+
+Next meeting: We will work further on software design in general. Specifics will be agreed upon then.
+
+Members Present: Dennis, Jonas, Emil, Fredrik (All) + Asger. Feedback & open discussion.
+
+April 12th 2016
+_______________
+
+A fully dressed use case for template generation has been made. Certain points regarding general design have been added to our qscribbles file. These were added during the making of our Use Case where we realised certain flaws in our design.
+
+Next meeting: We will be looking at the assignments requirements from our teachers and client, having assessed those we will spend some time getting and overview from which we can plan our further approach.
+
+Members Present: Jonas, Emil, Fredrik (Dennis had some KEA business, accepted by group beforehand).
+
+April 18th 2016 / Iteration 1 has ended
+_______________
+
+We’ve made an initial project plan sketch. We’ve tried gathering an overview of missing tasks and things that need to be done for our project to be complete, so that we can assess our time and what’s required. We’ve made a crude priority list of what needs to be done first and agreed upon a fixed meeting schedule that requires more hours than we’ve put into the project thus far. From this point on we have 13 group sessions planned at 10 hrs. each. So a total of 520 man hours left before deadline, this is taking into account school classes that will be dedicated to our project, we haven’t taking these into account due to their vague nature.
+
+Next meeting: Tomorrow during our next meeting our focus will be 100% directed towards ITO requirements and completing as many of them as possible.
+
+Members Present: Jonas, Emil, Dennis, Fredrik (All).
+
+April 19th 2016 / Iteration 2 has begun
+_______________
+
+Finally managed to get started on our Report. We’ve completed our feasibility studies along with Stakeholder analysis’. This also means that due to our feasibility studies that we now know the exact amount of time that we have left to complete the entire project and will be adding a countdown on developer hours in the captains log from here on.
+
+Next meeting: ITO(Risk Analysis), Commence description of UP in Project.
+
+Members Present: Jonas, Emil, Dennis, Fredrik (All).
+
+Developer Hours: 10 hours on ITO.
+
+ITO: 10/20 – SWD: 0/70 – OSCA: 0/10 – SWK: 0/30 – Buffer 0/61.5
+
+ETA: 181,5 Hrs Remaining pr. Developer
+
+April 22nd 2016
+_______________
+
+Today we had some trouble finding a place to study as KEA was closed for the holidays. However we managed to get into KU, but two hours after schedulded meeting time. We finished our risk analysis from ITO. We tried to proceed with documenting the fact that we’ve used UP while working on the project, but we figured that we need to consult Asger about this as we don’t know how to do it properly. Instead we initiated a mapping of the tables in our database along with normalization process while the teachings from class are still fresh in memory.
+
+Next meeting: Ask Signe about Normalization, Ask Asger about UP, Ask Kristian about SWOT
+		Continue DB Normalization, Finish UP, Finish ITO SWOT
+
+Members Present: Jonas, Fredrik (2 Short).
+
+Developer Hours: 2 hours ITO, 2 hours from budget in unforseen closing of KEA, 6 hours SWK
+
+ITO: 12/20 – SWD: 0/70 – OSCA: 0/10 – SWK: 6/30 – Buffer 2/61.5
+
+ETA: 171,5 Hrs Remaining pr. Developer
+
+April 26th 2016
+_______________
+
+We’ve finally finished normalization of our database and initial scripts for the database. We’re going to implement foreign keys next time. This log was written on April 29th due to a glitch in the matrix. We managed to get in touch with Signe as well regarding questions for normalization, and got some good feedback on our process.
+
+Next meeting: Ask Asger about UP, Ask Kristian about SWOT
+		Finish UP, Finish ITO SWOT
+
+Members Present: Dennis, Fredrik, Jonas&Emil were there for half a session.
+
+Developer Hours: 7 hours SWK, 3 hours SWD
+
+ITO: 12/20 – SWD: 3/70 – OSCA: 0/10 – SWK: 13/30 – Buffer 2/61.5
+
+ETA: 161,5 Hrs Remaining pr. Developer
+
+April 29th 2016
+_______________
+
+ We completed our Database script with all the details and added the dummy information from our normalization processes. We revisited some old use cases and our now prototype version 1 has been amended to fit the current level of development. We’ve added certain features that had been forgotten and removed unnecessary fluff. We also found the necessary code and information to implement FTP and SMTP communication into our program and got that working with our server, so now we will be able to store CourseMaterial and Certificate copies online and send out certificates using emails on course participants from the database. A very productive day indeed.
+
+Next meeting:
+		Add FTP SMTP editor to Prototype V2
+		Ask Asger about UP
+		Ask Kristian about SWOT
+		Finish UP
+		Finish ITO SWOT
+
+Members Present: Dennis, Fredrik, Jonas.
+
+Developer Hours: 3 hours SWK, 7 hours SWD
+
+ITO: 12/20 – SWD: 10/70 – OSCA: 0/10 – SWK: 16/30 – Buffer 2/61.5
+
+ETA: 151,5 Hrs Remaining pr. Developer
+
+May 3rd 2016
+_______________
+
+Today we identified processes according to their correct UP position. We finalised all our Use Cases and the Domain Model. We started Use Case Diagrams, but we havn’t been able to finish this during todays session. FURPS+ has been finalised. Vision has been commenced, needs further inspection though. We’ve agreed for a conference call with Kristian on May 10th for a short review and key information for our SWOT analysis. We’ve restructured our project folder to reflect our progress and iterations in a more visible manner. We’ve also been forced to send Emil a short message reg. his performance and enthusiasm as of late. He’s not been attending group sessions as agreed and when present he doesn’t participate and leaves halfway through. We hope for improvement.
+
+Next meeting: Finish SWD
+		Revise Vision
+
+Members Present: Dennis, Fredrik, Jonas, Emil 1/3 Session
+
+Developer Hours: 10 hours SWD
+
+ITO: 12/20 – SWD: 20/70 – OSCA: 0/10 – SWK: 16/30 – Buffer 2/61.5
+
+ETA: 141,5 Hrs Remaining pr. Developer
+
+May 6th 2016 /  Iteration 2 has ended
+_______________
+
+We've identified several issues with our UP. We need to iterate more frequently. Be better at pin pointing iteration points. We've restructured our approach to be more focused on iterations in general. We've commenced coding GUI features and finalised a 3rd iteration of our prototype. We've finished system sequence diagrams and prepared a general report document. Our approach thus far in general has been too heavily focused on on an approach that risks being classified as Waterfall model and iterations will regain focus now.
+
+
+Next meeting: See Progress Table
+				Finalise preliminary code
+
+
+Members Present: Dennis, Fredrik, Jonas, Emil
+
+Developer Hours: 7 hours SWD, 2 hours ITO, 1 hour SWK
+
+ITO: 14/20 – SWD: 27/70 – OSCA: 0/10 – SWK: 17/30 – Buffer 2/61.5
+
+ETA: 131,5 Hrs Remaining pr. Developer
+
+
+
+May 10th 2016 / Iteration 3 has begun
+_______________
+
+Group met as planned, we adjusted and corrected Use Cases to fit the current stage of our program and added 'View Course Participant' use case. Prototype has changed yet again and will have to be further refined at next meeting. We also finished a very thourough Class Diagram using MVC(Model, View, Control) and also implemented Logical Architecture Diagram, which still needs some work. We've decided that if any new variable/functions/methods etc. need to be implented into the code which will be written down using Class Diagrams next time, we will adjust current Iteration 3 Class Diagrams according to these minor changes.
+
+Kristian Conference Call - Never Called as agreed.
+
+Next meeting:	See Progress Section
+				Correct Prototype
+				Finish Class Diagram, Model part
+				Finish remains on Logical Architecture
+				Try Calling Kristian
+				Commence actual code using Class Diagrams.
+
+
+Members Present: Dennis, Fredrik, Jonas, Emil
+
+Developer Hours: 2 hours SWD, 8 hours SWK
+
+ITO: 14/20 – SWD: 29/70 – OSCA: 0/10 – SWK: 25/30 – Buffer 2/61.5
+
+ETA: 121,5 Hrs Remaining pr. Developer
+
+
+May 13th 2016
+_______________
+
+Today we had our regular friday crunch day. We finalised our Logical Architecture and finished Model part of our Class Diagram, we've finally been able to commence some real coding and have almost finished our GUI part of aCerts. It's going to be great fun next time, where we will continue coding. We found a minor oversight, it's actually impossible to assing our Course Participants to a Course, this will be corrected for next time. We still havn't been able to get a hold of Kristian which is very frustrating since we need his help with certain parts of our ITO assignment, SWOT analysis etc. Well, maybe next time.
+
+Another thing we can observe now is that we've budgetted our time incorrectly, We've exceeded our SWK total Budget of 30 hours by 2 and we're far from done. On the other hand we have alot more time assigned to SWD than will be used with concurrenct ad-hoc tasks. We will agree on how much time should be taken from Buffer and maybe some from SWD aswell during the next Metting, so that we can achieve a more accurate target.
+
+Next meeting:	See Progress Section
+				Correct Prototype / Add Course Participant Part
+				Try Calling Kristian
+				Continue coding GUI part of aCerts
+
+
+Members Present: Dennis, Fredrik, Jonas, Emil
+
+Developer Hours: 3 hours SWD, 7 hours SWK
+
+ITO: 14/20 – SWD: 32/70 – OSCA: 0/10 – SWK: 32/30 – Buffer 2/61.5
+
+ETA: 111,5 Hrs Remaining pr. Developer
+
+
+
+
+May 17th 2016
+_______________
+
+Today has been a primarily production day. We've been coding the entire GUI/View part of aCerts, we've only got some minor bugs to fix. There is not much to say as everything has been smooth sailing. Next time we will be implementing functionality and finalising Iteration 3.
+
+
+Next meeting:	See Progress Section
+				Try Calling Kristian
+				Add functionality to aCerts
+
+
+Members Present: Dennis, Fredrik, Jonas, Emil
+
+Developer Hours: 1 hour SWD, 9 hours SWK
+
+ITO: 14/20 – SWD: 33/70 – OSCA: 0/10 – SWK: 41/30 – Buffer 2/61.5
+
+ETA: 101,5 Hrs Remaining pr. Developer
+
+
+May 20th 2016 / Iteration 3 ends
+_______________
+May 24th 2016 / Iteration 4 Begins / Transition Phase is main focus
+_______________
+May 27th 2016
+_______________
+May 31st 2016
+_______________
+
+
+
+
+-------------------------------------------------------------------------------------
+Quick Notes>
+-------------------------------------------------------------------------------------
+0.
+Vi har valgt at anvende en blanding af vandfaldsmodel og UP. Dette har vi gjort fordi, at vores kunde grundlæggende har været sikker på kravene til programmet. Samtidig har det været sundt for projektet at gå tilbage og revidere implementeringen og modeleringen af af de krav vi har haft. Vi har derved arbejdet iterativt (lavet noget, som vi senere hen har evauleret og lavet om/gjort bedre) og stringent efter inception, elaboration, construction og transition. Det har vœret en langsommere UP udvikling med fœrre iterationer end det der sœdvanligvis kendetegner UP, og med lånte principper fra vandfaldsmodellen.
+
+
+1.
+Admin Main View: Active Courses - Timeframe (2 days +, 1 days -)
+				 Missing Certs Window - Level of View: Courses
+				 // For both update windows we'll add real-time functionality.
+
+2.
+Admin Main View vs Course Responsible View conflict. There is a conflict in terms that we'll have Users who are simultaneously course responsibles and admins and which Landing Page should be prioritised for Main View. We've decided that Admin should always land on Admin Main View as default and that if the Admins wishes he will have a settings checkbox where he can decide on Course Responsible View, which will then be stored for the future until unchecked.
+
+3.
+Database Design:
+
+We've discussed userID vs. email as identififaction for participants since both are unique. We decided on userID's not being superficial so that emails could be changed at a later point without corrupting pre-existing data. This is the same accross the board for all actors.
+
+4. Trashed
+View as functionality:
+We've decided to add View as functionality within the Admin Settings pane. It's a dropdown selection of each individual user. When a user is selected and the "View as" button pressed a new window with the program will be launched following that user's access level, when that program is closed the original admin program will not be closed along with it. Both programs will be running simultaneously, admin will be inactive while the other Window is open and reactived once closed.
+
+5. Home Screen
+
+Home Screen will not give you a database view at any point, it will simulate a collection of tabs and buttons that give access to functionality and information through secondary means. The entire program will spawn new Windows the further you go down the rabbit hole. Each previous window till become inactived until you've taken action on the most recently opened window. This way we prevent any confusion and follow the norm in using pop-up windows within a program.
+
+
+6. Language Fil / Importance: Minor / Risk: None
+Til allersidst hvis tiden er til det vil vi implementere en language fil saaledes at man kan skifte imellem sprog.
+
+7. Certificate Generator / Importance: High / Risk: High
+We've decided to add a Custom Certificate Generator and have thoughts about using unit testing on this part of the program to ensure proper functionality. This will be prioritised above Language File functionality. The Client would be very happy if this were to be implemented into our program.
+
+8. Database info from Kristian
+We are going to run the entire program on a seperate database from their exisiting one. We will have to decide on structure and general implementation thereof.
+
+9. Statistics
+Eventually we might add a statistics part so that he can use this functionality for customer retention as suggested by Asger.
+
+10. Password Reset / Importance: Critical / Risk: High
+We've discussed the need to add a password reset button before login in case the admin throws away his password so that the system won't be lost. This reset password will be hardcoded into the system. Functionality has not been added in prototype. The password reset system will reset all admin accounts.
+
+11. Generate Course Cert. / Importance: Critical / Risk: Low
+Discussing which information should be mandatory.
+[ ] Signature of Course Responsible / None Mandatory
+[x] Date of Certificate Print / None Mandatory
+[ ] Course Participant / None Mandatory
+[ ] Course Name	/ Mandatory
+
+We've reasoned that Course Name should be mandatory. They're the bare minimum information required for a certificate. This could come in handy in a scenario where you have a course with hundreds of unregistered participants and you pre-print alot of certificates to be handed out manually at the course itself.
+
+12. Scheduling Feasibility Studies / Source: http://www.simplilearn.com/feasibility-study-article
+Scheduling Feasibility is the most important in terms of project success. A project will fail if not completed on time. In scheduling feasibility we estimate how much time the system will take to complete and with our technical skill we need to estimate the period to complete the project using some methods.
+
+
+13. Template Serial
+We've come to the realisation, that the course certificate serial could be a composite key of (CourseParticipantID, CourseID).
+
+14. Prototype retro perspective
+After initiating in use case gathering, we have reviewed our mock-up and have been able to enlist some nessecary changes for an upcoming 2.0 version:
+- How do you get to course participants?
+- How do you access course material AND how do you access/upload couse material AFTER the course has finished/has been added?
+- Remove "Admin" and replace with "Course responsible with admin rights"
+- HOW DO YOU SEND CERTIFICATES? Do we do it via OS mail program or directly behind the scenes through a mail server? Ask Kristian!!
+- A pane menu, anything where you administer removal in general.
+
+15. Use Case Model Segmentation
+TRASHED
+Group 1: Course Responsible Admin Rights, Generate Certificate Template, FTP Settings, SMTP Settings, Remove Course Responsible, Remove Course, Add Course Responsible, Remove Certificate Template
+
+Group 2: Course Responsible
+Add Courses, Add Course Participant(s), Remove Course Participant, Send Missing Certificate
+
+Group 3: Viewables
+View Courses, View Course Responsibles, View Missing Certificate, View Active Courses, View All Courses, View Inactive Courses
+TRASHED
+
+CD Generate Course Certificate Template, Remove Certificate Template
+
+CRD Add Course Responsble, View Course Responsibles, Remove Course Responsible
+
+CR Add Course, View Courses,<extends> View Active Courses, View All Courses, View Inactive Courses
+
+Remove Course
+FTP Settings
+SMTP Settings
+
+RU View Missing Certificate, Send Missing Certificate
+
+CRD Add Course Participant, View Course Participant, Remove Course Participant
+
+CRUD, CREATE READ UPDATE DELETE.
+
+NUMBER INDEXED USE CASe
+
+COLOUR CODE EVT
+
+RENAME TO VIEW
+
+
+
+
+
+
+
