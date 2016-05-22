@@ -133,6 +133,15 @@ public class ViewPaneCourses extends Pane implements Resizable
 
             ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
 
+            ((Button) popupPane.getChildren().get(8)).setOnAction(ex->
+            {
+                if(popupPane.checkForValues())
+                {
+                    popup.close();
+                }
+            });
+
+
             popup.initModality(Modality.APPLICATION_MODAL);
             popup.showAndWait();
         });

@@ -1,5 +1,7 @@
 package view.courses;
 
+import control.operations.Login;
+import control.operations.SQLOperations;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -26,7 +28,7 @@ public class PopUpAddCourse extends Pane {
     private Button uploadCourseMaterialButton;
     private Button addCourseButton;
     private Button cancelButton;
-    private Button assignCourseResponsible;
+    protected Button assignCourseResponsible;
 
     private CourseResponsible courseResponsible;
 
@@ -105,8 +107,7 @@ public class PopUpAddCourse extends Pane {
                 endDatePicker,
                 endDateLabel,
                 uploadCourseMaterialButton,
-                addCourseButton,
-                assignCourseResponsible);
+                addCourseButton);
 
         //styling
         cancelButton.setStyle(ACertsColorScheme.buttonColor());
@@ -161,31 +162,39 @@ public class PopUpAddCourse extends Pane {
 
     public boolean checkForValues()
     {
-        boolean succeeded = false;
+        String courseResponsibleEmail = "";
+        boolean allInfoFilledIn = true;
         DropShadow error = new DropShadow();
         error.setColor(Color.RED);
-        String startDate = ""+startDatePicker.getValue().getYear()+startDatePicker.getValue().getMonth()+startDatePicker.getValue().getDayOfMonth();
-        String endDate = ""+endDatePicker.getValue().getYear()+endDatePicker.getValue().getMonth()+endDatePicker.getValue().getDayOfMonth();
-        String courseName = courseNameTextField.getText();
-        if(startDate.equals(""))
+        String startDate = "";
+        String endDate = "";
+        try
         {
-            startDatePicker.setEffect(error);
-        }
-        else
-        {
+            startDate = "" + startDatePicker.getValue().getYear() + "-" + startDatePicker.getValue().getMonthValue() + "-" + startDatePicker.getValue().getDayOfMonth();
             startDatePicker.setEffect(null);
         }
-        if(endDate.equals(""))
+        catch (NullPointerException n)
         {
-            endDatePicker.setEffect(error);
+            startDatePicker.setEffect(error);
+            allInfoFilledIn = false;
         }
-        else
+        try
         {
+            endDate = "" + endDatePicker.getValue().getYear() + "-" + endDatePicker.getValue().getMonthValue() + "-" + endDatePicker.getValue().getDayOfMonth();
             endDatePicker.setEffect(null);
         }
+        catch (NullPointerException n)
+        {
+            endDatePicker.setEffect(error);
+            allInfoFilledIn = false;
+        }
+
+        String courseName = courseNameTextField.getText();
+
         if(courseName.equals(""))
         {
             courseNameTextField.setEffect(error);
+            allInfoFilledIn = false;
         }
         else
         {
@@ -193,7 +202,20 @@ public class PopUpAddCourse extends Pane {
         }
         if(courseResponsible == null)
         {
-
+            courseResponsibleEmail = Login.getUserEmail();
+        }
+        if(allInfoFilledIn)
+        {
+            String[] values = {"course_id", "'"+courseName+"'", "'"+startDate+"'", "'"+endDate+"'", "'"+courseResponsibleEmail+"'", "1"};
+            if(SQLOperations.addNewRow("courses", values))
+            {
+                return true;
+            }
+            else
+            {
+                System.out.println("error");
+                return false;
+            }
         }
         return false;
     }

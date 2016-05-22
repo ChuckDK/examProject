@@ -45,7 +45,7 @@ CREATE TABLE courses(
   course_start_date DATETIME NOT NULL,
   course_end_date DATETIME NOT NULL,
   course_responsible_email varchar(50) NOT NULL, FOREIGN KEY (course_responsible_email) REFERENCES course_responsibles(course_responsible_email),
-  certificate_template_id INT NOT NULL  UNIQUE , FOREIGN KEY (certificate_template_id) REFERENCES certificate_templates(certificate_template_ID)
+  certificate_template_id INT NOT NULL, FOREIGN KEY (certificate_template_id) REFERENCES certificate_templates(certificate_template_ID)
 );
 
 

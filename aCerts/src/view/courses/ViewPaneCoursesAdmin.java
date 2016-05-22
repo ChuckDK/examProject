@@ -1,6 +1,9 @@
 package view.courses;
 
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import view.styling.ACertsColorScheme;
 
 public class ViewPaneCoursesAdmin extends ViewPaneCourses{
@@ -22,6 +25,31 @@ public class ViewPaneCoursesAdmin extends ViewPaneCourses{
 
         //Styling the removeCourses button using ACertsColorScheme.
         removeCourses.setStyle(ACertsColorScheme.buttonColor());
+
+        //replacing functionality so that the addcourse button now opens the admin version og the popup
+        addNewCourses.setOnAction(e->
+        {
+            //Create a popup window using an instance of the PopUpAddCourseAdmin class.
+            //See the class for it's content.
+            Stage popup = new Stage();
+            popup.setTitle("Add new course");
+            PopUpAddCourseAdmin popupPane = new PopUpAddCourseAdmin();
+            popup.setScene(new Scene(popupPane,  500, 400));
+
+            ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
+
+            ((Button) popupPane.getChildren().get(8)).setOnAction(ex->
+            {
+                if(popupPane.checkForValues())
+                {
+                    popup.close();
+                }
+            });
+
+
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.showAndWait();
+        });
     }
 
     //Override the updateLayout method from the Resizable interface to make

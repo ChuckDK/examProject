@@ -14,7 +14,7 @@ public class PopUpAddCourseAdmin extends PopUpAddCourse {
         addCourseResponsibleButton.setLayoutX(270);
         addCourseResponsibleButton.setLayoutY(140);
 
-        this.getChildren().addAll(addCourseResponsibleButton);
+        this.getChildren().addAll(addCourseResponsibleButton, assignCourseResponsible);
 
         //styling
         addCourseResponsibleButton.setStyle(ACertsColorScheme.buttonColor());

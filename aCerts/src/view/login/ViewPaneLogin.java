@@ -1,5 +1,6 @@
 package view.login;
 
+import control.operations.Login;
 import control.operations.MySQLCourseResponsible;
 import control.settings.FTPSettings;
 import control.settings.MySQLSettings;
@@ -115,8 +116,10 @@ public class ViewPaneLogin extends Pane implements Resizable
             }
             else
             {
+                Login.setUserEmail(user.getEmail());
                 if (user.hasAdminRights())
                 {
+                    Login.setAdmin(true);
                     viewPanesManager = ViewPanesManager.getInstance(true);
                 } else
                 {
