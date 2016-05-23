@@ -1,17 +1,17 @@
 package view.courses;
 
 import control.operations.Login;
+import control.operations.MySQLCourses;
 import control.operations.SQLOperations;
+import javafx.collections.FXCollections;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.certificates.TemplateID;
 import model.coursedata.CourseResponsible;
 import view.courseresponsibles.PopUpAddCourseResponsible;
 import view.courseresponsibles.PopUpCourseResponsibleSelection;
@@ -28,6 +28,7 @@ public class PopUpAddCourse extends Pane {
     private Button uploadCourseMaterialButton;
     private Button addCourseButton;
     private Button cancelButton;
+    private ComboBox<TemplateID> templates;
     protected Button assignCourseResponsible;
 
     private CourseResponsible courseResponsible;
@@ -58,6 +59,12 @@ public class PopUpAddCourse extends Pane {
         cancelButton = new Button("Cancel");
 
         assignCourseResponsible = new Button("Assign Course Responsible");
+
+        //combobox
+        templates = new ComboBox<>();
+
+        //add data to combobox
+        templates.itemsProperty().setValue(FXCollections.observableArrayList(MySQLCourses.getTemplateList()));
 
 
         //set prompt text for the textfield
@@ -107,7 +114,8 @@ public class PopUpAddCourse extends Pane {
                 endDatePicker,
                 endDateLabel,
                 uploadCourseMaterialButton,
-                addCourseButton);
+                addCourseButton,
+                templates);
 
         //styling
         cancelButton.setStyle(ACertsColorScheme.buttonColor());
@@ -139,6 +147,12 @@ public class PopUpAddCourse extends Pane {
                 //This line enables functionality for the 'cancelButton' in the 'PopUpCourseResponsibleSelectionList' class
                 //hence the number  which refers to the 0-indexed number where the 'cancelButton' is added.
                 ((Button) pane.getChildren().get(0)).setOnAction(ev -> stage.close());
+
+                ((Button) pane.getChildren().get(3)).setOnAction(ev ->
+                {
+                    courseResponsible = ((CourseResponsible) ((TableView) pane.getChildren().get(1)).getSelectionModel().getSelectedItem());
+                    stage.close();
+                });
                 popup.close();
                 stage.showAndWait();
 
@@ -203,6 +217,10 @@ public class PopUpAddCourse extends Pane {
         if(courseResponsible == null)
         {
             courseResponsibleEmail = Login.getUserEmail();
+        }
+        else
+        {
+            courseResponsibleEmail = courseResponsible.getEmail();
         }
         if(allInfoFilledIn)
         {

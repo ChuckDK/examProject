@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
+import model.certificates.TemplateID;
 import model.coursedata.Course;
 import model.coursedata.CourseParticipant;
 import model.coursedata.CourseResponsible;
@@ -123,6 +124,45 @@ public class MySQLCourses extends SQLOperations{
                         ex.printStackTrace();
                     }
                 });
+            }
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return returnList;
+    }
+
+    public static ArrayList<TemplateID> getTemplateList()
+    {
+        ArrayList<TemplateID> returnList = new ArrayList<>();
+        String sqlStatement =
+                "select \n" +
+                "    certificate_template_id, certificate_template_name\n" +
+                "from\n" +
+                "    certificate_templates";
+
+        try {
+            Statement statement;
+            ResultSet resultSet;
+
+            Class.forName("com.mysql.jdbc.Driver");
+
+            String url = "jdbc:mysql://127.0.0.1:3306/AppAcademy";
+
+            Connection connection = DriverManager.getConnection(url, "root", "12345678");
+
+            statement = connection.createStatement();
+
+            resultSet = statement.executeQuery(sqlStatement);
+
+            while(resultSet.next())
+            {
+                Button button = new Button("View");
+
+                TemplateID templateID = new TemplateID(
+                        resultSet.getInt("certificate_template_id"),
+                        resultSet.getString("certifiate_template_name"));
+                returnList.add(templateID);
             }
             connection.close();
         } catch (Exception e) {

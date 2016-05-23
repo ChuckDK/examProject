@@ -1,5 +1,6 @@
 package view.courseresponsibles;
 
+import control.operations.MySQLCourseResponsible;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
@@ -27,19 +28,8 @@ public class PopUpCourseResponsibleSelectionList extends Pane {
         selectCourseResponsibleButton = new Button("Select");
         cancelButton = new Button("Cancel");
 
-        //Create a dummy course responsible object.
-        CourseResponsible dummyCourseResponsible = new CourseResponsible("John", "Travolta", "JohnTravolta@hotmail.com",
-                "42066669", "2989", false);
-
         //Create an array list for course responsibles.
-        ArrayList<CourseResponsible> courseResponsibleArray = new ArrayList<>();
-
-        //Add the dummy course responsible to the array list of course responsibles.
-        courseResponsibleArray.add(dummyCourseResponsible);
-
-        //Make the array list of course responsibles an observable JavaFX array list.
-        ObservableList<CourseResponsible> courseResponsibles =
-                FXCollections.observableArrayList(courseResponsibleArray);
+        ObservableList<CourseResponsible> courseResponsibles = FXCollections.observableArrayList(MySQLCourseResponsible.getAll());
 
         //Connect the values of the table view to the observable array list.
         courseResponsiblesTableView.itemsProperty().setValue(courseResponsibles);
