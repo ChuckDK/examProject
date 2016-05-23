@@ -1,9 +1,11 @@
 package view.courseresponsibles;
 
+import control.operations.SQLOperations;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import view.courses.PopUpAddCoursePersona;
@@ -16,7 +18,7 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
     private CheckBox adminRights;
     private Label adminRightsLabel;
     private Button addCourseResponsible;
-    private Button assignCourse;
+    private PasswordField passwordField;
 
     public PopUpAddCourseResponsible()
     {
@@ -24,11 +26,11 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
 
         adminRights = new CheckBox();
 
+        passwordField = new PasswordField();
+
         adminRightsLabel = new Label("Admin rights");
 
         addCourseResponsible = new Button("Add course responsible");
-
-        assignCourse = new Button("Assign course");
 
         //layouting
         adminRights.setLayoutX(320);
@@ -40,46 +42,103 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
         addCourseResponsible.setLayoutX(30);
         addCourseResponsible.setLayoutY(350);
 
-        assignCourse.setLayoutX(270);
-        assignCourse.setLayoutY(140);
+        passwordField.setLayoutX(100);
+        passwordField.setLayoutY(300);
+
         //Add elements to view
         this.getChildren().addAll(
                 adminRights,
                 adminRightsLabel,
                 addCourseResponsible,
-                assignCourse);
+                passwordField);
 
         //styling
         addCourseResponsible.setStyle(ACertsColorScheme.buttonColor());
         adminRights.setStyle(ACertsColorScheme.buttonColor());
-        assignCourse.setStyle(ACertsColorScheme.buttonColor());
 
         //functionality
-        addCourseResponsible.setOnAction(e->
+    }
+
+    public boolean checkForValues()
+    {
+        boolean allValuesFilledOut = true;
+        DropShadow error = new DropShadow();
+        error.setColor(Color.RED);
+
+        if(emailTextField.getText().equals(""))
         {
-            Stage popup = new Stage();
-            popup.setTitle("Select");
-            PopUpCourseResponsibleSelection popupPane = new PopUpCourseResponsibleSelection();
-            popup.setScene(new Scene(popupPane,  500, 400));
+            emailTextField.setEffect(error);
+            allValuesFilledOut = false;
+        }
+        else
+        {
+            emailTextField.setEffect(null);
+        }
 
-            ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
+        if(phoneNumberTextField.getText().equals(""))
+        {
+            phoneNumberTextField.setEffect(error);
+            allValuesFilledOut = false;
+        }
+        else
+        {
+            phoneNumberTextField.setEffect(null);
+        }
 
-            popup.initModality(Modality.APPLICATION_MODAL);
-            popup.showAndWait();
-        });
-
-        assignCourse.setOnAction(e->
+        if(phoneNumber2TextField.getText().equals(""))
+        {
+            phoneNumber2TextField.setEffect(error);
+            allValuesFilledOut = false;
+        }
+        else
+        {
+            phoneNumber2TextField.setEffect(null);
+        }
+        if(firstNameTextField.getText().equals(""))
+        {
+            firstNameTextField.setEffect(error);
+            allValuesFilledOut = false;
+        }
+        else
+        {
+            firstNameTextField.setEffect(null);
+        }
+        if(lastNameTextField.getText().equals(""))
+        {
+            lastNameTextField.setEffect(error);
+            allValuesFilledOut = false;
+        }
+        else
+        {
+            lastNameTextField.setEffect(null);
+        }
+        if(passwordField.getText().equals(""))
+        {
+            passwordField.setEffect(error);
+            allValuesFilledOut = false;
+        }
+        else
+        {
+            passwordField.setEffect(null);
+        }
+        if (allValuesFilledOut)
+        {
+            String bool = "false";
+            if(adminRights.isSelected())
             {
-                Stage popup = new Stage();
-                popup.setTitle("Select");
-                PopUpCourseSelectionList popupPane = new PopUpCourseSelectionList();
-                popup.setScene(new Scene(popupPane));
-
-                ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
-
-                popup.initModality(Modality.APPLICATION_MODAL);
-                popup.showAndWait();
+                bool = "true";
             }
-        );
+            String[] values = {
+                    "'"+emailTextField.getText()+"'",
+                    "'"+firstNameTextField.getText()+"'",
+                    "'"+lastNameTextField.getText()+"'",
+                    bool,
+                    "'"+passwordField.getText()+"'"
+            };
+
+            
+            SQLOperations.addNewRow("course_responsibles", values);
+        }
+        return allValuesFilledOut;
     }
 }

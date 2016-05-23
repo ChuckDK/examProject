@@ -105,6 +105,9 @@ public class PopUpAddCourse extends Pane {
         assignCourseResponsible.setLayoutX(270);
         assignCourseResponsible.setLayoutY(140);
 
+        templates.setLayoutX(270);
+        templates.setLayoutY(260);
+
         this.getChildren().addAll(
                 cancelButton,
                 courseNameLabel,
@@ -125,6 +128,7 @@ public class PopUpAddCourse extends Pane {
         uploadCourseMaterialButton.setStyle(ACertsColorScheme.buttonColor());
         addCourseButton.setStyle(ACertsColorScheme.buttonColor());
         assignCourseResponsible.setStyle(ACertsColorScheme.buttonColor());
+        templates.setStyle(ACertsColorScheme.buttonColor());
         this.setStyle(ACertsColorScheme.viewColor());
 
         //functionality
@@ -224,7 +228,7 @@ public class PopUpAddCourse extends Pane {
         }
         if(allInfoFilledIn)
         {
-            String[] values = {"course_id", "'"+courseName+"'", "'"+startDate+"'", "'"+endDate+"'", "'"+courseResponsibleEmail+"'", "1"};
+            String[] values = {"course_id", "'"+courseName+"'", "'"+startDate+"'", "'"+endDate+"'", "'"+courseResponsibleEmail+"'", Integer.toString(templates.getValue().getTemplateID())};
             if(SQLOperations.addNewRow("courses", values))
             {
                 return true;

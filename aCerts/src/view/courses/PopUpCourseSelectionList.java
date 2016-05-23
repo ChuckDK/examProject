@@ -1,5 +1,6 @@
 package view.courses;
 
+import control.operations.MySQLCourses;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
@@ -25,6 +26,10 @@ public class PopUpCourseSelectionList extends Pane {
         selectCourseButton = new Button("Select");
         cancelButton = new Button("Cancel");
 
+        //show courses in tableView
+        ObservableList<Course> courses = FXCollections.observableArrayList(MySQLCourses.getAll());
+        courseTableView.itemsProperty().setValue(courses);
+
         //Create the two columns needed.
         TableColumn<Course, String> courseNameColumn = new TableColumn<>("Course name");
         TableColumn<Course, Calendar> courseStartDateColumn = new TableColumn<>("Start date");
@@ -35,39 +40,6 @@ public class PopUpCourseSelectionList extends Pane {
         courseStartDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         courseEndDateColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
 
-        //customized cellfactory to show Calendar objects in tableview properly
-        courseStartDateColumn.setCellFactory(col -> new TableCell<Course, Calendar>()
-        {
-            public void updateItem(Calendar item, boolean empty)
-            {
-                super.updateItem(item, empty);
-                if (item == null)
-                {
-                    setText(null);
-                }
-                else
-                {
-                    setText(""+item.get(+Calendar.DATE)+"/"+item.get(Calendar.MONTH)+"-"+item.get(Calendar.YEAR));
-                }
-            }
-        });
-
-        //customized cellfactory to show Calendar objects in tableview properly
-        courseEndDateColumn.setCellFactory(col -> new TableCell<Course, Calendar>()
-        {
-            public void updateItem(Calendar item, boolean empty)
-            {
-                super.updateItem(item, empty);
-                if (item == null)
-                {
-                    setText(null);
-                }
-                else
-                {
-                    setText(""+item.get(+Calendar.DATE)+"/"+item.get(Calendar.MONTH)+"-"+item.get(Calendar.YEAR));
-                }
-            }
-        });
 
         // Remove the empty column added by default
         courseTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);

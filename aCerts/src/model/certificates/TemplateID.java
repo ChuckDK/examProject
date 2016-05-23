@@ -34,4 +34,9 @@ public class TemplateID
     {
         this.templateName = templateName;
     }
+
+    public String toString()
+    {
+        return templateName;
+    }
 }

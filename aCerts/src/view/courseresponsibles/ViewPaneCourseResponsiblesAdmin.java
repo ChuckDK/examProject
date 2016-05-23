@@ -1,6 +1,7 @@
 package view.courseresponsibles;
 
 import control.operations.MySQLCourseResponsible;
+import control.operations.SQLOperations;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -159,6 +160,29 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
             courseResponsiblesTableView.itemsProperty().setValue(courseResponsibles);
         });
 
+        //Add functionality to the addNewCourseResponsibleButton button.
+        addNewCourseResponsibleButton.setOnAction(e->
+        {
+            //Create a popup window using an instance of the PopUpAddCourseResponsible class.
+            //See the class for it's content.
+            Stage popup = new Stage();
+            popup.setTitle("Add new Course Responsible");
+            PopUpAddCourseResponsible popupPane = new PopUpAddCourseResponsible();
+            popup.setScene(new Scene(popupPane,  500, 400));
+
+            ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
+
+            ((Button) popupPane.getChildren().get(13)).setOnAction(ex->
+            {
+                if(popupPane.checkForValues())
+                {
+                    popup.close();
+                }
+            });
+
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.showAndWait();
+        });
     }
 
     //Override the updateLayout method from the Resizable interface to make
@@ -184,20 +208,5 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
         removeCourseResponsibleButton.setLayoutY(this.getScene().getHeight() -
                 removeCourseResponsibleButton.getHeight() - 50);
 
-        //Add functionality to the addNewCourseResponsibleButton button.
-        addNewCourseResponsibleButton.setOnAction(e->
-        {
-            //Create a popup window using an instance of the PopUpAddCourseResponsible class.
-            //See the class for it's content.
-            Stage popup = new Stage();
-            popup.setTitle("Add new Course Responsible");
-            PopUpAddCourseResponsible popupPane = new PopUpAddCourseResponsible();
-            popup.setScene(new Scene(popupPane,  500, 400));
-
-            ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
-
-            popup.initModality(Modality.APPLICATION_MODAL);
-            popup.showAndWait();
-        });
     }
 }

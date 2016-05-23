@@ -9,14 +9,14 @@ import view.styling.ACertsColorScheme;
 public class PopUpAddCoursePersona extends Pane{
     private Label firstNameLabel;
     private Label lastNameLabel;
-    private TextField firstNameTextField;
-    private TextField lastNameTextField;
+    protected TextField firstNameTextField;
+    protected TextField lastNameTextField;
     private Label emailLabel;
-    private TextField emailTextField;
+    protected TextField emailTextField;
     private Label phoneNumberLabel;
-    private TextField phoneNumberTextField;
+    protected TextField phoneNumberTextField;
     private Label phoneNumber2Label;
-    private TextField phoneNumber2TextField;
+    protected TextField phoneNumber2TextField;
     private Button cancelButton;
 
     public PopUpAddCoursePersona()

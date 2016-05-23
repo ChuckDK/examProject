@@ -161,7 +161,7 @@ public class MySQLCourses extends SQLOperations{
 
                 TemplateID templateID = new TemplateID(
                         resultSet.getInt("certificate_template_id"),
-                        resultSet.getString("certifiate_template_name"));
+                        resultSet.getString("certificate_template_name"));
                 returnList.add(templateID);
             }
             connection.close();
