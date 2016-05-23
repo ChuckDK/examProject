@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import java.util.Calendar;
 
 public class Course {
+    private int courseID;
     private String courseName;
     private String courseResponsible;
     private String startDate;
@@ -12,7 +13,9 @@ public class Course {
     private Button downloadButton;
     private Button viewParticipants;
 
-    public Course(String courseName, String courseResponsible, String startDate, String endDate, Button downloadButton, Button viewParticipants) {
+    public Course(int courseID, String courseName, String courseResponsible, String startDate, String endDate, Button downloadButton, Button viewParticipants)
+    {
+        this.courseID = courseID;
         this.courseName = courseName;
         this.courseResponsible = courseResponsible;
         this.startDate = startDate;
@@ -74,5 +77,15 @@ public class Course {
     public String getEndDate()
     {
         return endDate;
+    }
+
+    public int getCourseID()
+    {
+        return courseID;
+    }
+
+    public void setCourseID(int courseID)
+    {
+        this.courseID = courseID;
     }
 }

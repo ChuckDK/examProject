@@ -26,6 +26,7 @@ public class MySQLCourses extends SQLOperations{
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
         String sqlStatement =
                 "SELECT \n" +
+                "    course_id,\n"+
                 "    course_name,\n" +
                 "    course_responsible_email,\n" +
                 "    course_start_date,\n" +
@@ -43,14 +44,15 @@ public class MySQLCourses extends SQLOperations{
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
         String sqlStatement =
                 "SELECT \n" +
-                        "    course_name,\n" +
-                        "    course_responsible_email,\n" +
-                        "    course_start_date,\n" +
-                        "    course_end_date\n" +
-                        "from\n" +
-                        "    courses\n"+
-                        "where\n" +
-                        "    course_end_date <= now();";
+                "    course_id,\n"+
+                "    course_name,\n" +
+                "    course_responsible_email,\n" +
+                "    course_start_date,\n" +
+                "    course_end_date\n" +
+                "from\n" +
+                "    courses\n"+
+                "where\n" +
+                "    course_end_date <= now();";
 
         return connectToDatabase(sqlStatement);
     }
@@ -60,18 +62,19 @@ public class MySQLCourses extends SQLOperations{
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
         String sqlStatement =
                 "SELECT \n" +
-                        "    course_name,\n" +
-                        "    course_responsible_email,\n" +
-                        "    course_start_date,\n" +
-                        "    course_end_date\n" +
-                        "from\n" +
-                        "    courses\n;";
+                "    course_id,\n"+
+                "    course_name,\n" +
+                "    course_responsible_email,\n" +
+                "    course_start_date,\n" +
+                "    course_end_date\n" +
+                "from\n" +
+                "    courses\n;";
         return connectToDatabase(sqlStatement);
     }
 
     public static ArrayList<Course> getMissing()
     {
-        return null;
+        String sqlStatement = "";
     }
 
     public static ArrayList<Course> connectToDatabase(String sqlStatement)
@@ -98,6 +101,7 @@ public class MySQLCourses extends SQLOperations{
                 Button button = new Button("View");
 
                 Course course = new Course(
+                        resultSet.getInt("course_id"),
                         resultSet.getString("course_name"),
                         resultSet.getString("course_responsible_email"),
                         resultSet.getString("course_start_date"),
@@ -116,7 +120,7 @@ public class MySQLCourses extends SQLOperations{
 
                     try
                     {
-                        ObservableList<CourseParticipant> participants = FXCollections.observableArrayList(MySQLParticipants.getFiltered(course.getCourseName()));
+                        ObservableList<CourseParticipant> participants = FXCollections.observableArrayList(MySQLParticipants.getFiltered(course.getCourseID()));
                         participantsTableView.itemsProperty().setValue(participants);
                     }
                     catch (Exception ex)

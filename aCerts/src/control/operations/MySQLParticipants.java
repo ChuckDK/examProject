@@ -45,7 +45,7 @@ public class MySQLParticipants extends SQLOperations{
         return connectToDatabase(sqlFetchMissingCertificatesParticipants);
     }
 
-    public static ArrayList<CourseParticipant>  getFiltered(String courseName)
+    public static ArrayList<CourseParticipant> getFiltered(int courseID)
     {
         String sqlFetchFilteredParticipants =
                 "SELECT\n" +
@@ -77,7 +77,7 @@ public class MySQLParticipants extends SQLOperations{
                 "\n" +
                 "  JOIN certificates ON cp.course_participants_email = certificates.course_participants_email\n" +
                 "\n" +
-                "  JOIN courses ON certificates.course_id = courses.course_id WHERE courses.course_name = '"+courseName+"';\n";
+                "  JOIN courses ON certificates.course_id = courses.course_id WHERE courses.course_id = "+courseID+";\n";
 
         return connectToDatabase(sqlFetchFilteredParticipants);
     }

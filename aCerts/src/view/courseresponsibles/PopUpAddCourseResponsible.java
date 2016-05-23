@@ -135,9 +135,21 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
                     bool,
                     "'"+passwordField.getText()+"'"
             };
-
-            
             SQLOperations.addNewRow("course_responsibles", values);
+
+            String[] phoneValues = {
+                    "'"+emailTextField.getText()+"'",
+                    "'Primary'",
+                    "'"+phoneNumberTextField.getText()+"'"
+            };
+            SQLOperations.addNewRow("phones_course_responsibles", phoneValues);
+
+            String[] phone2Values = {
+                    "'"+emailTextField.getText()+"'",
+                    "'Secondary'",
+                    "'"+phoneNumber2TextField.getText()+"'"
+            };
+            SQLOperations.addNewRow("phones_course_responsibles", phone2Values);
         }
         return allValuesFilledOut;
     }
