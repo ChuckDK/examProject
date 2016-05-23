@@ -78,13 +78,25 @@ public class MySQLCourses extends SQLOperations{
 
     public static ArrayList<Course> getMissing()
     {
-        String sqlStatement = "";
+        String sqlStatement = "\n" +
+                "SELECT\n" +
+                "  cs.course_name AS CourseName,\n" +
+                "  cs.course_start_date AS \"Course Start Date\",\n" +
+                "  cs.course_end_date AS \"Course End Date\",\n" +
+                "  cs.course_responsible_email AS \"Course Responsible\"\n" +
+                "FROM certificates ctf\n" +
+                "JOIN courses cs\n" +
+                "ON ctf.course_id = cs.course_id\n" +
+                "WHERE course_certificate_sent = FALSE\n" +
+                "GROUP BY ctf.course_id;";
+        return connectToDatabase(sqlStatement);
     }
 
     //Method which creates a connection to the database and may take a SQL statement in form of a string and execute it,
     public static ArrayList<Course> connectToDatabase(String sqlStatement)
     {
-        //Create an array list which will hold all the course responsible objects.
+        //Create an array list
+        // which will hold all the course responsible objects.
         ArrayList<Course> returnList = new ArrayList<>();
 
         try {
