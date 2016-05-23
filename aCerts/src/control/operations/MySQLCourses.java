@@ -114,7 +114,7 @@ public class MySQLCourses extends SQLOperations{
             //Initialize the connection as an sql statement.
             statement = connection.createStatement();
 
-            //Executes the query string
+            //Executes the query string.
             resultSet = statement.executeQuery(sqlStatement);
 
             //As long as there is a resultSet, run the loop.
@@ -163,7 +163,8 @@ public class MySQLCourses extends SQLOperations{
         return returnList;
     }
 
-    //Method which returns a list of the templates.
+    //Method which returns a list of the templates and sets up a connection for database
+    //and creates a participant object using a query.
     public static ArrayList<TemplateID> getTemplateList()
     {
         ArrayList<TemplateID> returnList = new ArrayList<>();
@@ -187,7 +188,7 @@ public class MySQLCourses extends SQLOperations{
 
             resultSet = statement.executeQuery(sqlStatement);
 
-            //Adding TemplateID objects to the resultList array list.
+            //Adding TemplateID objects (as long ad they are there) to the resultList array list.
             while(resultSet.next())
             {
                 TemplateID templateID = new TemplateID(
