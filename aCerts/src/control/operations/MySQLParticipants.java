@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 
 public class MySQLParticipants extends SQLOperations{
+
+    //Method which shows the participants who haven't recieved certificates yet.
     public static ArrayList<CourseParticipant>  getMissing()
     {
         String sqlFetchMissingCertificatesParticipants =
@@ -121,6 +123,7 @@ public class MySQLParticipants extends SQLOperations{
             return connectToDatabase(sqlFetchAllParticipants);
     }
 
+    //method which set up connection for database and creates a participant object using a query.
     public static ArrayList<CourseParticipant> connectToDatabase(String sqlStatement)
     {
         ArrayList<CourseParticipant> returnParticipants = new ArrayList<>();
@@ -128,16 +131,21 @@ public class MySQLParticipants extends SQLOperations{
             Statement statement;
             ResultSet resultSet;
 
+            //Class.forName simply loads a class, it also runs its static initializers.
             Class.forName("com.mysql.jdbc.Driver");
 
             String url = "jdbc:mysql://127.0.0.1:3306/AppAcademy";
 
+            //A connection needs a url, a root, and a password.
             Connection connection = DriverManager.getConnection(url, "root", "12345678");
 
+            //Initialize the connection as an sql statement.
             statement = connection.createStatement();
 
+            //Executes the query string.
             resultSet = statement.executeQuery(sqlStatement);
 
+            //Add course participants to the array (as long ad they are in the database).
             while(resultSet.next())
             {
                 returnParticipants.add(new CourseParticipant(

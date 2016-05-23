@@ -6,9 +6,11 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class MySQLCourseResponsible extends SQLOperations{
+
+    //Method which gets the active course responsibles.
     public static ArrayList<CourseResponsible>  getActive()
     {
-        //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
+        //This MySQL statement will return the email, first name, last name, and the two different phone numbers.
         String sqlStatement =
 
                 "SELECT \n" +
@@ -47,9 +49,10 @@ public class MySQLCourseResponsible extends SQLOperations{
         return connectToDatabase(sqlStatement);
     }
 
+    //This method fetches the inactive course responsibles.
     public static ArrayList<CourseResponsible>  getInActive()
     {
-        //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
+        //This MySQL statement will return the email, first name, last name, and the two different phone numbers
         String sqlStatement =
                 "SELECT \n" +
                         "    cr.course_responsible_email,\n" +
@@ -133,16 +136,21 @@ public class MySQLCourseResponsible extends SQLOperations{
             Statement statement;
             ResultSet resultSet;
 
+            //Class.forName simply loads a class, including running its static initializers.
             Class.forName("com.mysql.jdbc.Driver");
 
             String url = "jdbc:mysql://127.0.0.1:3306/AppAcademy";
 
+            //A connection needs a url, a root, and a password.
             Connection connection = DriverManager.getConnection(url, "root", "12345678");
 
+            //Initialize the connection as an sql statement.
             statement = connection.createStatement();
 
+            //Executes the query string.
             resultSet = statement.executeQuery(sqlStatement);
 
+            //Add a course responsibles (as long ad they are there) to the array list and then return it.
             while(resultSet.next())
             {
                 returnList.add(new CourseResponsible(
@@ -161,6 +169,7 @@ public class MySQLCourseResponsible extends SQLOperations{
         return returnList;
     }
 
+    //Method which fetches login information.
     public static CourseResponsible login(String username, String password)
     {
         System.out.println(password);
@@ -200,6 +209,9 @@ public class MySQLCourseResponsible extends SQLOperations{
         System.out.println(sqlStatement);
 
         ArrayList<CourseResponsible> user = connectToDatabase(sqlStatement);
+
+        //If the size of the list is equal to 1, it means a matching username and password has been found.
+        //If this is the case, the user is returned.
         if(user.size() == 1)
         {
             return user.get(0);

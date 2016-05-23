@@ -8,12 +8,19 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 public class SQLOperations {
+
+    //Method which generates an SQL statement that adds a new row.
     public static boolean addNewRow(String table, String[] values)
     {
+        //Initiating writing of the query.
         String sqlStatement = "INSERT INTO " +table+" VALUES(";
+
+        //Loop which writes values to the statement.
         for(int i = 0; i < values.length; i++)
         {
             sqlStatement = sqlStatement + values[i];
+
+            //An if statement which ensures the MySQL language comma is set correctly.
             if(i+1 < values.length)
             {
                 sqlStatement = sqlStatement + ", ";
@@ -36,19 +43,24 @@ public class SQLOperations {
         return false;
     }
 
+    //Method which creates the connection to the database.
     private static boolean connectToDatabase(String sqlStatement)
     {
         try {
             Statement statement;
 
+            //Class.forName simply loads a class, including running its static initializers.
             Class.forName("com.mysql.jdbc.Driver");
 
             String url = "jdbc:mysql://127.0.0.1:3306/AppAcademy";
 
+            //A connection needs a url, a root, and a password.
             Connection connection = DriverManager.getConnection(url, "root", "12345678");
 
+            //Initialize the connection as an sql statement.
             statement = connection.createStatement();
 
+            //Executes the query string.
             statement.executeUpdate(sqlStatement);
 
             connection.close();
