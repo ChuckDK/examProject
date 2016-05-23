@@ -172,6 +172,15 @@ public class ViewPaneCourses extends Pane implements Resizable
             ObservableList<Course> courses = FXCollections.observableArrayList(MySQLCourses.getAll());
             courseTableView.itemsProperty().setValue(courses);
         });
+
+        //Add functionality to the addNewCourses button.
+        missing.setOnAction(event ->
+        {
+            //Filter the the courses so all are shown.
+            //For full method function, see class 'MySQLCourses'.
+            ObservableList<Course> courses = FXCollections.observableArrayList(MySQLCourses.getMissing());
+            courseTableView.itemsProperty().setValue(courses);
+        });
     }
 
     //Override the updateLayout method from the Resizable interface to make

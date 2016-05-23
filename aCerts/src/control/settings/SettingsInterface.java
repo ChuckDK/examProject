@@ -10,7 +10,7 @@ public class SettingsInterface
         Object settingsFile = null;
         ObjectInputStream in = null;
         try{
-            in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(Paths.get("").toAbsolutePath().toString()+"/src/"+filename)));
+            in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(Paths.get("").toAbsolutePath().toString()+"/"+filename)));
             settingsFile = in.readObject();
         }
         catch(Exception e){

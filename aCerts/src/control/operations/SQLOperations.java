@@ -1,5 +1,6 @@
 package control.operations;
 
+import control.settings.MySQLSettings;
 import javafx.scene.control.Button;
 import model.coursedata.CourseParticipant;
 
@@ -52,10 +53,10 @@ public class SQLOperations {
             //Class.forName simply loads a class, including running its static initializers.
             Class.forName("com.mysql.jdbc.Driver");
 
-            String url = "jdbc:mysql://127.0.0.1:3306/AppAcademy";
+            String url = "jdbc:mysql://"+ MySQLSettings.getHost()+":"+MySQLSettings.getPort()+"/"+MySQLSettings.getDatabaseName();
 
             //A connection needs a url, a root, and a password.
-            Connection connection = DriverManager.getConnection(url, "root", "12345678");
+            Connection connection = DriverManager.getConnection(url, MySQLSettings.getUsername(), MySQLSettings.getPassword());
 
             //Initialize the connection as an sql statement.
             statement = connection.createStatement();

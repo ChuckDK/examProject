@@ -1,5 +1,6 @@
 package control.operations;
 
+import control.settings.MySQLSettings;
 import javafx.scene.control.Button;
 import model.coursedata.CourseParticipant;
 
@@ -123,6 +124,42 @@ public class MySQLParticipants extends SQLOperations{
             return connectToDatabase(sqlFetchAllParticipants);
     }
 
+    public static ArrayList<CourseParticipant> getMissingFiltered(int courseID)
+    {
+        String sqlStatement =
+                        "SELECT\n" +
+                        "  course_participants_firstname AS 'FirstName',\n" +
+                        "  course_participants_lastname AS 'LastName',\n" +
+                        "  cp.course_participants_email AS Email,\n" +
+                        "  ph1 AS Phone1,\n" +
+                        "  ph2 AS Phone2,\n" +
+                        "  certificates.course_certificate_sent AS 'CourseCertificateSent',\n" +
+                        "  courses.course_name AS 'CourseName'\n" +
+                        "\n" +
+                        "FROM course_participants AS cp\n" +
+                        "\n" +
+                        "JOIN\n" +
+                        "  (SELECT\n" +
+                        "    phone1.course_participants_email,\n" +
+                        "    phone1.phone_number AS ph1,\n" +
+                        "    phone2.phone_number AS ph2\n" +
+                        "\n" +
+                        "  FROM\n" +
+                        "    (SELECT * FROM phones_course_participants\n" +
+                        "    WHERE phone_type = 'Primary') AS phone1\n" +
+                        "\n" +
+                        "  JOIN\n" +
+                        "    (SELECT * FROM phones_course_participants\n" +
+                        "    WHERE phone_type = 'Secondary') AS phone2\n" +
+                        "\n" +
+                        "  GROUP BY phone1.course_participants_email) AS cpe ON cp.course_participants_email = cpe.course_participants_email\n" +
+                        "\n" +
+                        "  JOIN certificates ON cp.course_participants_email = certificates.course_participants_email\n" +
+                        "\n" +
+                        "  JOIN courses ON certificates.course_id = courses.course_id WHERE courses.course_name = 'SWD' AND certificates.course_certificate_sent is false;\n";
+        return connectToDatabase(sqlStatement);
+    }
+
     //method which set up connection for database and creates a participant object using a query.
     public static ArrayList<CourseParticipant> connectToDatabase(String sqlStatement)
     {
@@ -134,10 +171,10 @@ public class MySQLParticipants extends SQLOperations{
             //Class.forName simply loads a class, it also runs its static initializers.
             Class.forName("com.mysql.jdbc.Driver");
 
-            String url = "jdbc:mysql://127.0.0.1:3306/AppAcademy";
+            String url = "jdbc:mysql://"+ MySQLSettings.getHost()+":"+MySQLSettings.getPort()+"/"+MySQLSettings.getDatabaseName();
 
             //A connection needs a url, a root, and a password.
-            Connection connection = DriverManager.getConnection(url, "root", "12345678");
+            Connection connection = DriverManager.getConnection(url, MySQLSettings.getUsername(), MySQLSettings.getPassword());
 
             //Initialize the connection as an sql statement.
             statement = connection.createStatement();

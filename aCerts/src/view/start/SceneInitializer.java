@@ -4,12 +4,16 @@ import control.settings.FTPSettings;
 import control.settings.MySQLSettings;
 import control.settings.SMTPSettings;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import model.settings.FTPSettingsFile;
 import model.settings.MySQLSettingsFile;
 import model.settings.SMTPSettingsFile;
 import view.styling.Resizable;
 import view.login.ViewPaneLogin;
+
+import java.io.File;
+import java.nio.file.Paths;
 
 //Class which runs an instance of other classes
 //as all the windows of the program essentially are created by instances of their respective classes.
@@ -24,6 +28,11 @@ public class SceneInitializer {
         //See the controller package for more information regarding the methods' functionality.
         try
         {
+            File file = new File(Paths.get("").toAbsolutePath().toString()+"/MySQLSettingsFile");
+            if(!file.exists())
+            {
+                MySQLSettings.writeObject("MySQLSettingsFile", new MySQLSettingsFile("root", "12345678", "AppAcademy", "localhost", 3306));
+            }
             MySQLSettingsFile sqlSettings = (MySQLSettingsFile) MySQLSettings.readObject("MySQLSettingsFile");
             FTPSettingsFile ftpSettings = (FTPSettingsFile) FTPSettings.readObject("FTPSettingsFile");
             SMTPSettingsFile smtpSettings = (SMTPSettingsFile) SMTPSettings.readObject("SMTPSettingsFile");
@@ -50,10 +59,13 @@ public class SceneInitializer {
             e1.printStackTrace();
         }
         mainWindow = window;
-        Scene scene = new Scene(new ViewPaneLogin(), 500, 400);
+        ViewPaneLogin loginScreen = new ViewPaneLogin();
+        Scene scene = new Scene(loginScreen, 500, 400);
         window.show();
         window.setScene(scene);
         window.setTitle("AppAcademy Certificate Manager");
+
+        ((Button) loginScreen.getChildren().get(6)).setOnAction(e-> window.close());
 
         window.getScene().widthProperty().addListener(e-> updateView(scene));
         window.getScene().heightProperty().addListener(e-> updateView(scene));

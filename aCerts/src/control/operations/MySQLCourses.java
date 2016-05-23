@@ -1,5 +1,6 @@
 package control.operations;
 
+import control.settings.MySQLSettings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
@@ -38,7 +39,7 @@ public class MySQLCourses extends SQLOperations{
                 "where\n" +
                 "    course_end_date > now();";
 
-        return connectToDatabase(sqlStatement);
+        return connectToDatabase(sqlStatement, false);
     }
 
     //Method which uses a MySQL statement with the now method from Java to get the inactive courses.
@@ -57,7 +58,7 @@ public class MySQLCourses extends SQLOperations{
                 "where\n" +
                 "    course_end_date <= now();";
 
-        return connectToDatabase(sqlStatement);
+        return connectToDatabase(sqlStatement, false);
     }
 
     //Method which uses a MySQL statement with the now method from Java to get the all courses.
@@ -73,27 +74,28 @@ public class MySQLCourses extends SQLOperations{
                 "    course_end_date\n" +
                 "from\n" +
                 "    courses\n;";
-        return connectToDatabase(sqlStatement);
+        return connectToDatabase(sqlStatement, false);
     }
 
     public static ArrayList<Course> getMissing()
     {
         String sqlStatement = "\n" +
                 "SELECT\n" +
-                "  cs.course_name AS CourseName,\n" +
-                "  cs.course_start_date AS \"Course Start Date\",\n" +
-                "  cs.course_end_date AS \"Course End Date\",\n" +
-                "  cs.course_responsible_email AS \"Course Responsible\"\n" +
+                "  cs.course_id,\n" +
+                "  cs.course_name,\n" +
+                "  cs.course_start_date,\n" +
+                "  cs.course_end_date,\n" +
+                "  cs.course_responsible_email\n" +
                 "FROM certificates ctf\n" +
                 "JOIN courses cs\n" +
                 "ON ctf.course_id = cs.course_id\n" +
                 "WHERE course_certificate_sent = FALSE\n" +
                 "GROUP BY ctf.course_id;";
-        return connectToDatabase(sqlStatement);
+        return connectToDatabase(sqlStatement, true);
     }
 
     //Method which creates a connection to the database and may take a SQL statement in form of a string and execute it,
-    public static ArrayList<Course> connectToDatabase(String sqlStatement)
+    private static ArrayList<Course> connectToDatabase(String sqlStatement, boolean missing)
     {
         //Create an array list
         // which will hold all the course responsible objects.
@@ -106,10 +108,10 @@ public class MySQLCourses extends SQLOperations{
             //Class.forName simply loads a class, including running its static initializers.
             Class.forName("com.mysql.jdbc.Driver");
 
-            String url = "jdbc:mysql://127.0.0.1:3306/AppAcademy";
+            String url = "jdbc:mysql://"+ MySQLSettings.getHost()+":"+MySQLSettings.getPort()+"/"+MySQLSettings.getDatabaseName();
 
             //A connection needs a url, a root, and a password.
-            Connection connection = DriverManager.getConnection(url, "root", "12345678");
+            Connection connection = DriverManager.getConnection(url, MySQLSettings.getUsername(), MySQLSettings.getPassword());
 
             //Initialize the connection as an sql statement.
             statement = connection.createStatement();
@@ -147,7 +149,15 @@ public class MySQLCourses extends SQLOperations{
 
                     try
                     {
-                        ObservableList<CourseParticipant> participants = FXCollections.observableArrayList(MySQLParticipants.getFiltered(course.getCourseID()));
+                        ObservableList<CourseParticipant> participants;
+                        if(!missing)
+                        {
+                            participants = FXCollections.observableArrayList(MySQLParticipants.getFiltered(course.getCourseID()));
+                        }
+                        else
+                        {
+                            participants = FXCollections.observableArrayList(MySQLParticipants.getMissingFiltered(course.getCourseID()));
+                        }
                         participantsTableView.itemsProperty().setValue(participants);
                     }
                     catch (Exception ex)
