@@ -21,6 +21,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class MySQLCourses extends SQLOperations{
+
+    //Method which uses a MySQL statement with the now method from Java to get the active courses.
     public static ArrayList<Course>  getActive()
     {
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
@@ -39,6 +41,7 @@ public class MySQLCourses extends SQLOperations{
         return connectToDatabase(sqlStatement);
     }
 
+    //Method which uses a MySQL statement with the now method from Java to get the inactive courses.
     public static ArrayList<Course>  getInActive()
     {
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
@@ -57,6 +60,7 @@ public class MySQLCourses extends SQLOperations{
         return connectToDatabase(sqlStatement);
     }
 
+    //Method which uses a MySQL statement with the now method from Java to get the all courses.
     public static ArrayList<Course> getAll()
     {
         //The MySQL statement which will return the email, first name, last name, and the two different phone numbers
@@ -77,6 +81,7 @@ public class MySQLCourses extends SQLOperations{
         String sqlStatement = "";
     }
 
+    //Method which creates a connection to the database and may take a SQL statement in form of a string and execute it,
     public static ArrayList<Course> connectToDatabase(String sqlStatement)
     {
         //Create an array list which will hold all the course responsible objects.
@@ -86,20 +91,26 @@ public class MySQLCourses extends SQLOperations{
             Statement statement;
             ResultSet resultSet;
 
+            //Class.forName simply loads a class, including running its static initializers.
             Class.forName("com.mysql.jdbc.Driver");
 
             String url = "jdbc:mysql://127.0.0.1:3306/AppAcademy";
 
+            //A connection needs a url, a root, and a password.
             Connection connection = DriverManager.getConnection(url, "root", "12345678");
 
+            //Initialize the connection as an sql statement.
             statement = connection.createStatement();
 
+            //Executes the query string
             resultSet = statement.executeQuery(sqlStatement);
 
+            //As long as there is a resultSet, run the loop.
             while(resultSet.next())
             {
                 Button button = new Button("View");
 
+                //Call getString with column name on resultSet and thereby get the columns content.
                 Course course = new Course(
                         resultSet.getInt("course_id"),
                         resultSet.getString("course_name"),
@@ -113,8 +124,12 @@ public class MySQLCourses extends SQLOperations{
                 System.out.println(course.getCourseName());
                 button.setOnAction(e->
                 {
+                    //Set up the pane for a manager.
                     TabPane tabPane = (TabPane) ViewPanesManager.getInstance(true).getPane(0).getChildren().get(0);
+                    //Selects number two in the table view
                     tabPane.getSelectionModel().select(2);
+
+                    //Set up the pane. Typecasting happens because there can be multiple objects connected to the tab pane.
                     TableView<CourseParticipant> participantsTableView = ((ViewPaneCourseParticipants) tabPane.getTabs().get(2).getContent()).getCourseParticipantTableView();
                     ((ToggleButton) ((ViewPaneCourseParticipants) tabPane.getTabs().get(2).getContent()).getChildren().get(1)).setSelected(true);
 
@@ -136,6 +151,7 @@ public class MySQLCourses extends SQLOperations{
         return returnList;
     }
 
+    //Method which returns a list of the templates.
     public static ArrayList<TemplateID> getTemplateList()
     {
         ArrayList<TemplateID> returnList = new ArrayList<>();
@@ -159,10 +175,9 @@ public class MySQLCourses extends SQLOperations{
 
             resultSet = statement.executeQuery(sqlStatement);
 
+            //Adding TemplateID objects to the resultList array list.
             while(resultSet.next())
             {
-                Button button = new Button("View");
-
                 TemplateID templateID = new TemplateID(
                         resultSet.getInt("certificate_template_id"),
                         resultSet.getString("certificate_template_name"));
