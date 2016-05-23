@@ -1,6 +1,7 @@
 package control.settings;
 
-public class MySQLSettings extends SettingsInterface{
+public class MySQLSettings extends FileIO
+{
     private static String username;
     private static String password;
     private static String databaseName;

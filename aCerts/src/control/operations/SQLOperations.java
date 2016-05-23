@@ -6,6 +6,7 @@ import model.coursedata.CourseParticipant;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class SQLOperations {
@@ -70,5 +71,38 @@ public class SQLOperations {
             return false;
         }
         return true;
+    }
+
+    public static int getCertificatesCount()
+    {
+        int count = 0;
+        String sqlStatement =
+                "SELECT count(*) as 'count' from certificate_templates";
+        try {
+            Statement statement;
+
+            //Class.forName simply loads a class, including running its static initializers.
+            Class.forName("com.mysql.jdbc.Driver");
+
+            String url = "jdbc:mysql://"+ MySQLSettings.getHost()+":"+MySQLSettings.getPort()+"/"+MySQLSettings.getDatabaseName();
+
+            //A connection needs a url, a root, and a password.
+            Connection connection = DriverManager.getConnection(url, MySQLSettings.getUsername(), MySQLSettings.getPassword());
+
+            //Initialize the connection as an sql statement.
+            statement = connection.createStatement();
+
+            //Executes the query string.
+            ResultSet resultSet = statement.executeQuery(sqlStatement);
+
+            if(resultSet.next())
+            {
+                count = resultSet.getInt("count");
+            }
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 }

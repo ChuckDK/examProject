@@ -3,7 +3,7 @@ package control.settings;
 import java.io.*;
 import java.nio.file.Paths;
 
-public class SettingsInterface
+public class FileIO
 {
     public static Object readObject(String filename) throws Exception
     {
@@ -27,14 +27,14 @@ public class SettingsInterface
         return settingsFile;
     }
 
-    public static void writeObject(String filename, Object settingsFile) throws Exception
+    public static void writeObject(String filename, Object file) throws Exception
     {
         ObjectOutputStream out = null;
 
         try
         {
             out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename)));
-            out.writeObject(settingsFile);
+            out.writeObject(file);
         }
         catch (Exception e)
         {

@@ -1,6 +1,7 @@
 package control.settings;
 
-public class FTPSettings extends SettingsInterface{
+public class FTPSettings extends FileIO
+{
     private static String username;
     private static String password;
     private static String host;

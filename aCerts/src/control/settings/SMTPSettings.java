@@ -1,6 +1,7 @@
 package control.settings;
 
-public class SMTPSettings extends SettingsInterface{
+public class SMTPSettings extends FileIO
+{
     private static String username;
     private static String password;
     private static String host;

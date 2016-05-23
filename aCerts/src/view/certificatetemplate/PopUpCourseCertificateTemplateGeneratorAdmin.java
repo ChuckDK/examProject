@@ -1,11 +1,13 @@
 package view.certificatetemplate;
 
 import control.certificates.CourseCertificateTemplateGenerator;
+import control.operations.SQLOperations;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Bounds;
 import javafx.scene.Cursor;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
@@ -30,7 +32,7 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
     //to be repurposed in future
     private Button saveCertificateTemplate = new Button("Generate Certificate");
 
-
+    private File file;
     //Pane elements are defined here
 
     //editoreview makes the editor scrollable. editor is contained inside editorview and is where all the elements in
@@ -46,6 +48,7 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
     private DragableLabel course = new DragableLabel("Course Name");
 
     //The background image
+    private Image loadedImage;
     private ImageView certificateImageView = new ImageView();
 
     //:::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -283,6 +286,7 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
     {
         //store all the parameters set in the editor in a Certificatetemplate object
         CertificateTemplate certificateTemplate = new CertificateTemplate(
+                SQLOperations.getCertificatesCount(),
                 name.getTranslateX(),
                 name.getTranslateY(),
                 course.getTranslateX(),
@@ -292,12 +296,7 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
                 name.getAttachedLabel().getFont().getSize(),
                 date.getAttachedLabel().getFont().getSize(),
                 course.getAttachedLabel().getFont().getSize(),
-                nameColor.getValue(),
-                dateColor.getValue(),
-                courseNameColor.getValue(),
-                name.getAttachedLabel().getFont(),
-                certificateImageView.getImage()
-                );
+                file.getName());
         CourseCertificateTemplateGenerator.uploadCertificateTemplate(certificateTemplate, templateNameTextField.getText());
     }
 
@@ -370,7 +369,7 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         fileChooser.getExtensionFilters().addAll(images);
 
         //store the file chosen from the file explorer in a File object
-        File file = fileChooser.showOpenDialog(new Stage());
+        file = fileChooser.showOpenDialog(new Stage());
 
         //try and read the file as an image, if it fails the jump to catch
         try
@@ -380,7 +379,8 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
 
             //convert the BufferedImage to a javaFX image and show it in the editor, by setting the certificateImageViews
             // image to be the one converted from the BufferedImage
-            certificateImageView.setImage(SwingFXUtils.toFXImage(image, null));
+            loadedImage = SwingFXUtils.toFXImage(image, null);
+            certificateImageView.setImage(loadedImage);
 
             //set width and heigth of the editor pane to the size of the image
             editor.setPrefWidth(image.getWidth());
