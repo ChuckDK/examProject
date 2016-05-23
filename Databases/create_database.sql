@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS AppAcademy;
 CREATE DATABASE AppAcademy;
 USE AppAcademy;
