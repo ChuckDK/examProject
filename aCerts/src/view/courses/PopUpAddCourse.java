@@ -176,6 +176,7 @@ public class PopUpAddCourse extends Pane {
         });
     }
 
+    //Method which ensures all the values has been added before they are added to the database.
     public boolean checkForValues()
     {
         String courseResponsibleEmail = "";
@@ -218,7 +219,7 @@ public class PopUpAddCourse extends Pane {
         //Saving the result of the courseNameTextField in a variable for convenience.
         String courseName = courseNameTextField.getText();
 
-        //If the course name text field is null, throw an exception, set the allInforFilledIn to false,
+        //If the course name text field is null, throw an exception, set the allInfoFilledIn to false,
         //and activate the drop shadow effect.
         if(courseName.equals(""))
         {

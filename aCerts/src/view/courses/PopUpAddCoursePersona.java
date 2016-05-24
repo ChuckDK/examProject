@@ -6,6 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import view.styling.ACertsColorScheme;
 
+//Class made purely for other classes to extend from in order to get GUI elements.
 public class PopUpAddCoursePersona extends Pane{
     private Label firstNameLabel;
     private Label lastNameLabel;
@@ -21,7 +22,7 @@ public class PopUpAddCoursePersona extends Pane{
 
     public PopUpAddCoursePersona()
     {
-        //initialize elements
+        //Initialize elements.
         firstNameLabel = new Label("First name:");
 
         lastNameLabel = new Label("Last name:");
@@ -45,7 +46,7 @@ public class PopUpAddCoursePersona extends Pane{
         cancelButton = new Button("Cancel");
 
 
-        //prompt texts
+        //Set the prompt texts.
         firstNameTextField.setPromptText("Please input name");
 
         lastNameTextField.setPromptText("Please input name");
@@ -57,8 +58,7 @@ public class PopUpAddCoursePersona extends Pane{
         phoneNumber2TextField.setPromptText("please input #");
 
 
-        //layouting
-
+        //Set the position and width of the elements.
         firstNameLabel.setLayoutX(30);
         firstNameLabel.setLayoutY(85);
 
@@ -97,7 +97,7 @@ public class PopUpAddCoursePersona extends Pane{
         cancelButton.setLayoutX(300);
         cancelButton.setLayoutY(350);
 
-        //Add elements to the view
+        //Add elements to the instance of the class.
         this.getChildren().addAll(
                 cancelButton,
                 firstNameLabel,
@@ -111,7 +111,7 @@ public class PopUpAddCoursePersona extends Pane{
                 phoneNumber2Label,
                 phoneNumber2TextField);
 
-        //Styling
+        //Style the elements with ACertsColorScheme.
         cancelButton.setStyle(ACertsColorScheme.buttonColor());
         firstNameTextField.setStyle(ACertsColorScheme.textFieldColor());
         lastNameTextField.setStyle(ACertsColorScheme.textFieldColor());
