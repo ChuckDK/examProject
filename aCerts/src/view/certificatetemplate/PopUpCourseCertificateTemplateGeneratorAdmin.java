@@ -149,7 +149,6 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
 
         //events for various interactions with pane elements
         loadButton.setOnAction(e ->loadImage());
-        saveCertificateTemplate.setOnAction(e-> generateTemplate());
         sizeName.setOnKeyPressed(e-> updateFontSize(e, name, sizeName, editName));
         sizeDate.setOnKeyPressed(e-> updateFontSize(e, date, sizeDate, editDate));
         sizeCourseName.setOnKeyPressed(e-> updateFontSize(e, course, sizeCourseName, editCourse));
@@ -275,13 +274,6 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         cancelButton.setLayoutY(this.getScene().getHeight() - cancelButton.getHeight() - 10);
     }
 
-
-
-
-
-    //****************************************************************************************************************
-    //to be moved to backend functionality. this editors final purpose is to saveCertificateTemplate templates and not the certificates themselves
-    //****************************************************************************************************************
     public void generateTemplate()
     {
         //store all the parameters set in the editor in a Certificatetemplate object
@@ -299,11 +291,6 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
                 file.getName());
         CourseCertificateTemplateGenerator.uploadCertificateTemplate(certificateTemplate, templateNameTextField.getText(), file);
     }
-
-    //****************************************************************************************************************
-
-
-
 
 
     //this method update the text on the drag'n'drop labels and adjusts their position relative to their drag'n'drop controller

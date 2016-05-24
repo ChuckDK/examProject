@@ -156,7 +156,7 @@ public class MySQLParticipants extends SQLOperations{
                         "\n" +
                         "  JOIN certificates ON cp.course_participants_email = certificates.course_participants_email\n" +
                         "\n" +
-                        "  JOIN courses ON certificates.course_id = courses.course_id WHERE courses.course_name = 'SWD' AND certificates.course_certificate_sent is false;\n";
+                        "  JOIN courses ON certificates.course_id = courses.course_id WHERE courses.course_id = "+courseID+" AND certificates.course_certificate_sent is false;\n";
         return connectToDatabase(sqlStatement);
     }
 

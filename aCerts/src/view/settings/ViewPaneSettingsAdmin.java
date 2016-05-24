@@ -1,5 +1,8 @@
 package view.settings;
 
+import control.operations.MySQLCourses;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -7,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.certificates.CertificateTemplate;
+import model.certificates.TemplateID;
 import view.certificatetemplate.PopUpCourseCertificateTemplateGeneratorAdmin;
 import view.start.SceneInitializer;
 import view.styling.ACertsColorScheme;
@@ -19,7 +23,7 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable
     private Button changeFTPButton;
     private Button changeSMTPButton;
     private Button changeMYSQLButton;
-    private ComboBox<CertificateTemplate> chooseCertificateComboBox;
+    private ComboBox<TemplateID> chooseCertificateComboBox;
 
     public ViewPaneSettingsAdmin()
     {
@@ -79,6 +83,8 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable
         changeSMTPButton.setStyle(ACertsColorScheme.buttonColor());
         chooseCertificateComboBox.setStyle(ACertsColorScheme.buttonColor());
 
+        chooseCertificateComboBox.itemsProperty().setValue(FXCollections.observableArrayList(MySQLCourses.getTemplateList()));
+
         //Adding a function for the addCourseCertificateTemplateButton button.
         addCourseCertificateTemplateButton.setOnAction(e->
         {
@@ -96,6 +102,12 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable
             //Closing the course certificate template generator window.
             ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
 
+            ((Button) popupPane.getChildren().get(2)).setOnAction(ex->
+            {
+                popupPane.generateTemplate();
+                popup.close();
+            });
+
             //When the 'popup' scene is launched, it's elements are not in their appropriate places.
             //This is taken care of by calling the updateLayout method which places all the nodes correctly
             //dictated by the getRoot. However to call updateLayout, the popup must be type casted to (Resizable)
@@ -107,6 +119,11 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable
             //Prevents the user from changing windows before this window has been closed. In conjunction with
             //the line "initModality(Modality.APPLICATION_MODAL);", it creates the "pop up window" effect.
             popup.showAndWait();
+        });
+
+        chooseCertificateComboBox.setOnAction(e->
+        {
+            chooseCertificateComboBox.itemsProperty().setValue(FXCollections.observableArrayList(MySQLCourses.getTemplateList()));
         });
 
         //Adding a function for the changeMYSQLButton button.
