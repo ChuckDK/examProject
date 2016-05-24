@@ -4,6 +4,7 @@ import control.certificates.CourseCertificateTemplateGenerator;
 import control.settings.FileIO;
 import javafx.scene.image.Image;
 import model.certificates.CertificateTemplate;
+import model.coursedata.CourseParticipant;
 
 import java.io.File;
 
@@ -11,7 +12,7 @@ import java.io.File;
  * Created by dennis on 5/13/16.
  */
 public class SMTPOperations {
-    public static boolean sendMissingCertificate(String templateName)
+    public static boolean sendMissingCertificate(String templateName, CourseParticipant participant)
     {
         Image image = null;
         CertificateTemplate template = null;
@@ -38,7 +39,7 @@ public class SMTPOperations {
         }
         try
         {
-            CourseCertificateTemplateGenerator.generateCertificateImage(template, imageFile);
+            CourseCertificateTemplateGenerator.generateCertificateImage(template, imageFile, participant);
         }
         catch (Exception e)
         {

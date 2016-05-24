@@ -201,7 +201,7 @@ public class MySQLParticipants extends SQLOperations{
 
                 Button button = new Button("Send");
 
-                returnParticipants.add(new CourseParticipant(
+                CourseParticipant participant = new CourseParticipant(
                         resultSet.getString("CourseName"),
                         resultSet.getString("FirstName"),
                         resultSet.getString("LastName"),
@@ -209,12 +209,13 @@ public class MySQLParticipants extends SQLOperations{
                         resultSet.getString("Phone2"),
                         resultSet.getString("Email"),
                         resultSet.getBoolean("CourseCertificateSent"),
-                        button
+                        button);
 
-                ));
+                returnParticipants.add(participant);
+
                 button.setOnAction(e->
                 {
-                    SMTPOperations.sendMissingCertificate(templateID);
+                    SMTPOperations.sendMissingCertificate(templateID, participant);
                 });
             }
             connection.close();
