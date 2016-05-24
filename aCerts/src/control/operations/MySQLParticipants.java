@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class MySQLParticipants extends SQLOperations{
 
-    //Method which shows the participants who haven't recieved certificates yet.
+    //Method which shows the participants who haven't received certificates yet.
     public static ArrayList<CourseParticipant>  getMissing()
     {
         String sqlFetchMissingCertificatesParticipants =
@@ -51,6 +51,7 @@ public class MySQLParticipants extends SQLOperations{
         return connectToDatabase(sqlFetchMissingCertificatesParticipants);
     }
 
+    //Method which shows the participants who are linked to a specific course.
     public static ArrayList<CourseParticipant> getFiltered(int courseID)
     {
         String sqlFetchFilteredParticipants =
@@ -91,6 +92,7 @@ public class MySQLParticipants extends SQLOperations{
         return connectToDatabase(sqlFetchFilteredParticipants);
     }
 
+    //Method which shows all the participants.
     public static ArrayList<CourseParticipant>  getAll()
     {
         String sqlFetchAllParticipants =
@@ -133,6 +135,7 @@ public class MySQLParticipants extends SQLOperations{
             return connectToDatabase(sqlFetchAllParticipants);
     }
 
+    //Method which shows the participants from a specific course who haven't received certificates yet.
     public static ArrayList<CourseParticipant> getMissingFiltered(int courseID)
     {
         String sqlStatement =
@@ -172,7 +175,7 @@ public class MySQLParticipants extends SQLOperations{
         return connectToDatabase(sqlStatement);
     }
 
-    //method which set up connection for database and creates a participant object using a query.
+    //Method which set up connection for database and creates a participant object using a query.
     public static ArrayList<CourseParticipant> connectToDatabase(String sqlStatement)
     {
         ArrayList<CourseParticipant> returnParticipants = new ArrayList<>();
@@ -194,7 +197,7 @@ public class MySQLParticipants extends SQLOperations{
             //Executes the query string.
             resultSet = statement.executeQuery(sqlStatement);
 
-            //Add course participants to the array (as long ad they are in the database).
+            //Add course participants to the array (as long as they are in the database).
             while(resultSet.next())
             {
                 String templateID = resultSet.getString("TemplateID");
@@ -213,16 +216,25 @@ public class MySQLParticipants extends SQLOperations{
 
                 returnParticipants.add(participant);
 
+                //Add functionality to the button which uses the sendMissingCertificate
+                //method from SMTPOperations class to send certificates.
+                //See the SMTPOperations class for the method functionality.
                 button.setOnAction(e->
                 {
                     SMTPOperations.sendMissingCertificate(templateID, participant);
                 });
             }
+
+            //Close the connection
             connection.close();
-        } catch (Exception e) {
+        }
+
+        //Handle any exceptions that might occur.
+        catch (Exception e) {
             e.printStackTrace();
         }
+
+        //Return the participant array.
         return returnParticipants;
     }
 }
-
