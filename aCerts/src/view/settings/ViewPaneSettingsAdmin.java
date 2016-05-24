@@ -105,6 +105,7 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable
             ((Button) popupPane.getChildren().get(2)).setOnAction(ex->
             {
                 popupPane.generateTemplate();
+                chooseCertificateComboBox.itemsProperty().setValue(FXCollections.observableArrayList(MySQLCourses.getTemplateList()));
                 popup.close();
             });
 
@@ -119,11 +120,6 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable
             //Prevents the user from changing windows before this window has been closed. In conjunction with
             //the line "initModality(Modality.APPLICATION_MODAL);", it creates the "pop up window" effect.
             popup.showAndWait();
-        });
-
-        chooseCertificateComboBox.setOnAction(e->
-        {
-            chooseCertificateComboBox.itemsProperty().setValue(FXCollections.observableArrayList(MySQLCourses.getTemplateList()));
         });
 
         //Adding a function for the changeMYSQLButton button.

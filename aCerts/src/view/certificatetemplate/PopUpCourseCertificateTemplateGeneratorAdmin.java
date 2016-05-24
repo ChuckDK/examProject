@@ -290,6 +290,9 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
                 course.getAttachedLabel().getFont().getSize(),
                 file.getName());
         CourseCertificateTemplateGenerator.uploadCertificateTemplate(certificateTemplate, templateNameTextField.getText(), file);
+
+        String[] value = {"certificate_template_id","'"+templateNameTextField.getText()+"'"};
+        SQLOperations.addNewRow("certificate_templates", value);
     }
 
 
