@@ -36,4 +36,9 @@ public class CourseCertificateTemplateGenerator
         }
         return true;
     }
+
+    public static boolean generateCertificateImage(CertificateTemplate template, File imageFile)
+    {
+        return false;
+    }
 }

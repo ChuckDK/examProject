@@ -15,6 +15,7 @@ public class MySQLParticipants extends SQLOperations{
     {
         String sqlFetchMissingCertificatesParticipants =
                 "SELECT\n" +
+                "certificate_template_name AS 'TemplateID', \n"+
                 "  course_participants_firstname AS 'FirstName',\n" +
                 "  course_participants_lastname AS 'LastName',\n" +
                 "  cp.course_participants_email AS Email,\n" +
@@ -43,7 +44,9 @@ public class MySQLParticipants extends SQLOperations{
                 "\n" +
                 "  JOIN certificates ON cp.course_participants_email = certificates.course_participants_email\n" +
                 "\n" +
-                "  JOIN courses ON certificates.course_id = courses.course_id WHERE certificates.course_certificate_sent = 0;\n";
+                "  JOIN courses ON certificates.course_id = courses.course_id " +
+                "JOIN certificate_templates ON courses.certificate_template_id = certificate_templates.certificate_template_id\n" +
+                "WHERE certificates.course_certificate_sent = 0;\n";
 
         return connectToDatabase(sqlFetchMissingCertificatesParticipants);
     }
@@ -52,6 +55,7 @@ public class MySQLParticipants extends SQLOperations{
     {
         String sqlFetchFilteredParticipants =
                 "SELECT\n" +
+                "certificate_template_name AS 'TemplateID', \n"+
                 "  course_participants_firstname AS 'FirstName',\n" +
                 "  course_participants_lastname AS 'LastName',\n" +
                 "  cp.course_participants_email AS Email,\n" +
@@ -80,7 +84,9 @@ public class MySQLParticipants extends SQLOperations{
                 "\n" +
                 "  JOIN certificates ON cp.course_participants_email = certificates.course_participants_email\n" +
                 "\n" +
-                "  JOIN courses ON certificates.course_id = courses.course_id WHERE courses.course_id = "+courseID+";\n";
+                "  JOIN courses ON certificates.course_id = courses.course_id " +
+                "JOIN certificate_templates ON courses.certificate_template_id = certificate_templates.certificate_template_id\n" +
+                " WHERE courses.course_id = "+courseID+";\n";
 
         return connectToDatabase(sqlFetchFilteredParticipants);
     }
@@ -89,7 +95,8 @@ public class MySQLParticipants extends SQLOperations{
     {
         String sqlFetchAllParticipants =
                 "SELECT\n" +
-                       "  course_participants_firstname AS FirstName,\n" +
+                        "certificate_template_name AS 'TemplateID', \n"+
+                        "  course_participants_firstname AS FirstName,\n" +
                        "  course_participants_lastname AS LastName,\n" +
                        "  cp.course_participants_email AS Email,\n" +
                        "  ph1 AS Phone1,\n" +
@@ -117,8 +124,10 @@ public class MySQLParticipants extends SQLOperations{
                        "\n" +
                        "  JOIN certificates ON cp.course_participants_email = certificates.course_participants_email\n" +
                        "\n" +
-                       "  JOIN courses ON certificates.course_id = courses.course_id;\n" +
-                       "\n";
+                       "  JOIN courses ON certificates.course_id = courses.course_id\n" +
+                        "JOIN certificate_templates ON courses.certificate_template_id = certificate_templates.certificate_template_id\n" +
+
+                        "\n";
 
 
             return connectToDatabase(sqlFetchAllParticipants);
@@ -128,6 +137,7 @@ public class MySQLParticipants extends SQLOperations{
     {
         String sqlStatement =
                         "SELECT\n" +
+                        "certificate_template_name AS 'TemplateID', \n"+
                         "  course_participants_firstname AS 'FirstName',\n" +
                         "  course_participants_lastname AS 'LastName',\n" +
                         "  cp.course_participants_email AS Email,\n" +
@@ -156,7 +166,9 @@ public class MySQLParticipants extends SQLOperations{
                         "\n" +
                         "  JOIN certificates ON cp.course_participants_email = certificates.course_participants_email\n" +
                         "\n" +
-                        "  JOIN courses ON certificates.course_id = courses.course_id WHERE courses.course_id = "+courseID+" AND certificates.course_certificate_sent is false;\n";
+                        "  JOIN courses ON certificates.course_id = courses.course_id " +
+                        "JOIN certificate_templates ON courses.certificate_template_id = certificate_templates.certificate_template_id\n" +
+                        "WHERE courses.course_id = "+courseID+" AND certificates.course_certificate_sent is false;\n";
         return connectToDatabase(sqlStatement);
     }
 
@@ -185,6 +197,10 @@ public class MySQLParticipants extends SQLOperations{
             //Add course participants to the array (as long ad they are in the database).
             while(resultSet.next())
             {
+                String templateID = resultSet.getString("TemplateID");
+
+                Button button = new Button("Send");
+
                 returnParticipants.add(new CourseParticipant(
                         resultSet.getString("CourseName"),
                         resultSet.getString("FirstName"),
@@ -193,9 +209,13 @@ public class MySQLParticipants extends SQLOperations{
                         resultSet.getString("Phone2"),
                         resultSet.getString("Email"),
                         resultSet.getBoolean("CourseCertificateSent"),
-                        new Button("Send")
+                        button
 
                 ));
+                button.setOnAction(e->
+                {
+                    SMTPOperations.sendMissingCertificate(templateID);
+                });
             }
             connection.close();
         } catch (Exception e) {
