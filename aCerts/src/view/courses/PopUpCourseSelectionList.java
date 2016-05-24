@@ -26,7 +26,7 @@ public class PopUpCourseSelectionList extends Pane {
         selectCourseButton = new Button("Select");
         cancelButton = new Button("Cancel");
 
-        //show courses in tableView
+        //Show courses in tableView
         ObservableList<Course> courses = FXCollections.observableArrayList(MySQLCourses.getAll());
         courseTableView.itemsProperty().setValue(courses);
 
@@ -41,7 +41,7 @@ public class PopUpCourseSelectionList extends Pane {
         courseEndDateColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
 
 
-        // Remove the empty column added by default
+        //Remove the empty column added by default
         courseTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         //Set the courseTableView's position in the pane.
@@ -61,7 +61,7 @@ public class PopUpCourseSelectionList extends Pane {
         titleLabel.setLayoutX(40);
         titleLabel.setLayoutY(15);
 
-        //Styling
+        //Style the elements using ACertsColorScheme.
         cancelButton.setStyle(ACertsColorScheme.buttonColor());
         selectCourseButton.setStyle(ACertsColorScheme.buttonColor());
         this.setStyle(ACertsColorScheme.viewColor());
