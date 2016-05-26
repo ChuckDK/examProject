@@ -27,3 +27,18 @@ UPDATE certificates
   SET course_certificate_sent = TRUE
 WHERE certificates.course_participants_email = 'fdm@yahoo.com'
 AND certificates.course_id = 2;
+
+
+DELETE FROM certificates
+WHERE course_id = 3
+
+DELETE FROM courses
+WHERE course_id =3;
+
+
+/*
+SET FOREIGN_KEY_CHECKS=0
+DELETE FROM courses
+WHERE course_id = 3;
+SET FOREIGN_KEY_CHECKS=1
+*/
