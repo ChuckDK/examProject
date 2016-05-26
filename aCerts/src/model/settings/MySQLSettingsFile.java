@@ -2,6 +2,8 @@ package model.settings;
 
 import java.io.Serializable;
 
+//Class from which enables initializing of MySQLSettingsFile objects. The class holds some getters and setters which
+//may or may not be in use. The ones not in use are for later convenience.
 public class MySQLSettingsFile implements Serializable
 {
     private String userName;
