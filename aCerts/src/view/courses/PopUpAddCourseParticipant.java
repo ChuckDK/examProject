@@ -40,7 +40,7 @@ public class PopUpAddCourseParticipant extends PopUpAddCoursePersona {
             Stage popup = new Stage();
             popup.setTitle("Select Course");
             PopUpCourseSelectionList popupPane = new PopUpCourseSelectionList();
-            popup.setScene(new Scene(popupPane));
+            popup.setScene(new Scene(popupPane, 600, 400));
 
             //Reuse the cancelButton from PopUpCourseSelectionList and make it close the window when clicked.
             ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());

@@ -48,6 +48,7 @@ public class PopUpCourseResponsibleSelectionList extends Pane {
         //Set the courseResponsiblesTableView's position in the pane.
         courseResponsiblesTableView.setLayoutY(50);
         courseResponsiblesTableView.setPrefHeight(280);
+        courseResponsiblesTableView.setPrefWidth(600);
 
         //Set the selectCourseResponsibleButton's position in the pane.
         selectCourseResponsibleButton.setLayoutX(60);

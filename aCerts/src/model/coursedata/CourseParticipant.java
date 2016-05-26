@@ -1,5 +1,6 @@
 package model.coursedata;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.control.Button;
 
 
@@ -10,18 +11,19 @@ public class CourseParticipant {
     private String email;
     private String phoneNumber;
     private String phoneNumber2;
-    private boolean certificateSent;
+    private SimpleBooleanProperty certificateSent;
     private Button sendButton;
 
-    public CourseParticipant(String courseName, String firstName, String lastName, String email, String phoneNumber, String phoneNumber2,boolean certificateSent, Button sendButton) {
+    public CourseParticipant(String courseName, String firstName, String lastName, String email, String phoneNumber, String phoneNumber2, SimpleBooleanProperty certificateSent, Button sendButton)
+    {
         this.courseName = courseName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.phoneNumber2 = phoneNumber2;
-        this.sendButton = sendButton;
         this.certificateSent = certificateSent;
+        this.sendButton = sendButton;
     }
 
     public String toString()
@@ -77,14 +79,19 @@ public class CourseParticipant {
         this.sendButton = sendButton;
     }
 
-    public boolean isCertificateSent()
+    public boolean getCertificateSent()
+    {
+        return certificateSent.get();
+    }
+
+    public SimpleBooleanProperty certificateSentProperty()
     {
         return certificateSent;
     }
 
     public void setCertificateSent(boolean certificateSent)
     {
-        this.certificateSent = certificateSent;
+        this.certificateSent.set(certificateSent);
     }
 
     public String getPhoneNumber2() {

@@ -43,6 +43,7 @@ public class PopUpCourseSelectionList extends Pane {
 
         //Remove the empty column added by default
         courseTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        courseTableView.setPrefWidth(600);
 
         //Set the courseTableView's position in the pane.
         courseTableView.setLayoutY(50);

@@ -1,8 +1,15 @@
 package control.operations;
 
 import control.settings.MySQLSettings;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.coursedata.CourseParticipant;
+import view.styling.ACertsColorScheme;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -205,17 +212,52 @@ public class MySQLParticipants extends SQLOperations{
                         resultSet.getString("CourseName"),
                         resultSet.getString("FirstName"),
                         resultSet.getString("LastName"),
+                        resultSet.getString("Email"),
                         resultSet.getString("Phone1"),
                         resultSet.getString("Phone2"),
-                        resultSet.getString("Email"),
-                        resultSet.getBoolean("CourseCertificateSent"),
+                        new SimpleBooleanProperty(resultSet.getBoolean("CourseCertificateSent")),
                         button);
 
                 returnParticipants.add(participant);
 
                 button.setOnAction(e->
                 {
-                    SMTPOperations.sendMissingCertificate(templateID, participant);
+                    Stage alertBox = new Stage();
+                    Pane pane = new Pane();
+                    pane.setStyle(ACertsColorScheme.viewColor());
+
+                    Button ok = new Button("OK");
+
+                    ok.setStyle(ACertsColorScheme.buttonColor());
+
+                    Label message;
+                    try
+                    {
+                        SMTPOperations.sendMissingCertificate(templateID, participant);
+                        participant.setCertificateSent(true);
+                        message = new Label("Mail sent!");
+                    }
+                    catch (Exception e1)
+                    {
+                        e1.printStackTrace();
+                        message = new Label("Failed to send certificate!");
+                        pane.setStyle("-fx-background-color: FF0000"); //red
+                    }
+                    pane.getChildren().addAll(ok, message);
+                    ok.setLayoutX(75);
+                    ok.setLayoutY(60);
+                    ok.setPrefWidth(50);
+
+                    ok.setOnAction(event->alertBox.close());
+
+                    double width = com.sun.javafx.tk.Toolkit.getToolkit().getFontLoader().computeStringWidth(message.getText(), message.getFont());
+
+                    message.setLayoutX(100 - width / 2);
+                    message.setLayoutY(20);
+
+                    alertBox.setScene(new Scene(pane, 200, 100));
+                    alertBox.initModality(Modality.APPLICATION_MODAL);
+                    alertBox.showAndWait();
                 });
             }
             connection.close();

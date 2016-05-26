@@ -128,7 +128,7 @@ public class ViewPaneLogin extends Pane implements Resizable
                 //Initialize the starting scene where you get the first window
                 //from the array in the ViewPanesManager class.
                 //The getPane(0) will differ depending on whether or not the user has admin rights.
-                Scene scene = new Scene(viewPanesManager.getPane(0));
+                Scene scene = new Scene(viewPanesManager.getPane(0), 1280, 720);
                 SceneInitializer.getMainWindow().setScene(scene);
                 scene.widthProperty().addListener(ex1-> SceneInitializer.updateView(scene));
                 scene.heightProperty().addListener(ex1-> SceneInitializer.updateView(scene));

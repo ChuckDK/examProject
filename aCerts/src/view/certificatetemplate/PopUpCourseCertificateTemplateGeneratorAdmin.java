@@ -7,6 +7,7 @@ import javafx.geometry.Bounds;
 import javafx.scene.Cursor;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -59,9 +60,9 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
     private Label size1 = new Label("Size:");
     private Label size2 = new Label("Size:");
     private Label size3 = new Label("Size:");
-    private Label nameLabel = new Label("Sample Name:");
-    private Label dateLabel = new Label("Sample Date:");
-    private Label courseLabel = new Label("Sample course name:");
+    private Label nameLabel = new Label("Participant Name Example:");
+    private Label dateLabel = new Label("Date Example:");
+    private Label courseLabel = new Label("Course Name Example:");
     private Label templateLabel = new Label("Template Name");
 
     //TextField to edit template name
@@ -77,13 +78,14 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
     private TextField sizeDate = new TextField();
     private TextField sizeCourseName = new TextField();
 
+    /* feature not implemented, can be added in a future update
     //Colorpickers to edit the color of the name and date drag'n'drop labels
     private ColorPicker nameColor = new ColorPicker();
     private ColorPicker dateColor = new ColorPicker();
-    private ColorPicker courseNameColor = new ColorPicker();
+    private ColorPicker courseNameColor = new ColorPicker();*/
 
     //button to load an image as a background image in the editorview
-    private Button loadButton = new Button("Load Image");
+    private Button loadButton = new Button("Load Certificates Image");
 
     //Button to exit the editor without saving the template
     private Button cancelButton = new Button("Cancel");
@@ -106,11 +108,11 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
                 sizeName,
                 size2,
                 sizeDate,
-                nameColor,
-                dateColor,
+                /*nameColor,*/
+                /*dateColor,*/
                 sizeCourseName,
                 size3,
-                courseNameColor,
+                /*courseNameColor,*/
                 courseLabel,
                 editCourse,
                 templateLabel,
@@ -131,10 +133,11 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         //fully
         editorView.setContent(editor);
 
+        /*
         //set the colorPicker to have a default value of the black color
         nameColor.setValue(Color.BLACK);
         dateColor.setValue(Color.BLACK);
-        courseNameColor.setValue(Color.BLACK);
+        courseNameColor.setValue(Color.BLACK);*/
 
         //styling of the certificate editor
         this.setStyle(ACertsColorScheme.viewColor());
@@ -155,9 +158,11 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         editName.setOnKeyPressed(e-> updateString(e, name, editName));
         editDate.setOnKeyPressed(e-> updateString(e, date, editDate));
         editCourse.setOnKeyPressed(e-> updateString(e, course, editCourse));
+
+        /*
         nameColor.setOnAction(e->name.getAttachedLabel().setTextFill(nameColor.getValue()));
         dateColor.setOnAction(e->date.getAttachedLabel().setTextFill(dateColor.getValue()));
-        courseNameColor.setOnAction(e->course.getAttachedLabel().setTextFill(courseNameColor.getValue()));
+        courseNameColor.setOnAction(e->course.getAttachedLabel().setTextFill(courseNameColor.getValue()));*/
 
         //pane elements that does not need to altered when the window is sized. If the elements layout property is
         //change here that means that  that property will only be set on creation of the certificate editor and
@@ -167,9 +172,10 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         editName.setLayoutY(30);
         editName.setPrefWidth(180);
 
+        /*
         nameColor.setLayoutX(200);
         nameColor.setLayoutY(60);
-        nameColor.setPrefWidth(90);
+        nameColor.setPrefWidth(90);*/
 
         nameLabel.setLayoutX(10);
         nameLabel.setLayoutY(10);
@@ -178,9 +184,10 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         editDate.setLayoutY(120);
         editDate.setPrefWidth(180);
 
+        /*
         dateColor.setLayoutX(200);
         dateColor.setLayoutY(150);
-        dateColor.setPrefWidth(90);
+        dateColor.setPrefWidth(90);*/
 
         dateLabel.setLayoutX(10);
         dateLabel.setLayoutY(100);
@@ -189,9 +196,10 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         editCourse.setLayoutY(210);
         editCourse.setPrefWidth(180);
 
+        /*
         courseNameColor.setLayoutX(200);
         courseNameColor.setLayoutY(240);
-        courseNameColor.setPrefWidth(90);
+        courseNameColor.setPrefWidth(90);*/
 
         courseLabel.setLayoutX(10);
         courseLabel.setLayoutY(190);
@@ -295,9 +303,68 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         SQLOperations.addNewRow("certificate_templates", value);
     }
 
+    public boolean checkValues()
+    {
+        boolean allvaluesFilledIn = true;
+        DropShadow error = new DropShadow();
+        error.setColor(Color.RED);
+        try
+        {
+            Double.parseDouble(sizeCourseName.getText());
+            sizeCourseName.setEffect(null);
+        }
+        catch (Exception e)
+        {
+            allvaluesFilledIn = false;
+            sizeCourseName.setEffect(error);
+        }
+
+        try
+        {
+            Double.parseDouble(sizeDate.getText());
+            sizeDate.setEffect(null);
+        }
+        catch (Exception e)
+        {
+            allvaluesFilledIn = false;
+            sizeDate.setEffect(error);
+        }
+
+        try
+        {
+            Double.parseDouble(sizeName.getText());
+            sizeName.setEffect(null);
+        }
+        catch (Exception e)
+        {
+            allvaluesFilledIn = false;
+            sizeName.setEffect(error);
+        }
+
+        if(loadedImage == null)
+        {
+            allvaluesFilledIn = false;
+            loadButton.setEffect(error);
+        }
+        else
+        {
+            loadButton.setEffect(null);
+        }
+
+        if(templateNameTextField.getText().equals(""))
+        {
+            allvaluesFilledIn = false;
+            templateNameTextField.setEffect(error);
+        }
+        else
+        {
+            templateNameTextField.setEffect(null);
+        }
+        return allvaluesFilledIn;
+    }
 
     //this method update the text on the drag'n'drop labels and adjusts their position relative to their drag'n'drop controller
-    public void updateString(KeyEvent ke, DragableLabel label, TextField textField) //to be merged with method below
+    public void updateString(KeyEvent ke, DragableLabel label, TextField textField)
     {
         if(ke.getCode() == KeyCode.ENTER)
         {

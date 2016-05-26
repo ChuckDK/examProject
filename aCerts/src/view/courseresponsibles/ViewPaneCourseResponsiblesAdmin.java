@@ -78,7 +78,7 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
         addNewCourseResponsibleButton = new Button("Add new");
 
         //Create the removeCourseResponsibleButton button.
-        removeCourseResponsibleButton = new Button("remove");
+        removeCourseResponsibleButton = new Button("Remove");
 
         //Add all elements to the instance of the class.
         this.getChildren().addAll(

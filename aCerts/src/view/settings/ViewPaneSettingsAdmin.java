@@ -84,6 +84,7 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable
         chooseCertificateComboBox.setStyle(ACertsColorScheme.buttonColor());
 
         chooseCertificateComboBox.itemsProperty().setValue(FXCollections.observableArrayList(MySQLCourses.getTemplateList()));
+        chooseCertificateComboBox.setPromptText("Certificate Templates");
 
         //Adding a function for the addCourseCertificateTemplateButton button.
         addCourseCertificateTemplateButton.setOnAction(e->
@@ -91,7 +92,7 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable
             Stage popup = new Stage();
             popup.setTitle("Certificate Template Editor");
             PopUpCourseCertificateTemplateGeneratorAdmin popupPane = new PopUpCourseCertificateTemplateGeneratorAdmin();
-            popup.setScene(new Scene(popupPane,  500, 400));
+            popup.setScene(new Scene(popupPane,  1000, 800));
 
             //Listeners which calls updateView whenever the window's width is resized.
             popup.getScene().widthProperty().addListener(ex-> SceneInitializer.updateView(popup.getScene()));
@@ -104,9 +105,12 @@ public class ViewPaneSettingsAdmin extends Pane implements Resizable
 
             ((Button) popupPane.getChildren().get(2)).setOnAction(ex->
             {
-                popupPane.generateTemplate();
-                chooseCertificateComboBox.itemsProperty().setValue(FXCollections.observableArrayList(MySQLCourses.getTemplateList()));
-                popup.close();
+                if(popupPane.checkValues())
+                {
+                    popupPane.generateTemplate();
+                    chooseCertificateComboBox.itemsProperty().setValue(FXCollections.observableArrayList(MySQLCourses.getTemplateList()));
+                    popup.close();
+                }
             });
 
             //When the 'popup' scene is launched, it's elements are not in their appropriate places.

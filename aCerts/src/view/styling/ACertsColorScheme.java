@@ -6,7 +6,7 @@ public class ACertsColorScheme {
 
     public static String viewColor()
     {
-        return "-fx-background-color: #CCFF99";
+        return "-fx-background-color: #A3CF5F";
     }
 
     public static String subViewColor()
@@ -14,11 +14,11 @@ public class ACertsColorScheme {
         return "-fx-background-color: #FFFFFF";
     }
 
-    public static String buttonColor() { return  "-fx-base: #CCDF99"; }
+    public static String buttonColor() { return  "-fx-base: #416B7F"; }
 
-    public static String toggleButtonColor() { return "-fx-base: #EEFF99"; }
+    public static String toggleButtonColor() { return "-fx-base: #416B7F"; }
 
-    public static String tabColor() { return "-fx-base: #EEFF99"; }
+    public static String tabColor() { return "-fx-base: #416B7F"; }
 
     public static String textFieldColor() { return "-fx-control-inner-background: #FFFFFF"; }
 }

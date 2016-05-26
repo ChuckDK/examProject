@@ -1,5 +1,6 @@
 package view.courses;
 
+import control.operations.FTPOperations;
 import control.operations.MySQLCourses;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,11 +8,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.coursedata.Course;
 import view.styling.ACertsColorScheme;
 import view.styling.Resizable;
+
+import java.io.File;
+
+// **download functionality not implements, can be done in a future update**
 
 public class ViewPaneCourses extends Pane implements Resizable
 {
@@ -40,15 +46,15 @@ public class ViewPaneCourses extends Pane implements Resizable
         TableColumn<Course, String> courseResponsibleColumn = new TableColumn<>("Course Responsible");
         TableColumn<Course, String> startDateColumn = new TableColumn<>("Start Date");
         TableColumn<Course, String> endDateColumn = new TableColumn<>("End Date");
-        TableColumn<Course, Button> downloadColumn = new TableColumn<>("Test");
-        TableColumn<Course, Button> viewParticipantsColumn = new TableColumn<>("Test");
+        //TableColumn<Course, Button> downloadColumn = new TableColumn<>("Course Material");
+        TableColumn<Course, Button> viewParticipantsColumn = new TableColumn<>("Participants");
 
         //Link the columns to the values in our Course object.
         courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
         courseResponsibleColumn.setCellValueFactory(new PropertyValueFactory<>("courseResponsible"));
         startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         endDateColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
-        downloadColumn.setCellValueFactory(new PropertyValueFactory<>("downloadButton"));
+        //downloadColumn.setCellValueFactory(new PropertyValueFactory<>("downloadButton"));
         viewParticipantsColumn.setCellValueFactory(new PropertyValueFactory<>("viewParticipants"));
 
         //Add the columns to our courseTableView
@@ -57,7 +63,7 @@ public class ViewPaneCourses extends Pane implements Resizable
                 courseResponsibleColumn,
                 startDateColumn,
                 endDateColumn,
-                downloadColumn,
+                /*downloadColumn,*/
                 viewParticipantsColumn);
 
         ////Group toggle buttons using JavaFX ToggleGroup.
@@ -133,7 +139,19 @@ public class ViewPaneCourses extends Pane implements Resizable
 
             ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
 
-            ((Button) popupPane.getChildren().get(8)).setOnAction(ex->
+            /*  **functionality not imlemented, can be done in future update**
+            ((Button) popupPane.getChildren().get(7)).setOnAction(ex->
+            {
+                FileChooser fileChooser = new FileChooser();
+
+                File file = fileChooser.showOpenDialog(new Stage());
+
+                file.renameTo(new File(file.getAbsolutePath()+((TextField) popupPane.getChildren().get(2)).getText()));
+
+                FTPOperations.uploadFile(file);
+            });*/
+
+            ((Button) popupPane.getChildren().get(7)).setOnAction(ex->
             {
                 if(popupPane.checkForValues())
                 {

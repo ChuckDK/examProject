@@ -39,6 +39,7 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable
         TableColumn<CourseParticipant, String> lastNameColumn = new TableColumn<>("Last Name");
         TableColumn<CourseParticipant, String> emailColumn = new TableColumn<>("Email");
         TableColumn<CourseParticipant, String> phoneNumberColumn = new TableColumn<>("Phone Number");
+        TableColumn<CourseParticipant, String> phoneNumber2Column = new TableColumn<>("Phone Number 2");
         TableColumn<CourseParticipant, String> certificateSentColumn = new TableColumn<>("certificate Sent");
         TableColumn<CourseParticipant, Button> sendColumn = new TableColumn<>("Send Certificate");
 
@@ -49,6 +50,7 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        phoneNumber2Column.setCellValueFactory(new PropertyValueFactory<>("phoneNumber2"));
         certificateSentColumn.setCellValueFactory(new PropertyValueFactory<>("certificateSent"));
         sendColumn.setCellValueFactory(new PropertyValueFactory<>("sendButton"));
 
@@ -60,6 +62,7 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable
                 lastNameColumn,
                 emailColumn,
                 phoneNumberColumn,
+                phoneNumber2Column,
                 certificateSentColumn,
                 sendColumn);
 
@@ -76,7 +79,7 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable
 
         addNewParticipantButton = new Button("Add new");
 
-        removeParticipantButton = new Button("remove");
+        removeParticipantButton = new Button("Remove");
 
         //add elements to view
         this.getChildren().addAll(

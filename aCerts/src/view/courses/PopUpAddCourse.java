@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.certificates.TemplateID;
@@ -18,6 +19,8 @@ import view.courseresponsibles.PopUpCourseResponsibleSelection;
 import view.courseresponsibles.PopUpCourseResponsibleSelectionList;
 import view.styling.ACertsColorScheme;
 
+import java.io.File;
+
 public class PopUpAddCourse extends Pane {
     private DatePicker startDatePicker;
     private DatePicker endDatePicker;
@@ -25,7 +28,7 @@ public class PopUpAddCourse extends Pane {
     private TextField courseNameTextField;
     private Label startDateLabel;
     private Label endDateLabel;
-    private Button uploadCourseMaterialButton;
+    //private Button uploadCourseMaterialButton;  **feature not implemented, can be done in an update**
     private Button addCourseButton;
     private Button cancelButton;
     private ComboBox<TemplateID> templates;
@@ -50,13 +53,14 @@ public class PopUpAddCourse extends Pane {
         courseNameTextField = new TextField();
 
         //Buttons.
-        uploadCourseMaterialButton = new Button("Upload Course Material");
+        //uploadCourseMaterialButton = new Button("Upload Course Material");
         addCourseButton = new Button("Add course");
         cancelButton = new Button("Cancel");
         assignCourseResponsible = new Button("Assign Course Responsible");
 
         //Combo box.
         templates = new ComboBox<>();
+        templates.setPromptText("Certificate tempates");
 
         //Add data to combo box.
         templates.itemsProperty().setValue(FXCollections.observableArrayList(MySQLCourses.getTemplateList()));
@@ -86,8 +90,8 @@ public class PopUpAddCourse extends Pane {
         endDatePicker.setLayoutY(200);
         endDatePicker.setPrefWidth(110);
 
-        uploadCourseMaterialButton.setLayoutX(270);
-        uploadCourseMaterialButton.setLayoutY(200);
+        //uploadCourseMaterialButton.setLayoutX(270);
+        //uploadCourseMaterialButton.setLayoutY(200);
 
         addCourseButton.setLayoutX(30);
         addCourseButton.setLayoutY(350);
@@ -110,7 +114,7 @@ public class PopUpAddCourse extends Pane {
                 startDatePicker,
                 endDatePicker,
                 endDateLabel,
-                uploadCourseMaterialButton,
+                /*uploadCourseMaterialButton,*/
                 addCourseButton,
                 templates);
 
@@ -119,7 +123,7 @@ public class PopUpAddCourse extends Pane {
         courseNameTextField.setStyle(ACertsColorScheme.textFieldColor());
         startDatePicker.setStyle(ACertsColorScheme.textFieldColor());
         endDatePicker.setStyle(ACertsColorScheme.textFieldColor());
-        uploadCourseMaterialButton.setStyle(ACertsColorScheme.buttonColor());
+        //uploadCourseMaterialButton.setStyle(ACertsColorScheme.buttonColor());
         addCourseButton.setStyle(ACertsColorScheme.buttonColor());
         assignCourseResponsible.setStyle(ACertsColorScheme.buttonColor());
         templates.setStyle(ACertsColorScheme.buttonColor());
@@ -138,7 +142,7 @@ public class PopUpAddCourse extends Pane {
             ((Button) popupPane.getChildren().get(0)).setOnAction(ex -> {
                 Stage stage = new Stage();
                 Pane pane = new PopUpCourseResponsibleSelectionList();
-                Scene scene = new Scene(pane);
+                Scene scene = new Scene(pane, 600, 400);
                 stage.setScene(scene);
                 stage.initModality(Modality.APPLICATION_MODAL);
 
@@ -240,6 +244,16 @@ public class PopUpAddCourse extends Pane {
         else
         {
             courseResponsibleEmail = courseResponsible.getEmail();
+        }
+
+        if(templates.itemsProperty().getValue() == null)
+        {
+            templates.setEffect(error);
+            allInfoFilledIn = false;
+        }
+        else
+        {
+            templates.setEffect(null);
         }
 
         //If allInfoFilledIn is true, which essentially means every other field was filled in correctly,

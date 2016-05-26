@@ -1,6 +1,7 @@
 package control.certificates;
 
 import control.operations.FTPOperations;
+import control.operations.SMTPOperations;
 import control.settings.FTPSettings;
 import control.settings.FileIO;
 import javafx.embed.swing.SwingFXUtils;
@@ -19,6 +20,7 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTP;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Paths;
@@ -46,16 +48,24 @@ public class CourseCertificateTemplateGenerator
         catch (Exception e)
         {
             e.printStackTrace();
+            return false;
         }
         return true;
     }
 
-    public static boolean generateCertificateImage(CertificateTemplate template, File imageFile, CourseParticipant participant) throws Exception
+    public static String generateCertificateImage(CertificateTemplate template, File imageFile, CourseParticipant participant)
     {
         Pane certificatePane = new Pane();
 
         //read and store the file as a BufferedImage object (BufferedImage is a swing class
-        BufferedImage image = ImageIO.read(imageFile);
+        BufferedImage image = null;
+        try
+        {
+            image = ImageIO.read(imageFile);
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
 
         //convert the BufferedImage to a javaFX image and show it in the editor, by setting the certificateImageViews
         // image to be the one converted from the BufferedImage
@@ -72,17 +82,23 @@ public class CourseCertificateTemplateGenerator
         participantName.setFont(Font.font(template.getNameFontSize()));
         certificateDate.setFont(Font.font(template.getDateFontSize()));
 
-        double width = 0;
-        double height = 0;
+        double width = com.sun.javafx.tk.Toolkit.getToolkit().getFontLoader().computeStringWidth(courseName.getText(), courseName.getFont());
+        double height = com.sun.javafx.tk.Toolkit.getToolkit().getFontLoader().getFontMetrics(Font.font(courseName.getFont().getSize())).getLineHeight();
 
         courseName.setLayoutX(template.getCourseNamePositionX() - width / 2);
         courseName.setLayoutY(template.getCourseNamePositionY() - height / 2);
 
+        width = com.sun.javafx.tk.Toolkit.getToolkit().getFontLoader().computeStringWidth(participantName.getText(), participantName.getFont());
+        height = com.sun.javafx.tk.Toolkit.getToolkit().getFontLoader().getFontMetrics(Font.font(participantName.getFont().getSize())).getLineHeight();
+
         participantName.setLayoutX(template.getParticipantNamePositionX() - width / 2);
         participantName.setLayoutY(template.getParticipantNamePositionY() - height / 2);
 
-        certificateDate.setLayoutX(template.getCourseNamePositionX() - width / 2);
-        certificateDate.setLayoutY(template.getCourseNamePositionY() - height / 2);
+        width = com.sun.javafx.tk.Toolkit.getToolkit().getFontLoader().computeStringWidth(certificateDate.getText(), certificateDate.getFont());
+        height = com.sun.javafx.tk.Toolkit.getToolkit().getFontLoader().getFontMetrics(Font.font(certificateDate.getFont().getSize())).getLineHeight();
+
+        certificateDate.setLayoutX(template.getDatePositionX() - width / 2);
+        certificateDate.setLayoutY(template.getDatePositionY() - height / 2);
 
         certificatePane.getChildren().addAll(
                 imageView,
@@ -100,7 +116,35 @@ public class CourseCertificateTemplateGenerator
 
         imageView.setImage(certificateFinal);
 
-        return true;
+        window.close();
+
+        //method to save javafx image as jpg image found at http://stackoverflow.com/questions/19548363/image-saved-in-javafx-as-jpg-is-pink-toned
+        //from the best answer. 24-may-2016
+
+        BufferedImage jpg = SwingFXUtils.fromFXImage(certificateFinal, null);
+
+        BufferedImage jpgNoAlpha = new BufferedImage(jpg.getWidth(), jpg.getHeight(), BufferedImage.OPAQUE);
+
+        Graphics2D jpgGraphics = jpgNoAlpha.createGraphics();
+
+        jpgGraphics.drawImage(jpg, 0, 0, null);
+
+        try
+        {
+            ImageIO.write(jpgNoAlpha, "jpg", new File("certificates/"+participant.getCourseName()+".jpg"));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        //end of jpg image saving
+
+        //send the certificate to participant
+        SMTPOperations.sendCertificate(participant.getEmail(), "gratz", "halleluja", new File("certificates/"+participant.getCourseName()+".jpg"));
+
+
+        return null;
 
     }
 }

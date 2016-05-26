@@ -1,10 +1,15 @@
 package view.courses;
 
+import control.operations.FTPOperations;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import view.styling.ACertsColorScheme;
+
+import java.io.File;
 
 public class ViewPaneCoursesAdmin extends ViewPaneCourses{
 
@@ -38,13 +43,41 @@ public class ViewPaneCoursesAdmin extends ViewPaneCourses{
 
             ((Button) popupPane.getChildren().get(0)).setOnAction(ex->popup.close());
 
-            ((Button) popupPane.getChildren().get(8)).setOnAction(ex->
+            /* **functionality not implemented, can be done in a future update**
+            ((Button) popupPane.getChildren().get(7)).setOnAction(ex->
+            {
+                FileChooser fileChooser = new FileChooser();
+
+                File file = fileChooser.showOpenDialog(new Stage());
+
+                file.renameTo(new File(file.getAbsolutePath()+((TextField) popupPane.getChildren().get(2)).getText()));
+
+                FTPOperations.uploadFile(file);
+            });*/
+
+            ((Button) popupPane.getChildren().get(7)).setOnAction(ex->
             {
                 if(popupPane.checkForValues())
                 {
                     popup.close();
                 }
             });
+
+
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.showAndWait();
+        });
+
+        removeCourses.setOnAction(event ->
+        {
+            //Create a popup window using an instance of the PopUpAddCourseAdmin class.
+            //See the class for it's content.
+            Stage popup = new Stage();
+            popup.setTitle("Remove Course");
+            PopUpRemoveCourseAdmin popupPane = new PopUpRemoveCourseAdmin();
+            popup.setScene(new Scene(popupPane,  500, 400));
+
+
 
 
             popup.initModality(Modality.APPLICATION_MODAL);

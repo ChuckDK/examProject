@@ -17,6 +17,7 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
 
     private CheckBox adminRights;
     private Label adminRightsLabel;
+    private Label passwordLabel;
     private Button addCourseResponsible;
     private PasswordField passwordField;
 
@@ -27,6 +28,9 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
         adminRights = new CheckBox();
 
         passwordField = new PasswordField();
+        passwordField.setPromptText("Insert Password...");
+
+        passwordLabel = new Label("Password:");
 
         adminRightsLabel = new Label("Admin rights");
 
@@ -45,12 +49,16 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
         passwordField.setLayoutX(100);
         passwordField.setLayoutY(300);
 
+        passwordLabel.setLayoutX(30);
+        passwordLabel.setLayoutY(305);
+
         //Add elements to view
         this.getChildren().addAll(
                 adminRights,
                 adminRightsLabel,
                 addCourseResponsible,
-                passwordField);
+                passwordField,
+                passwordLabel);
 
         //styling
         addCourseResponsible.setStyle(ACertsColorScheme.buttonColor());
