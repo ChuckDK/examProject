@@ -40,9 +40,17 @@ public class SQLOperations {
         }
 
     }
-    public static boolean removeRow(String sqlStatement)
+    public static boolean removeRow(String table, String variable, String value)
     {
-        return false;
+        String sqlStatement = "DELETE FROM "+table+" WHERE "+variable+ " = "+value;
+        if (connectToDatabase(sqlStatement))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     //Method which creates the connection to the database.

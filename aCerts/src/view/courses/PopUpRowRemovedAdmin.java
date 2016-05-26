@@ -3,19 +3,20 @@ package view.courses;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import view.styling.ACertsColorScheme;
 
-public class PopUpCourseRemovedAdmin extends Pane {
+public class PopUpRowRemovedAdmin extends Pane {
     private Label courseIDLabel;
     private Label courseNameLabel;
     private Label messageLabel;
     private Button okayButton;
 
-    public PopUpCourseRemovedAdmin() {
+    public PopUpRowRemovedAdmin(String removedElement, String type) {
 
         // Create the 3 Labels and the Okay Button.
-        courseIDLabel = new Label("Course ID");
-        courseNameLabel = new Label("Course Name");
-        messageLabel = new Label("Message Label");
+        courseIDLabel = new Label(removedElement);
+        courseNameLabel = new Label("");
+        messageLabel = new Label(type+" successfully removed");
         okayButton = new Button("Okay");
 
         // Set position for CourseID.
@@ -38,6 +39,10 @@ public class PopUpCourseRemovedAdmin extends Pane {
         updateLabelPosition(courseIDLabel);
         updateLabelPosition(courseNameLabel);
         updateLabelPosition(messageLabel);
+
+        //Styling
+        okayButton.setStyle(ACertsColorScheme.buttonColor());
+        this.setStyle(ACertsColorScheme.viewColor());
     }
 
     // Method ot help center our labels

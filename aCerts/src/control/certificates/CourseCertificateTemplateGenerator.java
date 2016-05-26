@@ -141,7 +141,7 @@ public class CourseCertificateTemplateGenerator
         //end of jpg image saving
 
         //send the certificate to participant
-        SMTPOperations.sendCertificate(participant.getEmail(), "gratz", "halleluja", new File("certificates/"+participant.getCourseName()+".jpg"));
+        SMTPOperations.sendCertificate(participant.getEmail(), "Tillykke med dit certifikat", "Kursuscertifikat fra AppAcademy", new File("certificates/"+participant.getCourseName()+".jpg"));
 
 
         return null;

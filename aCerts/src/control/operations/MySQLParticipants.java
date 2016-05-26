@@ -241,7 +241,7 @@ public class MySQLParticipants extends SQLOperations{
                     {
                         SMTPOperations.sendMissingCertificate(templateID, participant);
                         participant.setCertificateSent(true);
-                        message = new Label("Mail sent!");
+                        message = new Label("Mail sent successfully!");
                     }
                     catch (Exception e1)
                     {

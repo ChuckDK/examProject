@@ -11,10 +11,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.coursedata.CourseResponsible;
+import view.courses.PopUpRowRemovedAdmin;
+import view.courses.PopUpRemoveRowAdmin;
 import view.styling.ACertsColorScheme;
 import view.styling.Resizable;
-
-import java.util.ArrayList;
 
 public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
 {
@@ -177,6 +177,44 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
                 if(popupPane.checkForValues())
                 {
                     popup.close();
+                }
+            });
+
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.showAndWait();
+        });
+
+        removeCourseResponsibleButton.setOnAction(event ->
+        {
+            //Create a popup window using an instance of the PopUpAddCourseAdmin class.
+            //See the class for it's content.
+            Stage popup = new Stage();
+            popup.setTitle("Remove Course Responsible");
+            PopUpRemoveRowAdmin popupPane = new PopUpRemoveRowAdmin("Warning!! This is permanent and cannot be undone!" +
+                    "\nPlease input the email address for the course" +
+                    "\nresponsible that you want to remove\n" +
+                    "NOTICE: this will also delete every course linked \n " +
+                    "to the course responsible that will be removed!!!", "Input email...");
+            popup.setScene(new Scene(popupPane, 500, 400));
+
+
+            //TO BE FIXED
+            ((Button) popupPane.getChildren().get(3)).setOnAction(e -> {
+                if (SQLOperations.removeRow("", "course_participants_email", "'"+((TextField) popupPane.getChildren().get(1)).getText()+"'") &&
+                        SQLOperations.removeRow("phones_course_participants", "course_participants_email", "'"+((TextField) popupPane.getChildren().get(1)).getText()+"'") &&
+                        SQLOperations.removeRow("course_participants", "course_participants_email", "'"+((TextField) popupPane.getChildren().get(1)).getText()+"'"))
+                {
+                    Stage stage = new Stage();
+                    Pane pane = new PopUpRowRemovedAdmin(((TextField) popupPane.getChildren().get(1)).getText(), "Course Participant");
+                    Scene scene = new Scene(pane, 300, 200);
+                    stage.setScene(scene);
+
+                    //This line enables functionality for the 'okayButton' in the 'PopUpRowRemovedAdmin' class
+                    //hence the number 3 which refers to the 0-indexed number where the 'okayButton' is added.
+                    ((Button) pane.getChildren().get(3)).setOnAction(a -> stage.close());
+
+                    popup.close();
+                    stage.show();
                 }
             });
 

@@ -1,15 +1,13 @@
 package view.courses;
 
-import control.operations.FTPOperations;
+import control.operations.SQLOperations;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import view.styling.ACertsColorScheme;
-
-import java.io.File;
 
 public class ViewPaneCoursesAdmin extends ViewPaneCourses{
 
@@ -74,11 +72,28 @@ public class ViewPaneCoursesAdmin extends ViewPaneCourses{
             //See the class for it's content.
             Stage popup = new Stage();
             popup.setTitle("Remove Course");
-            PopUpRemoveCourseAdmin popupPane = new PopUpRemoveCourseAdmin();
+            PopUpRemoveRowAdmin popupPane = new PopUpRemoveRowAdmin("Warning!! This is permanent and cannot be undone!" +
+                    "\nPlease input a course ID for the course" +
+                    "\nthat you want to remove", "Input course id...");
             popup.setScene(new Scene(popupPane,  500, 400));
 
+            ((Button) popupPane.getChildren().get(3)).setOnAction(e -> {
+                if(SQLOperations.removeRow("certificates", "course_id", ((TextField) popupPane.getChildren().get(1)).getText()) &&
+                        SQLOperations.removeRow("courses", "course_id", ((TextField) popupPane.getChildren().get(1)).getText()))
+                {
+                    Stage stage = new Stage();
+                    Pane pane = new PopUpRowRemovedAdmin(((TextField) popupPane.getChildren().get(1)).getText(), "Course");
+                    Scene scene = new Scene(pane, 300, 200);
+                    stage.setScene(scene);
 
+                    //This line enables functionality for the 'okayButton' in the 'PopUpRowRemovedAdmin' class
+                    //hence the number 3 which refers to the 0-indexed number where the 'okayButton' is added.
+                    ((Button) pane.getChildren().get(3)).setOnAction(a -> stage.close());
 
+                    popup.close();
+                    stage.show();
+                }
+            });
 
             popup.initModality(Modality.APPLICATION_MODAL);
             popup.showAndWait();

@@ -1,6 +1,7 @@
 package view.courses;
 
 import control.operations.MySQLParticipants;
+import control.operations.SQLOperations;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -152,6 +153,40 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable
             popup.initModality(Modality.APPLICATION_MODAL);
             popup.showAndWait();
         });
+
+        removeParticipantButton.setOnAction(event ->
+                {
+                    //Create a popup window using an instance of the PopUpAddCourseAdmin class.
+                    //See the class for it's content.
+                    Stage popup = new Stage();
+                    popup.setTitle("Remove Course Participant");
+                    PopUpRemoveRowAdmin popupPane = new PopUpRemoveRowAdmin("Warning!! This is permanent and cannot be undone!" +
+                            "\nPlease input the email address for the course" +
+                            "\nparticipant that you want to remove", "Input email...");
+                    popup.setScene(new Scene(popupPane, 500, 400));
+
+                    ((Button) popupPane.getChildren().get(3)).setOnAction(e -> {
+                        if (SQLOperations.removeRow("certificates", "course_participants_email", "'"+((TextField) popupPane.getChildren().get(1)).getText()+"'") &&
+                                SQLOperations.removeRow("phones_course_participants", "course_participants_email", "'"+((TextField) popupPane.getChildren().get(1)).getText()+"'") &&
+                                SQLOperations.removeRow("course_participants", "course_participants_email", "'"+((TextField) popupPane.getChildren().get(1)).getText()+"'"))
+                        {
+                            Stage stage = new Stage();
+                            Pane pane = new PopUpRowRemovedAdmin(((TextField) popupPane.getChildren().get(1)).getText(), "Course Participant");
+                            Scene scene = new Scene(pane, 300, 200);
+                            stage.setScene(scene);
+
+                            //This line enables functionality for the 'okayButton' in the 'PopUpRowRemovedAdmin' class
+                            //hence the number 3 which refers to the 0-indexed number where the 'okayButton' is added.
+                            ((Button) pane.getChildren().get(3)).setOnAction(a -> stage.close());
+
+                            popup.close();
+                            stage.show();
+                        }
+                    });
+
+                    popup.initModality(Modality.APPLICATION_MODAL);
+                    popup.showAndWait();
+                });
 
         allCourseParticipantsToggleButton.setOnAction(event -> {
             ObservableList<CourseParticipant> courseParticipants = FXCollections.observableArrayList(MySQLParticipants.getAll());
