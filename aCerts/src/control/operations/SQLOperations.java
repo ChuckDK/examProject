@@ -53,6 +53,54 @@ public class SQLOperations {
         }
     }
 
+    public static boolean removeCourseResponsible(String email)
+    {
+        String sqlStatement1 = "SET FOREIGN_KEY_CHECKS=0;";
+        String sqlStatement2 = "DELETE FROM course_responsibles\n" +
+                "WHERE course_responsible_email = '"+email+"';";
+        String sqlStatement3 = "SET FOREIGN_KEY_CHECKS=1;";
+
+        if(connectToDatabaseMultiple(sqlStatement1, sqlStatement2, sqlStatement3))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //Method which creates the connection to the database.
+    private static boolean connectToDatabaseMultiple(String sqlStatement1, String sqlStatement2, String sqlStatement3)
+    {
+        try {
+            Statement statement;
+
+            //Class.forName simply loads a class, including running its static initializers.
+            Class.forName("com.mysql.jdbc.Driver");
+
+            String url = "jdbc:mysql://"+ MySQLSettings.getHost()+":"+MySQLSettings.getPort()+"/"+MySQLSettings.getDatabaseName();
+
+            //A connection needs a url, a root, and a password.
+            Connection connection = DriverManager.getConnection(url, MySQLSettings.getUsername(), MySQLSettings.getPassword());
+
+            //Initialize the connection as an sql statement.
+            statement = connection.createStatement();
+            statement.addBatch(sqlStatement1);
+            statement.addBatch(sqlStatement2);
+            statement.addBatch(sqlStatement3);
+
+            //Executes the query string.
+            statement.executeBatch();
+
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
     //Method which creates the connection to the database.
     private static boolean connectToDatabase(String sqlStatement)
     {

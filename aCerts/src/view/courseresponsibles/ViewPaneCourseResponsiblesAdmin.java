@@ -192,17 +192,15 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
             popup.setTitle("Remove Course Responsible");
             PopUpRemoveRowAdmin popupPane = new PopUpRemoveRowAdmin("Warning!! This is permanent and cannot be undone!" +
                     "\nPlease input the email address for the course" +
-                    "\nresponsible that you want to remove\n" +
-                    "NOTICE: this will also delete every course linked \n " +
-                    "to the course responsible that will be removed!!!", "Input email...");
+                    "\nresponsible that you want to remove." +
+                    "\nNOTICE: The course responsible will not be able to login afterwards!"
+                    , "Input email...");
             popup.setScene(new Scene(popupPane, 500, 400));
 
 
             //TO BE FIXED
             ((Button) popupPane.getChildren().get(3)).setOnAction(e -> {
-                if (SQLOperations.removeRow("", "course_participants_email", "'"+((TextField) popupPane.getChildren().get(1)).getText()+"'") &&
-                        SQLOperations.removeRow("phones_course_participants", "course_participants_email", "'"+((TextField) popupPane.getChildren().get(1)).getText()+"'") &&
-                        SQLOperations.removeRow("course_participants", "course_participants_email", "'"+((TextField) popupPane.getChildren().get(1)).getText()+"'"))
+                if (SQLOperations.removeCourseResponsible(((TextField) popupPane.getChildren().get(1)).getText()))
                 {
                     Stage stage = new Stage();
                     Pane pane = new PopUpRowRemovedAdmin(((TextField) popupPane.getChildren().get(1)).getText(), "Course Participant");
