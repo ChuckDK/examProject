@@ -1,23 +1,8 @@
 package control.operations;
 
+//Class which saves the mail used for login to use for default mail when a course is created.
 public class Login {
-    private static boolean isAdmin;
     private static String userEmail;
-
-    public static boolean loginVerification(String username, String password)
-    {
-        return false;
-    }
-
-    public static boolean isAdmin()
-    {
-        return isAdmin;
-    }
-
-    public static void setAdmin(boolean admin)
-    {
-        isAdmin = admin;
-    }
 
     public static String getUserEmail()
     {

@@ -4,6 +4,8 @@ import javafx.scene.control.Button;
 
 import java.util.Calendar;
 
+//Class from which enables initializing of Course objects. The class holds some getters and setters which
+//may or may not be in use. The ones not in use are for later convenience.
 public class Course {
     private int courseID;
     private String courseName;

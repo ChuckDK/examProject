@@ -9,6 +9,8 @@ import javafx.scene.text.Font;
 import java.io.Serializable;
 import java.util.Calendar;
 
+//Class from which enables initializing of CertificateTemplate objects. The class holds some getters and setters which
+//may or may not be in use. The ones not in use are for later convenience.
 public class CertificateTemplate implements Serializable{
 
     private int certificateID;

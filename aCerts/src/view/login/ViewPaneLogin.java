@@ -119,7 +119,6 @@ public class ViewPaneLogin extends Pane implements Resizable
                 Login.setUserEmail(user.getEmail());
                 if (user.hasAdminRights())
                 {
-                    Login.setAdmin(true);
                     viewPanesManager = ViewPanesManager.getInstance(true);
                 } else
                 {

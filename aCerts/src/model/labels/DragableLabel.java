@@ -14,15 +14,16 @@ public class DragableLabel extends ImageView
 
     public DragableLabel(String name)
     {
-        //define a label that will be attached to this object.
+        //Define a label that will be attached to this object.
         attachedLabel = new Label(name);
-        //make mouse events not react on this label
+
+        //Make mouse events not react on this label.
         attachedLabel.setMouseTransparent(true);
 
-        //create a 20 by 20 empty image to colorize
+        //Create a 20 by 20 empty image to colorize.
         WritableImage wi = new WritableImage(20, 20);
 
-        //color each pixel in the image red
+        //Color each pixel in the image red.
         PixelWriter pi = wi.getPixelWriter();
         for(int x = 0; x < 20; x++)
         {
@@ -31,8 +32,8 @@ public class DragableLabel extends ImageView
                 pi.setColor(x, y, Color.color(1, 0, 0));
             }
         }
-        //set the image to be the image that this instantitated object shows as. Mouseevents for this object will
-        //be triggered and this image will act as the drag'n'drop controller of this object
+        //Set the instance of the class to be the newly created image. Mouse events for this object will
+        //be triggered and this image will act as the drag'n'drop controller of the class object.
         this.setImage(wi);
     }
     public Double getDragDeltaY()

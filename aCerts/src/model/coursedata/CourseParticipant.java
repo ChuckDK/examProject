@@ -3,7 +3,8 @@ package model.coursedata;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.control.Button;
 
-
+//Class from which enables initializing of CourseParticipant objects. The class holds some getters and setters which
+//may or may not be in use. The ones not in use are for later convenience.
 public class CourseParticipant {
     private String courseName;
     private String firstName;

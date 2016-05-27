@@ -1,8 +1,7 @@
 package model.certificates;
 
-/**
- * Created by dennis on 5/23/16.
- */
+//Class from which enables initializing of TemplateID objects. The class holds some getters and setters which
+//may or may not be in use. The ones not in use are for later convenience.
 public class TemplateID
 {
     private int templateID;

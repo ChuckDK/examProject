@@ -1,5 +1,7 @@
 package control.settings;
 
+//Class from which enables initializing of MySQLSettings objects.
+//The class holds getters and setters for the variables.
 public class FTPSettings extends FileIO
 {
     private static String username;

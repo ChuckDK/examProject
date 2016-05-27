@@ -23,20 +23,26 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
 
     public PopUpAddCourseResponsible()
     {
+        //Inheriting the elements from the PopUpAddCoursePersona class
         super();
 
+        //Initializing a check box.
         adminRights = new CheckBox();
 
+        //Initializing the passwordField and set it's prompt text.
         passwordField = new PasswordField();
         passwordField.setPromptText("Insert Password...");
 
+        //Initializing the password label.
         passwordLabel = new Label("Password:");
 
+        //Initializing the adminRightsLabel label.
         adminRightsLabel = new Label("Admin rights");
 
+        //Initializing the addCourseResponsible button
         addCourseResponsible = new Button("Add course responsible");
 
-        //layouting
+        //Set the position of the new initialized element.
         adminRights.setLayoutX(320);
         adminRights.setLayoutY(210);
 
@@ -52,7 +58,7 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
         passwordLabel.setLayoutX(30);
         passwordLabel.setLayoutY(305);
 
-        //Add elements to view
+        //Add elements to view.
         this.getChildren().addAll(
                 adminRights,
                 adminRightsLabel,
@@ -60,19 +66,21 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
                 passwordField,
                 passwordLabel);
 
-        //styling
+        //Style the elements using ACertsColorScheme.
         addCourseResponsible.setStyle(ACertsColorScheme.buttonColor());
         adminRights.setStyle(ACertsColorScheme.buttonColor());
-
-        //functionality
     }
 
+    //Method which ensures all the values has been added before they are added to the database.
     public boolean checkForValues()
     {
+        //Initialize a boolean and a DropShadow, and style the DropShadow.
         boolean allValuesFilledOut = true;
         DropShadow error = new DropShadow();
         error.setColor(Color.RED);
 
+        //If the email text field is empty, set the DropShadow effect on the emailTextField text field,
+        //set the allValuesFilledOut to false.
         if(emailTextField.getText().equals(""))
         {
             emailTextField.setEffect(error);
@@ -83,6 +91,8 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
             emailTextField.setEffect(null);
         }
 
+        //If the phone number text field is empty, set the DropShadow effect on the phoneNumberTextField text field,
+        //set the allValuesFilledOut to false.
         if(phoneNumberTextField.getText().equals(""))
         {
             phoneNumberTextField.setEffect(error);
@@ -93,6 +103,8 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
             phoneNumberTextField.setEffect(null);
         }
 
+        //If the phone number 2 text field is empty, set the DropShadow effect on the phoneNumber2TextField text field,
+        //set the allValuesFilledOut to false.
         if(phoneNumber2TextField.getText().equals(""))
         {
             phoneNumber2TextField.setEffect(error);
@@ -102,6 +114,9 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
         {
             phoneNumber2TextField.setEffect(null);
         }
+
+        //If the first name text field is empty, set the DropShadow effect on the firstNameTextField text field,
+        //set the allValuesFilledOut to false.
         if(firstNameTextField.getText().equals(""))
         {
             firstNameTextField.setEffect(error);
@@ -111,6 +126,9 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
         {
             firstNameTextField.setEffect(null);
         }
+
+        //If the last name text field is empty, set the DropShadow effect on the lastNameTextField text field,
+        //set the allValuesFilledOut to false.
         if(lastNameTextField.getText().equals(""))
         {
             lastNameTextField.setEffect(error);
@@ -120,6 +138,9 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
         {
             lastNameTextField.setEffect(null);
         }
+
+        //If the password text field is empty, set the DropShadow effect on the lastNameTextField text field,
+        //set the allValuesFilledOut to false.
         if(passwordField.getText().equals(""))
         {
             passwordField.setEffect(error);
@@ -129,6 +150,9 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
         {
             passwordField.setEffect(null);
         }
+
+        //If allValuesFilledOut is true, which essentially means every other field was filled in correctly,
+        //then take the filled in info and add to the database.
         if (allValuesFilledOut)
         {
             String bool = "false";

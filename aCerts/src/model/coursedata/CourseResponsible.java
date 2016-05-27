@@ -1,5 +1,7 @@
 package model.coursedata;
 
+//Class from which enables initializing of CourseResponsible objects. The class holds some getters and setters which
+//may or may not be in use. The ones not in use are for later convenience.
 public class CourseResponsible {
     private String firstName;
     private String lastName;
