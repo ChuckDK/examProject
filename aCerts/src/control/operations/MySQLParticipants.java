@@ -183,7 +183,7 @@ public class MySQLParticipants extends SQLOperations{
     }
 
     //Method which set up connection for database and creates a participant object using a query.
-    public static ArrayList<CourseParticipant> connectToDatabase(String sqlStatement)
+    private static ArrayList<CourseParticipant> connectToDatabase(String sqlStatement)
     {
         ArrayList<CourseParticipant> returnParticipants = new ArrayList<>();
         try {
