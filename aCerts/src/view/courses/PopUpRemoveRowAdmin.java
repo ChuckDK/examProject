@@ -27,8 +27,9 @@ public class PopUpRemoveRowAdmin extends Pane {
         confirmButton = new Button("Confirm");
 
         //Set the position and the prompt text for the text field.
-        courseIDTextField.setLayoutX(100);
+        courseIDTextField.setLayoutX(125);
         courseIDTextField.setLayoutY(100);
+        courseIDTextField.setPrefWidth(200);
         courseIDTextField.setPromptText(promptText);
 
         //Set the position for the instructionsLabel.
@@ -37,19 +38,24 @@ public class PopUpRemoveRowAdmin extends Pane {
 
         //center message
         instructionsLabel.setTextAlignment(TextAlignment.CENTER);
-        instructionsLabel.setAlignment(Pos.CENTER);
+        instructionsLabel.setLayoutX(50);
+        instructionsLabel.setLayoutY(20);
+        instructionsLabel.setPrefWidth(400);
+        instructionsLabel.setWrapText(true);
 
         //Set the position for the confirmButton.
-        confirmButton.setLayoutX(80);
-        confirmButton.setLayoutY(200);
+        confirmButton.setLayoutX(100);
+        confirmButton.setLayoutY(140);
+        confirmButton.setPrefWidth(100);
 
         //Make an action on the button which creates a new instance of the PopUpRowRemovedAdmin.
         //This instance must be dealt with before any other windows can be used.
 
 
         //Set the position for the cancelButton.
-        cancelButton.setLayoutX(150);
-        cancelButton.setLayoutY(200);
+        cancelButton.setLayoutX(250);
+        cancelButton.setLayoutY(140);
+        cancelButton.setPrefWidth(100);
 
         //Styling
         cancelButton.setStyle(ACertsColorScheme.buttonColor());

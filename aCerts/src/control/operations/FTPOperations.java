@@ -6,9 +6,14 @@ import org.apache.commons.net.ftp.FTPClient;
 
 import java.io.*;
 
+
+//
 public class FTPOperations {
 
     //Method which uploads a file to the FTP Server.
+
+    //this method is an edited version of the example provided at:
+    //http://www.codejava.net/java-se/networking/ftp/java-ftp-file-upload-tutorial-and-example      -27/05-2016
     public static boolean uploadFile(File file)
     {
         //Initializing variables an assigning them data from the FTSettings class.
@@ -64,6 +69,9 @@ public class FTPOperations {
     }
 
     //Method which downloads a file to the FTP Server.
+
+    //this methoed is an edited version of the example provided at:
+    //http://www.codejava.net/java-se/networking/ftp/java-ftp-file-download-tutorial-and-example       -27/05-2016
     public static boolean downloadFile(String filename, String subfolder)
     {
         //Initializing variables an assigning them data from the FTSettings class.

@@ -163,7 +163,7 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable
                     PopUpRemoveRowAdmin popupPane = new PopUpRemoveRowAdmin("Warning!! This is permanent and cannot be undone!" +
                             "\nPlease input the email address for the course" +
                             "\nparticipant that you want to remove", "Input email...");
-                    popup.setScene(new Scene(popupPane, 500, 400));
+                    popup.setScene(new Scene(popupPane, 460, 200));
 
                     ((Button) popupPane.getChildren().get(3)).setOnAction(e -> {
                         if (SQLOperations.removeRow("certificates", "course_participants_email", "'"+((TextField) popupPane.getChildren().get(1)).getText()+"'") &&
@@ -172,16 +172,21 @@ public class ViewPaneCourseParticipants extends Pane implements Resizable
                         {
                             Stage stage = new Stage();
                             Pane pane = new PopUpRowRemovedAdmin(((TextField) popupPane.getChildren().get(1)).getText(), "Course Participant");
-                            Scene scene = new Scene(pane, 300, 200);
+                            Scene scene = new Scene(pane, 300, 120);
                             stage.setScene(scene);
 
                             //This line enables functionality for the 'okayButton' in the 'PopUpRowRemovedAdmin' class
                             //hence the number 3 which refers to the 0-indexed number where the 'okayButton' is added.
-                            ((Button) pane.getChildren().get(3)).setOnAction(a -> stage.close());
+                            ((Button) pane.getChildren().get(2)).setOnAction(a -> stage.close());
 
                             popup.close();
                             stage.show();
                         }
+                    });
+
+                    //close the window when cancel is pressed
+                    ((Button) popupPane.getChildren().get(0)).setOnAction(e -> {
+                        popup.close();
                     });
 
                     popup.initModality(Modality.APPLICATION_MODAL);

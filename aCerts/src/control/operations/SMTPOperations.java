@@ -71,6 +71,8 @@ public class SMTPOperations {
     }
 
     //Method which sends a certificate.
+    //this method is an edited version of teh example provided at:
+    //http://www.codejava.net/java-se/networking/ftp/java-ftp-file-download-tutorial-and-example         -27/05-2016
     public static void sendCertificate(String to, String msg, String subject, File attachement)
     {
         //Initialize a string variable to hold the email value from SMTPSettings.
