@@ -1,0 +1,70 @@
+********************************************************************
+*                 AppAcademy Certificates Manager                  *
+********************************************************************
+
+
+
+---------FIRST TIME SETUP------------
+
+When running the program for the first time, the program will generate a MySQLSettings file.
+Since there is not an existing MySQLSettings file then the program will connect to a 
+MySQL server at localhost, named 'AppAcademy' with the password 12345678.
+
+Once the user has logged in these settings can be changed.
+
+When logged in the first time, all FTPSettings and SMTPSettings are not set so alot
+of features wont work until the user has set the FTP settings and SMTP settings.
+
+If remote users should use the program, then all the settings files should be distributed
+along with the program. It is important that the remote users do not get settings
+which point to a localhost, if they are to use the same server.
+
+
+----------Creating a certificate template------------
+
+When creating a certificate template, you should have an image ready where is it possible
+to write a participant name, date and a course name.
+
+Afterwards you can edit the position of where the date, participant name and course name should be 
+written on the image. Drag the red markers around with the example text to customise the certificate.
+
+When positionning and sizing is done then give the template a name  and click 'generate certificate' to 
+store the template for later use.
+
+
+----------Creating a new course responsible------------
+
+Creating a course responsible is as simple as filling out the form that is presented.
+Once the form is filled out, press the 'add course responsible' to create the course responsible.
+If information is missing, then the field missing information is highlighted in red.
+
+
+----------Creating a new course-----------
+
+When creating a new course you will need to have the course responsible that you want
+to assign to the course in the system. You must also have a certificate template ready. 
+
+Fill out the form and then create the 
+course by pressing the 'create course' button. If it fails due to missing information, then 
+the required fields that are missing information is highlighted with red.
+
+
+---------Creating a new course participant-----------
+
+When creating a new course participant you will have to have a course ready you can assign 
+the participant to.
+
+The form which is presented should then be filled out. Afterwards pressing the 'add course participants'
+will add the participant to the system.
+
+
+---------Sending a certificate----------
+
+To send a certificate you need to have a participant that is assigned a course. See the 'Creating a new course participant'
+step on how to do so.
+
+To send the certificate find the participant you want to give a certificate in the course partifipants tab,
+and press the send button.
+
+
+

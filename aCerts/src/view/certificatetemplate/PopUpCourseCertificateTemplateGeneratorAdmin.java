@@ -28,6 +28,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Calendar;
 
+
+
 public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implements Resizable
 {
     //to be repurposed in future
@@ -451,6 +453,7 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
 
 
     //sets the DragableLabel to have mouseevents that needs information from this class (the size of the editorview scrollpane)
+    //this method is partly based on the solution provided at: http://stackoverflow.com/posts/10689478/revisions      29/05-2016
     public void makeDraggable(DragableLabel node)
     {
         //this event makes the mouse icon change to a closed hand to symbolise that the mouse have grabbed this label
@@ -475,7 +478,6 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
             int y = -1 * (int)bounds.getMinY() + 1;
 
             //move the drag'n'drop controller for the label
-            //TO BE RESEARCHED
             node.setTranslateX(event.getSceneX() - node.getDragDeltaX() - 300 + x);
             node.setTranslateY(event.getSceneY() - node.getDragDeltaY() - 10 + y);
 
