@@ -59,12 +59,12 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
     //:::::::::::::::editor sidepanel elements:::::::::::::
 
     //labels to help the user know what the textfields does
-    private Label size1 = new Label("Size:");
-    private Label size2 = new Label("Size:");
-    private Label size3 = new Label("Size:");
+    private Label participantNameSizeLabel = new Label("Size:");
+    private Label dateSizeLabel = new Label("Size:");
+    private Label courseNameSizeLabel = new Label("Size:");
     private Label nameLabel = new Label("Participant Name Example:");
     private Label dateLabel = new Label("Date Example:");
-    private Label courseLabel = new Label("Course Name Example:");
+    private Label courseNameLabel = new Label("Course Name Example:");
     private Label templateLabel = new Label("Template Name");
 
     //TextField to edit template name
@@ -76,9 +76,9 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
     private TextField editCourse = new TextField("Course Name");
 
     //textfields to edit the fontsize of the name and date drag'n'drop labels
-    private TextField sizeName = new TextField();
-    private TextField sizeDate = new TextField();
-    private TextField sizeCourseName = new TextField();
+    private TextField participantNameSizeTextField = new TextField();
+    private TextField dateSizeTextField = new TextField();
+    private TextField courseNameSizeTextField = new TextField();
 
     /* feature not implemented, can be added in a future update
     //Colorpickers to edit the color of the name and date drag'n'drop labels
@@ -87,7 +87,7 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
     private ColorPicker courseNameColor = new ColorPicker();*/
 
     //button to load an image as a background image in the editorview
-    private Button loadButton = new Button("Load Certificates Image");
+    private Button loadImageButton = new Button("Load Certificates Image");
 
     //Button to exit the editor without saving the template
     private Button cancelButton = new Button("Cancel");
@@ -105,17 +105,17 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
                 editDate,
                 nameLabel,
                 dateLabel,
-                loadButton,
-                size1,
-                sizeName,
-                size2,
-                sizeDate,
+                loadImageButton,
+                participantNameSizeLabel,
+                participantNameSizeTextField,
+                dateSizeLabel,
+                dateSizeTextField,
                 /*nameColor,*/
                 /*dateColor,*/
-                sizeCourseName,
-                size3,
+                courseNameSizeTextField,
+                courseNameSizeLabel,
                 /*courseNameColor,*/
-                courseLabel,
+                courseNameLabel,
                 editCourse,
                 templateLabel,
                 templateNameTextField);
@@ -144,19 +144,19 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         //styling of the certificate editor
         this.setStyle(ACertsColorScheme.viewColor());
         editorView.setStyle(ACertsColorScheme.subViewColor());
-        loadButton.setStyle(ACertsColorScheme.buttonColor());
+        loadImageButton.setStyle(ACertsColorScheme.buttonColor());
         editDate.setStyle(ACertsColorScheme.textFieldColor());
         editName.setStyle(ACertsColorScheme.textFieldColor());
-        sizeDate.setStyle(ACertsColorScheme.textFieldColor());
-        sizeName.setStyle(ACertsColorScheme.textFieldColor());
+        dateSizeTextField.setStyle(ACertsColorScheme.textFieldColor());
+        participantNameSizeTextField.setStyle(ACertsColorScheme.textFieldColor());
         saveCertificateTemplate.setStyle(ACertsColorScheme.buttonColor());
         cancelButton.setStyle(ACertsColorScheme.buttonColor());
 
         //events for various interactions with pane elements
-        loadButton.setOnAction(e ->loadImage());
-        sizeName.setOnKeyPressed(e-> updateFontSize(e, name, sizeName, editName));
-        sizeDate.setOnKeyPressed(e-> updateFontSize(e, date, sizeDate, editDate));
-        sizeCourseName.setOnKeyPressed(e-> updateFontSize(e, course, sizeCourseName, editCourse));
+        loadImageButton.setOnAction(e ->loadImage());
+        participantNameSizeTextField.setOnKeyPressed(e-> updateFontSize(e, name, participantNameSizeTextField, editName));
+        dateSizeTextField.setOnKeyPressed(e-> updateFontSize(e, date, dateSizeTextField, editDate));
+        courseNameSizeTextField.setOnKeyPressed(e-> updateFontSize(e, course, courseNameSizeTextField, editCourse));
         editName.setOnKeyPressed(e-> updateString(e, name, editName));
         editDate.setOnKeyPressed(e-> updateString(e, date, editDate));
         editCourse.setOnKeyPressed(e-> updateString(e, course, editCourse));
@@ -203,14 +203,14 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         courseNameColor.setLayoutY(240);
         courseNameColor.setPrefWidth(90);*/
 
-        courseLabel.setLayoutX(10);
-        courseLabel.setLayoutY(190);
+        courseNameLabel.setLayoutX(10);
+        courseNameLabel.setLayoutY(190);
 
         editorView.setLayoutX(300);
         editorView.setLayoutY(10);
 
-        loadButton.setLayoutX(10);
-        loadButton.setLayoutY(270);
+        loadImageButton.setLayoutX(10);
+        loadImageButton.setLayoutY(270);
 
         templateLabel.setLayoutX(10);
         templateNameTextField.setLayoutX(10);
@@ -238,9 +238,9 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         makeDraggable(course);
 
         //set the textfield for editing the font sizes to be the current size of the labels
-        sizeName.setText(""+name.getAttachedLabel().getFont().getSize());
-        sizeDate.setText(""+date.getAttachedLabel().getFont().getSize());
-        sizeCourseName.setText(""+course.getAttachedLabel().getFont().getSize());
+        participantNameSizeTextField.setText(""+name.getAttachedLabel().getFont().getSize());
+        dateSizeTextField.setText(""+date.getAttachedLabel().getFont().getSize());
+        courseNameSizeTextField.setText(""+course.getAttachedLabel().getFont().getSize());
 
     }
 
@@ -256,26 +256,26 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         //20 represents a margin of 10 at the top and at the bottom
         editorView.setPrefHeight(this.getScene().getHeight() - 20);
 
-        size1.setLayoutX(200);
-        size1.setLayoutY(33);
+        participantNameSizeLabel.setLayoutX(200);
+        participantNameSizeLabel.setLayoutY(33);
 
-        sizeName.setLayoutX(210 + size1.getWidth());
-        sizeName.setLayoutY(30);
-        sizeName.setPrefWidth(290 - (210 + size1.getWidth()));
+        participantNameSizeTextField.setLayoutX(210 + participantNameSizeLabel.getWidth());
+        participantNameSizeTextField.setLayoutY(30);
+        participantNameSizeTextField.setPrefWidth(290 - (210 + participantNameSizeLabel.getWidth()));
 
-        size2.setLayoutX(200);
-        size2.setLayoutY(123);
+        dateSizeLabel.setLayoutX(200);
+        dateSizeLabel.setLayoutY(123);
 
-        sizeDate.setLayoutX(210 + size2.getWidth());
-        sizeDate.setLayoutY(120);
-        sizeDate.setPrefWidth(290 - (210 + size2.getWidth()));
+        dateSizeTextField.setLayoutX(210 + dateSizeLabel.getWidth());
+        dateSizeTextField.setLayoutY(120);
+        dateSizeTextField.setPrefWidth(290 - (210 + dateSizeLabel.getWidth()));
 
-        size3.setLayoutX(200);
-        size3.setLayoutY(213);
+        courseNameSizeLabel.setLayoutX(200);
+        courseNameSizeLabel.setLayoutY(213);
 
-        sizeCourseName.setLayoutX(210 + size3.getWidth());
-        sizeCourseName.setLayoutY(210);
-        sizeCourseName.setPrefWidth(290 - (210 + size3.getWidth()));
+        courseNameSizeTextField.setLayoutX(210 + courseNameSizeLabel.getWidth());
+        courseNameSizeTextField.setLayoutY(210);
+        courseNameSizeTextField.setPrefWidth(290 - (210 + courseNameSizeLabel.getWidth()));
 
         templateLabel.setLayoutY(this.getScene().getHeight() - 100);
         templateNameTextField.setLayoutY(this.getScene().getHeight() - 80);
@@ -312,45 +312,45 @@ public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implement
         error.setColor(Color.RED);
         try
         {
-            Double.parseDouble(sizeCourseName.getText());
-            sizeCourseName.setEffect(null);
+            Double.parseDouble(courseNameSizeTextField.getText());
+            courseNameSizeTextField.setEffect(null);
         }
         catch (Exception e)
         {
             allvaluesFilledIn = false;
-            sizeCourseName.setEffect(error);
+            courseNameSizeTextField.setEffect(error);
         }
 
         try
         {
-            Double.parseDouble(sizeDate.getText());
-            sizeDate.setEffect(null);
+            Double.parseDouble(dateSizeTextField.getText());
+            dateSizeTextField.setEffect(null);
         }
         catch (Exception e)
         {
             allvaluesFilledIn = false;
-            sizeDate.setEffect(error);
+            dateSizeTextField.setEffect(error);
         }
 
         try
         {
-            Double.parseDouble(sizeName.getText());
-            sizeName.setEffect(null);
+            Double.parseDouble(participantNameSizeTextField.getText());
+            participantNameSizeTextField.setEffect(null);
         }
         catch (Exception e)
         {
             allvaluesFilledIn = false;
-            sizeName.setEffect(error);
+            participantNameSizeTextField.setEffect(error);
         }
 
         if(loadedImage == null)
         {
             allvaluesFilledIn = false;
-            loadButton.setEffect(error);
+            loadImageButton.setEffect(error);
         }
         else
         {
-            loadButton.setEffect(null);
+            loadImageButton.setEffect(null);
         }
 
         if(templateNameTextField.getText().equals(""))
