@@ -1,7 +1,7 @@
 OSCA Threading
 _________________________
 
-In OSCA (Operative Systems and Computer Architechture) we were assigned with a task about threads. 
+In OSCA (Operative Systems and Computer Architecture) we were assigned with a task about threads. 
 We were given two java classes from our OSCA teacher Arne written with Swing instead of JavaFX. The classes has the screensaver's code except it did
 not quite work as intended, since the ball elements would randomly update and make the result look like many ball being frozen in the pane instead of
 the balls bouncing around as intended. 
@@ -24,8 +24,9 @@ The moveBall method only has synchronized in it's method declaration which basic
 The run method settles for wrapping the scene inside a synchronized method within the run method's scope as the scene is the critical part here.
 (indsæt critHit.png her)
 
-This upgrades the the code we recieved to have the intended effect thereby solves the first part of the assignment.
+This upgrades the code we received to have the intended effect thereby solves the first part of the assignment.
 
 ===semaphore
 A semaphore is a simple variable that says whether or not a resource is available. A thread asks for the semaphore to be locked if it isn't already used by another 
-thread. When a thread is finished in the critical region the semaphore is unlocked.Semaphores use a queue to avoid starvation.
+thread. When a thread is finished in the critical region the semaphore is unlocked. Semaphores use a queue to avoid starvation.
+The process for checking and changing the value needs to be atomic or else another thread could get the resource resulting in a deadlock.
