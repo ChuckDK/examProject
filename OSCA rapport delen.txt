@@ -1,0 +1,7 @@
+OSCA Threading
+_________________________
+
+In OSCA (Operative Systems and Computer Architechture) we were assigned with a task about threads. 
+We were given two java classes from our OSCA teacher Arne written with Swing instead of JavaFX. 
+The classes consisted of a ball object class designed to setup moving GUI balls and a main class consisting of the main method.
+The assignment was about remaking the GUI into JavaFX from Swing, and to 
