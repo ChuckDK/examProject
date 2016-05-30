@@ -9,10 +9,8 @@ public class Ball extends Thread {
     private double x, y, deltaX, deltaY, radius;
     private Circle ball;
     private Scene scene;
-    private String debug;
-    private int counter;
 
-    public Ball(double x, double y, double deltaX, double deltaY, double radius, Color color, Scene scene, String debug, int counter) {
+    public Ball(double x, double y, double deltaX, double deltaY, double radius, Color color, Scene scene) {
         this.ball = new Circle(x, y, radius, color);
         this.x = x;
         this.y = y;
@@ -20,12 +18,10 @@ public class Ball extends Thread {
         this.deltaY = deltaY;
         this.scene = scene;
         this.radius = radius;
-        this.debug = debug;
-        this.counter = counter;
     }
 
 
-    public void moveBall() {
+    public synchronized void moveBall() {
 
         double minX, minY, maxX, maxY;
 
@@ -53,20 +49,17 @@ public class Ball extends Thread {
     }
 
     @Override
-    public void run() {
-        while (!Thread.interrupted()) {
-            for (int i = 0; i < 100; i++)
-                try {
+    public synchronized void run() {
+        while (true) {
+            try {
+                synchronized(scene) {
                     this.moveBall();
-                    Thread.sleep(100);
-                    //System.out.println(currentThread())
-                    System.out.println(this.debug);
-                    System.out.println(this.counter++);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    //System.out.print(this.ball);
-                    System.exit(1);
                 }
+                Thread.sleep(100);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.exit(1);
+            }
         }
     }
 }
