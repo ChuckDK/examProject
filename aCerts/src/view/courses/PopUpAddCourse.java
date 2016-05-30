@@ -165,7 +165,7 @@ public class PopUpAddCourse extends Pane {
             });
             ((Button) popupPane.getChildren().get(1)).setOnAction(ex -> {
                 Stage stage = new Stage();
-                Pane pane = new PopUpAddCourseResponsible();
+                PopUpAddCourseResponsible pane = new PopUpAddCourseResponsible();
                 Scene scene = new Scene(pane, 500, 400);
                 stage.setScene(scene);
                 stage.initModality(Modality.APPLICATION_MODAL);
@@ -173,6 +173,17 @@ public class PopUpAddCourse extends Pane {
                 //This line enables functionality for the 'cancelButton' in the 'PopUpAddCoursePersona' class
                 //hence the number 0 which refers to the 0-indexed number where the 'cancelButton' is added.
                 ((Button) pane.getChildren().get(0)).setOnAction(a -> stage.close());
+
+
+                ((Button) pane.getChildren().get(13)).setOnAction(a ->
+                {
+                    if(pane.checkForValues())
+                    {
+                        courseResponsible = pane.getCourseResponsible();
+                        stage.close();
+                    }
+                });
+
                 popup.close();
                 stage.showAndWait();
             });
@@ -245,8 +256,7 @@ public class PopUpAddCourse extends Pane {
         {
             courseResponsibleEmail = courseResponsible.getEmail();
         }
-
-        if(templates.itemsProperty().getValue() == null)
+        if(templates.getSelectionModel().isEmpty())
         {
             templates.setEffect(error);
             allInfoFilledIn = false;

@@ -8,6 +8,7 @@ import javafx.scene.effect.Effect;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.coursedata.CourseResponsible;
 import view.courses.PopUpAddCoursePersona;
 import view.courses.PopUpCourseSelectionList;
 import view.styling.ACertsColorScheme;
@@ -103,16 +104,9 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
             phoneNumberTextField.setEffect(null);
         }
 
-        //If the phone number 2 text field is empty, set the DropShadow effect on the phoneNumber2TextField text field,
-        //set the allValuesFilledOut to false.
         if(phoneNumber2TextField.getText().equals(""))
         {
-            phoneNumber2TextField.setEffect(error);
-            allValuesFilledOut = false;
-        }
-        else
-        {
-            phoneNumber2TextField.setEffect(null);
+            phoneNumber2TextField.setText("0");
         }
 
         //If the first name text field is empty, set the DropShadow effect on the firstNameTextField text field,
@@ -184,5 +178,16 @@ public class PopUpAddCourseResponsible extends PopUpAddCoursePersona
             SQLOperations.addNewRow("phones_course_responsibles", phone2Values);
         }
         return allValuesFilledOut;
+    }
+
+    public CourseResponsible getCourseResponsible()
+    {
+        return new CourseResponsible(
+                firstNameTextField.getText(),
+                lastNameTextField.getText(),
+                phoneNumberTextField.getText(),
+                phoneNumber2TextField.getText(),
+                emailTextField.getText(),
+                adminRights.isSelected());
     }
 }

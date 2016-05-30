@@ -69,7 +69,7 @@ public class PopUpAddCourseParticipant extends PopUpAddCoursePersona {
     //Method which ensures all the values has been added before they are added to the database.
     public boolean checkForValues()
     {
-        //Initialize a boolean and a DropShadow, and style the DropShadow.
+        //Initialize a boolean and a DropShadow, and style the DropShadow. The Dropshadow creates a red glow around the element.
         boolean allValuesFilledOut = true;
         DropShadow error = new DropShadow();
         error.setColor(Color.RED);
@@ -84,30 +84,6 @@ public class PopUpAddCourseParticipant extends PopUpAddCoursePersona {
         else
         {
             emailTextField.setEffect(null);
-        }
-
-        //If the phone number text field is empty, set the DropShadow effect on the phoneNumberTextField text field,
-        //set the allValuesFilledOut to false.
-        if(phoneNumberTextField.getText().equals(""))
-        {
-            phoneNumberTextField.setEffect(error);
-            allValuesFilledOut = false;
-        }
-        else
-        {
-            phoneNumberTextField.setEffect(null);
-        }
-
-        //If the phone number 2 text field is empty, set the DropShadow effect on the phoneNumber2TextField text field,
-        //set the allValuesFilledOut to false.
-        if(phoneNumber2TextField.getText().equals(""))
-        {
-            phoneNumber2TextField.setEffect(error);
-            allValuesFilledOut = false;
-        }
-        else
-        {
-            phoneNumber2TextField.setEffect(null);
         }
 
         //If the first name text field is empty, set the DropShadow effect on the firstNameTextField text field,
@@ -144,6 +120,14 @@ public class PopUpAddCourseParticipant extends PopUpAddCoursePersona {
         else
         {
             assignCourse.setEffect(null);
+        }
+        if(phoneNumberTextField.getText().equals(""))
+        {
+            phoneNumberTextField.setText("0");
+        }
+        if(phoneNumber2TextField.getText().equals(""))
+        {
+            phoneNumber2TextField.setText("0");
         }
 
         //If allValuesFilledOut is true, which essentially means every other field was filled in correctly,

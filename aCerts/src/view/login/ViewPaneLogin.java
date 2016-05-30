@@ -40,7 +40,7 @@ public class ViewPaneLogin extends Pane implements Resizable
         //startup width and height. Therefore 200 is just a pin-pointer to make it easier to find the correct position.
         //Here the AppAcademy.png is used as an example.
         appAcademyLogo = new ImageView(new Image("AppAcademy.png"));
-        appAcademyLogo.setLayoutX(200 - 50);
+        appAcademyLogo.setLayoutX(250 - 50);
         appAcademyLogo.setLayoutY(200 - 180);
 
         //Message label to show message if login failed for instance.
@@ -48,35 +48,35 @@ public class ViewPaneLogin extends Pane implements Resizable
 
         //Initialize label to prompt user to insert username in the Text box next to it and set its position.
         usernameLabel = new Label("Please insert Username:");
-        usernameLabel.setLayoutX(200 - 180);
+        usernameLabel.setLayoutX(250 - 180);
         usernameLabel.setLayoutY(200 - 30);
 
         //Initialize text box for user to input username and set it's position.
         usernameTextField = new TextField();
-        usernameTextField.setLayoutX(200);
+        usernameTextField.setLayoutX(250);
         usernameTextField.setLayoutY(200 - 30);
         usernameTextField.setPrefWidth(180);
 
         //Initialize label to prompt user to insert password in the Text box next to it and set it's start position.
         passwordLabel = new Label("Please input Password:");
-        passwordLabel.setLayoutX(200 - 180);
+        passwordLabel.setLayoutX(250 - 180);
         passwordLabel.setLayoutY(200 + 10);
 
         //Initialize text box for user to input password and set it's position.
         passwordTextField = new PasswordField();
-        passwordTextField.setLayoutX(200);
+        passwordTextField.setLayoutX(250);
         passwordTextField.setLayoutY(200 + 10);
         passwordTextField.setPrefWidth(180);
 
         //Initialize button to login and set it's position.
         loginButton = new Button("Login");
-        loginButton.setLayoutX(200 - 40);
+        loginButton.setLayoutX(250 - 40);
         loginButton.setLayoutY(200 + 50);
         loginButton.setPrefWidth(80);
 
         //Initialize button to exit the program and set it's position.
         cancelButton = new Button("Exit");
-        cancelButton.setLayoutX(400 - 80);
+        cancelButton.setLayoutX(500 - 80);
         cancelButton.setLayoutY(400 - 40);
         cancelButton.setPrefWidth(60);
 
