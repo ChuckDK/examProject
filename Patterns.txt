@@ -1,0 +1,57 @@
+Patterns:
+
+Grasp:
+To create the program we have used sonme of the pattern which falls 
+under the General Responsibility Assignment Software Patterns (GRASP).
+The GRASP patterns used are the Controller, low coupling (as much as possible), High Cohesion, and Polymorphism patterns.
+In the following we will give a brief description of each pattern and an explaination of how we have used each pattern and why:
+
+Controller:
+The controller pattern dictates how there should be classes which handles requests from the UI, making it so the UI
+essentially has no functionality itself. 
+We have activily used this priciple throughout our program as we have a "Controller"
+folder in our program which our GUI sends user events to in order to get the results.
+
+Low Coupling:
+This pattern dictates that the classes should have as little relation to other classes as possible, 
+which essentially results in the following perks: lower dependency between the classes, changes in one class 
+have lower impact on other classes, and higher reuse potential. 
+We have used the principles of this pattern as far as we are concerned 
+meaning we have lowered the relation between classes as much as possible and have gone for high reuse potentiel
+eg. our FileIO class which has one responsibility but can be reused. However we could have had even lower coupling
+by having a factory class which creates some elements used in the method bodies from our "MySQLParticipants" class.
+All in all we designed the program with low coupling in mind but when we were finished programming our program
+was not as low coupled as we wished for.
+
+High Cohesion:
+The High Cohesion pattern dictates that a class should have moderate responsibilities in one functional area
+and collaborate with other classes to fulfill tasks.
+We have used this pattern by creating subsystems where each class use their own responsibility along with other 
+classes in the same subsystem to create one output. An example of this in our program could be the "operations"
+and "settings" systems. In the "settings" system, the "FileIO" class read and writes objects which the 
+"FTPSettings", "SMTPSettings", and "MySQLSettings" uses to be updated with and thereby set the settings in the program.
+
+Other patterns:
+During the creation of the program we have also used some patterns which do not fall under the GRASP patterns;
+Model View COntroller (MVC) and Singleton patterns.
+
+Model View COntroller (MVC):
+The MVC pattern is a architectual pattern which means it is a pattern used for organizing the structure
+of the program. The view is what the user interacts with and should be free from any functionality 
+meaning it should call upon the controller to have the user events handled. The model is the objects 
+where the handled information is "packed" and then shipped on to the view in order to update it, or save it to a file on the pc. 
+The components cooperates as follows: The user sees the view and for instance pushes a button
+which triggers an event. Thew view calls upon the controller which in turn manipulates the event and saves
+the result in the model which is sent to the view and thereby updates it for the user to see.
+We have used this pattern to structure our program entirely; Our GUI elements are in the view folder, 
+our functionality is in the Controller folder, and the objects we initialize any event triggered handled information
+is in the model folder.
+
+Singleton:
+The Singleton pattern which helps creating one and only one instance of a class. The way it is implemented is by making the constructor in
+the class private in the class you wish to be based on singelton. Then in the same class you make a static method (usually called
+getInstance) which returns an instance of the class, but first checks if an instance has been created. If this is the case
+the getInstance returns the already created instance meaning only one instnce of the class will be present when you run the program.
+We have used the singleton pattern in our  ViewPanesManager class to ensure that you cant change your view to be that of an
+admin if you are a normal user. The singleton pattern ensures that the normal instance you logged in with is the same throughout
+the entire program session.
