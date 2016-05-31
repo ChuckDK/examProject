@@ -202,7 +202,7 @@ public class ViewPaneCourseResponsiblesAdmin extends Pane implements Resizable
                 if (SQLOperations.removeCourseResponsible(((TextField) popupPane.getChildren().get(1)).getText()))
                 {
                     Stage stage = new Stage();
-                    Pane pane = new PopUpRowRemovedAdmin(((TextField) popupPane.getChildren().get(1)).getText(), "Course Participant");
+                    Pane pane = new PopUpRowRemovedAdmin(((TextField) popupPane.getChildren().get(1)).getText(), "Course Responsible");
                     Scene scene = new Scene(pane, 300, 120);
                     stage.setScene(scene);
 
