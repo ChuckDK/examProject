@@ -1,0 +1,37 @@
+Usage of the Gestaltlaws
+
+
+**law of similarity**
+
+We have used the law of similarity by using color to group elements together.
+
+For our program vi have been given some color codes from our client that he wanted us to use. We have used the color so that the same colors are used for the same type of elements throughout our program, to get some consistency in our program.
+
+All of the buttons in the program have been given the color blue, so that the color blue is associated with elements that you can click on.
+
+Green have been used as a background color and nothing else, so everytime something is green (in this case only our background and the company logo) it is something that cannot be interacted with.
+
+All kinds of textfields and tables have been given the color white with black text, to provide readability because of the very high color contrast.
+
+
+***The law of proximity***
+
+The law of proximity is used on multiple occations in our program:
+
+*login screen: 
+
+The textfields for inputting username and password are placed right above each other and have the same length and height to show that they are connected to each other. 
+
+The login button is placed right below the login textfields to show that it is also connected to the login info.
+
+The exit button also uses this law but it is used to show that the button is NOT associated with the login info, by moving it far away from the elements associated with loggin in. This shows that the exit button closes the program no matter what login info is provided.
+
+
+*All the tableviews:
+
+In all of our tableviews we have buttons to the left to filer the information in the tableviews. these buttons are placed right above each other, to symbolize that they have the same kind of function (they are all filters)
+
+the add and remove buttons are placed in the button far away from the filter bttons to show that their functionality is different.
+
+
+

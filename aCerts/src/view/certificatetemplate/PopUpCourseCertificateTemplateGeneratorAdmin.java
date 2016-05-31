@@ -32,13 +32,13 @@ import java.util.Calendar;
 
 public class PopUpCourseCertificateTemplateGeneratorAdmin extends Pane implements Resizable
 {
-    //to be repurposed in future
+    //Button to save certificate templates
     private Button saveCertificateTemplate = new Button("Generate Certificate");
 
     private File file;
     //Pane elements are defined here
 
-    //editoreview makes the editor scrollable. editor is contained inside editorview and is where all the elements in
+    //editorview makes the editor scrollable. editor is contained inside editorview and is where all the elements in
     //editor view are
     private ScrollPane editorView = new ScrollPane();
     private Pane editor = new Pane();
