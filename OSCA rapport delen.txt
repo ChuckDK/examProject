@@ -1,0 +1,32 @@
+OSCA Threading
+_________________________
+
+In OSCA (Operative Systems and Computer Architecture) we were assigned with a task about threads. 
+We were given two java classes from our OSCA teacher Arne written with Swing instead of JavaFX. The classes has the screensaver's code except it did
+not quite work as intended, since the ball elements would randomly update and make the result look like many ball being frozen in the pane instead of
+the balls bouncing around as intended. 
+The classes consisted of a ball object class designed to setup moving GUI balls and a main class consisting of the main method.
+The assignment was about making a screensaver consisting of bouncing balls using threads as well as writing about the solution we came up with plus
+another different solution to the problem as there are many.
+
+===synchronized
+The synchronized keyword ensures that a thread is using the correct data. 
+It also ensures that only one thread out of multiple can have access to a datasource at a time. 
+Using Java's 'synchronized' is used to wrap around the critical section to ensure that no other thread can access that part.
+
+In the assignment, critical parts in the code are the scene element where the screensaver is supposed to run 
+and the ball elements which are supposed to run within the scene. It is therefore very important that this scene is not altered by another thread. 
+
+To avoid this possible problem, we use the Synchronized keyword: 
+The moveBall method only has synchronized in it's method declaration which basically tells that all in the method is critical.
+(indsæt moveBall.png her)
+
+The run method settles for wrapping the scene inside a synchronized method within the run method's scope as the scene is the critical part here.
+(indsæt critHit.png her)
+
+This upgrades the code we received to have the intended effect thereby solves the first part of the assignment.
+
+===semaphore
+A semaphore is a simple variable that says whether or not a resource is available. A thread asks for the semaphore to be locked if it isn't already used by another 
+thread. When a thread is finished in the critical region the semaphore is unlocked. Semaphores use a queue to avoid starvation.
+The process for checking and changing the value needs to be atomic or else another thread could get the resource resulting in a deadlock.
