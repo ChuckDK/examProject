@@ -1,12 +1,9 @@
-
-
 SMTP
 
 GoTo> www.one.com
-UserName > certifikat@forneus.net
-PassWord > password
-smtp> send.one.com
-
+Username > certifikat@forneus.net
+Password > password
+host> send.one.com
 
 
 FTP Administration
@@ -17,11 +14,3 @@ Host: ftp.forneus.net
 Username: forneus.net
 password: emildennisjonasfredrik
 Port: 21
-Click Send and you will receive an email, that can be used to create/change FTP password.
-
-MySQL
-
-Host: forneus.net.mysql
-Database: forneus_net
-User: forneus_net
-password: acertsproject
