@@ -18,7 +18,7 @@ All kinds of textfields and tables have been given the color white with black te
 
 The law of proximity is used on multiple occations in our program:
 
-*login screen: 
+*login screen
 
 The textfields for inputting username and password are placed right above each other and have the same length and height to show that they are connected to each other. 
 
@@ -27,11 +27,24 @@ The login button is placed right below the login textfields to show that it is a
 The exit button also uses this law but it is used to show that the button is NOT associated with the login info, by moving it far away from the elements associated with loggin in. This shows that the exit button closes the program no matter what login info is provided.
 
 
-*All the tableviews:
+*All the tableviews
 
 In all of our tableviews we have buttons to the left to filer the information in the tableviews. these buttons are placed right above each other, to symbolize that they have the same kind of function (they are all filters)
 
 the add and remove buttons are placed in the button far away from the filter bttons to show that their functionality is different.
+
+
+*Settingsview
+
+In our settingsview the buttons are grouped together positionally so that buttons concerning certificates are placed together, all "transfer protocol" settings are grouped (SMTP, FTP) and mysql settings is placed alone at the bottom.
+The certificate templates dropdown menu is placed right beside the remove template button to show that those 2 elements are grouped functionally.
+
+
+***The law of closure***
+
+In the certificate template editorview all buttons and textfield are grouped together in the green area to the left, that can edit properties of the elements in the editor. everything that will appear on the finished certificate are grouped in the editor itself (the white area).
+
+This law also applies to all the tables where all of the elements within the tables only interact the rows they appear at.
 
 
 
