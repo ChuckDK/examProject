@@ -30,27 +30,12 @@ public class SQLOperations {
         }
         sqlStatement = sqlStatement + ");";
         System.out.println(sqlStatement);
-        if(connectToDatabase(sqlStatement))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
+        return(connectToDatabase(sqlStatement));
     }
     public static boolean removeRow(String table, String variable, String value)
     {
         String sqlStatement = "DELETE FROM "+table+" WHERE "+variable+ " = "+value;
-        if (connectToDatabase(sqlStatement))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return connectToDatabase(sqlStatement);
     }
 
     public static boolean removeCourseResponsible(String email)
@@ -60,14 +45,7 @@ public class SQLOperations {
                 "WHERE course_responsible_email = '"+email+"';";
         String sqlStatement3 = "SET FOREIGN_KEY_CHECKS=1;";
 
-        if(connectToDatabaseMultiple(sqlStatement1, sqlStatement2, sqlStatement3))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return connectToDatabaseMultiple(sqlStatement1, sqlStatement2, sqlStatement3);
     }
 
     //Method which creates the connection to the database.

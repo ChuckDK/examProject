@@ -1,6 +1,5 @@
 package view.courses;
 
-import control.operations.FTPOperations;
 import control.operations.MySQLCourses;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
