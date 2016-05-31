@@ -1,0 +1,9 @@
+Our code is now finished to such an extent that we can show our client Kristian the result. 
+Therefore, we have agreed to do a skype meeting with him where we will screenshare as we try out the program
+with instructions from Kristian. 
+We have also revisted our class diagram for the last time to update it with the small refinements made to the code.
+Also, we have made a user manual for the program which explains how the program 
+should be set up the first time when it is launched as well as a description of it's general usage. Finally we
+have solved the OSCA assignment and thus finished it's coding part.
+
+Next time we will have the skype meeting with Kristian and start finalising the report and the project as a whole. 

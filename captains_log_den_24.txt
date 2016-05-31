@@ -1,0 +1,8 @@
+Today we continued refining our code by adding features such as being able to save certificates, add participants,
+and some other small refinements such as adding FTP libraries and fixing the 'MySQLSettings' class. However
+we are starting to feel the productivity level is falling, as we have now been working on the project for quite some time.
+We will have to tackle this problem by keeping spirits high here in the final part of the work, as the hand in date
+is now but a week away.
+
+Next time we will aim to finalise the code by adding the final rifinements and comments to the code. 
+We hope to do this as we can then start adding all our work to the report and thereby start finishing the project as a whole.
